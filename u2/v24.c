@@ -24,14 +24,21 @@
 struct termios    oldtio, newtio;
 int               fd = FDINIT;
 
+
+// Restore old Modemsettings
+void restore_tcsettings(){
+  oldtio.c_cc[VMIN]=1;
+  oldtio.c_cc[VTIME]=0;
+  tcsetattr(fd, TCSANOW, &oldtio);
+  tcflush(fd, TCIFLUSH); // flushes the input stream
+}
+
+// Interrupthandler for restoring the old settings
 void int_handler(int s) {
 	printf("int_handler: fd: %d\n", fd);
 	fflush(stdout);
 	if (fd != FDINIT) {
-		oldtio.c_cc[VMIN]=1;
-		oldtio.c_cc[VTIME]=0;
-		tcsetattr(fd, TCSANOW, &oldtio);
-		tcflush(fd, TCIFLUSH); // flushes the input stream
+		restore_tcsettings();
 		printf("%s reset by signal SIGINT\n", IODEVICE);
 		close(fd);
 	}
@@ -61,6 +68,8 @@ void set_flags(int flags, int vmin, int vtime) {
 
 
 
+
+
 int main(int argc, char **argv) {
 	struct {
 		unsigned char len;
@@ -69,7 +78,7 @@ int main(int argc, char **argv) {
 	char ack = 6;
 
   struct sigaction  sa;
-	int mode, j, len, myreadlen, retries;
+	int mode, j, len, retries;
 
 
   // Checking Arguments
@@ -111,6 +120,9 @@ int main(int argc, char **argv) {
   /* save current IO-settings */
   tcgetattr(fd, &oldtio); 
 
+  printf("%d\n", oldtio.c_cc[VMIN] );
+  printf("%d\n", oldtio.c_cc[VTIME] );
+
   /* - set baud rate and hardware flow control to 8bit, no parity, 1 stopbit
      - enable reception of characters */
 
@@ -131,8 +143,7 @@ int main(int argc, char **argv) {
 	if (mode == SEND) {
 		do {
       retries = 0;
-			myreadlen = myread(paket.buffer, MAXLEN);
-			paket.len = myreadlen;
+			paket.len = myread(paket.buffer, MAXLEN);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
@@ -143,12 +154,13 @@ int main(int argc, char **argv) {
 
       if(retries >= MAXRETRIES) {
         printf("Too many retries.\nProcess canceled.\n");
+        restore_tcsettings();
         exit(1);
       } else {
         printf("%d bytes read\n", len);
         printf("%d bytes in package\n\n", paket.len);
       }
-		} while (myreadlen == MAXLEN);
+		} while (paket.len == MAXLEN);
 	}	else {
 		do {
 			do {
@@ -170,10 +182,7 @@ int main(int argc, char **argv) {
 		} while (paket.len == MAXLEN);
 	}	
 		
-	oldtio.c_cc[VMIN]=1;
-	oldtio.c_cc[VTIME]=0;
-	tcsetattr(fd, TCSANOW, &oldtio);
-  tcflush(fd, TCIFLUSH);
+	restore_tcsettings();
 
 	return 0;
 }
