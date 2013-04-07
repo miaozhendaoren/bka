@@ -33,6 +33,7 @@ void restore_tcsettings(){
   tcflush(fd, TCIFLUSH); // flushes the input stream
 }
 
+// Interrupthandler for restoring the old settings
 void int_handler(int s) {
 	printf("int_handler: fd: %d\n", fd);
 	fflush(stdout);
