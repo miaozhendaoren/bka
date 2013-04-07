@@ -12,7 +12,7 @@
 #define RECEIVE	1
 #define FDINIT		-1
 #define MAXLEN		128
-#define MAXRETRIES 3
+#define MAXRETRIES 6
 #define MALE		3
 
 #define SOURCE      "/var/log/syslog"
@@ -139,13 +139,14 @@ int main(int argc, char **argv) {
 			  printf("%d bytes written\n", len);
   			len = read(fd, &ack, 1);
         retries++;
-	    } while (len < 1 && retries <= MAXRETRIES);
+	    } while (len < 1 && retries < MAXRETRIES);
 
-      if(retries > MAXRETRIES) {
+      if(retries >= MAXRETRIES) {
         printf("Too many retries.\nProcess canceled.\n");
         exit(1);
       } else {
-        printf("%d bytes read\n\n", len);
+        printf("%d bytes read\n", len);
+        printf("%d bytes in package\n\n", paket.len);
       }
 		} while (myreadlen == MAXLEN);
 	}	else {

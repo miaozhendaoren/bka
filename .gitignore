@@ -1,7 +1,6 @@
 # Object files
 *.o
-!u2/fileio.o
-!/u2/fileio.o
+
 
 # Libraries
 *.lib
@@ -17,6 +16,12 @@
 *.exe
 *.out
 *.app
-Serial
 
 .DS_Store
+
+# u2 folder
+Serial
+u2/ziel.txt
+/u2/ziel.txt
+!u2/fileio.o
+!/u2/fileio.o
