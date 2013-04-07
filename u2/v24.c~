@@ -1,0 +1,160 @@
+#include <termios.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <sys/signal.h>
+#include "fileio.h"
+
+#define BAUDRATE    B38400
+#define IODEVICE    "/dev/ttyS0"
+#define SEND		0
+#define RECEIVE	1
+#define FDINIT		-1
+#define MAXLEN		16
+#define MALE		3
+
+#define _POSIX_SOURCE 1  
+
+// Obwohl globale Variablen "verboten" sind, geht es hier nicht anders.
+struct termios    oldtio, newtio;
+int               fd = FDINIT;
+
+
+
+void int_handler(int s) {
+	printf("int_handler: fd: %d\n", fd);
+	fflush(stdout);
+	if (fd != FDINIT) {
+		oldtio.c_cc[VMIN]=1;
+		oldtio.c_cc[VTIME]=0;
+		tcsetattr(fd, TCSANOW, &oldtio);
+		tcflush(fd, TCIFLUSH);
+		printf("%s reset by signal SIGINT\n", IODEVICE);
+		close(fd);
+	}
+	exit(0);
+}
+
+
+
+int main(int argc, char **argv) {
+	struct {
+		unsigned char len;
+		char buffer[MAXLEN];
+	} paket;
+	char ack = 6;
+
+   struct sigaction  sa;
+	int error = 0;
+	int mode;
+	int j;
+	int len;
+	int myreadlen;
+
+	if (argc != 2) 
+		error = 1;
+	else 
+		if ((argv[1][0] != 's') && (argv[1][0] != 'r'))
+			error = 1;
+
+	if (error) {
+		printf("usage: v24 [s | r]\n");
+		return 0;
+	}	
+
+	printf("mode = %c\n", argv[1][0]);
+	mode = RECEIVE;
+	if (argv[1][0] == 's')
+		mode = SEND;
+
+	if (mode == SEND)
+		printf("SEND-mode\n");
+	else
+		printf("RECEIVE-mode\n");
+
+ 	if (myopen("quelle", "ziel") < 0)
+		return 1;
+ 
+   sa.sa_handler = int_handler;
+	sa.sa_flags = 0;
+	sigaction(SIGINT, &sa, NULL); 
+
+   fd = open(IODEVICE, O_RDWR);
+   if (fd <0) {
+      perror(IODEVICE); 
+      return(1); 
+   }
+
+	printf("fd: %d\n", fd);
+	fflush(stdout);
+ 
+   /* save current IO-settings */
+   tcgetattr(fd, &oldtio); 
+ 
+   /* - set baud rate and hardware flow control to 8bit, no parity, 1 stopbit
+      - enable reception of characters
+   CSTOPB : if set, 2 stopbits are used, otherwise 1 stopbit
+   PARENB : if set, parity generation ist enabled for outgoing characters
+            and parity check is performed on incoming characters
+   CLOCAL : if set, the modem status lines are ignored 
+   CREAD  : if set, the receiver is enabled and characters can be received */
+   
+   newtio.c_cflag = BAUDRATE | CS8 | CLOCAL | CREAD;
+ 
+   /* raw input and output */
+   newtio.c_iflag = 0;
+   newtio.c_oflag = 0;
+
+   /* clear lflag (no lflag settings needed) */
+   newtio.c_lflag = 0;
+ 
+	if (mode == SEND) {
+		newtio.c_cc[VMIN]=1;
+		newtio.c_cc[VTIME]=10;
+	}	
+	else {
+		newtio.c_cc[VMIN]=sizeof(paket);
+		newtio.c_cc[VTIME]=1;
+	}
+ 
+   /* now clean the modem line and activate the settings for modem */
+   tcflush(fd, TCIFLUSH);
+   tcsetattr(fd, TCSANOW, &newtio);
+
+	if (mode == SEND) {
+		do {
+			myreadlen = myread(paket.buffer, MAXLEN);
+			paket.len = myreadlen;
+			len = write(fd, &paket, sizeof(paket));
+			printf("%d bytes written\n", len);
+			len = read(fd, &ack, 1);
+			printf("%d bytes read\n\n", len);
+		} while (myreadlen == MAXLEN);
+	}	
+	else {
+		do {
+			do {
+				len = read(fd, &paket, sizeof(paket));
+				if (len != sizeof(paket)) 
+					printf("time-out!\n");
+			} while (len != sizeof(paket));
+
+			printf("%d bytes read\n", len);
+			printf("gueltige Nutzdaten: %d byte\n", paket.len);
+			for (j=0; j<paket.len; j++)
+				printf("%c", paket.buffer[j]);
+
+			mywrite(paket.buffer, paket.len);
+			write(fd, &ack, 1);
+			printf("\n\n");
+		} while (paket.len == MAXLEN);
+	}	
+		
+	oldtio.c_cc[VMIN]=1;
+	oldtio.c_cc[VTIME]=0;
+	tcsetattr(fd, TCSANOW, &oldtio);
+   tcflush(fd, TCIFLUSH);
+
+	return 0;
+}
