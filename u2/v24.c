@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
 	char ack = 6;
 
   struct sigaction  sa;
-	int mode, j, len, myreadlen, retries;
+	int mode, j, len, retries;
 
 
   // Checking Arguments
@@ -142,8 +142,7 @@ int main(int argc, char **argv) {
 	if (mode == SEND) {
 		do {
       retries = 0;
-			myreadlen = myread(paket.buffer, MAXLEN);
-			paket.len = myreadlen;
+			paket.len = myread(paket.buffer, MAXLEN);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
@@ -159,7 +158,7 @@ int main(int argc, char **argv) {
       } else {
         printf("%d bytes read\n\n", len);
       }
-		} while (myreadlen == MAXLEN);
+		} while (paket.len == MAXLEN);
 	}	else {
 		do {
 			do {
