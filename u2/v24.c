@@ -118,10 +118,7 @@ int main(int argc, char **argv) {
   fflush(stdout);
 
   /* save current IO-settings */
-  tcgetattr(fd, &oldtio); 
-
-  printf("%d\n", oldtio.c_cc[VMIN] );
-  printf("%d\n", oldtio.c_cc[VTIME] );
+  tcgetattr(fd, &oldtio);
 
   /* - set baud rate and hardware flow control to 8bit, no parity, 1 stopbit
      - enable reception of characters */
