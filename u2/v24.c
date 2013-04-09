@@ -192,10 +192,13 @@ int main(int argc, char **argv) {
       // for (j=0; j<paket.len; j++) {
 			//	 printf("%c", paket.buffer[j]);
       // } 
-
 			mywrite(paket.buffer, paket.len);
-			write(fd, &ack, 1);
-			printf("\n\n");
+      
+			if ( expected_counter != 15 ) {
+        write(fd, &ack, 1);
+			}
+
+      printf("\n\n");
 
       expected_counter++; // increment the expected package number
 		} while (paket.len == MAXLEN);
