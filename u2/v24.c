@@ -66,6 +66,23 @@ void set_flags(int flags, int vmin, int vtime) {
   newtio.c_cc[VTIME] = vtime;
 }
 
+unsigned int crc32own(unsigned char *message) {
+    int i, j;
+    unsigned int byte, crc, mask;
+    i = 0;
+    crc = 0xFFFFFFFF;
+    while (message[i] != 0) {
+        byte = message[i];
+        crc = crc ^ byte;
+        for (j = 7; j >= 0; j--) {
+            mask = -(crc & 1);
+            crc = (crc >> 1) ^ (0xBA0DC66B & mask);
+        }
+        i = i + 1;
+    }
+    return ~crc;
+}
+
 
 
 
@@ -76,6 +93,7 @@ int main(int argc, char **argv) {
     char id;
 		unsigned char len;
 		char buffer[MAXLEN];
+    unsigned int checksum;
 	} paket;
 
   paket.id = 0;
@@ -148,10 +166,12 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
+      paket.checksum = crc32own(paket.buffer);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
 			  printf("%d bytes written in package #%d\n", len, paket.id);
+        printf("Checksum: 0x%X\n", paket.checksum);
   			len = read(fd, &ack, 1);
         retries++;
 	    } while (len < 1 && retries < MAXRETRIES);
@@ -183,6 +203,11 @@ int main(int argc, char **argv) {
           error_case = 1;
         } else if (expected_counter != paket.id) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
+          error_case = 1;
+        }
+        unsigned int crc = crc32own(paket.buffer);
+        if(crc != paket.checksum){
+          printf("Wrong checksum! Got: 0x%X Expected: 0x%X", crc, paket.checksum)
           error_case = 1;
         }
 			} while (error_case == 1);
