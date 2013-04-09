@@ -196,10 +196,8 @@ int main(int argc, char **argv) {
       
 			mywrite(paket.buffer, paket.len);
 
-			if ( expected_counter != 15 ) {
-        write(fd, &ack, 1);
-			}
-
+      write(fd, &ack, 1);
+			
       printf("\n\n");
 
       expected_counter++; // increment the expected package number
