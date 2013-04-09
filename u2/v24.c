@@ -136,7 +136,7 @@ crc32(uint32_t crc, const void *buf, size_t size)
 int main(int argc, char **argv) {
 
 	struct {
-    char id;
+    unsigned char id;
 		unsigned char len;
 		char buffer[MAXLEN];
     unsigned int checksum;
