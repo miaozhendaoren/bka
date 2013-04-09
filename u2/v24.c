@@ -205,7 +205,7 @@ int main(int argc, char **argv) {
           error_case = 1;
         }
         unsigned short crcsum = crc(paket.buffer,MAXLEN);
-        if(crc != paket.checksum){
+        if(crcsum != paket.checksum){
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
           error_case = 1;
         } else{
