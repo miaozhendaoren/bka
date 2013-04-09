@@ -184,9 +184,10 @@ int main(int argc, char **argv) {
 
 			printf("%d bytes read from package #%d\n", len, paket.id);
 			printf("gueltige Nutzdaten: %d byte\n", paket.len);
-			for (j=0; j<paket.len; j++) {
-				printf("%c", paket.buffer[j]);
-      }
+			
+      // for (j=0; j<paket.len; j++) {
+			//	 printf("%c", paket.buffer[j]);
+      // } 
 
 			mywrite(paket.buffer, paket.len);
 			write(fd, &ack, 1);
