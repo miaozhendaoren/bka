@@ -162,11 +162,14 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-      char *payload = paket.id;
-      strcat(payload, paket.len);
-      strcat(payload, paket.buffer);
 
-      paket.checksum = crc(payload,MAXLEN);
+      unsigned char payload[MAXLEN + 2];
+
+      memcpy(payload, &paket.id, 1);
+      memcpy(&payload[1], &paket.len, 1);
+      memcpy(&payload[2], paket.buffer, MAXLEN);
+
+      paket.checksum = crc(payload,MAXLEN + 2);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
@@ -205,10 +208,24 @@ int main(int argc, char **argv) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
         }
-        char *payload = paket.id;
-        strcat(payload, paket.len);
-        strcat(payload, paket.buffer);
-        unsigned short crcsum = crc(payload,MAXLEN);
+        
+        unsigned char payload[MAXLEN + 2];
+
+        memcpy(payload, &paket.id, 1);
+        memcpy(&payload[1], &paket.len, 1);
+        memcpy(&payload[2], paket.buffer, MAXLEN);
+
+
+        // Output the paket buffer
+        printf("Payload:");
+
+        printf("%d : %d | %d : %d", paket.id, payload[0], paket.len, payload[1]);
+         
+
+        printf("\n");
+
+
+        unsigned short crcsum = crc(payload,MAXLEN + 2);
         if(crcsum != paket.checksum){
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
           error_case = 1;
