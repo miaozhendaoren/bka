@@ -173,8 +173,9 @@ int main(int argc, char **argv) {
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
-			  printf("%d bytes written in package #%d\n", len, paket.id);
-        printf("%d bytes in package\n", paket.len);
+			  printf("ID sent: %d\n", paket.id);
+        printf("Package size: %d bytes\n", len);
+        printf("Payload: %d bytes\n", paket.len);
         printf("Checksum: 0x%X\n", paket.checksum);
   			len = read(fd, &ack, 1);
         retries++;
@@ -185,28 +186,32 @@ int main(int argc, char **argv) {
         restore_tcsettings();
         exit(1);
       } else {
-        printf("%d bytes ACK received\n\n", len);
+        printf("ACK received\n\n");
       }
 
       paket.id++;
 		} while (paket.len == MAXLEN);
 	}	else {
 		do {
+      unsigned short crcsum;
 			do {
         error_case = 0;
 				len = read(fd, &paket, sizeof(paket));
 				if (len != sizeof(paket)) {
-					printf("illegal package!\n");
+					printf("Partial package received! Dropped!\n");
           error_case = 1;
+          continue;
         }
 
         if ((expected_counter - 1) == paket.id) {
           write(fd, &ack, 1);
-          printf("reacknowledged package #%d\n\n", paket.id);
+          printf("Reacknowledged package #%d\n\n", paket.id);
           error_case = 1;
+          continue;
         } else if (expected_counter != paket.id) {
-          printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
+          printf("Wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
+          continue;
         }
         
         unsigned char payload[MAXLEN + 2];
@@ -215,23 +220,26 @@ int main(int argc, char **argv) {
         memcpy(&payload[1], &paket.len, 1);
         memcpy(&payload[2], paket.buffer, MAXLEN);
 
-        unsigned short crcsum = crc(payload,MAXLEN + 2);
+        crcsum = crc(payload,MAXLEN + 2);
         if(crcsum != paket.checksum){
-          printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
+          printf("Wrong checksum!\n Expected: 0x%X Received: 0x%X\n", paket.checksum, crcsum);
           error_case = 1;
-        } else{
-          printf("Checksum: 0x%X\n", crcsum);
+          continue;
         }
 			} while (error_case == 1);
 
-			printf("%d bytes read from package #%d\n", len, paket.id);
-			printf("gueltige Nutzdaten: %d byte\n", paket.len);
+      printf("ID received: %d\n", paket.id);
+      printf("Package size: %d bytes\n", len);
+      printf("Payload: %d bytes\n", paket.len);
+      printf("Checksum: 0x%X\n", crcsum);
 			
       // Output the paket buffer
       // int j;
       // for (j=0; j<paket.len; j++) {
 			//	 printf("%c", paket.buffer[j]);
-      // } 
+      // }
+      // printf("\n")
+
       
 			mywrite(paket.buffer, paket.len);
       write(fd, &ack, 1);
