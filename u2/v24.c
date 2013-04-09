@@ -211,12 +211,12 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-      paket.checksum = crc32(0xFFFFFFFF,paket.buffer,sizeof(paket.buffer)/8);
+      paket.checksum = crc32(0xFFFFFFFF,paket.buffer,strlen(paket.buffer));
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
 			  printf("%d bytes written in package #%d\n", len, paket.id);
-        printf("Checksum: 0x%X\n", paket.checksum);
+        printf("Checksum: 0x%X\n of %ld Byte", paket.checksum, strlen(paket.buffer));
   			len = read(fd, &ack, 1);
         retries++;
 	    } while (len < 1 && retries < MAXRETRIES);
@@ -250,7 +250,7 @@ int main(int argc, char **argv) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
         }
-        unsigned int crc = crc32(0xFFFFFFFF,paket.buffer,sizeof(paket.buffer)/8);
+        unsigned int crc = crc32(0xFFFFFFFF,paket.buffer,strlen(paket.buffer));
         if(crc != paket.checksum){
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crc, paket.checksum);
           error_case = 1;
