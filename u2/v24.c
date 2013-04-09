@@ -193,6 +193,7 @@ int main(int argc, char **argv) {
       // for (j=0; j<paket.len; j++) {
 			//	 printf("%c", paket.buffer[j]);
       // } 
+      
 			mywrite(paket.buffer, paket.len);
 
 			if ( expected_counter != 15 ) {
