@@ -71,10 +71,12 @@ void set_flags(int flags, int vmin, int vtime) {
 
 
 int main(int argc, char **argv) {
+
 	struct {
 		unsigned char len;
 		char buffer[MAXLEN];
 	} paket;
+
 	char ack = 6;
 
   struct sigaction  sa;
@@ -154,7 +156,7 @@ int main(int argc, char **argv) {
         restore_tcsettings();
         exit(1);
       } else {
-        printf("%d bytes read\n", len);
+        printf("%d bytes ACK read\n", len);
         printf("%d bytes in package\n\n", paket.len);
       }
 		} while (paket.len == MAXLEN);
