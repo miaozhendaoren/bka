@@ -177,7 +177,10 @@ int main(int argc, char **argv) {
           error_case = 1;
         }
 
-        if (expected_counter != paket.id) {
+        if ((expected_counter - 1) == paket.id) {
+          write(fd, &ack, 1);
+          error_case = 1;
+        } else if (expected_counter != paket.id) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
         }
