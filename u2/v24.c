@@ -25,7 +25,6 @@
 struct termios    oldtio, newtio;
 int               fd = FDINIT;
 
-
 // Restore old Modemsettings
 void restore_tcsettings(){
   oldtio.c_cc[VMIN]=1;
@@ -100,7 +99,6 @@ int main(int argc, char **argv) {
 	char ack = 6;
 
   struct sigaction  sa;
-  // int j; // counter for the output
 	int mode, len, retries;
   unsigned char expected_counter = 0;
   char error_case = 0;
@@ -159,8 +157,6 @@ int main(int argc, char **argv) {
   tcflush(fd, TCIFLUSH);
   tcsetattr(fd, TCSANOW, &newtio);
 
-  
-
 	if (mode == SEND) {
 		do {
       retries = 0;
@@ -216,12 +212,13 @@ int main(int argc, char **argv) {
 			printf("%d bytes read from package #%d\n", len, paket.id);
 			printf("gueltige Nutzdaten: %d byte\n", paket.len);
 			
+      // Output the paket buffer
+      // int j;
       // for (j=0; j<paket.len; j++) {
 			//	 printf("%c", paket.buffer[j]);
       // } 
       
 			mywrite(paket.buffer, paket.len);
-
       write(fd, &ack, 1);
 			
       printf("\n\n");
