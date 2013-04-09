@@ -207,8 +207,10 @@ int main(int argc, char **argv) {
         }
         unsigned int crc = crc32own(paket.buffer);
         if(crc != paket.checksum){
-          printf("Wrong checksum! Got: 0x%X Expected: 0x%X", crc, paket.checksum);
+          printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crc, paket.checksum);
           error_case = 1;
+        } else{
+          printf("Checksum: 0x%X\n", crc);
         }
 			} while (error_case == 1);
 
