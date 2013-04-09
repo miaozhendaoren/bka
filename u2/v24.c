@@ -72,6 +72,7 @@ void set_flags(int flags, int vmin, int vtime) {
 
 int main(int argc, char **argv) {
 	struct {
+    char id = 0;
 		unsigned char len;
 		char buffer[MAXLEN];
 	} paket;
@@ -79,7 +80,7 @@ int main(int argc, char **argv) {
 
   struct sigaction  sa;
 	int mode, j, len, retries;
-
+  int expected_counter = 0;
 
   // Checking Arguments
 	if (argc != 2 || ((argv[1][0] != 's') && (argv[1][0] != 'r'))) { 
@@ -157,6 +158,8 @@ int main(int argc, char **argv) {
         printf("%d bytes read\n", len);
         printf("%d bytes in package\n\n", paket.len);
       }
+
+      paket.id++;
 		} while (paket.len == MAXLEN);
 	}	else {
 		do {
