@@ -15,7 +15,7 @@
 #define MAXRETRIES 6
 #define MALE		3
 
-#define SOURCE      "/var/log/syslog"
+#define SOURCE      "quelle.txt"
 #define DESTINATION "ziel.txt"
 
 #define _POSIX_SOURCE 1  
