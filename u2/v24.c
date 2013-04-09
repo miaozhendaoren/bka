@@ -6,6 +6,7 @@
 #include <sys/signal.h>
 #include <string.h>
 #include "fileio.h"
+#include "crc.h"
 
 #define BAUDRATE    B38400
 #define IODEVICE    "/dev/ttyS0"
@@ -25,6 +26,13 @@
 // Obwohl globale Variablen "verboten" sind, geht es hier nicht anders.
 struct termios    oldtio, newtio;
 int               fd = FDINIT;
+
+struct package {
+  unsigned char id;
+  unsigned char len;
+  char buffer[MAXLEN];
+  unsigned short checksum;
+};
 
 // Restore old Modemsettings
 void restore_tcsettings(){
@@ -67,33 +75,21 @@ void set_flags(int flags, int vmin, int vtime) {
   newtio.c_cc[VTIME] = vtime;
 }
 
-unsigned short crc(char * bytes, int len)
+unsigned short generate_crc(unsigned char * payload, struct package* paket)
 {
-   short crc = 0;
-   int i;
+  int size_id = sizeof(paket->id);
+  int size_len = sizeof(paket->len);
 
-   while (--len >= 0) {
-      crc = crc^(int)*bytes++<<8;
+  memcpy(payload, &paket->id, size_id);
+  memcpy(&payload[1], &paket->len, size_len);
+  memcpy(&payload[2], paket->buffer, MAXLEN);
 
-      for (i=0; i<8; ++i)
-         if (crc & 0x8000)
-            crc = crc<<1^0x1021;
-         else
-            crc = crc<<1;
-   }
-  
-   return (unsigned short)(crc & 0xffff);
+  return crc(payload, MAXLEN + size_id + size_len);
 }
-
 
 int main(int argc, char **argv) {
 
-	struct {
-    unsigned char id;
-		unsigned char len;
-		char buffer[MAXLEN];
-    unsigned short checksum;
-	} paket;
+	struct package paket;
 
   paket.id = 0;
 
@@ -102,7 +98,10 @@ int main(int argc, char **argv) {
   struct sigaction  sa;
 	int mode, len, retries;
   unsigned char expected_counter = 0;
+  unsigned short crcsum;
   char error_case = 0;
+  unsigned char payload[MAXLEN + 2];
+
 
   // Checking Arguments
 	if (argc != 2 || ((argv[1][0] != 's') && (argv[1][0] != 'r'))) { 
@@ -162,16 +161,13 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-
-      unsigned char payload[MAXLEN + 2];
-
-      memcpy(payload, &paket.id, 1);
-      memcpy(&payload[1], &paket.len, 1);
-      memcpy(&payload[2], paket.buffer, MAXLEN);
-
-      paket.checksum = crc(payload,MAXLEN + 2);
+      paket.checksum = generate_crc(payload, &paket);
 
       do {
+        if (retries > 0) {
+          printf("\nRetransmitting:\n");
+        }
+
 			  len = write(fd, &paket, sizeof(paket));
 			  printf("ID sent: %d\n", paket.id);
         printf("Package size: %d bytes\n", len);
@@ -182,7 +178,8 @@ int main(int argc, char **argv) {
 	    } while (len < 1 && retries < MAXRETRIES);
 
       if(retries >= MAXRETRIES) {
-        printf("Too many retries.\nProcess canceled.\n");
+        printf("Too many retries.\n");
+        printf("Process canceled.\n");
         restore_tcsettings();
         exit(1);
       } else {
@@ -193,36 +190,31 @@ int main(int argc, char **argv) {
 		} while (paket.len == MAXLEN);
 	}	else {
 		do {
-      unsigned short crcsum;
 			do {
         error_case = 0;
 				len = read(fd, &paket, sizeof(paket));
 				if (len != sizeof(paket)) {
-					printf("Partial package received! Dropped!\n");
+					printf("Partial package received! Dropped!\n\n");
           error_case = 1;
           continue;
         }
 
         if ((expected_counter - 1) == paket.id) {
           write(fd, &ack, 1);
-          printf("Reacknowledged package #%d\n\n", paket.id);
+          printf("ReAck sent for ID: %d\n\n", paket.id);
           error_case = 1;
           continue;
         } else if (expected_counter != paket.id) {
-          printf("Wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
+          printf("Package ID missmatch!\n");
+          printf("Expected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
           continue;
         }
-        
-        unsigned char payload[MAXLEN + 2];
 
-        memcpy(payload, &paket.id, 1);
-        memcpy(&payload[1], &paket.len, 1);
-        memcpy(&payload[2], paket.buffer, MAXLEN);
-
-        crcsum = crc(payload,MAXLEN + 2);
+        crcsum = generate_crc(payload, &paket);
         if(crcsum != paket.checksum){
-          printf("Wrong checksum!\n Expected: 0x%X Received: 0x%X\n", paket.checksum, crcsum);
+          printf("Checksum missmatch!\n");
+          printf("Expected: 0x%X Received: 0x%X\n", paket.checksum, crcsum);
           error_case = 1;
           continue;
         }

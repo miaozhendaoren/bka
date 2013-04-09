@@ -1,7 +1,7 @@
 CC = /usr/bin/gcc
 CFLAGS = -Wall
 
-OBJ = fileio.o v24.o
+OBJ = fileio.o v24.o crc.o
 BIN = Serial
 
 Serial: $(OBJ)
@@ -17,4 +17,4 @@ r: $(BIN)
 	./Serial r
 
 clean:
-	rm -rf $(BIN) v24.o
+	rm -rf $(BIN) v24.o crc.o
