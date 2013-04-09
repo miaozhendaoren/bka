@@ -1,8 +1,15 @@
 #ifndef _TRANSFER__H_
 #define _TRANSFER__H_
 
-int               fd = FDINIT;
-struct termios    oldtio, newtio;
+extern struct termios    oldtio, newtio;
+extern int               fd;
+
+struct package {
+  unsigned char id;
+  unsigned char len;
+  char buffer[MAXLEN];
+  unsigned short checksum;
+};
 
 unsigned short generate_crc(struct package* paket);
 void restore_tcsettings();

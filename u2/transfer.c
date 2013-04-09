@@ -1,8 +1,12 @@
 #include <termios.h>
 #include <string.h>
+
 #include "v24.h"
 #include "transfer.h"
 #include "crc.h"
+
+int fd = FDINIT;
+struct termios oldtio, newtio;
 
 unsigned short generate_crc(struct package* paket)
 {

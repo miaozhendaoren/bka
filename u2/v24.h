@@ -15,11 +15,4 @@
 
 #define _POSIX_SOURCE 1  
 
-struct package {
-  unsigned char id;
-  unsigned char len;
-  char buffer[MAXLEN];
-  unsigned short checksum;
-};
-
 #endif /* _v24__H_ */

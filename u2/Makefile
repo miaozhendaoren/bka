@@ -1,7 +1,7 @@
 CC = /usr/bin/gcc
 CFLAGS = -Wall
 
-OBJ = v24.o fileio.o transfer.o crc.o
+OBJ = v24.o transfer.o crc.o fileio.o 
 BIN = Serial
 
 Serial: $(OBJ)

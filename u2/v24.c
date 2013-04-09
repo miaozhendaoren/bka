@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/signal.h>
+
 #include "v24.h"
 #include "fileio.h"
-#include "crc.h"
 #include "transfer.h"
 
 // Interrupthandler for restoring the old settings
