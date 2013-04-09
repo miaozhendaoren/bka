@@ -1,7 +1,7 @@
 CC = /usr/bin/gcc
 CFLAGS = -Wall
 
-OBJ = fileio.o v24.o crc.o
+OBJ = v24.o fileio.o transfer.o crc.o
 BIN = Serial
 
 Serial: $(OBJ)
@@ -17,4 +17,5 @@ r: $(BIN)
 	./Serial r
 
 clean:
-	rm -rf $(BIN) v24.o crc.o
+	find . -maxdepth 1 -type f  ! -name 'fileio.o' -name '*.o' -execdir rm {} +
+	rm -f $(BIN)

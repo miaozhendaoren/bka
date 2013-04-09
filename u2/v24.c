@@ -4,43 +4,10 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/signal.h>
-#include <string.h>
+#include "v24.h"
 #include "fileio.h"
 #include "crc.h"
-
-#define BAUDRATE    B38400
-#define IODEVICE    "/dev/ttyS0"
-#define SEND		0
-#define RECEIVE	1
-#define FDINIT		-1
-#define MAXLEN		64
-#define MAXRETRIES 100
-#define MALE		3
-
-#define SOURCE      "quelle.txt"
-#define DESTINATION "ziel.txt"
-
-#define _POSIX_SOURCE 1  
-
-
-// Obwohl globale Variablen "verboten" sind, geht es hier nicht anders.
-struct termios    oldtio, newtio;
-int               fd = FDINIT;
-
-struct package {
-  unsigned char id;
-  unsigned char len;
-  char buffer[MAXLEN];
-  unsigned short checksum;
-};
-
-// Restore old Modemsettings
-void restore_tcsettings(){
-  oldtio.c_cc[VMIN]=1;
-  oldtio.c_cc[VTIME]=0;
-  tcsetattr(fd, TCSANOW, &oldtio);
-  tcflush(fd, TCIFLUSH); // flushes the input stream
-}
+#include "transfer.h"
 
 // Interrupthandler for restoring the old settings
 void int_handler(int s) {
@@ -52,39 +19,6 @@ void int_handler(int s) {
 		close(fd);
 	}
 	exit(0);
-}
-
-/* CSTOPB : if set, 2 stopbits are used, otherwise 1 stopbit
-   PARENB : if set, parity generation ist enabled for outgoing characters
-            and parity check is performed on incoming characters
-   CLOCAL : if set, the modem status lines are ignored 
-   CREAD  : if set, the receiver is enabled and characters can be received */
-
-void set_flags(int flags, int vmin, int vtime) {
-  newtio.c_cflag = flags;
-
-  /* raw input and output */
-  newtio.c_iflag = 0;
-  newtio.c_oflag = 0;
-
-  /* clear lflag (no lflag settings needed) */
-  newtio.c_lflag = 0;
- 
-  /* set timeout values */
-  newtio.c_cc[VMIN]  = vmin;
-  newtio.c_cc[VTIME] = vtime;
-}
-
-unsigned short generate_crc(unsigned char * payload, struct package* paket)
-{
-  int size_id = sizeof(paket->id);
-  int size_len = sizeof(paket->len);
-
-  memcpy(payload, &paket->id, size_id);
-  memcpy(&payload[1], &paket->len, size_len);
-  memcpy(&payload[2], paket->buffer, MAXLEN);
-
-  return crc(payload, MAXLEN + size_id + size_len);
 }
 
 int main(int argc, char **argv) {
@@ -100,7 +34,6 @@ int main(int argc, char **argv) {
   unsigned char expected_counter = 0;
   unsigned short crcsum;
   char error_case = 0;
-  unsigned char payload[MAXLEN + 2];
 
 
   // Checking Arguments
@@ -161,7 +94,7 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-      paket.checksum = generate_crc(payload, &paket);
+      paket.checksum = generate_crc(&paket);
 
       do {
         if (retries > 0) {
@@ -211,7 +144,7 @@ int main(int argc, char **argv) {
           continue;
         }
 
-        crcsum = generate_crc(payload, &paket);
+        crcsum = generate_crc(&paket);
         if(crcsum != paket.checksum){
           printf("Checksum missmatch!\n");
           printf("Expected: 0x%X Received: 0x%X\n", paket.checksum, crcsum);

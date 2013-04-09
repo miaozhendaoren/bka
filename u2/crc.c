@@ -17,3 +17,4 @@ unsigned short crc(unsigned char * bytes, int len)
   
    return (unsigned short)(crc & 0xffff);
 }
+
