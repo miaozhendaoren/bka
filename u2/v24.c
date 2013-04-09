@@ -73,10 +73,12 @@ void set_flags(int flags, int vmin, int vtime) {
 int main(int argc, char **argv) {
 
 	struct {
-    char id = 0;
+    char id;
 		unsigned char len;
 		char buffer[MAXLEN];
 	} paket;
+
+  paket.id = 0;
 
 	char ack = 6;
 
