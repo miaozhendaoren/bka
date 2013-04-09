@@ -12,7 +12,7 @@
 #define RECEIVE	1
 #define FDINIT		-1
 #define MAXLEN		128
-#define MAXRETRIES 6
+#define MAXRETRIES 100
 #define MALE		3
 
 #define SOURCE      "quelle.txt"
@@ -83,7 +83,8 @@ int main(int argc, char **argv) {
 	char ack = 6;
 
   struct sigaction  sa;
-	int mode, j, len, retries;
+  // int j; // counter for the output
+	int mode, len, retries;
   int expected_counter = 0;
   char error_case = 0;
 
