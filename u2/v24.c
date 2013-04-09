@@ -67,7 +67,7 @@ void set_flags(int flags, int vmin, int vtime) {
   newtio.c_cc[VTIME] = vtime;
 }
 
-unsigned short crc(unsigned char * bytes, int len)
+unsigned short crc(char * bytes, int len)
 {
    short crc = 0;
    int i;
@@ -204,9 +204,9 @@ int main(int argc, char **argv) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
         }
-        unsigned short crc = crc(paket.buffer,MAXLEN);
+        unsigned short crcsum = crc(paket.buffer,MAXLEN);
         if(crc != paket.checksum){
-          printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crc, paket.checksum);
+          printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
           error_case = 1;
         } else{
           printf("Checksum: 0x%X\n", crc);
