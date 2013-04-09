@@ -179,6 +179,7 @@ int main(int argc, char **argv) {
 
         if ((expected_counter - 1) == paket.id) {
           write(fd, &ack, 1);
+          printf("reacknowledged package #%d\n\n", paket.id);
           error_case = 1;
         } else if (expected_counter != paket.id) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
@@ -193,7 +194,7 @@ int main(int argc, char **argv) {
 			//	 printf("%c", paket.buffer[j]);
       // } 
 			mywrite(paket.buffer, paket.len);
-      
+
 			if ( expected_counter != 15 ) {
         write(fd, &ack, 1);
 			}
