@@ -217,7 +217,7 @@ int main(int argc, char **argv) {
       do {
 			  len = write(fd, &paket, sizeof(paket));
 			  printf("%d bytes written in package #%d\n", len, paket.id);
-        printf("Checksum: 0x%X of %ld Bytes\n", paket.checksum, strlen(paket.buffer));
+        printf("Checksum: 0x%X\n", paket.checksum);
   			len = read(fd, &ack, 1);
         retries++;
 	    } while (len < 1 && retries < MAXRETRIES);
