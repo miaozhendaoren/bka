@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <fcntl.h>
+#include <string.h>
 #include <sys/signal.h>
 #include "fileio.h"
 
@@ -211,12 +212,12 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-      paket.checksum = crc32(0xFFFFFFFF,paket.buffer,strlen(paket.buffer));
+      paket.checksum = crc32(0xFFFFFFFF,paket.buffer,MAXLEN);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
 			  printf("%d bytes written in package #%d\n", len, paket.id);
-        printf("Checksum: 0x%X\n of %ld Byte", paket.checksum, strlen(paket.buffer));
+        printf("Checksum: 0x%X of %ld Bytes\n", paket.checksum, strlen(paket.buffer));
   			len = read(fd, &ack, 1);
         retries++;
 	    } while (len < 1 && retries < MAXRETRIES);
@@ -250,7 +251,7 @@ int main(int argc, char **argv) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
         }
-        unsigned int crc = crc32(0xFFFFFFFF,paket.buffer,strlen(paket.buffer));
+        unsigned int crc = crc32(0xFFFFFFFF,paket.buffer,MAXLEN);
         if(crc != paket.checksum){
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crc, paket.checksum);
           error_case = 1;
