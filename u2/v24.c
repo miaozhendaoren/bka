@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <fcntl.h>
 #include <sys/signal.h>
 #include "fileio.h"
@@ -210,7 +211,7 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-      paket.checksum = crc32own(paket.buffer);
+      paket.checksum = crc32(paket.buffer);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
