@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/signal.h>
+#include <string.h>
 #include "fileio.h"
 
 #define BAUDRATE    B38400
@@ -165,7 +166,11 @@ int main(int argc, char **argv) {
 		do {
       retries = 0;
 			paket.len = myread(paket.buffer, MAXLEN);
-      paket.checksum = crc(paket.buffer,MAXLEN);
+      char *payload = paket.id;
+      strcat(payload, paket.len);
+      strcat(payload, paket.buffer);
+
+      paket.checksum = crc(payload,MAXLEN);
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
@@ -204,7 +209,10 @@ int main(int argc, char **argv) {
           printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
           error_case = 1;
         }
-        unsigned short crcsum = crc(paket.buffer,MAXLEN);
+        char *payload = paket.id;
+        strcat(payload, paket.len);
+        strcat(payload, paket.buffer);
+        unsigned short crcsum = crc(payload,MAXLEN);
         if(crcsum != paket.checksum){
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
           error_case = 1;
