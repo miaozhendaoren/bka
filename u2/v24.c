@@ -174,6 +174,7 @@ int main(int argc, char **argv) {
       do {
 			  len = write(fd, &paket, sizeof(paket));
 			  printf("%d bytes written in package #%d\n", len, paket.id);
+        printf("%d bytes in package\n", paket.len);
         printf("Checksum: 0x%X\n", paket.checksum);
   			len = read(fd, &ack, 1);
         retries++;
@@ -184,8 +185,7 @@ int main(int argc, char **argv) {
         restore_tcsettings();
         exit(1);
       } else {
-        printf("%d bytes ACK read\n", len);
-        printf("%d bytes in package\n\n", paket.len);
+        printf("%d bytes ACK received\n\n", len);
       }
 
       paket.id++;
@@ -215,16 +215,6 @@ int main(int argc, char **argv) {
         memcpy(&payload[1], &paket.len, 1);
         memcpy(&payload[2], paket.buffer, MAXLEN);
 
-
-        // Output the paket buffer
-        printf("Payload:");
-
-        printf("%d : %d | %d : %d", paket.id, payload[0], paket.len, payload[1]);
-         
-
-        printf("\n");
-
-
         unsigned short crcsum = crc(payload,MAXLEN + 2);
         if(crcsum != paket.checksum){
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
@@ -246,7 +236,7 @@ int main(int argc, char **argv) {
 			mywrite(paket.buffer, paket.len);
       write(fd, &ack, 1);
 			
-      printf("\n\n");
+      printf("Ack send\n\n");
 
       expected_counter++; // increment the expected package number
 		} while (paket.len == MAXLEN);
