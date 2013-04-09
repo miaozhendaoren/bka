@@ -12,7 +12,7 @@
 #define SEND		0
 #define RECEIVE	1
 #define FDINIT		-1
-#define MAXLEN		128
+#define MAXLEN		64
 #define MAXRETRIES 100
 #define MALE		3
 
