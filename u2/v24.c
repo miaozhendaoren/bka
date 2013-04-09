@@ -149,7 +149,7 @@ int main(int argc, char **argv) {
   struct sigaction  sa;
   // int j; // counter for the output
 	int mode, len, retries;
-  int expected_counter = 0;
+  unsigned char expected_counter = 0;
   char error_case = 0;
 
   // Checking Arguments
