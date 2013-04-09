@@ -83,6 +83,7 @@ int main(int argc, char **argv) {
   struct sigaction  sa;
 	int mode, j, len, retries;
   int expected_counter = 0;
+  char error_case = 0;
 
   // Checking Arguments
 	if (argc != 2 || ((argv[1][0] != 's') && (argv[1][0] != 'r'))) { 
@@ -147,7 +148,7 @@ int main(int argc, char **argv) {
 
       do {
 			  len = write(fd, &paket, sizeof(paket));
-			  printf("%d bytes written\n", len);
+			  printf("%d bytes written in package #%d\n", len, paket.id);
   			len = read(fd, &ack, 1);
         retries++;
 	    } while (len < 1 && retries < MAXRETRIES);
@@ -166,13 +167,20 @@ int main(int argc, char **argv) {
 	}	else {
 		do {
 			do {
+        error_case = 0;
 				len = read(fd, &paket, sizeof(paket));
 				if (len != sizeof(paket)) {
-					printf("time-out!\n");
+					printf("illegal package!\n");
+          error_case = 1;
         }
-			} while (len != sizeof(paket));
 
-			printf("%d bytes read\n", len);
+        if (expected_counter != paket.id) {
+          printf("wrong package number!\nExpected: %d, Received: %d\n", expected_counter, paket.id);
+          error_case = 1;
+        }
+			} while (error_case == 1);
+
+			printf("%d bytes read from package #%d\n", len, paket.id);
 			printf("gueltige Nutzdaten: %d byte\n", paket.len);
 			for (j=0; j<paket.len; j++) {
 				printf("%c", paket.buffer[j]);
@@ -181,6 +189,8 @@ int main(int argc, char **argv) {
 			mywrite(paket.buffer, paket.len);
 			write(fd, &ack, 1);
 			printf("\n\n");
+
+      expected_counter++; // increment the expected package number
 		} while (paket.len == MAXLEN);
 	}	
 		
