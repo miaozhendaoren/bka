@@ -209,7 +209,7 @@ int main(int argc, char **argv) {
           printf("Wrong checksum! Got: 0x%X Expected: 0x%X\n", crcsum, paket.checksum);
           error_case = 1;
         } else{
-          printf("Checksum: 0x%X\n", crc);
+          printf("Checksum: 0x%X\n", crcsum);
         }
 			} while (error_case == 1);
 
