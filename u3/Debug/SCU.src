@@ -1,0 +1,1838 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc3880a -c99 --dep-file=.SCU.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=SCU.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o SCU.src
+	; Module start
+	.name	"SCU"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.SCU.SCU_vInit',code,cluster('SCU_vInit')
+	.sect	'.text.SCU.SCU_vInit'
+	.align	2
+	
+	.global	SCU_vInit
+
+; ..\SCU.c	     1  //****************************************************************************
+; ..\SCU.c	     2  // @Module        System Control Unit (SCU)
+; ..\SCU.c	     3  // @Filename      SCU.c
+; ..\SCU.c	     4  // @Project       motencpot.dav
+; ..\SCU.c	     5  //----------------------------------------------------------------------------
+; ..\SCU.c	     6  // @Controller    Infineon TC1782
+; ..\SCU.c	     7  //
+; ..\SCU.c	     8  // @Compiler      Tasking 3.5r1
+; ..\SCU.c	     9  //
+; ..\SCU.c	    10  // @Codegenerator 1.0
+; ..\SCU.c	    11  //
+; ..\SCU.c	    12  // @Description   This file contains functions that use the SCU module.
+; ..\SCU.c	    13  //
+; ..\SCU.c	    14  //----------------------------------------------------------------------------
+; ..\SCU.c	    15  // @Date          21.03.2012 15:50:36
+; ..\SCU.c	    16  //
+; ..\SCU.c	    17  //****************************************************************************
+; ..\SCU.c	    18  
+; ..\SCU.c	    19  // USER CODE BEGIN (SCU_General,1)
+; ..\SCU.c	    20  
+; ..\SCU.c	    21  // USER CODE END
+; ..\SCU.c	    22  
+; ..\SCU.c	    23  
+; ..\SCU.c	    24  
+; ..\SCU.c	    25  //****************************************************************************
+; ..\SCU.c	    26  // @Project Includes
+; ..\SCU.c	    27  //****************************************************************************
+; ..\SCU.c	    28  
+; ..\SCU.c	    29  #include "MAIN.h"
+; ..\SCU.c	    30  #include "io.h"
+; ..\SCU.c	    31  
+; ..\SCU.c	    32  // USER CODE BEGIN (SCU_General,2)
+; ..\SCU.c	    33  
+; ..\SCU.c	    34  // USER CODE END
+; ..\SCU.c	    35  
+; ..\SCU.c	    36  
+; ..\SCU.c	    37  //****************************************************************************
+; ..\SCU.c	    38  // @Macros
+; ..\SCU.c	    39  //****************************************************************************
+; ..\SCU.c	    40  
+; ..\SCU.c	    41  // USER CODE BEGIN (SCU_General,3)
+; ..\SCU.c	    42  
+; ..\SCU.c	    43  // USER CODE END
+; ..\SCU.c	    44  
+; ..\SCU.c	    45  
+; ..\SCU.c	    46  //****************************************************************************
+; ..\SCU.c	    47  // @Defines
+; ..\SCU.c	    48  //****************************************************************************
+; ..\SCU.c	    49  
+; ..\SCU.c	    50  // USER CODE BEGIN (SCU_General,4)
+; ..\SCU.c	    51  
+; ..\SCU.c	    52  // USER CODE END
+; ..\SCU.c	    53  
+; ..\SCU.c	    54  
+; ..\SCU.c	    55  //****************************************************************************
+; ..\SCU.c	    56  // @Typedefs
+; ..\SCU.c	    57  //****************************************************************************
+; ..\SCU.c	    58  
+; ..\SCU.c	    59  // USER CODE BEGIN (SCU_General,5)
+; ..\SCU.c	    60  
+; ..\SCU.c	    61  // USER CODE END
+; ..\SCU.c	    62  
+; ..\SCU.c	    63  
+; ..\SCU.c	    64  //****************************************************************************
+; ..\SCU.c	    65  // @Imported Global Variables
+; ..\SCU.c	    66  //****************************************************************************
+; ..\SCU.c	    67  
+; ..\SCU.c	    68  // USER CODE BEGIN (SCU_General,6)
+; ..\SCU.c	    69  
+; ..\SCU.c	    70  // USER CODE END
+; ..\SCU.c	    71  
+; ..\SCU.c	    72  
+; ..\SCU.c	    73  //****************************************************************************
+; ..\SCU.c	    74  // @Global Variables
+; ..\SCU.c	    75  //****************************************************************************
+; ..\SCU.c	    76  
+; ..\SCU.c	    77  // USER CODE BEGIN (SCU_General,7)
+; ..\SCU.c	    78  
+; ..\SCU.c	    79  // USER CODE END
+; ..\SCU.c	    80  
+; ..\SCU.c	    81  
+; ..\SCU.c	    82  //****************************************************************************
+; ..\SCU.c	    83  // @External Prototypes
+; ..\SCU.c	    84  //****************************************************************************
+; ..\SCU.c	    85  
+; ..\SCU.c	    86  // USER CODE BEGIN (SCU_General,8)
+; ..\SCU.c	    87  
+; ..\SCU.c	    88  // USER CODE END
+; ..\SCU.c	    89  
+; ..\SCU.c	    90  
+; ..\SCU.c	    91  //****************************************************************************
+; ..\SCU.c	    92  // @Prototypes Of Local Functions
+; ..\SCU.c	    93  //****************************************************************************
+; ..\SCU.c	    94  
+; ..\SCU.c	    95  // USER CODE BEGIN (SCU_General,9)
+; ..\SCU.c	    96  
+; ..\SCU.c	    97  // USER CODE END
+; ..\SCU.c	    98  
+; ..\SCU.c	    99  
+; ..\SCU.c	   100  //****************************************************************************
+; ..\SCU.c	   101  // @Function      void SCU_vInit(void) 
+; ..\SCU.c	   102  //
+; ..\SCU.c	   103  //----------------------------------------------------------------------------
+; ..\SCU.c	   104  // @Description   This is the initialization function of the SCU function 
+; ..\SCU.c	   105  //                library. It is assumed that the SFRs used by this library 
+; ..\SCU.c	   106  //                are in their reset state. 
+; ..\SCU.c	   107  //
+; ..\SCU.c	   108  //----------------------------------------------------------------------------
+; ..\SCU.c	   109  // @Returnvalue   None
+; ..\SCU.c	   110  //
+; ..\SCU.c	   111  //----------------------------------------------------------------------------
+; ..\SCU.c	   112  // @Parameters    None
+; ..\SCU.c	   113  //
+; ..\SCU.c	   114  //----------------------------------------------------------------------------
+; ..\SCU.c	   115  // @Date          21.03.2012
+; ..\SCU.c	   116  //
+; ..\SCU.c	   117  //****************************************************************************
+; ..\SCU.c	   118  
+; ..\SCU.c	   119  // USER CODE BEGIN (Init,1)
+; ..\SCU.c	   120  
+; ..\SCU.c	   121  // USER CODE END
+; ..\SCU.c	   122  
+; ..\SCU.c	   123  void SCU_vInit(void)
+; Function SCU_vInit
+.L13:
+SCU_vInit:	.type	func
+
+; ..\SCU.c	   124  {
+; ..\SCU.c	   125    // USER CODE BEGIN (Init,2)
+; ..\SCU.c	   126  
+; ..\SCU.c	   127    // USER CODE END
+; ..\SCU.c	   128  
+; ..\SCU.c	   129    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   130    ///  Settings for the Watchdog Timer:
+; ..\SCU.c	   131    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   132    ///  - the watchdog timer is disabled
+; ..\SCU.c	   133    ///  - the input frequency is fFPI / 16384
+; ..\SCU.c	   134    ///  - period in normal watchdog mode =  728,18 us
+; ..\SCU.c	   135    ///  - period in time-out mode =  728,18 us
+; ..\SCU.c	   136  
+; ..\SCU.c	   137    MAIN_vWriteWDTCON0(0xFFFC0000);
+	movh	d4,#65532
+	call	MAIN_vWriteWDTCON0
+.L115:
+
+; ..\SCU.c	   138    WDT_CON1       =  0x00000008;  // load watchdog control register 1
+	mov	d15,#8
+	st.w	0xf00005f4,d15
+.L116:
+
+; ..\SCU.c	   139    MAIN_vSetENDINIT();
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L117:
+	call	MAIN_vWriteWDTCON0
+.L118:
+
+; ..\SCU.c	   140  
+; ..\SCU.c	   141    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   142    ///  Softare Reset Configuration:
+; ..\SCU.c	   143    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   144    ///  - No reset is generated for a trigger of software reset
+; ..\SCU.c	   145    ///  use the following programmed software configuration for booting after 
+; ..\SCU.c	   146    ///  software reset:
+; ..\SCU.c	   147    ///  - internal start from Flash. (CFG[15:8] = 11xxxxxx)
+; ..\SCU.c	   148    ///  - HWCFG is not updated with SWCFG upon on Application Reset
+; ..\SCU.c	   149    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   150    ///  ESRx Configuration:
+; ..\SCU.c	   151    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   152    ///  ESR0
+; ..\SCU.c	   153    ///  - ESR0 module is not enabled
+; ..\SCU.c	   154    ///  ESR1
+; ..\SCU.c	   155    ///  - ESR1 module is not enabled
+; ..\SCU.c	   156    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+	lea	a12,0xf00005f0
+.L2:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L2				; predicted taken
+.L119:
+
+; ..\SCU.c	   157    SCU_ESRCFG0    =  0x00000000;  // ESR0 confgiuration register
+	mov	d15,#0
+	st.w	0xf0000570,d15
+.L120:
+
+; ..\SCU.c	   158    SCU_ESRCFG1    =  0x00000000;  // ESR1 confgiuration register
+	st.w	0xf0000574,d15
+.L121:
+
+; ..\SCU.c	   159    SCU_TRAPDIS    =  0x000003FB;  // Trap disable register configuration
+	mov.u	d15,#1019
+	st.w	0xf0000630,d15
+.L122:
+
+; ..\SCU.c	   160    SCU_RSTCON     =  0x00000080;  // Reset configuration register
+	mov	d15,#128
+	st.w	0xf0000558,d15
+.L123:
+
+; ..\SCU.c	   161    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L124:
+	call	MAIN_vWriteWDTCON0
+.L125:
+
+; ..\SCU.c	   162  
+; ..\SCU.c	   163    SCU_IOCR       =  0x00000000;  // load input/output control register
+	mov	d0,#0
+	st.w	0xf00005a0,d0
+.L126:
+
+; ..\SCU.c	   164  
+; ..\SCU.c	   165  
+; ..\SCU.c	   166    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   167    ///  External Request Unit:
+; ..\SCU.c	   168    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   169    ///  REQLINE0 configuration:
+; ..\SCU.c	   170    ///  - use signal REQ4 (= P0.14) as input
+; ..\SCU.c	   171    ///  - a detected falling edge generates a trigger event
+; ..\SCU.c	   172    ///  - bit INTF0 will be reset automatically if an edge of the input signal 
+; ..\SCU.c	   173    ///    is detected, which has not been selected
+; ..\SCU.c	   174    ///  - generate trigger event on output channel 0
+; ..\SCU.c	   175  
+; ..\SCU.c	   176    ///  REQLINE1 configuration:
+; ..\SCU.c	   177    ///  - use signal REQ1 (= none) as input
+; ..\SCU.c	   178  
+; ..\SCU.c	   179    ///  REQLINE2 configuration:
+; ..\SCU.c	   180    ///  - use signal REQ2 (= none) as input
+; ..\SCU.c	   181  
+; ..\SCU.c	   182    ///  REQLINE3 configuration:
+; ..\SCU.c	   183    ///  - use signal REQ3 (= none) as input
+; ..\SCU.c	   184  
+; ..\SCU.c	   185    ///  Output channel 0 configuration:
+; ..\SCU.c	   186    ///  - the bit INTF0 is taken into consideration for the pattern detection
+; ..\SCU.c	   187    ///  - the detected pattern is taken into account; an activation of IOUT0 
+; ..\SCU.c	   188    ///    is only possible due to a trigger event while the pattern is detected
+; ..\SCU.c	   189    ///  - ERU0 interrupt generation is enabled
+; ..\SCU.c	   190    ///  - ERU0 interrupt node pointer: SCU SRN 0
+; ..\SCU.c	   191  
+; ..\SCU.c	   192    ///  Output channel 1 configuration:
+; ..\SCU.c	   193    ///  - the detected pattern is not taken into account; an activation of 
+; ..\SCU.c	   194    ///    IOUT1 is always possible due to a trigger event
+; ..\SCU.c	   195  
+; ..\SCU.c	   196    ///  Output channel 2 configuration:
+; ..\SCU.c	   197    ///  - the detected pattern is not taken into account; an activation of 
+; ..\SCU.c	   198    ///    IOUT2 is always possible due to a trigger event
+; ..\SCU.c	   199  
+; ..\SCU.c	   200    ///  Output channel 3 configuration:
+; ..\SCU.c	   201    ///  - the detected pattern is not taken into account; an activation of 
+; ..\SCU.c	   202    ///    IOUT3 is always possible due to a trigger event
+; ..\SCU.c	   203  
+; ..\SCU.c	   204    SCU_EICR0      =  0x00000D10;  // external input channel 0 register
+	mov.u	d15,#3344
+	st.w	0xf0000580,d15
+.L127:
+
+; ..\SCU.c	   205    SCU_EICR1      =  0x00000000;  // external input channel 1 register
+	st.w	0xf0000584,d0
+.L128:
+
+; ..\SCU.c	   206    SCU_IGCR0      =  0x00008001;  // interrupt gating 0 register
+	mov.u	d15,#32769
+	st.w	0xf0000594,d15
+.L129:
+
+; ..\SCU.c	   207    SCU_IGCR1      =  0x00000000;  // interrupt gating 1 register
+	st.w	0xf0000598,d0
+.L130:
+
+; ..\SCU.c	   208    SCU_INTDIS     =  0x000000BD;  // interrupt disable register
+	mov	d15,#189
+	st.w	0xf000061c,d15
+.L131:
+
+; ..\SCU.c	   209    SCU_INTNP      =  0x00000000;  // interrupt node pointer register
+	st.w	0xf0000620,d0
+.L132:
+
+; ..\SCU.c	   210  
+; ..\SCU.c	   211    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   212    ///  Configuration of the used ERU Port Pins:
+; ..\SCU.c	   213    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   214    ///  - P0.14 is used as  SCU_ERU input signal 4 ( REQ4)
+; ..\SCU.c	   215    ///  - the pull-up device is assigned
+; ..\SCU.c	   216    ///  - output driver characteristic: Medium driver
+; ..\SCU.c	   217  
+; ..\SCU.c	   218    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L3:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L3				; predicted taken
+.L133:
+
+; ..\SCU.c	   219    P0_PDR        |=  0x00040000;  // load driver mode register
+	ld.w	d15,0xf0000c40
+	st.t	0xf0000c42:2,#1
+.L134:
+
+; ..\SCU.c	   220    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L135:
+	call	MAIN_vWriteWDTCON0
+.L136:
+
+; ..\SCU.c	   221    P0_IOCR12      = (P0_IOCR12 & ~0x00F00000) | 0x00200000; // load control 
+	ld.w	d15,0xf0000c1c
+	insert	d15,d15,#2,#20,#4
+	st.w	0xf0000c1c,d15
+.L137:
+
+; ..\SCU.c	   222                                                             // register
+; ..\SCU.c	   223  
+; ..\SCU.c	   224    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   225    ///  Configuration of EXTCLK Output (both 0 and 1): 
+; ..\SCU.c	   226    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   227    ///  - the EXTCLK1 output is disabled
+; ..\SCU.c	   228    ///  - the EXTCLK0 output is disabled
+; ..\SCU.c	   229  
+; ..\SCU.c	   230    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L4:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L4				; predicted taken
+.L138:
+
+; ..\SCU.c	   231    SCU_FDR        =  0x000003FE;  // load fractional divider register
+	mov.u	d15,#1022
+	st.w	0xf0000538,d15
+.L139:
+
+; ..\SCU.c	   232    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L140:
+	call	MAIN_vWriteWDTCON0
+.L141:
+
+; ..\SCU.c	   233  
+; ..\SCU.c	   234  
+; ..\SCU.c	   235    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   236    ///  Configuration of Emergency Stop:
+; ..\SCU.c	   237    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   238    ///  - the clocked path with the emergency stop flag (EMSF) is selected
+; ..\SCU.c	   239  
+; ..\SCU.c	   240    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L5:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L5				; predicted taken
+.L142:
+
+; ..\SCU.c	   241    SCU_EMSR       =  0x00000000;  // emergency stop register
+	mov	d15,#0
+	st.w	0xf0000600,d15
+.L143:
+
+; ..\SCU.c	   242    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L144:
+	call	MAIN_vWriteWDTCON0
+.L145:
+
+; ..\SCU.c	   243  
+; ..\SCU.c	   244    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   245    ///  Configuration of SCU Service Request Nodes 0 to 3 :
+; ..\SCU.c	   246    ///  -----------------------------------------------------------------------
+; ..\SCU.c	   247    ///  - SRN0 service request node configuration:
+; ..\SCU.c	   248    ///  - SRN0 interrupt priority level (SRPN) = 3
+; ..\SCU.c	   249    ///  - SRN0 CPU interrupt is selected
+; ..\SCU.c	   250  
+; ..\SCU.c	   251    SCU_SRC0       =  0x00001003;  // set service request control register
+	mov.u	d15,#4099
+	st.w	0xf00006fc,d15
+.L146:
+
+; ..\SCU.c	   252  
+; ..\SCU.c	   253  
+; ..\SCU.c	   254    // USER CODE BEGIN (Init,3)
+; ..\SCU.c	   255  
+; ..\SCU.c	   256    // USER CODE END
+; ..\SCU.c	   257  
+; ..\SCU.c	   258  } //  End of function SCU_vInit
+	ret
+.L81:
+	
+__SCU_vInit_function_end:
+	.size	SCU_vInit,__SCU_vInit_function_end-SCU_vInit
+.L38:
+	; End of function
+	
+	.sdecl	'.text.SCU.SCU_vSetIdle',code,cluster('SCU_vSetIdle')
+	.sect	'.text.SCU.SCU_vSetIdle'
+	.align	2
+	
+	.global	SCU_vSetIdle
+
+; ..\SCU.c	   259  
+; ..\SCU.c	   260  
+; ..\SCU.c	   261  //****************************************************************************
+; ..\SCU.c	   262  // @Function      void SCU_vSetIdle(void) 
+; ..\SCU.c	   263  //
+; ..\SCU.c	   264  //----------------------------------------------------------------------------
+; ..\SCU.c	   265  // @Description   This function sets the CPU in IDLE mode. The CPU core clock 
+; ..\SCU.c	   266  //                is disabled. All peripherals remain powered and clocked. 
+; ..\SCU.c	   267  //                Processor memory is accessible to peripherals. A reset, 
+; ..\SCU.c	   268  //                watchdog timer event, a NMI Trap, or any enabled interrupt 
+; ..\SCU.c	   269  //                event will wake the CPU. 
+; ..\SCU.c	   270  //
+; ..\SCU.c	   271  //----------------------------------------------------------------------------
+; ..\SCU.c	   272  // @Returnvalue   None
+; ..\SCU.c	   273  //
+; ..\SCU.c	   274  //----------------------------------------------------------------------------
+; ..\SCU.c	   275  // @Parameters    None
+; ..\SCU.c	   276  //
+; ..\SCU.c	   277  //----------------------------------------------------------------------------
+; ..\SCU.c	   278  // @Date          21.03.2012
+; ..\SCU.c	   279  //
+; ..\SCU.c	   280  //****************************************************************************
+; ..\SCU.c	   281  
+; ..\SCU.c	   282  // USER CODE BEGIN (SetIdle,1)
+; ..\SCU.c	   283  
+; ..\SCU.c	   284  // USER CODE END
+; ..\SCU.c	   285  
+; ..\SCU.c	   286  void SCU_vSetIdle(void)
+; Function SCU_vSetIdle
+.L15:
+SCU_vSetIdle:	.type	func
+
+; ..\SCU.c	   287  {
+; ..\SCU.c	   288    // USER CODE BEGIN (SetIdle,2)
+; ..\SCU.c	   289  
+; ..\SCU.c	   290    // USER CODE END
+; ..\SCU.c	   291  
+; ..\SCU.c	   292    SCU_PMCSR = 0x00000001;       //  set idle mode
+	mov	d15,#1
+	st.w	0xf00005b0,d15
+.L151:
+
+; ..\SCU.c	   293  
+; ..\SCU.c	   294    // USER CODE BEGIN (SetIdle,3)
+; ..\SCU.c	   295  
+; ..\SCU.c	   296    // USER CODE END
+; ..\SCU.c	   297  
+; ..\SCU.c	   298  } //  End of function SCU_vSetIdle
+	ret
+.L82:
+	
+__SCU_vSetIdle_function_end:
+	.size	SCU_vSetIdle,__SCU_vSetIdle_function_end-SCU_vSetIdle
+.L43:
+	; End of function
+	
+	.sdecl	'.text.SCU.SCU_vSetSleep',code,cluster('SCU_vSetSleep')
+	.sect	'.text.SCU.SCU_vSetSleep'
+	.align	2
+	
+	.global	SCU_vSetSleep
+
+; ..\SCU.c	   299  
+; ..\SCU.c	   300  
+; ..\SCU.c	   301  //****************************************************************************
+; ..\SCU.c	   302  // @Function      void SCU_vSetSleep(void) 
+; ..\SCU.c	   303  //
+; ..\SCU.c	   304  //----------------------------------------------------------------------------
+; ..\SCU.c	   305  // @Description   This function sets the CPU in SLEEP mode. The system clock 
+; ..\SCU.c	   306  //                continues to be distributed only to those peripherals 
+; ..\SCU.c	   307  //                programmed to operate in Sleep Mode. A reset, watchdog 
+; ..\SCU.c	   308  //                timer event, a NMI Trap, or interrupts from operating 
+; ..\SCU.c	   309  //                peripherals will wake the CPU. 
+; ..\SCU.c	   310  //
+; ..\SCU.c	   311  //----------------------------------------------------------------------------
+; ..\SCU.c	   312  // @Returnvalue   None
+; ..\SCU.c	   313  //
+; ..\SCU.c	   314  //----------------------------------------------------------------------------
+; ..\SCU.c	   315  // @Parameters    None
+; ..\SCU.c	   316  //
+; ..\SCU.c	   317  //----------------------------------------------------------------------------
+; ..\SCU.c	   318  // @Date          21.03.2012
+; ..\SCU.c	   319  //
+; ..\SCU.c	   320  //****************************************************************************
+; ..\SCU.c	   321  
+; ..\SCU.c	   322  // USER CODE BEGIN (SetSleep,1)
+; ..\SCU.c	   323  
+; ..\SCU.c	   324  // USER CODE END
+; ..\SCU.c	   325  
+; ..\SCU.c	   326  void SCU_vSetSleep(void)
+; Function SCU_vSetSleep
+.L17:
+SCU_vSetSleep:	.type	func
+
+; ..\SCU.c	   327  {
+; ..\SCU.c	   328    // USER CODE BEGIN (SetSleep,2)
+; ..\SCU.c	   329  
+; ..\SCU.c	   330    // USER CODE END
+; ..\SCU.c	   331  
+; ..\SCU.c	   332    SCU_PMCSR = 0x00000002;       //  set sleep mode
+	mov	d15,#2
+	st.w	0xf00005b0,d15
+.L156:
+
+; ..\SCU.c	   333  
+; ..\SCU.c	   334    // USER CODE BEGIN (SetSleep,3)
+; ..\SCU.c	   335  
+; ..\SCU.c	   336    // USER CODE END
+; ..\SCU.c	   337  
+; ..\SCU.c	   338  } //  End of function SCU_vSetSleep
+	ret
+.L83:
+	
+__SCU_vSetSleep_function_end:
+	.size	SCU_vSetSleep,__SCU_vSetSleep_function_end-SCU_vSetSleep
+.L48:
+	; End of function
+	
+	.sdecl	'.text.SCU.SCU_vServiceWDT',code,cluster('SCU_vServiceWDT')
+	.sect	'.text.SCU.SCU_vServiceWDT'
+	.align	2
+	
+	.global	SCU_vServiceWDT
+
+; ..\SCU.c	   339  
+; ..\SCU.c	   340  
+; ..\SCU.c	   341  //****************************************************************************
+; ..\SCU.c	   342  // @Function      void SCU_vServiceWDT(ushort usReload, ubyte ubPassword) 
+; ..\SCU.c	   343  //
+; ..\SCU.c	   344  //----------------------------------------------------------------------------
+; ..\SCU.c	   345  // @Description   This function service the watchdog timer. If the watchdog 
+; ..\SCU.c	   346  //                timer is used in an application, it has to be regularly 
+; ..\SCU.c	   347  //                serviced to prevent it from overflowing. 
+; ..\SCU.c	   348  //                Example: 
+; ..\SCU.c	   349  //                To service the watchdog timer with the initialization 
+; ..\SCU.c	   350  //                reload value and without changing the password, this 
+; ..\SCU.c	   351  //                function must be called as follow: 
+; ..\SCU.c	   352  //                SCU_vServiceWDT(SCU_WDT_RELOAD,0);
+; ..\SCU.c	   353  //
+; ..\SCU.c	   354  //----------------------------------------------------------------------------
+; ..\SCU.c	   355  // @Returnvalue   None
+; ..\SCU.c	   356  //
+; ..\SCU.c	   357  //----------------------------------------------------------------------------
+; ..\SCU.c	   358  // @Parameters    usReload: 
+; ..\SCU.c	   359  //                16-bit reload value for the watchdog timer
+; ..\SCU.c	   360  // @Parameters    ubPassword: 
+; ..\SCU.c	   361  //                8-bit password
+; ..\SCU.c	   362  //
+; ..\SCU.c	   363  //----------------------------------------------------------------------------
+; ..\SCU.c	   364  // @Date          21.03.2012
+; ..\SCU.c	   365  //
+; ..\SCU.c	   366  //****************************************************************************
+; ..\SCU.c	   367  
+; ..\SCU.c	   368  // USER CODE BEGIN (ServiceWDT,1)
+; ..\SCU.c	   369  
+; ..\SCU.c	   370  // USER CODE END
+; ..\SCU.c	   371  
+; ..\SCU.c	   372  void SCU_vServiceWDT(ushort usReload, ubyte ubPassword)
+; Function SCU_vServiceWDT
+.L19:
+SCU_vServiceWDT:	.type	func
+
+; ..\SCU.c	   373  {
+; ..\SCU.c	   374    MAIN_vWriteWDTCON0((usReload << 16) + (ubPassword << 8) + 1); // service WDT
+	sha	d15,d4,#16
+	sha	d0,d5,#8
+	add	d15,d0
+	add	d4,d15,#1
+.L97:
+	j	MAIN_vWriteWDTCON0
+.L84:
+	
+__SCU_vServiceWDT_function_end:
+	.size	SCU_vServiceWDT,__SCU_vServiceWDT_function_end-SCU_vServiceWDT
+.L53:
+	; End of function
+	
+	.sdecl	'.text.SCU.SCU_vDisableWDT',code,cluster('SCU_vDisableWDT')
+	.sect	'.text.SCU.SCU_vDisableWDT'
+	.align	2
+	
+	.global	SCU_vDisableWDT
+
+; ..\SCU.c	   375  
+; ..\SCU.c	   376  } //  End of function SCU_vServiceWDT
+; ..\SCU.c	   377  
+; ..\SCU.c	   378  
+; ..\SCU.c	   379  //****************************************************************************
+; ..\SCU.c	   380  // @Function      void SCU_vDisableWDT(void) 
+; ..\SCU.c	   381  //
+; ..\SCU.c	   382  //----------------------------------------------------------------------------
+; ..\SCU.c	   383  // @Description   This function disables the watchdog timer.
+; ..\SCU.c	   384  //
+; ..\SCU.c	   385  //----------------------------------------------------------------------------
+; ..\SCU.c	   386  // @Returnvalue   None
+; ..\SCU.c	   387  //
+; ..\SCU.c	   388  //----------------------------------------------------------------------------
+; ..\SCU.c	   389  // @Parameters    None
+; ..\SCU.c	   390  //
+; ..\SCU.c	   391  //----------------------------------------------------------------------------
+; ..\SCU.c	   392  // @Date          21.03.2012
+; ..\SCU.c	   393  //
+; ..\SCU.c	   394  //****************************************************************************
+; ..\SCU.c	   395  
+; ..\SCU.c	   396  // USER CODE BEGIN (DisableWDT,1)
+; ..\SCU.c	   397  
+; ..\SCU.c	   398  // USER CODE END
+; ..\SCU.c	   399  
+; ..\SCU.c	   400  void SCU_vDisableWDT(void)
+; Function SCU_vDisableWDT
+.L21:
+SCU_vDisableWDT:	.type	func
+
+; ..\SCU.c	   401  {
+; ..\SCU.c	   402    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L196)
+	lea	a14,[a14]@los(.L196)
+	j	.cocofun_1
+.L196:
+.L165:
+
+; ..\SCU.c	   403    WDT_CON1 |=  0x00000008;                   //  disable watchdog
+	st.t	0xf00005f4:3,#1
+.L166:
+
+; ..\SCU.c	   404    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L167:
+	j	MAIN_vWriteWDTCON0
+.L89:
+	
+__SCU_vDisableWDT_function_end:
+	.size	SCU_vDisableWDT,__SCU_vDisableWDT_function_end-SCU_vDisableWDT
+.L58:
+	; End of function
+	
+	.sdecl	'.text.SCU..cocofun_1',code,cluster('.cocofun_1')
+	.sect	'.text.SCU..cocofun_1'
+	.align	2
+; Function .cocofun_1
+.L23:
+.cocofun_1:	.type	func
+; Function body .cocofun_1, coco_iter:0
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+	lea	a2,0xf00005f0
+.L6:
+	ld.bu	d15,[a2]
+	jnz.t	d15:0,.L6				; predicted taken
+.L192:
+	ld.w	d15,0xf00005f4
+.L193:
+	ji	a14
+.L78:
+	; End of function
+	.sdecl	'.text.SCU.SCU_vEnableWDT',code,cluster('SCU_vEnableWDT')
+	.sect	'.text.SCU.SCU_vEnableWDT'
+	.align	2
+	
+	.global	SCU_vEnableWDT
+
+; ..\SCU.c	   405  
+; ..\SCU.c	   406  } //  End of function SCU_vDisableWDT
+; ..\SCU.c	   407  
+; ..\SCU.c	   408  
+; ..\SCU.c	   409  //****************************************************************************
+; ..\SCU.c	   410  // @Function      void SCU_vEnableWDT(void) 
+; ..\SCU.c	   411  //
+; ..\SCU.c	   412  //----------------------------------------------------------------------------
+; ..\SCU.c	   413  // @Description   This function enables the watchdog timer.
+; ..\SCU.c	   414  //
+; ..\SCU.c	   415  //----------------------------------------------------------------------------
+; ..\SCU.c	   416  // @Returnvalue   None
+; ..\SCU.c	   417  //
+; ..\SCU.c	   418  //----------------------------------------------------------------------------
+; ..\SCU.c	   419  // @Parameters    None
+; ..\SCU.c	   420  //
+; ..\SCU.c	   421  //----------------------------------------------------------------------------
+; ..\SCU.c	   422  // @Date          21.03.2012
+; ..\SCU.c	   423  //
+; ..\SCU.c	   424  //****************************************************************************
+; ..\SCU.c	   425  
+; ..\SCU.c	   426  // USER CODE BEGIN (EnableWDT,1)
+; ..\SCU.c	   427  
+; ..\SCU.c	   428  // USER CODE END
+; ..\SCU.c	   429  
+; ..\SCU.c	   430  void SCU_vEnableWDT(void)
+; Function SCU_vEnableWDT
+.L25:
+SCU_vEnableWDT:	.type	func
+
+; ..\SCU.c	   431  {
+; ..\SCU.c	   432    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L197)
+	lea	a14,[a14]@los(.L197)
+	j	.cocofun_1
+.L197:
+.L172:
+
+; ..\SCU.c	   433    WDT_CON1 &= ~0x00000008;                   //  enable watchdog
+	st.t	0xf00005f4:3,#0
+.L173:
+
+; ..\SCU.c	   434    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L174:
+	j	MAIN_vWriteWDTCON0
+.L91:
+	
+__SCU_vEnableWDT_function_end:
+	.size	SCU_vEnableWDT,__SCU_vEnableWDT_function_end-SCU_vEnableWDT
+.L63:
+	; End of function
+	
+	.sdecl	'.text.SCU.SCU_vSoftReset',code,cluster('SCU_vSoftReset')
+	.sect	'.text.SCU.SCU_vSoftReset'
+	.align	2
+	
+	.global	SCU_vSoftReset
+
+; ..\SCU.c	   435  
+; ..\SCU.c	   436  } //  End of function SCU_vEnableWDT
+; ..\SCU.c	   437  
+; ..\SCU.c	   438  
+; ..\SCU.c	   439  //****************************************************************************
+; ..\SCU.c	   440  // @Function      void SCU_vSoftReset(uword uwOptions) 
+; ..\SCU.c	   441  //
+; ..\SCU.c	   442  //----------------------------------------------------------------------------
+; ..\SCU.c	   443  // @Description   This function generates a software reset. The software 
+; ..\SCU.c	   444  //                reset triggers two functions either application reset or 
+; ..\SCU.c	   445  //                system reset. In addition, it has the option to change the 
+; ..\SCU.c	   446  //                boot configuration. 
+; ..\SCU.c	   447  //                Example: 
+; ..\SCU.c	   448  //                To reset the controller with the configured soft reset 
+; ..\SCU.c	   449  //                option, this function must be called as follow: 
+; ..\SCU.c	   450  //                SCU_vSoftReset(SCU_RESET_OPTIONS);
+; ..\SCU.c	   451  //
+; ..\SCU.c	   452  //----------------------------------------------------------------------------
+; ..\SCU.c	   453  // @Returnvalue   None
+; ..\SCU.c	   454  //
+; ..\SCU.c	   455  //----------------------------------------------------------------------------
+; ..\SCU.c	   456  // @Parameters    uwOptions: 
+; ..\SCU.c	   457  //                Required options for the soft reset (value for the RST_REQ 
+; ..\SCU.c	   458  //                register)
+; ..\SCU.c	   459  //
+; ..\SCU.c	   460  //----------------------------------------------------------------------------
+; ..\SCU.c	   461  // @Date          21.03.2012
+; ..\SCU.c	   462  //
+; ..\SCU.c	   463  //****************************************************************************
+; ..\SCU.c	   464  
+; ..\SCU.c	   465  // USER CODE BEGIN (SoftReset,1)
+; ..\SCU.c	   466  
+; ..\SCU.c	   467  // USER CODE END
+; ..\SCU.c	   468  
+; ..\SCU.c	   469  void SCU_vSoftReset(uword uwOptions)
+; Function SCU_vSoftReset
+.L27:
+SCU_vSoftReset:	.type	func
+
+; ..\SCU.c	   470  {
+; ..\SCU.c	   471    // USER CODE BEGIN (SoftReset,2)
+; ..\SCU.c	   472  
+; ..\SCU.c	   473    // USER CODE END
+; ..\SCU.c	   474  
+; ..\SCU.c	   475    MAIN_vResetENDINIT();
+	mov	d15,d4
+	lea	a15,0xf00005f0
+.L99:
+	ld.w	d0,[a15]
+	insert	d4,d0,#0,#0,#1
+.L98:
+	call	MAIN_vWriteWDTCON0
+	lea	a2,0xf00005f0
+.L8:
+	ld.bu	d0,[a2]
+	jnz.t	d0:0,.L8				; predicted taken
+.L179:
+
+; ..\SCU.c	   476    SCU_SWRSTCON = (uwOptions | 0x2);                        //  request SW reset
+	or	d15,#2
+	st.w	0xf0000560,d15
+.L100:
+
+; ..\SCU.c	   477    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L180:
+	j	MAIN_vWriteWDTCON0
+.L92:
+	
+__SCU_vSoftReset_function_end:
+	.size	SCU_vSoftReset,__SCU_vSoftReset_function_end-SCU_vSoftReset
+.L68:
+	; End of function
+	
+	.sdecl	'.text.intvec.003',code
+	.sect	'.text.intvec.003'
+
+; ..\SCU.c	   478  
+; ..\SCU.c	   479  } //  End of function SCU_vSoftReset
+; ..\SCU.c	   480  
+; ..\SCU.c	   481  
+; ..\SCU.c	   482  //****************************************************************************
+; ..\SCU.c	   483  // @Function      void SCU_viSRN0(void) 
+; ..\SCU.c	   484  //
+; ..\SCU.c	   485  //----------------------------------------------------------------------------
+; ..\SCU.c	   486  // @Description   This is the interrupt service routine for the Service 
+; ..\SCU.c	   487  //                Request Node 0 of the SCU module. 
+; ..\SCU.c	   488  //                Please note that you have to add application specific code 
+; ..\SCU.c	   489  //                to this function.
+; ..\SCU.c	   490  //
+; ..\SCU.c	   491  //----------------------------------------------------------------------------
+; ..\SCU.c	   492  // @Returnvalue   None
+; ..\SCU.c	   493  //
+; ..\SCU.c	   494  //----------------------------------------------------------------------------
+; ..\SCU.c	   495  // @Parameters    None
+; ..\SCU.c	   496  //
+; ..\SCU.c	   497  //----------------------------------------------------------------------------
+; ..\SCU.c	   498  // @Date          21.03.2012
+; ..\SCU.c	   499  //
+; ..\SCU.c	   500  //****************************************************************************
+; ..\SCU.c	   501  
+; ..\SCU.c	   502  // USER CODE BEGIN (SRN0,1)
+; ..\SCU.c	   503  volatile unsigned int countEncoderTicks = 0;
+; ..\SCU.c	   504  // USER CODE END
+; ..\SCU.c	   505  
+; ..\SCU.c	   506  void INTERRUPT (SCU_SRN0INT) SCU_viSRN0(void)
+	movh.a	a14,#@his(SCU_viSRN0)
+	lea	a14,[a14]@los(SCU_viSRN0)
+	ji	a14
+	.sdecl	'.text.SCU.SCU_viSRN0',code,cluster('SCU_viSRN0')
+	.sect	'.text.SCU.SCU_viSRN0'
+	.align	2
+	
+	.global	SCU_viSRN0
+; Function SCU_viSRN0
+.L29:
+SCU_viSRN0:	.type	func
+
+; ..\SCU.c	   507  {
+; ..\SCU.c	   508  
+; ..\SCU.c	   509    // USER CODE BEGIN (SRN0,2)
+; ..\SCU.c	   510  
+; ..\SCU.c	   511    // USER CODE END
+; ..\SCU.c	   512  
+; ..\SCU.c	   513    if (SCU_INTSTAT_ERUI0)      // if ERU0 interrupt
+	ld.bu	d15,0xf0000610
+	jz.t	d15:1,.L9				; predicted taken
+.L185:
+
+; ..\SCU.c	   514    {
+; ..\SCU.c	   515          // USER CODE BEGIN (SRN0_ERU0,1)
+; ..\SCU.c	   516  	    if (IO_ubReadPin(IO_P0_7)==0)
+	movh.a	a15,#@his(countEncoderTicks)
+	lea	a15,[a15]@los(countEncoderTicks)
+	ld.bu	d15,0xf0000c24
+	jnz.t	d15:7,.L10				; prediction unknown
+.L186:
+
+; ..\SCU.c	   517  	    {
+; ..\SCU.c	   518  	    	// Drehrichtung forward
+; ..\SCU.c	   519  	    	countEncoderTicks++;
+	ld.w	d15,[a15]
+	add	d15,#1
+	j	.L11
+.L10:
+
+; ..\SCU.c	   520  	    }
+; ..\SCU.c	   521  	    else
+; ..\SCU.c	   522  	    {
+; ..\SCU.c	   523  	    	// Drehrichtung backward
+; ..\SCU.c	   524  	        countEncoderTicks--;
+	ld.w	d15,[a15]
+	add	d15,#-1
+.L11:
+	st.w	[a15],d15
+.L187:
+
+; ..\SCU.c	   525  	    }
+; ..\SCU.c	   526          // USER CODE END
+; ..\SCU.c	   527  
+; ..\SCU.c	   528          SCU_INTCLR_ERUI0      = 1;    // clear ERU0 interrupt
+	ld.bu	d15,0xf0000618
+	st.t	0xf0000618:1,#1
+.L9:
+
+; ..\SCU.c	   529    }
+; ..\SCU.c	   530  
+; ..\SCU.c	   531  
+; ..\SCU.c	   532    // USER CODE BEGIN (SRN0,3)
+; ..\SCU.c	   533  
+; ..\SCU.c	   534    // USER CODE END
+; ..\SCU.c	   535  
+; ..\SCU.c	   536  } //  End of function SCU_viSRN0
+	rfe
+.L95:
+	
+__SCU_viSRN0_function_end:
+	.size	SCU_viSRN0,__SCU_viSRN0_function_end-SCU_viSRN0
+.L73:
+	; End of function
+	
+	.sdecl	'.data.SCU.countEncoderTicks',data,cluster('countEncoderTicks')
+	.sect	'.data.SCU.countEncoderTicks'
+	.global	countEncoderTicks
+	.align	2
+countEncoderTicks:	.type	object
+	.size	countEncoderTicks,4
+	.space	4
+	.calls	'SCU_vInit','MAIN_vWriteWDTCON0'
+	.calls	'SCU_vServiceWDT','MAIN_vWriteWDTCON0'
+	.calls	'SCU_vDisableWDT','MAIN_vWriteWDTCON0'
+	.calls	'SCU_vEnableWDT','MAIN_vWriteWDTCON0'
+	.calls	'SCU_vSoftReset','MAIN_vWriteWDTCON0'
+	.calls	'SCU_vDisableWDT','.cocofun_1'
+	.calls	'SCU_vEnableWDT','.cocofun_1'
+	.calls	'SCU_vInit','',0
+	.calls	'SCU_vSetIdle','',0
+	.calls	'SCU_vSetSleep','',0
+	.calls	'SCU_vServiceWDT','',0
+	.calls	'SCU_vDisableWDT','',0
+	.calls	'.cocofun_1','',0
+	.calls	'SCU_vEnableWDT','',0
+	.calls	'SCU_vSoftReset','',0
+	.extern	MAIN_vWriteWDTCON0
+	.calls	'SCU_viSRN0','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L31:
+	.word	972
+	.half	3
+	.word	.L32
+	.byte	4
+.L30:
+	.byte	1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L33
+	.byte	2
+	.byte	'MAIN_vWriteWDTCON0',0,1,139,1,6,1,1,1,1,3
+	.byte	'uwValue',0,1,139,1,31
+	.word	.L93-.L31
+	.byte	0
+.L93:
+	.byte	4
+	.byte	'unsigned int',0,4,7
+.L85:
+	.byte	4
+	.byte	'unsigned short int',0,2,7
+.L87:
+	.byte	4
+	.byte	'unsigned char',0,1,8,5
+	.byte	'__size_t',0,2,1,1
+	.word	154
+	.byte	5
+	.byte	'__codeptr',0,2,1,1
+	.word	.L101-.L31
+.L101:
+	.byte	6
+	.word	.L102-.L31
+.L102:
+	.byte	7,1,5
+	.byte	'ubyte',0,1,69,24
+	.word	192
+	.byte	5
+	.byte	'ushort',0,1,71,24
+	.word	170
+	.byte	5
+	.byte	'uword',0,1,73,24
+	.word	154
+	.byte	5
+	.byte	'T_Reg32',0,1,110,4
+	.word	.L103-.L31
+.L103:
+	.byte	8
+	.word	.L104-.L31
+.L104:
+	.byte	9,1,76,18,4,10
+	.byte	'bit0',0,1
+	.word	192
+	.byte	1,7,2,35,0,10
+	.byte	'bit1',0,1
+	.word	192
+	.byte	1,6,2,35,0,10
+	.byte	'bit2',0,1
+	.word	192
+	.byte	1,5,2,35,0,10
+	.byte	'bit3',0,1
+	.word	192
+	.byte	1,4,2,35,0,10
+	.byte	'bit4',0,1
+	.word	192
+	.byte	1,3,2,35,0,10
+	.byte	'bit5',0,1
+	.word	192
+	.byte	1,2,2,35,0,10
+	.byte	'bit6',0,1
+	.word	192
+	.byte	1,1,2,35,0,10
+	.byte	'bit7',0,1
+	.word	192
+	.byte	1,0,2,35,0,10
+	.byte	'bit8',0,1
+	.word	192
+	.byte	1,7,2,35,1,10
+	.byte	'bit9',0,1
+	.word	192
+	.byte	1,6,2,35,1,10
+	.byte	'bit10',0,1
+	.word	192
+	.byte	1,5,2,35,1,10
+	.byte	'bit11',0,1
+	.word	192
+	.byte	1,4,2,35,1,10
+	.byte	'bit12',0,1
+	.word	192
+	.byte	1,3,2,35,1,10
+	.byte	'bit13',0,1
+	.word	192
+	.byte	1,2,2,35,1,10
+	.byte	'bit14',0,1
+	.word	192
+	.byte	1,1,2,35,1,10
+	.byte	'bit15',0,1
+	.word	192
+	.byte	1,0,2,35,1,10
+	.byte	'bit16',0,1
+	.word	192
+	.byte	1,7,2,35,2,10
+	.byte	'bit17',0,1
+	.word	192
+	.byte	1,6,2,35,2,10
+	.byte	'bit18',0,1
+	.word	192
+	.byte	1,5,2,35,2,10
+	.byte	'bit19',0,1
+	.word	192
+	.byte	1,4,2,35,2,10
+	.byte	'bit20',0,1
+	.word	192
+	.byte	1,3,2,35,2,10
+	.byte	'bit21',0,1
+	.word	192
+	.byte	1,2,2,35,2,10
+	.byte	'bit22',0,1
+	.word	192
+	.byte	1,1,2,35,2,10
+	.byte	'bit23',0,1
+	.word	192
+	.byte	1,0,2,35,2,10
+	.byte	'bit24',0,1
+	.word	192
+	.byte	1,7,2,35,3,10
+	.byte	'bit25',0,1
+	.word	192
+	.byte	1,6,2,35,3,10
+	.byte	'bit26',0,1
+	.word	192
+	.byte	1,5,2,35,3,10
+	.byte	'bit27',0,1
+	.word	192
+	.byte	1,4,2,35,3,10
+	.byte	'bit28',0,1
+	.word	192
+	.byte	1,3,2,35,3,10
+	.byte	'bit29',0,1
+	.word	192
+	.byte	1,2,2,35,3,10
+	.byte	'bit30',0,1
+	.word	192
+	.byte	1,1,2,35,3,10
+	.byte	'bit31',0,1
+	.word	192
+	.byte	1,0,2,35,3,0,5
+	.byte	'CAN_SWObj',0,3,100,4
+	.word	.L105-.L31
+.L105:
+	.byte	9,3,93,9,20,11
+	.byte	'usMOCfg',0,2
+	.word	170
+	.byte	2,35,0,11
+	.byte	'uwID',0,4
+	.word	154
+	.byte	2,35,2,11
+	.byte	'uwMask',0,4
+	.word	154
+	.byte	2,35,6,11
+	.byte	'ubData',0,8
+	.word	.L106-.L31
+	.byte	2,35,10,11
+	.byte	'usCounter',0,2
+	.word	170
+	.byte	2,35,18,0
+.L106:
+	.byte	12,8
+	.word	192
+	.byte	13,7,0
+.L96:
+	.byte	8
+	.word	154
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L32:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0
+	.byte	3,5,0,3,8,58,15,59,15,57,15,73,19,0,0,4,36,0,3,8,11,15,62,15,0,0,5,22,0,3,8,58,15,59,15,57,15,73,19,0
+	.byte	0,6,15,0,73,19,0,0,7,21,0,54,15,0,0,8,53,0,73,19,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,13,0,3,8,11
+	.byte	15,73,19,13,15,12,15,56,9,0,0,11,13,0,3,8,11,15,73,19,56,9,0,0,12,1,1,11,15,73,19,0,0,13,33,0,47,15,0
+	.byte	0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L33:
+	.word	.L108-.L107
+.L107:
+	.half	3
+	.word	.L110-.L109
+.L109:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.h',0,0,0,0
+	.byte	'..\\SCU.c',0,0,0,0
+	.byte	'..\\CAN.h',0,0,0,0,0
+.L110:
+.L108:
+	.sdecl	'.debug_info',debug,cluster('SCU_vInit')
+	.sect	'.debug_info'
+.L34:
+	.word	153
+	.half	3
+	.word	.L35
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L37,.L36
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vInit',0,1,123,6,1,1,1
+	.word	.L13,.L81,.L12
+	.byte	4
+	.word	.L13,.L81
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vInit')
+	.sect	'.debug_abbrev'
+.L35:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vInit')
+	.sect	'.debug_line'
+.L36:
+	.word	.L112-.L111
+.L111:
+	.half	3
+	.word	.L114-.L113
+.L113:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L114:
+	.byte	5,33,7,0,5,2
+	.word	.L13
+	.byte	3,136,1,1,5,31,9
+	.half	.L115-.L13
+	.byte	3,1,1,5,3,9
+	.half	.L116-.L115
+	.byte	3,1,1,5,21,9
+	.half	.L117-.L116
+	.byte	1,5,3,9
+	.half	.L118-.L117
+	.byte	3,17,1,5,31,9
+	.half	.L119-.L118
+	.byte	3,1,1,9
+	.half	.L120-.L119
+	.byte	3,1,1,9
+	.half	.L121-.L120
+	.byte	3,1,1,9
+	.half	.L122-.L121
+	.byte	3,1,1,5,3,9
+	.half	.L123-.L122
+	.byte	3,1,1,5,21,9
+	.half	.L124-.L123
+	.byte	1,5,31,9
+	.half	.L125-.L124
+	.byte	3,2,1,9
+	.half	.L126-.L125
+	.byte	3,41,1,9
+	.half	.L127-.L126
+	.byte	3,1,1,9
+	.half	.L128-.L127
+	.byte	3,1,1,9
+	.half	.L129-.L128
+	.byte	3,1,1,9
+	.half	.L130-.L129
+	.byte	3,1,1,9
+	.half	.L131-.L130
+	.byte	3,1,1,5,3,9
+	.half	.L132-.L131
+	.byte	3,9,1,5,31,9
+	.half	.L133-.L132
+	.byte	3,1,1,5,3,9
+	.half	.L134-.L133
+	.byte	3,1,1,5,21,9
+	.half	.L135-.L134
+	.byte	1,5,58,9
+	.half	.L136-.L135
+	.byte	3,1,1,5,3,9
+	.half	.L137-.L136
+	.byte	3,9,1,5,31,9
+	.half	.L138-.L137
+	.byte	3,1,1,5,3,9
+	.half	.L139-.L138
+	.byte	3,1,1,5,21,9
+	.half	.L140-.L139
+	.byte	1,5,3,9
+	.half	.L141-.L140
+	.byte	3,8,1,5,31,9
+	.half	.L142-.L141
+	.byte	3,1,1,5,3,9
+	.half	.L143-.L142
+	.byte	3,1,1,5,21,9
+	.half	.L144-.L143
+	.byte	1,5,31,9
+	.half	.L145-.L144
+	.byte	3,9,1,5,1,9
+	.half	.L146-.L145
+	.byte	3,7,1,7,9
+	.half	.L38-.L146
+	.byte	0,1,1
+.L112:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vInit')
+	.sect	'.debug_ranges'
+.L37:
+	.word	-1,.L13,0,.L38-.L13,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_vSetIdle')
+	.sect	'.debug_info'
+.L39:
+	.word	157
+	.half	3
+	.word	.L40
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L42,.L41
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vSetIdle',0,1,158,2,6,1,1,1
+	.word	.L15,.L82,.L14
+	.byte	4
+	.word	.L15,.L82
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vSetIdle')
+	.sect	'.debug_abbrev'
+.L40:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vSetIdle')
+	.sect	'.debug_line'
+.L41:
+	.word	.L148-.L147
+.L147:
+	.half	3
+	.word	.L150-.L149
+.L149:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L150:
+	.byte	5,25,7,0,5,2
+	.word	.L15
+	.byte	3,163,2,1,5,1,9
+	.half	.L151-.L15
+	.byte	3,6,1,7,9
+	.half	.L43-.L151
+	.byte	0,1,1
+.L148:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vSetIdle')
+	.sect	'.debug_ranges'
+.L42:
+	.word	-1,.L15,0,.L43-.L15,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_vSetSleep')
+	.sect	'.debug_info'
+.L44:
+	.word	158
+	.half	3
+	.word	.L45
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L47,.L46
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vSetSleep',0,1,198,2,6,1,1,1
+	.word	.L17,.L83,.L16
+	.byte	4
+	.word	.L17,.L83
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vSetSleep')
+	.sect	'.debug_abbrev'
+.L45:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vSetSleep')
+	.sect	'.debug_line'
+.L46:
+	.word	.L153-.L152
+.L152:
+	.half	3
+	.word	.L155-.L154
+.L154:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L155:
+	.byte	5,25,7,0,5,2
+	.word	.L17
+	.byte	3,203,2,1,5,1,9
+	.half	.L156-.L17
+	.byte	3,6,1,7,9
+	.half	.L48-.L156
+	.byte	0,1,1
+.L153:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vSetSleep')
+	.sect	'.debug_ranges'
+.L47:
+	.word	-1,.L17,0,.L48-.L17,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_vServiceWDT')
+	.sect	'.debug_info'
+.L49:
+	.word	206
+	.half	3
+	.word	.L50
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L52,.L51
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vServiceWDT',0,1,244,2,6,1,1,1
+	.word	.L19,.L84,.L18
+	.byte	4
+	.byte	'usReload',0,1,244,2,29
+	.word	.L85,.L86
+	.byte	4
+	.byte	'ubPassword',0,1,244,2,45
+	.word	.L87,.L88
+	.byte	5
+	.word	.L19,.L84
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vServiceWDT')
+	.sect	'.debug_abbrev'
+.L50:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vServiceWDT')
+	.sect	'.debug_line'
+.L51:
+	.word	.L158-.L157
+.L157:
+	.half	3
+	.word	.L160-.L159
+.L159:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L160:
+	.byte	5,63,7,0,5,2
+	.word	.L19
+	.byte	3,245,2,1,5,1,9
+	.half	.L53-.L19
+	.byte	3,2,0,1,1
+.L158:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vServiceWDT')
+	.sect	'.debug_ranges'
+.L52:
+	.word	-1,.L19,0,.L53-.L19,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_vDisableWDT')
+	.sect	'.debug_info'
+.L54:
+	.word	156
+	.half	3
+	.word	.L55
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L57,.L56
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vDisableWDT',0,1,144,3,6,1,1,1
+	.word	.L21,.L89,.L20
+	.byte	4
+	.word	.L90
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vDisableWDT')
+	.sect	'.debug_abbrev'
+.L55:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,85,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vDisableWDT')
+	.sect	'.debug_line'
+.L56:
+	.word	.L162-.L161
+.L161:
+	.half	3
+	.word	.L164-.L163
+.L163:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L164:
+	.byte	5,3,7,0,5,2
+	.word	.L21
+	.byte	3,145,3,1,5,26,9
+	.half	.L165-.L21
+	.byte	3,1,1,5,3,9
+	.half	.L166-.L165
+	.byte	3,1,1,5,21,9
+	.half	.L167-.L166
+	.byte	1,5,1,7,9
+	.half	.L58-.L167
+	.byte	3,2,0,1,1
+.L162:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vDisableWDT')
+	.sect	'.debug_ranges'
+.L57:
+	.word	-1,.L21,0,.L58-.L21,0,0
+.L90:
+	.word	-1,.L21,0,.L89-.L21,-1,.L23,0,.L78-.L23,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_vEnableWDT')
+	.sect	'.debug_info'
+.L59:
+	.word	159
+	.half	3
+	.word	.L60
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L62,.L61
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vEnableWDT',0,1,174,3,6,1,1,1
+	.word	.L25,.L91,.L24
+	.byte	4
+	.word	.L25,.L91
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vEnableWDT')
+	.sect	'.debug_abbrev'
+.L60:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vEnableWDT')
+	.sect	'.debug_line'
+.L61:
+	.word	.L169-.L168
+.L168:
+	.half	3
+	.word	.L171-.L170
+.L170:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L171:
+	.byte	5,3,7,0,5,2
+	.word	.L25
+	.byte	3,175,3,1,5,26,9
+	.half	.L172-.L25
+	.byte	3,1,1,5,3,9
+	.half	.L173-.L172
+	.byte	3,1,1,5,21,9
+	.half	.L174-.L173
+	.byte	1,5,1,7,9
+	.half	.L63-.L174
+	.byte	3,2,0,1,1
+.L169:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vEnableWDT')
+	.sect	'.debug_ranges'
+.L62:
+	.word	-1,.L25,0,.L63-.L25,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_vSoftReset')
+	.sect	'.debug_info'
+.L64:
+	.word	182
+	.half	3
+	.word	.L65
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L67,.L66
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_vSoftReset',0,1,213,3,6,1,1,1
+	.word	.L27,.L92,.L26
+	.byte	4
+	.byte	'uwOptions',0,1,213,3,27
+	.word	.L93,.L94
+	.byte	5
+	.word	.L27,.L92
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_vSoftReset')
+	.sect	'.debug_abbrev'
+.L65:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_vSoftReset')
+	.sect	'.debug_line'
+.L66:
+	.word	.L176-.L175
+.L175:
+	.half	3
+	.word	.L178-.L177
+.L177:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L178:
+	.byte	5,6,7,0,5,2
+	.word	.L27
+	.byte	3,212,3,1,5,3,3,6,1,5,35,9
+	.half	.L179-.L27
+	.byte	3,1,1,5,3,9
+	.half	.L100-.L179
+	.byte	3,1,1,5,21,9
+	.half	.L180-.L100
+	.byte	1,5,1,7,9
+	.half	.L68-.L180
+	.byte	3,2,0,1,1
+.L176:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_vSoftReset')
+	.sect	'.debug_ranges'
+.L67:
+	.word	-1,.L27,0,.L68-.L27,0,0
+	.sdecl	'.debug_info',debug,cluster('SCU_viSRN0')
+	.sect	'.debug_info'
+.L69:
+	.word	155
+	.half	3
+	.word	.L70
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L72,.L71
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'SCU_viSRN0',0,1,250,3,30,1,1,1
+	.word	.L29,.L95,.L28
+	.byte	4
+	.word	.L29,.L95
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SCU_viSRN0')
+	.sect	'.debug_abbrev'
+.L70:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SCU_viSRN0')
+	.sect	'.debug_line'
+.L71:
+	.word	.L182-.L181
+.L181:
+	.half	3
+	.word	.L184-.L183
+.L183:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L184:
+	.byte	5,3,7,0,5,2
+	.word	.L29
+	.byte	3,128,4,1,5,6,9
+	.half	.L185-.L29
+	.byte	3,3,1,5,26,9
+	.half	.L186-.L185
+	.byte	3,3,1,5,29,9
+	.half	.L10-.L186
+	.byte	3,5,1,5,34,9
+	.half	.L187-.L10
+	.byte	3,4,1,5,1,9
+	.half	.L9-.L187
+	.byte	3,8,1,7,9
+	.half	.L73-.L9
+	.byte	0,1,1
+.L182:
+	.sdecl	'.debug_ranges',debug,cluster('SCU_viSRN0')
+	.sect	'.debug_ranges'
+.L72:
+	.word	-1,.L29,0,.L73-.L29,0,0
+	.sdecl	'.debug_info',debug,cluster('.cocofun_1')
+	.sect	'.debug_info'
+.L74:
+	.word	142
+	.half	3
+	.word	.L75
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L77,.L76
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'.cocofun_1',0,1,1,1,1
+	.word	.L23,.L78,.L22
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('.cocofun_1')
+	.sect	'.debug_abbrev'
+.L75:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,0,3,8,58,15,59,15,57,15,54,15
+	.byte	17,1,18,1,64,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('.cocofun_1')
+	.sect	'.debug_line'
+.L76:
+	.word	.L189-.L188
+.L188:
+	.half	3
+	.word	.L191-.L190
+.L190:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\SCU.c',0,0,0,0,0
+.L191:
+	.byte	5,3,7,0,5,2
+	.word	.L23
+	.byte	3,145,3,1,5,26,9
+	.half	.L192-.L23
+	.byte	3,1,1,9
+	.half	.L78-.L192
+	.byte	0,1,1,5,3,0,5,2
+	.word	.L23
+	.byte	3,175,3,1,5,26,9
+	.half	.L192-.L23
+	.byte	3,1,1,9
+	.half	.L193-.L192
+	.byte	3,98,1,7,9
+	.half	.L78-.L193
+	.byte	0,1,1
+.L189:
+	.sdecl	'.debug_ranges',debug,cluster('.cocofun_1')
+	.sect	'.debug_ranges'
+.L77:
+	.word	-1,.L23,0,.L78-.L23,0,0
+	.sdecl	'.debug_info',debug,cluster('countEncoderTicks')
+	.sect	'.debug_info'
+.L79:
+	.word	140
+	.half	3
+	.word	.L80
+	.byte	4,1
+	.byte	'..\\SCU.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1,2
+	.word	.L30
+	.byte	3
+	.byte	'countEncoderTicks',0,2,247,3,23
+	.word	.L96
+	.byte	1,5,3
+	.word	countEncoderTicks
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('countEncoderTicks')
+	.sect	'.debug_abbrev'
+.L80:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('.cocofun_1')
+	.sect	'.debug_loc'
+.L22:
+	.word	-1,.L23,.L23-.L23,.L78-.L23
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vDisableWDT')
+	.sect	'.debug_loc'
+.L20:
+	.word	-1,.L21,.L21-.L21,.L89-.L21
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vEnableWDT')
+	.sect	'.debug_loc'
+.L24:
+	.word	-1,.L25,.L25-.L25,.L91-.L25
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vInit')
+	.sect	'.debug_loc'
+.L12:
+	.word	-1,.L13,.L13-.L13,.L81-.L13
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vServiceWDT')
+	.sect	'.debug_loc'
+.L18:
+	.word	-1,.L19,.L19-.L19,.L84-.L19
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L88:
+	.word	-1,.L19,.L19-.L19,.L84-.L19
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L86:
+	.word	-1,.L19,.L19-.L19,.L97-.L19
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vSetIdle')
+	.sect	'.debug_loc'
+.L14:
+	.word	-1,.L15,.L15-.L15,.L82-.L15
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vSetSleep')
+	.sect	'.debug_loc'
+.L16:
+	.word	-1,.L17,.L17-.L17,.L83-.L17
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_vSoftReset')
+	.sect	'.debug_loc'
+.L26:
+	.word	-1,.L27,.L27-.L27,.L92-.L27
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L94:
+	.word	-1,.L27,.L27-.L27,.L98-.L27
+	.half	5
+	.byte	144,34,157,32,0
+	.word	.L99-.L27,.L100-.L27
+	.half	5
+	.byte	144,39,157,32,32
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SCU_viSRN0')
+	.sect	'.debug_loc'
+.L28:
+	.word	-1,.L29,.L29-.L29,.L95-.L29
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L194:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('SCU_vInit')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L194,.L13,.L81-.L13
+	.sdecl	'.debug_frame',debug,cluster('SCU_vSetIdle')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L194,.L15,.L82-.L15
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('SCU_vSetSleep')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L194,.L17,.L83-.L17
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('SCU_vServiceWDT')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L194,.L19,.L84-.L19
+	.sdecl	'.debug_frame',debug,cluster('SCU_vDisableWDT')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L194,.L21,.L89-.L21
+	.sdecl	'.debug_frame',debug,cluster('SCU_vEnableWDT')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L194,.L25,.L91-.L25
+	.sdecl	'.debug_frame',debug,cluster('SCU_vSoftReset')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L194,.L27,.L92-.L27
+	.sdecl	'.debug_frame',debug,cluster('SCU_viSRN0')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L194,.L29,.L95-.L29
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L195:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,30,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('.cocofun_1')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L195,.L23,.L78-.L23
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; ..\SCU.c	   537  
+; ..\SCU.c	   538  
+; ..\SCU.c	   539  
+; ..\SCU.c	   540  // USER CODE BEGIN (SCU_General,10)
+; ..\SCU.c	   541  
+; ..\SCU.c	   542  // USER CODE END
+; ..\SCU.c	   543  
+
+	; Module end

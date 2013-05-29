@@ -1,0 +1,1671 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc4916a -c99 --dep-file=.GPTA0.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=GPTA0.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o GPTA0.src
+	; Module start
+	.name	"GPTA0"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.GPTA0.GPTA0_vInit',code,cluster('GPTA0_vInit')
+	.sect	'.text.GPTA0.GPTA0_vInit'
+	.align	2
+	
+	.global	GPTA0_vInit
+
+; ..\GPTA0.c	     1  //****************************************************************************
+; ..\GPTA0.c	     2  // @Module        General Purpose Timer Array 0 (GPTA0)
+; ..\GPTA0.c	     3  // @Filename      GPTA0.c
+; ..\GPTA0.c	     4  // @Project       motencpot.dav
+; ..\GPTA0.c	     5  //----------------------------------------------------------------------------
+; ..\GPTA0.c	     6  // @Controller    Infineon TC1782
+; ..\GPTA0.c	     7  //
+; ..\GPTA0.c	     8  // @Compiler      Tasking 3.5r1
+; ..\GPTA0.c	     9  //
+; ..\GPTA0.c	    10  // @Codegenerator 1.0
+; ..\GPTA0.c	    11  //
+; ..\GPTA0.c	    12  // @Description   This file contains functions that use the GPTA0 module.
+; ..\GPTA0.c	    13  //
+; ..\GPTA0.c	    14  //----------------------------------------------------------------------------
+; ..\GPTA0.c	    15  // @Date          21.03.2012 15:56:00
+; ..\GPTA0.c	    16  //
+; ..\GPTA0.c	    17  //****************************************************************************
+; ..\GPTA0.c	    18  
+; ..\GPTA0.c	    19  // USER CODE BEGIN (GPTA0_General,1)
+; ..\GPTA0.c	    20  
+; ..\GPTA0.c	    21  // USER CODE END
+; ..\GPTA0.c	    22  
+; ..\GPTA0.c	    23  
+; ..\GPTA0.c	    24  
+; ..\GPTA0.c	    25  //****************************************************************************
+; ..\GPTA0.c	    26  // @Project Includes
+; ..\GPTA0.c	    27  //****************************************************************************
+; ..\GPTA0.c	    28  
+; ..\GPTA0.c	    29  #include "MAIN.h"
+; ..\GPTA0.c	    30  
+; ..\GPTA0.c	    31  // USER CODE BEGIN (GPTA0_General,2)
+; ..\GPTA0.c	    32  
+; ..\GPTA0.c	    33  // USER CODE END
+; ..\GPTA0.c	    34  
+; ..\GPTA0.c	    35  
+; ..\GPTA0.c	    36  //****************************************************************************
+; ..\GPTA0.c	    37  // @Macros
+; ..\GPTA0.c	    38  //****************************************************************************
+; ..\GPTA0.c	    39  
+; ..\GPTA0.c	    40  // USER CODE BEGIN (GPTA0_General,3)
+; ..\GPTA0.c	    41  
+; ..\GPTA0.c	    42  // USER CODE END
+; ..\GPTA0.c	    43  
+; ..\GPTA0.c	    44  
+; ..\GPTA0.c	    45  //****************************************************************************
+; ..\GPTA0.c	    46  // @Defines
+; ..\GPTA0.c	    47  //****************************************************************************
+; ..\GPTA0.c	    48  
+; ..\GPTA0.c	    49  // USER CODE BEGIN (GPTA0_General,4)
+; ..\GPTA0.c	    50  
+; ..\GPTA0.c	    51  // USER CODE END
+; ..\GPTA0.c	    52  
+; ..\GPTA0.c	    53  
+; ..\GPTA0.c	    54  //****************************************************************************
+; ..\GPTA0.c	    55  // @Typedefs
+; ..\GPTA0.c	    56  //****************************************************************************
+; ..\GPTA0.c	    57  
+; ..\GPTA0.c	    58  // USER CODE BEGIN (GPTA0_General,5)
+; ..\GPTA0.c	    59  
+; ..\GPTA0.c	    60  // USER CODE END
+; ..\GPTA0.c	    61  
+; ..\GPTA0.c	    62  
+; ..\GPTA0.c	    63  //****************************************************************************
+; ..\GPTA0.c	    64  // @Imported Global Variables
+; ..\GPTA0.c	    65  //****************************************************************************
+; ..\GPTA0.c	    66  
+; ..\GPTA0.c	    67  // USER CODE BEGIN (GPTA0_General,6)
+; ..\GPTA0.c	    68  
+; ..\GPTA0.c	    69  // USER CODE END
+; ..\GPTA0.c	    70  
+; ..\GPTA0.c	    71  
+; ..\GPTA0.c	    72  //****************************************************************************
+; ..\GPTA0.c	    73  // @Global Variables
+; ..\GPTA0.c	    74  //****************************************************************************
+; ..\GPTA0.c	    75  
+; ..\GPTA0.c	    76  // USER CODE BEGIN (GPTA0_General,7)
+; ..\GPTA0.c	    77  
+; ..\GPTA0.c	    78  // USER CODE END
+; ..\GPTA0.c	    79  
+; ..\GPTA0.c	    80  
+; ..\GPTA0.c	    81  //****************************************************************************
+; ..\GPTA0.c	    82  // @External Prototypes
+; ..\GPTA0.c	    83  //****************************************************************************
+; ..\GPTA0.c	    84  
+; ..\GPTA0.c	    85  // USER CODE BEGIN (GPTA0_General,8)
+; ..\GPTA0.c	    86  
+; ..\GPTA0.c	    87  // USER CODE END
+; ..\GPTA0.c	    88  
+; ..\GPTA0.c	    89  
+; ..\GPTA0.c	    90  //****************************************************************************
+; ..\GPTA0.c	    91  // @Prototypes Of Local Functions
+; ..\GPTA0.c	    92  //****************************************************************************
+; ..\GPTA0.c	    93  
+; ..\GPTA0.c	    94  // USER CODE BEGIN (GPTA0_General,9)
+; ..\GPTA0.c	    95  
+; ..\GPTA0.c	    96  // USER CODE END
+; ..\GPTA0.c	    97  
+; ..\GPTA0.c	    98  
+; ..\GPTA0.c	    99  //****************************************************************************
+; ..\GPTA0.c	   100  // @Function      void GPTA0_vInit(void) 
+; ..\GPTA0.c	   101  //
+; ..\GPTA0.c	   102  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   103  // @Description   This is the initialization function of the GPTA0 function 
+; ..\GPTA0.c	   104  //                library. It is assumed that the SFRs used by this library 
+; ..\GPTA0.c	   105  //                are in their reset state. 
+; ..\GPTA0.c	   106  //
+; ..\GPTA0.c	   107  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   108  // @Returnvalue   None
+; ..\GPTA0.c	   109  //
+; ..\GPTA0.c	   110  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   111  // @Parameters    None
+; ..\GPTA0.c	   112  //
+; ..\GPTA0.c	   113  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   114  // @Date          21.03.2012
+; ..\GPTA0.c	   115  //
+; ..\GPTA0.c	   116  //****************************************************************************
+; ..\GPTA0.c	   117  
+; ..\GPTA0.c	   118  // USER CODE BEGIN (Init,1)
+; ..\GPTA0.c	   119  
+; ..\GPTA0.c	   120  // USER CODE END
+; ..\GPTA0.c	   121  
+; ..\GPTA0.c	   122  void GPTA0_vInit(void)
+; Function GPTA0_vInit
+.L6:
+GPTA0_vInit:	.type	func
+
+; ..\GPTA0.c	   123  {
+; ..\GPTA0.c	   124  
+; ..\GPTA0.c	   125  
+; ..\GPTA0.c	   126  
+; ..\GPTA0.c	   127    volatile unsigned int uwTemp;
+; ..\GPTA0.c	   128  
+; ..\GPTA0.c	   129    // USER CODE BEGIN (Init,2)
+; ..\GPTA0.c	   130  
+; ..\GPTA0.c	   131    // USER CODE END
+; ..\GPTA0.c	   132  
+; ..\GPTA0.c	   133    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   134    ///  Configuration of the Module Clock:
+; ..\GPTA0.c	   135    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   136    #ifndef GPTA_CLOCK_INITIALIZATION
+; ..\GPTA0.c	   137    #define GPTA_CLOCK_INITIALIZATION
+; ..\GPTA0.c	   138  
+; ..\GPTA0.c	   139    ///  - the GPTA module is stopped during sleep mode
+; ..\GPTA0.c	   140    ///  - normal divider mode is selected
+; ..\GPTA0.c	   141    ///  - bit DISCLK is reset by hardware while input singnal ECEN 
+; ..\GPTA0.c	   142    ///    (CAN_INT_O15) is at high level
+; ..\GPTA0.c	   143    ///  - required GPTA module clock is 90,00 MHz
+; ..\GPTA0.c	   144    ///  - real GPTA module clock is 90,00 MHz
+; ..\GPTA0.c	   145  
+; ..\GPTA0.c	   146    MAIN_vResetENDINIT();
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+.L48:
+	insert	d4,d15,#0,#0,#1
+	sub.a	a10,#8
+.L30:
+	call	MAIN_vWriteWDTCON0
+	lea	a2,0xf00005f0
+.L2:
+	ld.bu	d15,[a2]
+	jnz.t	d15:0,.L2				; predicted taken
+.L49:
+
+; ..\GPTA0.c	   147    GPTA0_CLC      =  0x00000000;  // load clock control register
+	lea	a2,0xf0001800
+	mov	d15,#0
+	st.w	[a2],d15
+.L50:
+
+; ..\GPTA0.c	   148    uwTemp         =  GPTA0_CLC;   // dummy read to avoid pipeline effects
+	ld.w	d15,[a2]
+	st.w	[a10],d15
+
+; ..\GPTA0.c	   149    while ((GPTA0_CLC & 0x00000002 )== 0x00000002);  //wait until module is enabled
+.L3:
+	ld.w	d15,[a2]
+	jnz.t	d15:1,.L3				; predicted taken
+.L51:
+
+; ..\GPTA0.c	   150    GPTA0_FDR      =  0x400043FF;  // load fractional divider register
+	mov.u	d15,#17407
+	addih	d15,d15,#16384
+	st.w	0xf000180c,d15
+.L52:
+
+; ..\GPTA0.c	   151    uwTemp         =  GPTA0_FDR;   // dummy read to avoid pipeline effects
+	ld.w	d15,0xf000180c
+	st.w	[a10],d15
+.L53:
+
+; ..\GPTA0.c	   152    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L54:
+	call	MAIN_vWriteWDTCON0
+.L55:
+
+; ..\GPTA0.c	   153  
+; ..\GPTA0.c	   154    #endif // end #ifndef GPTA_CLOCK_INITIALIZATION
+; ..\GPTA0.c	   155  
+; ..\GPTA0.c	   156    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   157    ///  Configuration of Filter and Prescaler Cells 0 - 5:
+; ..\GPTA0.c	   158    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   159    ///  FPC0 configuration:
+; ..\GPTA0.c	   160    ///  - FPC0 input selection: 90,00 MHz
+; ..\GPTA0.c	   161    ///  - FPC0 operation mode: Delayed debounce filter mode on both edges
+; ..\GPTA0.c	   162    ///  - Filter clock selection: Use bus line 0 (=GPTA0 clock / 2^0 (= 90,00 
+; ..\GPTA0.c	   163    ///    MHz; 0,01 us))
+; ..\GPTA0.c	   164    ///  - FPC0 timer is decremented on glitch
+; ..\GPTA0.c	   165    ///  - FPC0 compare value is 0x0000
+; ..\GPTA0.c	   166  
+; ..\GPTA0.c	   167    GPTA0_FPCCTR0  =  0x00200000;  // load FPC0 control register
+	movh	d15,#32
+	st.w	0xf0001848,d15
+.L56:
+
+; ..\GPTA0.c	   168    GPTA0_FPCTIM0  =  0x00000000;  // load FPC0 timer register
+	mov	d0,#0
+	st.w	0xf000184c,d0
+.L57:
+
+; ..\GPTA0.c	   169  
+; ..\GPTA0.c	   170    ///  FPC1 configuration:
+; ..\GPTA0.c	   171    ///  - FPC1 input selection: 90,00 MHz
+; ..\GPTA0.c	   172    ///  - FPC1 operation mode: Delayed debounce filter mode on both edges
+; ..\GPTA0.c	   173    ///  - Filter clock selection: Use bus line 0 (=GPTA0 clock / 2^0 (= 90,00 
+; ..\GPTA0.c	   174    ///    MHz; 0,01 us))
+; ..\GPTA0.c	   175    ///  - FPC1 timer is decremented on glitch
+; ..\GPTA0.c	   176    ///  - FPC1 compare value is 0x0000
+; ..\GPTA0.c	   177  
+; ..\GPTA0.c	   178    GPTA0_FPCCTR1  =  0x00200000;  // load FPC1 control register
+	st.w	0xf0001850,d15
+.L58:
+
+; ..\GPTA0.c	   179    GPTA0_FPCTIM1  =  0x00000000;  // load FPC1 timer register
+	st.w	0xf0001854,d0
+.L59:
+
+; ..\GPTA0.c	   180  
+; ..\GPTA0.c	   181    ///  FPC2 configuration:
+; ..\GPTA0.c	   182    ///  - FPC2 input selection: 90,00 MHz
+; ..\GPTA0.c	   183    ///  - FPC2 operation mode: Delayed debounce filter mode on both edges
+; ..\GPTA0.c	   184    ///  - Filter clock selection: Use bus line 0 (=GPTA0 clock / 2^0 (= 90,00 
+; ..\GPTA0.c	   185    ///    MHz; 0,01 us))
+; ..\GPTA0.c	   186    ///  - FPC2 timer is decremented on glitch
+; ..\GPTA0.c	   187    ///  - FPC2 compare value is 0x0000
+; ..\GPTA0.c	   188  
+; ..\GPTA0.c	   189    GPTA0_FPCCTR2  =  0x00200000;  // load FPC2 control register
+	st.w	0xf0001858,d15
+.L60:
+
+; ..\GPTA0.c	   190    GPTA0_FPCTIM2  =  0x00000000;  // load FPC2 timer register
+	st.w	0xf000185c,d0
+.L61:
+
+; ..\GPTA0.c	   191  
+; ..\GPTA0.c	   192    ///  FPC3 configuration:
+; ..\GPTA0.c	   193    ///  - FPC3 input selection: 90,00 MHz
+; ..\GPTA0.c	   194    ///  - FPC3 operation mode: Delayed debounce filter mode on both edges
+; ..\GPTA0.c	   195    ///  - Filter clock selection: Use bus line 0 (=GPTA0 clock / 2^0 (= 90,00 
+; ..\GPTA0.c	   196    ///    MHz; 0,01 us))
+; ..\GPTA0.c	   197    ///  - FPC3 timer is decremented on glitch
+; ..\GPTA0.c	   198    ///  - FPC3 compare value is 0x0000
+; ..\GPTA0.c	   199  
+; ..\GPTA0.c	   200    GPTA0_FPCCTR3  =  0x00200000;  // load FPC3 control register
+	st.w	0xf0001860,d15
+.L62:
+
+; ..\GPTA0.c	   201    GPTA0_FPCTIM3  =  0x00000000;  // load FPC3 timer register
+	st.w	0xf0001864,d0
+.L63:
+
+; ..\GPTA0.c	   202  
+; ..\GPTA0.c	   203    ///  FPC4 configuration:
+; ..\GPTA0.c	   204    ///  - FPC4 input selection: 90,00 MHz
+; ..\GPTA0.c	   205    ///  - FPC4 operation mode: Delayed debounce filter mode on both edges
+; ..\GPTA0.c	   206    ///  - Filter clock selection: Use bus line 0 (=GPTA0 clock / 2^0 (= 90,00 
+; ..\GPTA0.c	   207    ///    MHz; 0,01 us))
+; ..\GPTA0.c	   208    ///  - FPC4 timer is decremented on glitch
+; ..\GPTA0.c	   209    ///  - FPC4 compare value is 0x0000
+; ..\GPTA0.c	   210  
+; ..\GPTA0.c	   211    GPTA0_FPCCTR4  =  0x00200000;  // load FPC4 control register
+	st.w	0xf0001868,d15
+.L64:
+
+; ..\GPTA0.c	   212    GPTA0_FPCTIM4  =  0x00000000;  // load FPC4 timer register
+	st.w	0xf000186c,d0
+.L65:
+
+; ..\GPTA0.c	   213  
+; ..\GPTA0.c	   214    ///  FPC5 configuration:
+; ..\GPTA0.c	   215    ///  - FPC5 input selection: 90,00 MHz
+; ..\GPTA0.c	   216    ///  - FPC5 operation mode: Delayed debounce filter mode on both edges
+; ..\GPTA0.c	   217    ///  - Filter clock selection: Use bus line 0 (=GPTA0 clock / 2^0 (= 90,00 
+; ..\GPTA0.c	   218    ///    MHz; 0,01 us))
+; ..\GPTA0.c	   219    ///  - FPC5 timer is decremented on glitch
+; ..\GPTA0.c	   220    ///  - FPC5 compare value is 0x0000
+; ..\GPTA0.c	   221  
+; ..\GPTA0.c	   222    GPTA0_FPCCTR5  =  0x00200000;  // load FPC5 control register
+	st.w	0xf0001870,d15
+.L66:
+
+; ..\GPTA0.c	   223    GPTA0_FPCTIM5  =  0x00000000;  // load FPC5 timer register
+	st.w	0xf0001874,d0
+.L67:
+
+; ..\GPTA0.c	   224  
+; ..\GPTA0.c	   225  
+; ..\GPTA0.c	   226    GPTA0_FPCSTAT  =  0x00000000;  // load FPC status register
+	st.w	0xf0001844,d0
+.L68:
+
+; ..\GPTA0.c	   227  
+; ..\GPTA0.c	   228  
+; ..\GPTA0.c	   229    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   230    ///  Configuration of Phase Discrimination Logic Cells 0 - 1:
+; ..\GPTA0.c	   231    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   232    ///  PDL0 configuratin:
+; ..\GPTA0.c	   233    ///  - PDL0 provide DCM0 cell input with FPC0 output (= 90,00 MHz)
+; ..\GPTA0.c	   234    ///  - PDL0 operates in '2 Sensor Mode' and provide DCM1 cell input with 
+; ..\GPTA0.c	   235    ///    FPC2 output (= 90,00 MHz)
+; ..\GPTA0.c	   236  
+; ..\GPTA0.c	   237    ///  PDL1 configuratin:
+; ..\GPTA0.c	   238    ///  - PDL1 provide DCM2 cell input with FPC3 output (= 90,00 MHz)
+; ..\GPTA0.c	   239    ///  - PDL1 operates in '2 Sensor Mode' and provide DCM3 cell input with 
+; ..\GPTA0.c	   240    ///    FPC5 output (= 90,00 MHz)
+; ..\GPTA0.c	   241  
+; ..\GPTA0.c	   242    GPTA0_PDLCTR   =  0x00000000;  // load PDL control register
+	st.w	0xf0001878,d0
+.L69:
+
+; ..\GPTA0.c	   243  
+; ..\GPTA0.c	   244    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   245    ///  Configuration of Duty Cycle Measurement and Limit Checking Cells 0 - 3:
+; ..\GPTA0.c	   246    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   247    ///  DCM0 configuration:
+; ..\GPTA0.c	   248    ///  - DCM0 input signal is 90,00 MHz
+; ..\GPTA0.c	   249    ///  - DCM0 capture the timer contents to CAV capture register on a falling 
+; ..\GPTA0.c	   250    ///    input signal edge
+; ..\GPTA0.c	   251  
+; ..\GPTA0.c	   252    GPTA0_DCMCTR0  =  0x00000000;  // load DCM control register 0
+	st.w	0xf0001880,d0
+.L70:
+
+; ..\GPTA0.c	   253    GPTA0_DCMCOV0  =  0x00000000;  // load DCM capture/compare register 0
+	st.w	0xf000188c,d0
+.L71:
+
+; ..\GPTA0.c	   254    GPTA0_DCMTIM0  =  0x00000000;  // load DCM timer register 0
+	st.w	0xf0001884,d0
+.L72:
+
+; ..\GPTA0.c	   255    GPTA0_DCMCAV0  =  0x00000000;  // load DCM capture register 0
+	st.w	0xf0001888,d0
+.L73:
+
+; ..\GPTA0.c	   256  
+; ..\GPTA0.c	   257    ///  DCM1 configuration:
+; ..\GPTA0.c	   258    ///  - DCM1 input signal is 90,00 MHz
+; ..\GPTA0.c	   259    ///  - DCM1 capture the timer contents to CAV capture register on a falling 
+; ..\GPTA0.c	   260    ///    input signal edge
+; ..\GPTA0.c	   261  
+; ..\GPTA0.c	   262    GPTA0_DCMCTR1  =  0x00000000;  // load DCM control register 1
+	st.w	0xf0001890,d0
+.L74:
+
+; ..\GPTA0.c	   263    GPTA0_DCMCOV1  =  0x00000000;  // load DCM capture/compare register 1
+	st.w	0xf000189c,d0
+.L75:
+
+; ..\GPTA0.c	   264    GPTA0_DCMTIM1  =  0x00000000;  // load DCM timer register 1
+	st.w	0xf0001894,d0
+.L76:
+
+; ..\GPTA0.c	   265    GPTA0_DCMCAV1  =  0x00000000;  // load DCM capture register 1
+	st.w	0xf0001898,d0
+.L77:
+
+; ..\GPTA0.c	   266  
+; ..\GPTA0.c	   267    ///  DCM2 configuration:
+; ..\GPTA0.c	   268    ///  - DCM2 input signal is 90,00 MHz
+; ..\GPTA0.c	   269    ///  - DCM2 capture the timer contents to CAV capture register on a falling 
+; ..\GPTA0.c	   270    ///    input signal edge
+; ..\GPTA0.c	   271  
+; ..\GPTA0.c	   272    GPTA0_DCMCTR2  =  0x00000000;  // load DCM control register 2
+	st.w	0xf00018a0,d0
+.L78:
+
+; ..\GPTA0.c	   273    GPTA0_DCMCOV2  =  0x00000000;  // load DCM capture/compare register 2
+	st.w	0xf00018ac,d0
+.L79:
+
+; ..\GPTA0.c	   274    GPTA0_DCMTIM2  =  0x00000000;  // load DCM timer register 2
+	st.w	0xf00018a4,d0
+.L80:
+
+; ..\GPTA0.c	   275    GPTA0_DCMCAV2  =  0x00000000;  // load DCM capture register 2
+	st.w	0xf00018a8,d0
+.L81:
+
+; ..\GPTA0.c	   276  
+; ..\GPTA0.c	   277    ///  DCM3 configuration:
+; ..\GPTA0.c	   278    ///  - DCM3 input signal is 90,00 MHz
+; ..\GPTA0.c	   279    ///  - DCM3 capture the timer contents to CAV capture register on a falling 
+; ..\GPTA0.c	   280    ///    input signal edge
+; ..\GPTA0.c	   281  
+; ..\GPTA0.c	   282    GPTA0_DCMCTR3  =  0x00000000;  // load DCM control register 3
+	st.w	0xf00018b0,d0
+.L82:
+
+; ..\GPTA0.c	   283    GPTA0_DCMCOV3  =  0x00000000;  // load DCM capture/compare register 3
+	st.w	0xf00018bc,d0
+.L83:
+
+; ..\GPTA0.c	   284    GPTA0_DCMTIM3  =  0x00000000;  // load DCM timer register 3
+	st.w	0xf00018b4,d0
+.L84:
+
+; ..\GPTA0.c	   285    GPTA0_DCMCAV3  =  0x00000000;  // load DCM capture register 3
+	st.w	0xf00018b8,d0
+.L85:
+
+; ..\GPTA0.c	   286  
+; ..\GPTA0.c	   287    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   288    ///  Configuration of Digital Phase Locked Loop Cell:
+; ..\GPTA0.c	   289    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   290    ///  - use DCM0 output signal (= no output signal enabled) as PLL input
+; ..\GPTA0.c	   291    ///  - period of the PLL input signal in GPTA clocks = 0
+; ..\GPTA0.c	   292    ///  - number of output pulses to be generated within one input signal 
+; ..\GPTA0.c	   293    ///    period = 0
+; ..\GPTA0.c	   294  
+; ..\GPTA0.c	   295    GPTA0_PLLCTR   =  0x00000000;  // load PLL control register
+	st.w	0xf00018c0,d0
+.L86:
+
+; ..\GPTA0.c	   296    GPTA0_PLLMTI   =  0x00000000;  // load PLL micro tick register
+	st.w	0xf00018c4,d0
+.L87:
+
+; ..\GPTA0.c	   297    GPTA0_PLLSTP   =  0x00000000;  // load PLL step register
+	st.w	0xf00018cc,d0
+.L88:
+
+; ..\GPTA0.c	   298    GPTA0_PLLREV   =  0x00000000;  // load PLL reload register
+	st.w	0xf00018d0,d0
+.L89:
+
+; ..\GPTA0.c	   299    GPTA0_PLLCNT   =  0x00000000;  // load PLL counter register
+	st.w	0xf00018c8,d0
+.L90:
+
+; ..\GPTA0.c	   300    GPTA0_PLLDTR   =  0x00000000;  // load PLL delta register
+; ..\GPTA0.c	   301  
+; ..\GPTA0.c	   302    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   303    ///  Configuration of GPTA Clock Bus 0 - 7:
+; ..\GPTA0.c	   304    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   305    ///  - Clock bus signal 0: GPTA0 clock / 2^0 (= 90,00 MHz; 0,01 us)
+; ..\GPTA0.c	   306    ///  - Clock bus signal 1: PLL output
+; ..\GPTA0.c	   307    ///  - Clock bus signal 2: DCM3 (= no output signal enabled)
+; ..\GPTA0.c	   308    ///  - Clock bus signal 3: DCM2 (= no output signal enabled)
+; ..\GPTA0.c	   309    ///  - Clock bus signal 4: DCM1 (= no output signal enabled)
+; ..\GPTA0.c	   310    ///  - Clock bus signal 5: DCM0 (= no output signal enabled)
+; ..\GPTA0.c	   311    ///  - Clock bus signal 6: FPC1 output (= 90,00 MHz)
+; ..\GPTA0.c	   312    ///  - Clock bus signal 7: FPC4 output (= 90,00 MHz)
+; ..\GPTA0.c	   313  
+; ..\GPTA0.c	   314    GPTA0_CKBCTR   =  0x0000FFFF;  // load clock bus control register
+	mov.u	d15,#65535
+	st.w	0xf00018d4,d0
+.L91:
+	st.w	0xf00018d8,d15
+.L92:
+
+; ..\GPTA0.c	   315  
+; ..\GPTA0.c	   316    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   317    ///  Configuration of Global Timers 0 - 1:
+; ..\GPTA0.c	   318    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   319    ///  GT0 configuration:
+; ..\GPTA0.c	   320    ///  - GT0 input is clock bus signal 0 (= GPTA0 clock / 2^0 (= 90,00 MHz; 
+; ..\GPTA0.c	   321    ///    0,01 us))
+; ..\GPTA0.c	   322    ///  - GT0 compare flag is the 9th bit of the substraction result
+; ..\GPTA0.c	   323    ///  - enable service request when the GT0 timer overflows
+; ..\GPTA0.c	   324  
+; ..\GPTA0.c	   325    GPTA0_GTCTR0   =  0x00000080;  // load GT control register 0
+	mov	d15,#128
+	st.w	0xf00018e0,d15
+.L93:
+
+; ..\GPTA0.c	   326    GPTA0_GTREV0   =  0x00424242;  // load GT reload value register 0
+; ..\GPTA0.c	   327    GPTA0_GTTIM0   =  0x00424242;  // load GT timer register 0
+; ..\GPTA0.c	   328  
+; ..\GPTA0.c	   329    ///  GT1 configuration:
+; ..\GPTA0.c	   330    ///  - GT1 input is clock bus signal 0 (= GPTA0 clock / 2^0 (= 90,00 MHz; 
+; ..\GPTA0.c	   331    ///    0,01 us))
+; ..\GPTA0.c	   332    ///  - GT1 compare flag is the 9th bit of the substraction result
+; ..\GPTA0.c	   333  
+; ..\GPTA0.c	   334    GPTA0_GTCTR1   =  0x00000000;  // load GT control register 1
+; ..\GPTA0.c	   335    GPTA0_GTREV1   =  0x00BABE23;  // load GT reload value register 1
+; ..\GPTA0.c	   336    GPTA0_GTTIM1   =  0x00BABE23;  // load GT timer register 1
+; ..\GPTA0.c	   337  
+; ..\GPTA0.c	   338    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   339    ///  Configuration of Global Timer Cells 0 - 31:
+; ..\GPTA0.c	   340    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   341    ///  Global Timer Cell 0 configuration:
+; ..\GPTA0.c	   342    ///  - GTC0 cell is enabled after initialization
+; ..\GPTA0.c	   343    ///  - GTC0 mode: Compare with GT1 timer
+; ..\GPTA0.c	   344    ///  - equal compare "="
+; ..\GPTA0.c	   345    ///  - action transfer: set the GTC0 output by an local event only
+; ..\GPTA0.c	   346  
+; ..\GPTA0.c	   347    GPTA0_GTCXR00  =  0x00C0FFEE;  // load GTC0 x register
+; ..\GPTA0.c	   348    GPTA0_GTCCTR00  =  0x00001803; // load GTC0 control register
+; ..\GPTA0.c	   349  
+; ..\GPTA0.c	   350    ///  Global Timer Cell 1 configuration:
+; ..\GPTA0.c	   351    ///  - GTC1 cell is enabled after initialization
+; ..\GPTA0.c	   352    ///  - GTC1 mode: Compare with GT1 timer
+; ..\GPTA0.c	   353    ///  - equal compare "="
+; ..\GPTA0.c	   354    ///  - output of GTC1 is connected to GPTA0_OUT0 (P0.0)
+; ..\GPTA0.c	   355    ///  - action transfer: reset the GTC1 output by an local event or copy the 
+; ..\GPTA0.c	   356    ///    previous cell action
+; ..\GPTA0.c	   357    ///  - bypass functionality for GTC1 cell is disabled
+; ..\GPTA0.c	   358  
+; ..\GPTA0.c	   359    GPTA0_GTCXR01  =  0x00EBBE00;  // load GTC1 x register
+; ..\GPTA0.c	   360    GPTA0_GTCCTR01  =  0x00003003; // load GTC1 control register
+; ..\GPTA0.c	   361  
+; ..\GPTA0.c	   362  
+; ..\GPTA0.c	   363    GPTA0_SRNR     =  0x00000000;  // load service request node redirection 
+; ..\GPTA0.c	   364                                   // register
+; ..\GPTA0.c	   365  
+; ..\GPTA0.c	   366    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   367    ///  Configuration of Local Timer Cells 0 - 63:
+; ..\GPTA0.c	   368    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   369    ///  Local Timer Cell 63 configuration:
+; ..\GPTA0.c	   370    ///  - compare uses normal sequence of timer bits
+; ..\GPTA0.c	   371    ///  - the input line is not connected to the LTC63 cell
+; ..\GPTA0.c	   372  
+; ..\GPTA0.c	   373    GPTA0_LTCXR63  =  0x00000000;  // load LTC63 x register
+; ..\GPTA0.c	   374    GPTA0_LTCCTR63  =  0x00000000; // load LTC63 control register
+; ..\GPTA0.c	   375  
+; ..\GPTA0.c	   376  
+; ..\GPTA0.c	   377    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   378    ///  Configuration of the used GPTA0 Port Pins:
+; ..\GPTA0.c	   379    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   380    ///  - P0.0 is used as  GPTA0 output signal 0 ( GPTA0_OUT0)
+; ..\GPTA0.c	   381    ///  - the push/pull function is activated
+; ..\GPTA0.c	   382    ///  - output driver characteristic: medium driver
+; ..\GPTA0.c	   383    ///  - the emergency stop function is disabled
+; ..\GPTA0.c	   384  
+; ..\GPTA0.c	   385    P0_IOCR0       = (P0_IOCR0 & ~0x000000F0) | 0x00000090; // load control 
+; ..\GPTA0.c	   386                                                            // register
+; ..\GPTA0.c	   387  
+; ..\GPTA0.c	   388  
+; ..\GPTA0.c	   389    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   390    ///  Configuration of Service Request Nodes 0 - 37:
+; ..\GPTA0.c	   391    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   392    ///  - SRN5 service request node configuration:
+; ..\GPTA0.c	   393    ///  - SRN5 interrupt priority level (SRPN) = 4
+; ..\GPTA0.c	   394    ///  - SRN5 CPU interrupt is selected
+; ..\GPTA0.c	   395  
+; ..\GPTA0.c	   396    GPTA0_SRC05    =  0x00001004;  // set service request control register
+; ..\GPTA0.c	   397  
+; ..\GPTA0.c	   398  
+; ..\GPTA0.c	   399    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   400    ///  Configuration of the GPTA-to-MSC Multiplexer:
+; ..\GPTA0.c	   401    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   402    #ifndef GPTA_TO_MSC_MULTIPLEXER_INITIALIZATION
+; ..\GPTA0.c	   403    #define GPTA_TO_MSC_MULTIPLEXER_INITIALIZATION
+; ..\GPTA0.c	   404    GPTA0_MMXCTR00  =  0x00000000; // load GPTA-to-MSC Multiplex register 00
+; ..\GPTA0.c	   405    GPTA0_MMXCTR01  =  0x00000000; // load GPTA-to-MSC Multiplex register 01
+; ..\GPTA0.c	   406    #endif // end #ifndef GPTA_TO_MSC_MULTIPLEXER_INITIALIZATION
+; ..\GPTA0.c	   407  
+; ..\GPTA0.c	   408    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   409    ///  Multiplexer Register Array FIFO:
+; ..\GPTA0.c	   410    ///  -----------------------------------------------------------------------
+; ..\GPTA0.c	   411  
+; ..\GPTA0.c	   412    GPTA0_MRACTL_MAEN  =  0;         //   disable multiplexer array
+	mov.u	d15,#16962
+	lea	a15,0xf0001838
+.L94:
+	addih	d15,d15,#66
+	st.w	0xf00018e4,d15
+.L95:
+	st.w	0xf00018e8,d15
+.L96:
+	mov.u	d15,#48675
+	st.w	0xf00018f0,d0
+.L97:
+	addih	d15,d15,#186
+	st.w	0xf00018f4,d15
+.L98:
+	st.w	0xf00018f8,d15
+.L99:
+	mov.u	d15,#65518
+	addih	d15,d15,#192
+	st.w	0xf0001904,d15
+.L100:
+	mov.u	d15,#6147
+	st.w	0xf0001900,d15
+.L101:
+	mov.u	d15,#48640
+	addih	d15,d15,#235
+	st.w	0xf000190c,d15
+.L102:
+	mov.u	d15,#12291
+	st.w	0xf0001908,d15
+.L103:
+	st.w	0xf0001830,d0
+.L104:
+	st.w	0xf0001bfc,d0
+.L105:
+	st.w	0xf0001bf8,d0
+.L106:
+	ld.w	d15,0xf0000c10
+	insert	d15,d15,#9,#4,#4
+	st.w	0xf0000c10,d15
+.L107:
+	mov.u	d15,#4100
+	st.w	0xf0001fe8,d15
+.L108:
+	st.w	0xf0001f00,d0
+.L109:
+	st.w	0xf0001f04,d0
+.L110:
+	ld.bu	d15,[a15]
+	insert	d15,d15,#0,#0,#1
+	st.b	[a15],d15
+
+; ..\GPTA0.c	   413    while(GPTA0_MRACTL_MAEN != 0);     // wait for bit MAEN
+.L4:
+	ld.bu	d15,[a15]
+	jnz.t	d15:0,.L4				; predicted taken
+.L111:
+
+; ..\GPTA0.c	   414    GPTA0_MRACTL_WCRES  =  1;        //   reset count
+	ld.bu	d15,[a15]
+	or	d15,#2
+	st.b	[a15],d15
+.L112:
+
+; ..\GPTA0.c	   415  
+; ..\GPTA0.c	   416  
+; ..\GPTA0.c	   417      // Default,Default,Default,Default,Default,Default,Default,Default
+; ..\GPTA0.c	   418      GPTA0_MRADIN = 0x00000000; // save GPTA0_OTMCR1 register
+	lea	a2,0xf000183c
+	mov	d15,#0
+	st.w	[a2],d15
+.L113:
+
+; ..\GPTA0.c	   419      // Default,Default,Default,Default,Default,Default,Default,Default
+; ..\GPTA0.c	   420      GPTA0_MRADIN = 0x00000000; // save GPTA0_OTMCR0 register
+	st.w	[a2],d15
+.L114:
+
+; ..\GPTA0.c	   421  
+; ..\GPTA0.c	   422  
+; ..\GPTA0.c	   423      // Default,Default,Default,Default
+; ..\GPTA0.c	   424      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH13 register
+	st.w	[a2],d15
+.L115:
+
+; ..\GPTA0.c	   425      // Default,Default,Default,Default
+; ..\GPTA0.c	   426      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL13 register
+	st.w	[a2],d15
+.L116:
+
+; ..\GPTA0.c	   427      // Default,Default,Default,Default
+; ..\GPTA0.c	   428      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH12 register
+	st.w	[a2],d15
+.L117:
+
+; ..\GPTA0.c	   429      // Default,Default,Default,Default
+; ..\GPTA0.c	   430      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL12 register
+	st.w	[a2],d15
+.L118:
+
+; ..\GPTA0.c	   431      // Default,Default,Default,Default
+; ..\GPTA0.c	   432      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH11 register
+	st.w	[a2],d15
+.L119:
+
+; ..\GPTA0.c	   433      // Default,Default,Default,Default
+; ..\GPTA0.c	   434      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL11 register
+	st.w	[a2],d15
+.L120:
+
+; ..\GPTA0.c	   435      // Default,Default,Default,Default
+; ..\GPTA0.c	   436      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH10 register
+	st.w	[a2],d15
+.L121:
+
+; ..\GPTA0.c	   437      // Default,Default,Default,Default
+; ..\GPTA0.c	   438      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL10 register
+	st.w	[a2],d15
+.L122:
+
+; ..\GPTA0.c	   439      // Default,Default,Default,Default
+; ..\GPTA0.c	   440      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH9 register
+	st.w	[a2],d15
+.L123:
+
+; ..\GPTA0.c	   441      // Default,Default,Default,Default
+; ..\GPTA0.c	   442      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL9 register
+	st.w	[a2],d15
+.L124:
+
+; ..\GPTA0.c	   443      // Default,Default,Default,Default
+; ..\GPTA0.c	   444      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH8 register
+	st.w	[a2],d15
+.L125:
+
+; ..\GPTA0.c	   445      // Default,Default,Default,Default
+; ..\GPTA0.c	   446      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL8 register
+	st.w	[a2],d15
+.L126:
+
+; ..\GPTA0.c	   447      // Default,Default,Default,Default
+; ..\GPTA0.c	   448      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH7 register
+	st.w	[a2],d15
+.L127:
+
+; ..\GPTA0.c	   449      // Default,Default,Default,Default
+; ..\GPTA0.c	   450      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL7 register
+	st.w	[a2],d15
+.L128:
+
+; ..\GPTA0.c	   451      // Default,Default,Default,Default
+; ..\GPTA0.c	   452      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH6 register
+	st.w	[a2],d15
+.L129:
+
+; ..\GPTA0.c	   453      // Default,Default,Default,Default
+; ..\GPTA0.c	   454      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL6 register
+	st.w	[a2],d15
+.L130:
+
+; ..\GPTA0.c	   455      // Default,Default,Default,Default
+; ..\GPTA0.c	   456      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH5 register
+	st.w	[a2],d15
+.L131:
+
+; ..\GPTA0.c	   457      // Default,Default,Default,Default
+; ..\GPTA0.c	   458      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL5 register
+	st.w	[a2],d15
+.L132:
+
+; ..\GPTA0.c	   459      // Default,Default,Default,Default
+; ..\GPTA0.c	   460      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH4 register
+	st.w	[a2],d15
+.L133:
+
+; ..\GPTA0.c	   461      // Default,Default,Default,Default
+; ..\GPTA0.c	   462      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL4 register
+	st.w	[a2],d15
+.L134:
+
+; ..\GPTA0.c	   463      // Default,Default,Default,Default
+; ..\GPTA0.c	   464      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH3 register
+	st.w	[a2],d15
+.L135:
+
+; ..\GPTA0.c	   465      // Default,Default,Default,Default
+; ..\GPTA0.c	   466      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL3 register
+	st.w	[a2],d15
+.L136:
+
+; ..\GPTA0.c	   467      // Default,Default,Default,Default
+; ..\GPTA0.c	   468      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH2 register
+	st.w	[a2],d15
+.L137:
+
+; ..\GPTA0.c	   469      // Default,Default,Default,Default
+; ..\GPTA0.c	   470      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL2 register
+	st.w	[a2],d15
+.L138:
+
+; ..\GPTA0.c	   471      // Default,Default,Default,Default
+; ..\GPTA0.c	   472      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH1 register
+	st.w	[a2],d15
+.L139:
+
+; ..\GPTA0.c	   473      // Default,Default,Default,Default
+; ..\GPTA0.c	   474      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRL1 register
+	st.w	[a2],d15
+.L140:
+
+; ..\GPTA0.c	   475      // Default,Default,Default,Default
+; ..\GPTA0.c	   476      GPTA0_MRADIN = 0x00000000; // save GPTA0_OMCRH0 register
+	st.w	[a2],d15
+.L141:
+
+; ..\GPTA0.c	   477      // Default,Default,Default,GPTA0_OUT0-GPTA0_GTC1
+; ..\GPTA0.c	   478      GPTA0_MRADIN = 0x00000001; // save GPTA0_OMCRL0 register
+	mov	d15,#1
+	st.w	[a2],d15
+.L142:
+
+; ..\GPTA0.c	   479  
+; ..\GPTA0.c	   480      // Default,Default,Default,Default
+; ..\GPTA0.c	   481      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH7 register
+	mov.u	d15,#12336
+	addih	d15,d15,#12336
+	st.w	[a2],d15
+.L143:
+
+; ..\GPTA0.c	   482      // Default,Default,Default,Default
+; ..\GPTA0.c	   483      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL7 register
+	st.w	[a2],d15
+.L144:
+
+; ..\GPTA0.c	   484      // Default,Default,Default,Default
+; ..\GPTA0.c	   485      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH6 register
+	st.w	[a2],d15
+.L145:
+
+; ..\GPTA0.c	   486      // Default,Default,Default,Default
+; ..\GPTA0.c	   487      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL6 register
+	st.w	[a2],d15
+.L146:
+
+; ..\GPTA0.c	   488      // Default,Default,Default,Default
+; ..\GPTA0.c	   489      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH5 register
+	st.w	[a2],d15
+.L147:
+
+; ..\GPTA0.c	   490      // Default,Default,Default,Default
+; ..\GPTA0.c	   491      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL5 register
+	st.w	[a2],d15
+.L148:
+
+; ..\GPTA0.c	   492      // Default,Default,Default,Default
+; ..\GPTA0.c	   493      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH4 register
+	st.w	[a2],d15
+.L149:
+
+; ..\GPTA0.c	   494      // Default,Default,Default,Default
+; ..\GPTA0.c	   495      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL4 register
+	st.w	[a2],d15
+.L150:
+
+; ..\GPTA0.c	   496      // Default,Default,Default,Default
+; ..\GPTA0.c	   497      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH3 register
+	st.w	[a2],d15
+.L151:
+
+; ..\GPTA0.c	   498      // Default,Default,Default,Default
+; ..\GPTA0.c	   499      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL3 register
+	st.w	[a2],d15
+.L152:
+
+; ..\GPTA0.c	   500      // Default,Default,Default,Default
+; ..\GPTA0.c	   501      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH2 register
+	st.w	[a2],d15
+.L153:
+
+; ..\GPTA0.c	   502      // Default,Default,Default,Default
+; ..\GPTA0.c	   503      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL2 register
+	st.w	[a2],d15
+.L154:
+
+; ..\GPTA0.c	   504      // Default,Default,Default,Default
+; ..\GPTA0.c	   505      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH1 register
+	st.w	[a2],d15
+.L155:
+
+; ..\GPTA0.c	   506      // Default,Default,Default,Default
+; ..\GPTA0.c	   507      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL1 register
+	st.w	[a2],d15
+.L156:
+
+; ..\GPTA0.c	   508      // Default,Default,Default,Default
+; ..\GPTA0.c	   509      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRH0 register
+	st.w	[a2],d15
+.L157:
+
+; ..\GPTA0.c	   510      // Default,Default,Default,Default
+; ..\GPTA0.c	   511      GPTA0_MRADIN = 0x30303030; // save GPTA0_LIMCRL0 register
+	st.w	[a2],d15
+.L158:
+
+; ..\GPTA0.c	   512  
+; ..\GPTA0.c	   513      // Default,Default,Default,Default
+; ..\GPTA0.c	   514      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRH3 register
+	mov.u	d15,#16448
+	addih	d15,d15,#16448
+	st.w	[a2],d15
+.L159:
+
+; ..\GPTA0.c	   515      // Default,Default,Default,Default
+; ..\GPTA0.c	   516      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRL3 register
+	st.w	[a2],d15
+.L160:
+
+; ..\GPTA0.c	   517      // Default,Default,Default,Default
+; ..\GPTA0.c	   518      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRH2 register
+	st.w	[a2],d15
+.L161:
+
+; ..\GPTA0.c	   519      // Default,Default,Default,Default
+; ..\GPTA0.c	   520      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRL2 register
+	st.w	[a2],d15
+.L162:
+
+; ..\GPTA0.c	   521      // Default,Default,Default,Default
+; ..\GPTA0.c	   522      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRH1 register
+	st.w	[a2],d15
+.L163:
+
+; ..\GPTA0.c	   523      // Default,Default,Default,Default
+; ..\GPTA0.c	   524      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRL1 register
+	st.w	[a2],d15
+.L164:
+
+; ..\GPTA0.c	   525      // Default,Default,Default,Default
+; ..\GPTA0.c	   526      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRH0 register
+	st.w	[a2],d15
+.L165:
+
+; ..\GPTA0.c	   527      // Default,Default,Default,Default
+; ..\GPTA0.c	   528      GPTA0_MRADIN = 0x40404040; // save GPTA0_GIMCRL0 register
+	st.w	[a2],d15
+.L166:
+
+; ..\GPTA0.c	   529  
+; ..\GPTA0.c	   530    GPTA0_MRACTL_MAEN  =  1;         //   enable multiplexer array
+	ld.bu	d15,[a15]
+	or	d15,#1
+	st.b	[a15],d15
+.L167:
+
+; ..\GPTA0.c	   531  
+; ..\GPTA0.c	   532    // USER CODE BEGIN (Init,3)
+; ..\GPTA0.c	   533  
+; ..\GPTA0.c	   534    // USER CODE END
+; ..\GPTA0.c	   535  
+; ..\GPTA0.c	   536    //// - GPTA0 GT0 timer is not started after initialization; to start the 
+; ..\GPTA0.c	   537    ////   GT0 timer use the macro GPTA0_vStartGTTimer(0)
+; ..\GPTA0.c	   538  
+; ..\GPTA0.c	   539    //// - GPTA0 GT1 timer is not started after initialization; to start the 
+; ..\GPTA0.c	   540    ////   GT1 timer use the macro GPTA0_vStartGTTimer(1)
+; ..\GPTA0.c	   541  
+; ..\GPTA0.c	   542    GPTA0_EDCTR_G0EN  =  1;          // enable GPTA0 timer clock
+	ld.bu	d15,0xf0001c01
+	st.t	0xf0001c01:0,#1
+.L168:
+
+; ..\GPTA0.c	   543  
+; ..\GPTA0.c	   544  
+; ..\GPTA0.c	   545    // USER CODE BEGIN (Init,4)
+; ..\GPTA0.c	   546  
+; ..\GPTA0.c	   547    // USER CODE END
+; ..\GPTA0.c	   548  
+; ..\GPTA0.c	   549  } //  End of function GPTA0_vInit
+	ret
+.L25:
+	
+__GPTA0_vInit_function_end:
+	.size	GPTA0_vInit,__GPTA0_vInit_function_end-GPTA0_vInit
+.L17:
+	; End of function
+	
+	.sdecl	'.text.intvec.004',code
+	.sect	'.text.intvec.004'
+
+; ..\GPTA0.c	   550  
+; ..\GPTA0.c	   551  
+; ..\GPTA0.c	   552  //****************************************************************************
+; ..\GPTA0.c	   553  // @Function      void GPTA0_viSRN5(void) 
+; ..\GPTA0.c	   554  //
+; ..\GPTA0.c	   555  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   556  // @Description   This is the interrupt service routine for the Service 
+; ..\GPTA0.c	   557  //                Request Node 5 of the GPTA0 module. 
+; ..\GPTA0.c	   558  //                Please note that you have to add application specific code 
+; ..\GPTA0.c	   559  //                to this function.
+; ..\GPTA0.c	   560  //
+; ..\GPTA0.c	   561  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   562  // @Returnvalue   None
+; ..\GPTA0.c	   563  //
+; ..\GPTA0.c	   564  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   565  // @Parameters    None
+; ..\GPTA0.c	   566  //
+; ..\GPTA0.c	   567  //----------------------------------------------------------------------------
+; ..\GPTA0.c	   568  // @Date          21.03.2012
+; ..\GPTA0.c	   569  //
+; ..\GPTA0.c	   570  //****************************************************************************
+; ..\GPTA0.c	   571  
+; ..\GPTA0.c	   572  // USER CODE BEGIN (SRN5,1)
+; ..\GPTA0.c	   573  volatile unsigned int countTimerOverflows = 0;
+; ..\GPTA0.c	   574  // USER CODE END
+; ..\GPTA0.c	   575  
+; ..\GPTA0.c	   576  void INTERRUPT (GPTA0_SRN5INT) GPTA0_viSRN5(void)
+	movh.a	a14,#@his(GPTA0_viSRN5)
+	lea	a14,[a14]@los(GPTA0_viSRN5)
+	ji	a14
+	.sdecl	'.text.GPTA0.GPTA0_viSRN5',code,cluster('GPTA0_viSRN5')
+	.sect	'.text.GPTA0.GPTA0_viSRN5'
+	.align	2
+	
+	.global	GPTA0_viSRN5
+; Function GPTA0_viSRN5
+.L8:
+GPTA0_viSRN5:	.type	func
+
+; ..\GPTA0.c	   577  {
+; ..\GPTA0.c	   578    countTimerOverflows++;
+	movh.a	a15,#@his(countTimerOverflows)
+	ld.w	d15,[a15]@los(countTimerOverflows)
+	add	d15,#1
+	st.w	[a15]@los(countTimerOverflows),d15
+.L173:
+
+; ..\GPTA0.c	   579  
+; ..\GPTA0.c	   580    GPTA0_SRSC0 = 0x00002000;  //  reset GT0 service request bit
+	mov.u	d15,#8192
+	st.w	0xf0001810,d15
+.L174:
+
+; ..\GPTA0.c	   581  } //  End of function GPTA0_viSRN5
+	rfe
+.L28:
+	
+__GPTA0_viSRN5_function_end:
+	.size	GPTA0_viSRN5,__GPTA0_viSRN5_function_end-GPTA0_viSRN5
+.L22:
+	; End of function
+	
+	.sdecl	'.data.GPTA0.countTimerOverflows',data,cluster('countTimerOverflows')
+	.sect	'.data.GPTA0.countTimerOverflows'
+	.global	countTimerOverflows
+	.align	2
+countTimerOverflows:	.type	object
+	.size	countTimerOverflows,4
+	.space	4
+	.calls	'GPTA0_vInit','MAIN_vWriteWDTCON0'
+	.calls	'GPTA0_vInit','',8
+	.extern	MAIN_vWriteWDTCON0
+	.calls	'GPTA0_viSRN5','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L10:
+	.word	979
+	.half	3
+	.word	.L11
+	.byte	4
+.L9:
+	.byte	1
+	.byte	'..\\GPTA0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L12
+	.byte	2
+	.byte	'MAIN_vWriteWDTCON0',0,1,139,1,6,1,1,1,1,3
+	.byte	'uwValue',0,1,139,1,31
+	.word	.L31-.L10
+	.byte	0
+.L31:
+	.byte	4
+	.byte	'unsigned int',0,4,7
+.L26:
+	.byte	5
+	.word	156
+	.byte	6
+	.byte	'__size_t',0,2,1,1
+	.word	156
+	.byte	6
+	.byte	'__codeptr',0,2,1,1
+	.word	.L32-.L10
+.L32:
+	.byte	7
+	.word	.L33-.L10
+.L33:
+	.byte	8,1,6
+	.byte	'ubyte',0,1,69,24
+	.word	.L34-.L10
+.L34:
+	.byte	4
+	.byte	'unsigned char',0,1,8,6
+	.byte	'ushort',0,1,71,24
+	.word	.L35-.L10
+.L35:
+	.byte	4
+	.byte	'unsigned short int',0,2,7,6
+	.byte	'uword',0,1,73,24
+	.word	156
+	.byte	6
+	.byte	'T_Reg32',0,1,110,4
+	.word	.L36-.L10
+.L36:
+	.byte	5
+	.word	.L37-.L10
+.L37:
+	.byte	9,1,76,18,4,10
+	.byte	'bit0',0,1
+	.word	233
+	.byte	1,7,2,35,0,10
+	.byte	'bit1',0,1
+	.word	233
+	.byte	1,6,2,35,0,10
+	.byte	'bit2',0,1
+	.word	233
+	.byte	1,5,2,35,0,10
+	.byte	'bit3',0,1
+	.word	233
+	.byte	1,4,2,35,0,10
+	.byte	'bit4',0,1
+	.word	233
+	.byte	1,3,2,35,0,10
+	.byte	'bit5',0,1
+	.word	233
+	.byte	1,2,2,35,0,10
+	.byte	'bit6',0,1
+	.word	233
+	.byte	1,1,2,35,0,10
+	.byte	'bit7',0,1
+	.word	233
+	.byte	1,0,2,35,0,10
+	.byte	'bit8',0,1
+	.word	233
+	.byte	1,7,2,35,1,10
+	.byte	'bit9',0,1
+	.word	233
+	.byte	1,6,2,35,1,10
+	.byte	'bit10',0,1
+	.word	233
+	.byte	1,5,2,35,1,10
+	.byte	'bit11',0,1
+	.word	233
+	.byte	1,4,2,35,1,10
+	.byte	'bit12',0,1
+	.word	233
+	.byte	1,3,2,35,1,10
+	.byte	'bit13',0,1
+	.word	233
+	.byte	1,2,2,35,1,10
+	.byte	'bit14',0,1
+	.word	233
+	.byte	1,1,2,35,1,10
+	.byte	'bit15',0,1
+	.word	233
+	.byte	1,0,2,35,1,10
+	.byte	'bit16',0,1
+	.word	233
+	.byte	1,7,2,35,2,10
+	.byte	'bit17',0,1
+	.word	233
+	.byte	1,6,2,35,2,10
+	.byte	'bit18',0,1
+	.word	233
+	.byte	1,5,2,35,2,10
+	.byte	'bit19',0,1
+	.word	233
+	.byte	1,4,2,35,2,10
+	.byte	'bit20',0,1
+	.word	233
+	.byte	1,3,2,35,2,10
+	.byte	'bit21',0,1
+	.word	233
+	.byte	1,2,2,35,2,10
+	.byte	'bit22',0,1
+	.word	233
+	.byte	1,1,2,35,2,10
+	.byte	'bit23',0,1
+	.word	233
+	.byte	1,0,2,35,2,10
+	.byte	'bit24',0,1
+	.word	233
+	.byte	1,7,2,35,3,10
+	.byte	'bit25',0,1
+	.word	233
+	.byte	1,6,2,35,3,10
+	.byte	'bit26',0,1
+	.word	233
+	.byte	1,5,2,35,3,10
+	.byte	'bit27',0,1
+	.word	233
+	.byte	1,4,2,35,3,10
+	.byte	'bit28',0,1
+	.word	233
+	.byte	1,3,2,35,3,10
+	.byte	'bit29',0,1
+	.word	233
+	.byte	1,2,2,35,3,10
+	.byte	'bit30',0,1
+	.word	233
+	.byte	1,1,2,35,3,10
+	.byte	'bit31',0,1
+	.word	233
+	.byte	1,0,2,35,3,0,6
+	.byte	'CAN_SWObj',0,3,100,4
+	.word	.L38-.L10
+.L38:
+	.byte	9,3,93,9,20,11
+	.byte	'usMOCfg',0,2
+	.word	265
+	.byte	2,35,0,11
+	.byte	'uwID',0,4
+	.word	156
+	.byte	2,35,2,11
+	.byte	'uwMask',0,4
+	.word	156
+	.byte	2,35,6,11
+	.byte	'ubData',0,8
+	.word	.L39-.L10
+	.byte	2,35,10,11
+	.byte	'usCounter',0,2
+	.word	265
+	.byte	2,35,18,0
+.L39:
+	.byte	12,8
+	.word	233
+	.byte	13,7,0
+.L29:
+	.byte	5
+	.word	156
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L11:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0
+	.byte	3,5,0,3,8,58,15,59,15,57,15,73,19,0,0,4,36,0,3,8,11,15,62,15,0,0,5,53,0,73,19,0,0,6,22,0,3,8,58,15,59
+	.byte	15,57,15,73,19,0,0,7,15,0,73,19,0,0,8,21,0,54,15,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,13,0,3,8,11
+	.byte	15,73,19,13,15,12,15,56,9,0,0,11,13,0,3,8,11,15,73,19,56,9,0,0,12,1,1,11,15,73,19,0,0,13,33,0,47,15,0
+	.byte	0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L12:
+	.word	.L41-.L40
+.L40:
+	.half	3
+	.word	.L43-.L42
+.L42:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.h',0,0,0,0
+	.byte	'..\\GPTA0.c',0,0,0,0
+	.byte	'..\\CAN.h',0,0,0,0,0
+.L43:
+.L41:
+	.sdecl	'.debug_info',debug,cluster('GPTA0_vInit')
+	.sect	'.debug_info'
+.L13:
+	.word	177
+	.half	3
+	.word	.L14
+	.byte	4,1
+	.byte	'..\\GPTA0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L16,.L15
+	.byte	2
+	.word	.L9
+	.byte	3
+	.byte	'GPTA0_vInit',0,1,122,6,1,1,1
+	.word	.L6,.L25,.L5
+	.byte	4
+	.word	.L6,.L25
+	.byte	5
+	.byte	'uwTemp',0,1,127,25
+	.word	.L26,.L27
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('GPTA0_vInit')
+	.sect	'.debug_abbrev'
+.L14:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('GPTA0_vInit')
+	.sect	'.debug_line'
+.L15:
+	.word	.L45-.L44
+.L44:
+	.half	3
+	.word	.L47-.L46
+.L46:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\GPTA0.c',0,0,0,0,0
+.L47:
+	.byte	5,3,7,0,5,2
+	.word	.L6
+	.byte	3,145,1,1,5,6,9
+	.half	.L48-.L6
+	.byte	3,104,1,5,3,9
+	.half	.L30-.L48
+	.byte	3,24,1,5,31,9
+	.half	.L49-.L30
+	.byte	3,1,1,5,30,9
+	.half	.L50-.L49
+	.byte	3,1,1,5,48,9
+	.half	.L3-.L50
+	.byte	3,1,1,5,31,9
+	.half	.L51-.L3
+	.byte	3,1,1,5,30,9
+	.half	.L52-.L51
+	.byte	3,1,1,5,3,9
+	.half	.L53-.L52
+	.byte	3,1,1,5,21,9
+	.half	.L54-.L53
+	.byte	1,5,31,9
+	.half	.L55-.L54
+	.byte	3,15,1,9
+	.half	.L56-.L55
+	.byte	3,1,1,9
+	.half	.L57-.L56
+	.byte	3,10,1,9
+	.half	.L58-.L57
+	.byte	3,1,1,9
+	.half	.L59-.L58
+	.byte	3,10,1,9
+	.half	.L60-.L59
+	.byte	3,1,1,9
+	.half	.L61-.L60
+	.byte	3,10,1,9
+	.half	.L62-.L61
+	.byte	3,1,1,9
+	.half	.L63-.L62
+	.byte	3,10,1,9
+	.half	.L64-.L63
+	.byte	3,1,1,9
+	.half	.L65-.L64
+	.byte	3,10,1,9
+	.half	.L66-.L65
+	.byte	3,1,1,9
+	.half	.L67-.L66
+	.byte	3,3,1,9
+	.half	.L68-.L67
+	.byte	3,16,1,9
+	.half	.L69-.L68
+	.byte	3,10,1,9
+	.half	.L70-.L69
+	.byte	3,1,1,9
+	.half	.L71-.L70
+	.byte	3,1,1,9
+	.half	.L72-.L71
+	.byte	3,1,1,9
+	.half	.L73-.L72
+	.byte	3,7,1,9
+	.half	.L74-.L73
+	.byte	3,1,1,9
+	.half	.L75-.L74
+	.byte	3,1,1,9
+	.half	.L76-.L75
+	.byte	3,1,1,9
+	.half	.L77-.L76
+	.byte	3,7,1,9
+	.half	.L78-.L77
+	.byte	3,1,1,9
+	.half	.L79-.L78
+	.byte	3,1,1,9
+	.half	.L80-.L79
+	.byte	3,1,1,9
+	.half	.L81-.L80
+	.byte	3,7,1,9
+	.half	.L82-.L81
+	.byte	3,1,1,9
+	.half	.L83-.L82
+	.byte	3,1,1,9
+	.half	.L84-.L83
+	.byte	3,1,1,9
+	.half	.L85-.L84
+	.byte	3,10,1,9
+	.half	.L86-.L85
+	.byte	3,1,1,9
+	.half	.L87-.L86
+	.byte	3,1,1,9
+	.half	.L88-.L87
+	.byte	3,1,1,9
+	.half	.L89-.L88
+	.byte	3,1,1,9
+	.half	.L90-.L89
+	.byte	3,15,1,3,114,1,9
+	.half	.L91-.L90
+	.byte	3,14,1,9
+	.half	.L92-.L91
+	.byte	3,11,1,9
+	.half	.L93-.L92
+	.byte	3,1,1,5,26,3,214,0,1,5,31,9
+	.half	.L94-.L93
+	.byte	3,170,127,1,9
+	.half	.L95-.L94
+	.byte	3,1,1,9
+	.half	.L96-.L95
+	.byte	3,8,1,3,127,1,9
+	.half	.L97-.L96
+	.byte	3,1,1,9
+	.half	.L98-.L97
+	.byte	3,1,1,9
+	.half	.L99-.L98
+	.byte	3,11,1,5,32,9
+	.half	.L100-.L99
+	.byte	3,1,1,5,31,9
+	.half	.L101-.L100
+	.byte	3,11,1,5,32,9
+	.half	.L102-.L101
+	.byte	3,1,1,5,31,9
+	.half	.L103-.L102
+	.byte	3,3,1,9
+	.half	.L104-.L103
+	.byte	3,10,1,5,32,9
+	.half	.L105-.L104
+	.byte	3,1,1,5,57,9
+	.half	.L106-.L105
+	.byte	3,11,1,5,31,9
+	.half	.L107-.L106
+	.byte	3,11,1,5,32,9
+	.half	.L108-.L107
+	.byte	3,8,1,9
+	.half	.L109-.L108
+	.byte	3,1,1,5,26,9
+	.half	.L110-.L109
+	.byte	3,7,1,5,31,9
+	.half	.L4-.L110
+	.byte	3,1,1,5,27,9
+	.half	.L111-.L4
+	.byte	3,1,1,5,30,9
+	.half	.L112-.L111
+	.byte	3,4,1,9
+	.half	.L113-.L112
+	.byte	3,2,1,9
+	.half	.L114-.L113
+	.byte	3,4,1,9
+	.half	.L115-.L114
+	.byte	3,2,1,9
+	.half	.L116-.L115
+	.byte	3,2,1,9
+	.half	.L117-.L116
+	.byte	3,2,1,9
+	.half	.L118-.L117
+	.byte	3,2,1,9
+	.half	.L119-.L118
+	.byte	3,2,1,9
+	.half	.L120-.L119
+	.byte	3,2,1,9
+	.half	.L121-.L120
+	.byte	3,2,1,9
+	.half	.L122-.L121
+	.byte	3,2,1,9
+	.half	.L123-.L122
+	.byte	3,2,1,9
+	.half	.L124-.L123
+	.byte	3,2,1,9
+	.half	.L125-.L124
+	.byte	3,2,1,9
+	.half	.L126-.L125
+	.byte	3,2,1,9
+	.half	.L127-.L126
+	.byte	3,2,1,9
+	.half	.L128-.L127
+	.byte	3,2,1,9
+	.half	.L129-.L128
+	.byte	3,2,1,9
+	.half	.L130-.L129
+	.byte	3,2,1,9
+	.half	.L131-.L130
+	.byte	3,2,1,9
+	.half	.L132-.L131
+	.byte	3,2,1,9
+	.half	.L133-.L132
+	.byte	3,2,1,9
+	.half	.L134-.L133
+	.byte	3,2,1,9
+	.half	.L135-.L134
+	.byte	3,2,1,9
+	.half	.L136-.L135
+	.byte	3,2,1,9
+	.half	.L137-.L136
+	.byte	3,2,1,9
+	.half	.L138-.L137
+	.byte	3,2,1,9
+	.half	.L139-.L138
+	.byte	3,2,1,9
+	.half	.L140-.L139
+	.byte	3,2,1,9
+	.half	.L141-.L140
+	.byte	3,2,1,9
+	.half	.L142-.L141
+	.byte	3,3,1,9
+	.half	.L143-.L142
+	.byte	3,2,1,9
+	.half	.L144-.L143
+	.byte	3,2,1,9
+	.half	.L145-.L144
+	.byte	3,2,1,9
+	.half	.L146-.L145
+	.byte	3,2,1,9
+	.half	.L147-.L146
+	.byte	3,2,1,9
+	.half	.L148-.L147
+	.byte	3,2,1,9
+	.half	.L149-.L148
+	.byte	3,2,1,9
+	.half	.L150-.L149
+	.byte	3,2,1,9
+	.half	.L151-.L150
+	.byte	3,2,1,9
+	.half	.L152-.L151
+	.byte	3,2,1,9
+	.half	.L153-.L152
+	.byte	3,2,1,9
+	.half	.L154-.L153
+	.byte	3,2,1,9
+	.half	.L155-.L154
+	.byte	3,2,1,9
+	.half	.L156-.L155
+	.byte	3,2,1,9
+	.half	.L157-.L156
+	.byte	3,2,1,9
+	.half	.L158-.L157
+	.byte	3,3,1,9
+	.half	.L159-.L158
+	.byte	3,2,1,9
+	.half	.L160-.L159
+	.byte	3,2,1,9
+	.half	.L161-.L160
+	.byte	3,2,1,9
+	.half	.L162-.L161
+	.byte	3,2,1,9
+	.half	.L163-.L162
+	.byte	3,2,1,9
+	.half	.L164-.L163
+	.byte	3,2,1,9
+	.half	.L165-.L164
+	.byte	3,2,1,5,26,9
+	.half	.L166-.L165
+	.byte	3,2,1,5,25,9
+	.half	.L167-.L166
+	.byte	3,12,1,5,1,9
+	.half	.L168-.L167
+	.byte	3,7,1,7,9
+	.half	.L17-.L168
+	.byte	0,1,1
+.L45:
+	.sdecl	'.debug_ranges',debug,cluster('GPTA0_vInit')
+	.sect	'.debug_ranges'
+.L16:
+	.word	-1,.L6,0,.L17-.L6,0,0
+	.sdecl	'.debug_info',debug,cluster('GPTA0_viSRN5')
+	.sect	'.debug_info'
+.L18:
+	.word	159
+	.half	3
+	.word	.L19
+	.byte	4,1
+	.byte	'..\\GPTA0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L21,.L20
+	.byte	2
+	.word	.L9
+	.byte	3
+	.byte	'GPTA0_viSRN5',0,1,192,4,32,1,1,1
+	.word	.L8,.L28,.L7
+	.byte	4
+	.word	.L8,.L28
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('GPTA0_viSRN5')
+	.sect	'.debug_abbrev'
+.L19:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('GPTA0_viSRN5')
+	.sect	'.debug_line'
+.L20:
+	.word	.L170-.L169
+.L169:
+	.half	3
+	.word	.L172-.L171
+.L171:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\GPTA0.c',0,0,0,0,0
+.L172:
+	.byte	5,24,7,0,5,2
+	.word	.L8
+	.byte	3,193,4,1,5,27,9
+	.half	.L173-.L8
+	.byte	3,2,1,5,1,9
+	.half	.L174-.L173
+	.byte	3,1,1,7,9
+	.half	.L22-.L174
+	.byte	0,1,1
+.L170:
+	.sdecl	'.debug_ranges',debug,cluster('GPTA0_viSRN5')
+	.sect	'.debug_ranges'
+.L21:
+	.word	-1,.L8,0,.L22-.L8,0,0
+	.sdecl	'.debug_info',debug,cluster('countTimerOverflows')
+	.sect	'.debug_info'
+.L23:
+	.word	144
+	.half	3
+	.word	.L24
+	.byte	4,1
+	.byte	'..\\GPTA0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1,2
+	.word	.L9
+	.byte	3
+	.byte	'countTimerOverflows',0,2,189,4,23
+	.word	.L29
+	.byte	1,5,3
+	.word	countTimerOverflows
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('countTimerOverflows')
+	.sect	'.debug_abbrev'
+.L24:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('GPTA0_vInit')
+	.sect	'.debug_loc'
+.L5:
+	.word	-1,.L6,.L6-.L6,.L30-.L6
+	.half	2
+	.byte	138,0
+	.word	.L30-.L6,.L25-.L6
+	.half	2
+	.byte	138,8
+	.word	.L25-.L6,.L25-.L6
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L27:
+	.word	-1,.L6,.L6-.L6,.L25-.L6
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('GPTA0_viSRN5')
+	.sect	'.debug_loc'
+.L7:
+	.word	-1,.L8,.L8-.L8,.L28-.L8
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L175:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('GPTA0_vInit')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L175,.L6,.L25-.L6
+	.byte	4
+	.word	(.L30-.L6)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L25-.L30)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('GPTA0_viSRN5')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L175,.L8,.L28-.L8
+
+; ..\GPTA0.c	   582  
+; ..\GPTA0.c	   583  
+; ..\GPTA0.c	   584  
+; ..\GPTA0.c	   585  // USER CODE BEGIN (GPTA0_General,10)
+; ..\GPTA0.c	   586  
+; ..\GPTA0.c	   587  // USER CODE END
+; ..\GPTA0.c	   588  
+
+	; Module end

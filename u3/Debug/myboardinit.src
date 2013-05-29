@@ -1,0 +1,1614 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc5964a -c99 --dep-file=.myboardinit.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=myboardinit.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o myboardinit.src
+	; Module start
+	.name	"myboardinit"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.myboardinit.MAIN_vInit',code,cluster('MAIN_vInit')
+	.sect	'.text.myboardinit.MAIN_vInit'
+	.align	2
+	
+	.global	MAIN_vInit
+
+; ..\myboardinit.c	     1  //****************************************************************************
+; ..\myboardinit.c	     2  // @Project       motencpot
+; ..\myboardinit.c	     3  // @Module        myboardinit.c
+; ..\myboardinit.c	     4  // @Author        (alphabet.) Andreas Doepkens, Brian Schueler
+; ..\myboardinit.c	     5  // @Filename      MAIN.c
+; ..\myboardinit.c	     6  // @Date          21.03.2012
+; ..\myboardinit.c	     7  //
+; ..\myboardinit.c	     8  // Alle Funktionen von DAvE erzeugt und aus MAIN.c nach hier ausgelagert
+; ..\myboardinit.c	     9  //
+; ..\myboardinit.c	    10  //****************************************************************************
+; ..\myboardinit.c	    11  #include "myboardinit.h"
+; ..\myboardinit.c	    12  
+; ..\myboardinit.c	    13  //****************************************************************************
+; ..\myboardinit.c	    14  // @Global Variables
+; ..\myboardinit.c	    15  //****************************************************************************
+; ..\myboardinit.c	    16  volatile unsigned int DummyToForceRead;
+; ..\myboardinit.c	    17  
+; ..\myboardinit.c	    18  void MAIN_vInit(void)
+; Function MAIN_vInit
+.L50:
+MAIN_vInit:	.type	func
+
+; ..\myboardinit.c	    19  {
+; ..\myboardinit.c	    20    // USER CODE BEGIN (Init,2)
+; ..\myboardinit.c	    21  
+; ..\myboardinit.c	    22    // USER CODE END
+; ..\myboardinit.c	    23  
+; ..\myboardinit.c	    24    //// -----------------------------------------------------------------------
+; ..\myboardinit.c	    25    //// Begin of Important Settings for the Start-Up File
+; ..\myboardinit.c	    26    //// -----------------------------------------------------------------------
+; ..\myboardinit.c	    27    ///  All following settings must be set in the start-up file. You can use
+; ..\myboardinit.c	    28    ///  DAvE's project file (*.dpt) to include this register values into your
+; ..\myboardinit.c	    29    ///  compiler EDE.
+; ..\myboardinit.c	    30  
+; ..\myboardinit.c	    31      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    32      ///  System Peripheral Bus Control Unit (SBCU):
+; ..\myboardinit.c	    33      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    34      ///  SBCU starvation protection is enabled
+; ..\myboardinit.c	    35      ///  the debug trace is enabled. Error information is captured in
+; ..\myboardinit.c	    36      ///  register SBCU_EADD, SBCU_EDAT and SBCU_ECON
+; ..\myboardinit.c	    37      ///  sample period of request for starvation protection: 64
+; ..\myboardinit.c	    38      ///  SBCU bus time-out value: 65536 cycles
+; ..\myboardinit.c	    39  
+; ..\myboardinit.c	    40      //// this register must be set in the start-up file
+; ..\myboardinit.c	    41      //// SBCU_CON  =  0x4009FFFF;
+; ..\myboardinit.c	    42  
+; ..\myboardinit.c	    43      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    44      ///  LMB External Bus Unit (EBU):
+; ..\myboardinit.c	    45      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    46      ///  - enable the EBU module clock
+; ..\myboardinit.c	    47      ///  - disable EndInit Protection of the CLC Register
+; ..\myboardinit.c	    48      ///  - request EBU to run off input clock divided by 1
+; ..\myboardinit.c	    49  
+; ..\myboardinit.c	    50      //// this register must be set in the start-up file
+; ..\myboardinit.c	    51      //// EBU_CLC  =  0x00110000;
+; ..\myboardinit.c	    52  
+; ..\myboardinit.c	    53      ///  External Arbitration:
+; ..\myboardinit.c	    54      ///  - EBU is disabled
+; ..\myboardinit.c	    55  
+; ..\myboardinit.c	    56      //// this register must be set in the start-up file
+; ..\myboardinit.c	    57      //// EBU_MODCON  =  0x00000000;
+; ..\myboardinit.c	    58  
+; ..\myboardinit.c	    59      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    60      ///  Data Memory Interface (DMI):
+; ..\myboardinit.c	    61      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    62      ///  - No Data Cache
+; ..\myboardinit.c	    63      ///  - 128 Kbyte Data Memory
+; ..\myboardinit.c	    64  
+; ..\myboardinit.c	    65      //// this register must be set in the start-up file
+; ..\myboardinit.c	    66      //// DMI_CON  =  0x08000802;
+; ..\myboardinit.c	    67  
+; ..\myboardinit.c	    68      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    69      ///  Program Memory Interface (PMI):
+; ..\myboardinit.c	    70      ///  ---------------------------------------------------------------------
+; ..\myboardinit.c	    71      ///  - No Instruction Cache
+; ..\myboardinit.c	    72      ///  - 40 Kbyte Program Memory
+; ..\myboardinit.c	    73  
+; ..\myboardinit.c	    74      //// this register must be set in the start-up file
+; ..\myboardinit.c	    75      //// PMI_CON2  =  0x02800284;
+; ..\myboardinit.c	    76  
+; ..\myboardinit.c	    77    //// -----------------------------------------------------------------------
+; ..\myboardinit.c	    78    //// End of Important Settings for the Start-Up File
+; ..\myboardinit.c	    79    //// -----------------------------------------------------------------------
+; ..\myboardinit.c	    80  
+; ..\myboardinit.c	    81    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	    82    ///  Clock System:
+; ..\myboardinit.c	    83    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	    84    ///  - external clock frequency: 20,00 MHz
+; ..\myboardinit.c	    85    ///  - input divider (PDIV): 2
+; ..\myboardinit.c	    86    ///  - PLL operation (VCOBYP = 0)
+; ..\myboardinit.c	    87    ///  - VCO range: 700 MHz - 800 MHz
+; ..\myboardinit.c	    88    ///  - feedback divider (NDIV): 72
+; ..\myboardinit.c	    89    ///  - the VCO output frequency is: 720,00 MHz
+; ..\myboardinit.c	    90    ///  - output divider (KDIV): 4
+; ..\myboardinit.c	    91    ///  - CPU clock: 180,00 MHz
+; ..\myboardinit.c	    92    ///  - the ratio fcpu /ffpi is  2 / 1
+; ..\myboardinit.c	    93    ///  - the ratio fcpu /flmb is  1 / 1
+; ..\myboardinit.c	    94    ///  - the ratio fcpu /fpcp is  1 / 1
+; ..\myboardinit.c	    95    ///  - system clock: 90,00 MHz
+; ..\myboardinit.c	    96  
+; ..\myboardinit.c	    97  
+; ..\myboardinit.c	    98     /// Comparing with the Compiler settings
+; ..\myboardinit.c	    99     if(((SCU_PLLCON0  & 0X1018E00) != 0X1018E00) || ((SCU_PLLCON1 & 0X20003) != 0X20003) \ 
+	mov.u	d15,#36352
+	addih	d15,d15,#257
+	ld.w	d0,0xf0000518
+	and	d0,d15
+	jne	d15,d0,.L2				; predicted not taken
+.L170:
+	mov	d15,#3
+	addih	d15,d15,#2
+	ld.w	d0,0xf000051c
+	and	d0,d15
+	jne	d15,d0,.L3				; predicted not taken
+.L171:
+
+; ..\myboardinit.c	   100         || ((SCU_CCUCON0 & 0X1) != 0X1))
+	ld.w	d15,0xf0000530
+	jnz.t	d15:0,.L4				; predicted taken
+.L3:
+.L2:
+
+; ..\myboardinit.c	   101     {
+; ..\myboardinit.c	   102  
+; ..\myboardinit.c	   103    //// - after a software reset PLL refuse to lock again unless oscillator is
+; ..\myboardinit.c	   104    ////   disconnected first
+; ..\myboardinit.c	   105  
+; ..\myboardinit.c	   106      MAIN_vResetENDINIT();
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+	lea	a12,0xf00005f0
+.L5:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L5				; predicted taken
+.L172:
+
+; ..\myboardinit.c	   107      SCU_PLLCON0_VCOBYP  =  0;    // reset VCO bypass
+	lea	a13,0xf0000518
+	ld.bu	d15,[a13]
+	insert	d15,d15,#0,#0,#1
+	st.b	[a13],d15
+.L173:
+
+; ..\myboardinit.c	   108      SCU_PLLCON0_SETFINDIS  =  1; // disconnect OSC from PLL
+	ld.bu	d15,[a13]
+	or	d15,#16
+	st.b	[a13],d15
+.L174:
+
+; ..\myboardinit.c	   109      MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L175:
+	call	MAIN_vWriteWDTCON0
+.L176:
+
+; ..\myboardinit.c	   110  
+; ..\myboardinit.c	   111  
+; ..\myboardinit.c	   112    if (MAIN_vResetCheck())
+	call	MAIN_vResetCheck
+	jeq	d2,#0,.L6				; predicted taken
+.L177:
+
+; ..\myboardinit.c	   113    {
+; ..\myboardinit.c	   114      if (!SCU_PLLSTAT_PWDSTAT)
+	lea	a14,0xf0000514
+	ld.bu	d15,[a14]
+	jnz.t	d15:1,.L7				; predicted taken
+.L178:
+
+; ..\myboardinit.c	   115      {
+; ..\myboardinit.c	   116        MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L8:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L8				; predicted taken
+.L179:
+
+; ..\myboardinit.c	   117        SCU_CCUCON0  =  0x00000001; // set FPI,LMB and PCP dividers
+	mov	d15,#1
+	st.w	0xf0000530,d15
+.L180:
+
+; ..\myboardinit.c	   118        SCU_PLLCON0_VCOBYP  =  1;  // set VCO bypass (goto Prescaler Mode)
+	ld.bu	d15,[a13]
+	or	d15,#1
+	st.b	[a13],d15
+
+; ..\myboardinit.c	   119        while (!SCU_PLLSTAT_VCOBYST);// wait for prescaler mode
+.L9:
+	ld.bu	d15,[a14]
+	jz.t	d15:0,.L9				; predicted taken
+.L181:
+
+; ..\myboardinit.c	   120        SCU_PLLCON0  =  0x01058E21; // set P,N divider, connect OSC
+	mov.u	d15,#36385
+	addih	d15,d15,#261
+	st.w	0xf0000518,d15
+.L182:
+
+; ..\myboardinit.c	   121        SCU_PLLCON1  =  0x00020003; // set K1,K2 divider
+	mov	d15,#3
+	addih	d15,d15,#2
+	st.w	0xf000051c,d15
+.L183:
+
+; ..\myboardinit.c	   122        MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L184:
+	call	MAIN_vWriteWDTCON0
+
+; ..\myboardinit.c	   123        while (SCU_PLLSTAT_VCOLOCK == 0);// wait for LOCK
+.L10:
+	ld.bu	d15,[a14]
+	jz.t	d15:2,.L10				; predicted taken
+.L185:
+
+; ..\myboardinit.c	   124        MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L11:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L11				; predicted taken
+.L186:
+
+; ..\myboardinit.c	   125        SCU_PLLCON0_VCOBYP  =  0;  // Reset VCO bypass (Leave Prescaler Mode)
+	ld.bu	d15,[a13]
+	insert	d15,d15,#0,#0,#1
+	st.b	[a13],d15
+.L187:
+
+; ..\myboardinit.c	   126        MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L188:
+	call	MAIN_vWriteWDTCON0
+.L7:
+.L6:
+.L4:
+
+; ..\myboardinit.c	   127      }
+; ..\myboardinit.c	   128     }
+; ..\myboardinit.c	   129    }
+; ..\myboardinit.c	   130  
+; ..\myboardinit.c	   131    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   132    ///  Interrupt System:
+; ..\myboardinit.c	   133    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   134    ///  - four arbitration cycles (max. 255 interrupt sources)
+; ..\myboardinit.c	   135    ///  - two clocks per arbitration cycle
+; ..\myboardinit.c	   136  
+; ..\myboardinit.c	   137    MTCR(0xFE2C,  0x00000000);     // load CPU interrupt control register
+	mov	d15,#0
+	lea	a15,0xf00005f0
+	mtcr	#65068,d15
+	isync
+.L189:
+
+; ..\myboardinit.c	   138    ISYNC();
+	isync
+.L190:
+
+; ..\myboardinit.c	   139  
+; ..\myboardinit.c	   140    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   141    ///  Peripheral Control Processor (PCP):
+; ..\myboardinit.c	   142    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   143    ///  - stop the PCP internal clock when PCP is idle
+; ..\myboardinit.c	   144  
+; ..\myboardinit.c	   145    ///  - use Full Context save area (R[0] - R[7])
+; ..\myboardinit.c	   146    ///  - start progam counter as left by last invocation
+; ..\myboardinit.c	   147    ///  - channel watchdog is disabled
+; ..\myboardinit.c	   148    ///  - maximum channel number checking is disabled
+; ..\myboardinit.c	   149  
+; ..\myboardinit.c	   150    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L12:
+	ld.bu	d15,[a15]
+	jnz.t	d15:0,.L12				; predicted taken
+.L191:
+
+; ..\myboardinit.c	   151    PCP_CLC        =  0x00000000;  // load PCP clock control register
+	mov	d15,#0
+	movh.a	a2,#61444
+	st.w	[a2]@los(0xf0043f00),d15
+.L192:
+
+; ..\myboardinit.c	   152    PCP_CS         =  0x00000200;  // load PCP control and status register
+	mov.u	d15,#512
+	st.w	[a2]@los(0xf0043f10),d15
+.L193:
+
+; ..\myboardinit.c	   153    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L194:
+	call	MAIN_vWriteWDTCON0
+.L195:
+
+; ..\myboardinit.c	   154  
+; ..\myboardinit.c	   155    ///  - four arbitration cycles (max. 255 PCP channels)
+; ..\myboardinit.c	   156    ///  - two clocks per arbitration cycle
+; ..\myboardinit.c	   157    PCP_ICR        =  0x00000000;  // load PCP interrupt control register
+	mov	d15,#0
+	movh.a	a2,#61444
+	st.w	[a2]@los(0xf0043f20),d15
+.L196:
+
+; ..\myboardinit.c	   158  
+; ..\myboardinit.c	   159    ///  - the PCP warning mechanism is disabled
+; ..\myboardinit.c	   160    PCP_ITR        =  0x00000000;  // load PCP interrupt threshold register
+	st.w	[a2]@los(0xf0043f24),d15
+.L197:
+
+; ..\myboardinit.c	   161  
+; ..\myboardinit.c	   162    ///  - type of service of PCP node 4 is CPU interrupt
+; ..\myboardinit.c	   163    PCP_SRC4       =  0x00001000;  // load service request control register 4
+	mov.u	d15,#4096
+	st.w	[a2]@los(0xf0043fec),d15
+.L198:
+
+; ..\myboardinit.c	   164  
+; ..\myboardinit.c	   165    ///  - type of service of PCP node 5 is CPU interrupt
+; ..\myboardinit.c	   166    PCP_SRC5       =  0x00001000;  // load service request control register 5
+	st.w	[a2]@los(0xf0043fe8),d15
+.L199:
+
+; ..\myboardinit.c	   167  
+; ..\myboardinit.c	   168    ///  - type of service of PCP node 6 is CPU interrupt
+; ..\myboardinit.c	   169    PCP_SRC6       =  0x00001000;  // load service request control register 6
+	st.w	[a2]@los(0xf0043fe4),d15
+.L200:
+
+; ..\myboardinit.c	   170  
+; ..\myboardinit.c	   171    ///  - type of service of PCP node 7 is CPU interrupt
+; ..\myboardinit.c	   172    PCP_SRC7       =  0x00001000;  // load service request control register 7
+	st.w	[a2]@los(0xf0043fe0),d15
+.L201:
+
+; ..\myboardinit.c	   173  
+; ..\myboardinit.c	   174    ///  - type of service of PCP node 8 is CPU interrupt
+; ..\myboardinit.c	   175    PCP_SRC8       =  0x00001000;  // load service request control register 8
+	st.w	[a2]@los(0xf0043fdc),d15
+.L202:
+
+; ..\myboardinit.c	   176  
+; ..\myboardinit.c	   177    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   178    ///  Configuration of the DMA Module Clock:
+; ..\myboardinit.c	   179    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   180    ///  - enable the DMA module
+; ..\myboardinit.c	   181  
+; ..\myboardinit.c	   182    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L13:
+	ld.bu	d15,[a15]
+	jnz.t	d15:0,.L13				; predicted taken
+.L203:
+
+; ..\myboardinit.c	   183    DMA_CLC        =  0x00000008;  // DMA clock control register
+	mov	d15,#8
+	st.w	0xf0003c00,d15
+.L204:
+
+; ..\myboardinit.c	   184    DummyToForceRead  =  DMA_CLC;  // read it back to ensure it is read
+	movh.a	a2,#@his(DummyToForceRead)
+	ld.w	d15,0xf0003c00
+	st.w	[a2]@los(DummyToForceRead),d15
+.L205:
+
+; ..\myboardinit.c	   185    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L206:
+	call	MAIN_vWriteWDTCON0
+.L207:
+
+; ..\myboardinit.c	   186  
+; ..\myboardinit.c	   187    //   -----------------------------------------------------------------------
+; ..\myboardinit.c	   188    //   Initialization of the Peripherals:
+; ..\myboardinit.c	   189    //   -----------------------------------------------------------------------
+; ..\myboardinit.c	   190    //   initializes the Parallel Ports
+; ..\myboardinit.c	   191    IO_vInit();
+	call	IO_vInit
+.L208:
+
+; ..\myboardinit.c	   192  
+; ..\myboardinit.c	   193    //   initializes the System Control Unit (SCU)
+; ..\myboardinit.c	   194    SCU_vInit();
+	call	SCU_vInit
+.L209:
+
+; ..\myboardinit.c	   195  
+; ..\myboardinit.c	   196    //   initializes the Asynchronous Synchronous Serial Interface 1 (ASC1)
+; ..\myboardinit.c	   197    ASC1_vInit();
+	call	ASC1_vInit
+.L210:
+
+; ..\myboardinit.c	   198  
+; ..\myboardinit.c	   199    //   initializes the MultiCAN Controller
+; ..\myboardinit.c	   200    CAN_vInit();
+	call	CAN_vInit
+.L211:
+
+; ..\myboardinit.c	   201  
+; ..\myboardinit.c	   202    //   initializes the General Purpose Timer Array 0 (GPTA0)
+; ..\myboardinit.c	   203    GPTA0_vInit();
+	call	GPTA0_vInit
+.L212:
+
+; ..\myboardinit.c	   204  
+; ..\myboardinit.c	   205    //   initializes the Analog Digital Converter 0 (ADC0)
+; ..\myboardinit.c	   206    ADC0_vInit();
+	call	ADC0_vInit
+.L213:
+
+; ..\myboardinit.c	   207  
+; ..\myboardinit.c	   208  
+; ..\myboardinit.c	   209    // USER CODE BEGIN (Init,3)
+; ..\myboardinit.c	   210  
+; ..\myboardinit.c	   211    // USER CODE END
+; ..\myboardinit.c	   212  
+; ..\myboardinit.c	   213    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   214    ///  System Start Conditions:
+; ..\myboardinit.c	   215    ///  -----------------------------------------------------------------------
+; ..\myboardinit.c	   216  
+; ..\myboardinit.c	   217    //// - the CPU interrupt system is globally enabled
+; ..\myboardinit.c	   218    ENABLE();
+	enable
+.L214:
+
+; ..\myboardinit.c	   219  
+; ..\myboardinit.c	   220    //// - the PCP interrupt system is globally disabled
+; ..\myboardinit.c	   221  
+; ..\myboardinit.c	   222  
+; ..\myboardinit.c	   223    // USER CODE BEGIN (Init,4)
+; ..\myboardinit.c	   224  
+; ..\myboardinit.c	   225    // USER CODE END
+; ..\myboardinit.c	   226  
+; ..\myboardinit.c	   227  } //  End of function MAIN_vInit
+	ret
+.L93:
+	
+__MAIN_vInit_function_end:
+	.size	MAIN_vInit,__MAIN_vInit_function_end-MAIN_vInit
+.L73:
+	; End of function
+	
+	.sdecl	'.text.myboardinit.MAIN_vWriteWDTCON0',code,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.text.myboardinit.MAIN_vWriteWDTCON0'
+	.align	2
+	
+	.global	MAIN_vWriteWDTCON0
+
+; ..\myboardinit.c	   228  
+; ..\myboardinit.c	   229  
+; ..\myboardinit.c	   230  //****************************************************************************
+; ..\myboardinit.c	   231  // @Function      void MAIN_vWriteWDTCON0(uword uwValue)
+; ..\myboardinit.c	   232  //
+; ..\myboardinit.c	   233  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   234  // @Description   This function writes the parameter uwValue to the WDT_CON0
+; ..\myboardinit.c	   235  //                register which is password protected.
+; ..\myboardinit.c	   236  //
+; ..\myboardinit.c	   237  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   238  // @Returnvalue   None
+; ..\myboardinit.c	   239  //
+; ..\myboardinit.c	   240  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   241  // @Parameters    uwValue:
+; ..\myboardinit.c	   242  //                Value for the WDTCON0 register
+; ..\myboardinit.c	   243  //
+; ..\myboardinit.c	   244  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   245  // @Date          21.03.2012
+; ..\myboardinit.c	   246  //
+; ..\myboardinit.c	   247  //****************************************************************************
+; ..\myboardinit.c	   248  
+; ..\myboardinit.c	   249  // USER CODE BEGIN (WriteWDTCON0,1)
+; ..\myboardinit.c	   250  
+; ..\myboardinit.c	   251  // USER CODE END
+; ..\myboardinit.c	   252  
+; ..\myboardinit.c	   253  void MAIN_vWriteWDTCON0(uword uwValue)
+; Function MAIN_vWriteWDTCON0
+.L52:
+MAIN_vWriteWDTCON0:	.type	func
+
+; ..\myboardinit.c	   254  {
+; ..\myboardinit.c	   255    uword uwDummy;
+; ..\myboardinit.c	   256  
+; ..\myboardinit.c	   257    uwDummy        =  WDT_CON0;
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+.L95:
+
+; ..\myboardinit.c	   258    uwDummy |=  0x000000F0;       //  set HWPW1 = 1111b
+; ..\myboardinit.c	   259  
+; ..\myboardinit.c	   260    if(WDT_CON1_DR)
+	or	d15,#240
+	lea	a2,0xf00005f4
+	ld.bu	d0,[a2]
+	jz.t	d0:3,.L14				; prediction unknown
+.L129:
+
+; ..\myboardinit.c	   261    {
+; ..\myboardinit.c	   262      uwDummy |=  0x00000008;     //  set HWPW0 = WDTDR
+	or	d15,#8
+	j	.L15
+.L14:
+
+; ..\myboardinit.c	   263    }
+; ..\myboardinit.c	   264    else
+; ..\myboardinit.c	   265    {
+; ..\myboardinit.c	   266      uwDummy &= ~0x00000008;     //  set HWPW0 = WDTDR
+	insert	d15,d15,#0,#3,#1
+.L15:
+
+; ..\myboardinit.c	   267    }
+; ..\myboardinit.c	   268    if(WDT_CON1_IR)
+	ld.bu	d0,[a2]
+	jz.t	d0:2,.L16				; prediction unknown
+.L130:
+
+; ..\myboardinit.c	   269    {
+; ..\myboardinit.c	   270      uwDummy |=  0x00000004;     //  set HWPW0 = WDTIR
+	or	d15,#4
+	j	.L17
+.L16:
+
+; ..\myboardinit.c	   271    }
+; ..\myboardinit.c	   272    else
+; ..\myboardinit.c	   273    {
+; ..\myboardinit.c	   274      uwDummy &= ~0x00000004;     //  set HWPW0 = WDTIR
+	insert	d15,d15,#0,#2,#1
+.L17:
+
+; ..\myboardinit.c	   275    }
+; ..\myboardinit.c	   276  
+; ..\myboardinit.c	   277    uwDummy &= ~0x00000002;       //  set WDTLCK = 0
+; ..\myboardinit.c	   278    WDT_CON0 =  uwDummy;          //  unlock access
+	insert	d15,d15,#0,#1,#1
+	st.w	[a15],d15
+.L131:
+
+; ..\myboardinit.c	   279  
+; ..\myboardinit.c	   280    uwValue  |=  0x000000F2;      //  set HWPW1 = 1111b and WDTLCK = 1
+	or	d15,d4,#242
+.L96:
+
+; ..\myboardinit.c	   281    uwValue  &= ~0x0000000C;      //  set HWPW0 = 00b
+; ..\myboardinit.c	   282    WDT_CON0  =  uwValue;         //  write access and lock
+	insert	d15,d15,#0,#2,#2
+	st.w	[a15],d15
+.L132:
+
+; ..\myboardinit.c	   283  
+; ..\myboardinit.c	   284  } //  End of function MAIN_vWriteWDTCON0
+	ret
+.L76:
+	
+__MAIN_vWriteWDTCON0_function_end:
+	.size	MAIN_vWriteWDTCON0,__MAIN_vWriteWDTCON0_function_end-MAIN_vWriteWDTCON0
+.L63:
+	; End of function
+	
+	.sdecl	'.text.myboardinit.MAIN_vResetCheck',code,cluster('MAIN_vResetCheck')
+	.sect	'.text.myboardinit.MAIN_vResetCheck'
+	.align	2
+	
+	.global	MAIN_vResetCheck
+
+; ..\myboardinit.c	   285  
+; ..\myboardinit.c	   286  
+; ..\myboardinit.c	   287  
+; ..\myboardinit.c	   288  //****************************************************************************
+; ..\myboardinit.c	   289  // @Function         ubyte MAIN_vResetCheck(void)
+; ..\myboardinit.c	   290  //
+; ..\myboardinit.c	   291  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   292  // @Description
+; ..\myboardinit.c	   293  //      This function checks the reset types (application/system).
+; ..\myboardinit.c	   294  //
+; ..\myboardinit.c	   295  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   296  // @Returnvalue   1 on system reset
+; ..\myboardinit.c	   297  //                0 on application reset
+; ..\myboardinit.c	   298  //
+; ..\myboardinit.c	   299  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   300  // @Parameters    None
+; ..\myboardinit.c	   301  //
+; ..\myboardinit.c	   302  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   303  // @Date          21.03.2012
+; ..\myboardinit.c	   304  //
+; ..\myboardinit.c	   305  //****************************************************************************
+; ..\myboardinit.c	   306  
+; ..\myboardinit.c	   307  ubyte MAIN_vResetCheck(void)
+; Function MAIN_vResetCheck
+.L54:
+MAIN_vResetCheck:	.type	func
+
+; ..\myboardinit.c	   308  {
+; ..\myboardinit.c	   309    ubyte ubWDTAppReset,ubESR0AppReset,ubESR1AppReset,ubSWAppReset;
+; ..\myboardinit.c	   310    ubyte ubWDTSysReset,ubESR1SysReset,ubSWSysReset;
+; ..\myboardinit.c	   311    ubyte ubChkAppReset,ubEsr0Chk,ubOtherSysReset;
+; ..\myboardinit.c	   312    uword uwReset,uwOtherReset;
+; ..\myboardinit.c	   313  
+; ..\myboardinit.c	   314    ubWDTAppReset = ((SCU_RSTCON & (uword)(0X00000080)) && (SCU_RSTSTAT & (uword)(0X00000008)));
+	mov	d0,#0
+	lea	a15,0xf0000558
+.L111:
+	ld.w	d15,[a15]
+	jz.t	d15:7,.L18				; predicted taken
+.L137:
+	ld.w	d15,0xf0000550
+	jz.t	d15:3,.L19				; predicted taken
+.L138:
+	mov	d0,#1
+.L19:
+.L18:
+	lea	a2,0xf0000550
+.L139:
+
+; ..\myboardinit.c	   315    ubSWAppReset = ((SCU_RSTCON & (uword)(0X00000200)) && (SCU_RSTSTAT & (uword)(0X00000010)));
+	mov	d15,#0
+	ld.w	d1,[a15]
+.L108:
+	jz.t	d1:9,.L20				; prediction unknown
+.L140:
+	ld.w	d1,[a2]
+	jz.t	d1:4,.L21				; unsupported prediction taken forward branch
+.L141:
+	mov	d15,#1
+.L21:
+.L20:
+
+; ..\myboardinit.c	   316    ubESR0AppReset = ((SCU_RSTCON & (uword)(0X00000002)) && (SCU_RSTSTAT & (uword)(0X00000001)));
+	mov	d3,#0
+	ld.w	d1,[a15]
+.L99:
+	jz.t	d1:1,.L22				; prediction unknown
+.L142:
+	ld.w	d1,[a2]
+	jz.t	d1:0,.L23				; unsupported prediction taken forward branch
+.L143:
+	mov	d3,#1
+.L23:
+.L22:
+
+; ..\myboardinit.c	   317    ubESR1AppReset = ((SCU_RSTCON & (uword)(0X00000008)) && (SCU_RSTSTAT & (uword)(0X00000002)));
+	mov	d1,#0
+	ld.w	d2,[a15]
+.L100:
+	jz.t	d2:3,.L24				; prediction unknown
+.L144:
+	ld.w	d2,[a2]
+	jz.t	d2:1,.L25				; unsupported prediction taken forward branch
+.L145:
+	mov	d1,#1
+.L25:
+.L24:
+
+; ..\myboardinit.c	   318    ubChkAppReset = (!(ubWDTAppReset || ubSWAppReset || ubESR1AppReset));
+	mov	d2,#0
+.L146:
+	jne	d0,#0,.L26				; predicted not taken
+.L147:
+	jne	d15,#0,.L27				; predicted not taken
+.L148:
+	jeq	d1,#0,.L28				; predicted taken
+.L27:
+.L26:
+	mov	d2,#1
+.L28:
+	eq	d4,d2,#0
+.L97:
+
+; ..\myboardinit.c	   319    ubEsr0Chk = ((SCU_RSTCON & (uword)(0X00000003)) && (SCU_RSTSTAT & (uword)(0X0000001B)));
+	mov	d5,#0
+	ld.w	d15,[a15]
+.L104:
+	and	d15,#3
+	jeq	d15,#0,.L29				; prediction unknown
+.L149:
+	ld.w	d15,[a2]
+	and	d15,#27
+.L150:
+	cmov	d5,d15,#1
+.L29:
+
+; ..\myboardinit.c	   320  
+; ..\myboardinit.c	   321    ubWDTSysReset = ((SCU_RSTCON & (uword)(0X00000040)) && (SCU_RSTSTAT & (uword)(0X00000008)));
+	mov	d0,#0
+	ld.w	d1,[a15]
+.L101:
+	jz.t	d1:6,.L31				; prediction unknown
+.L151:
+	ld.w	d1,[a2]
+	jz.t	d1:3,.L32				; unsupported prediction taken forward branch
+.L152:
+	mov	d0,#1
+.L32:
+.L31:
+
+; ..\myboardinit.c	   322    ubSWSysReset = ((SCU_RSTCON & (uword)(0X00000100)) && (SCU_RSTSTAT & (uword)(0X00000010)));
+	mov	d15,#0
+	ld.w	d1,[a15]
+.L109:
+	jz.t	d1:8,.L33				; prediction unknown
+.L153:
+	ld.w	d1,[a2]
+	jz.t	d1:4,.L34				; unsupported prediction taken forward branch
+.L154:
+	mov	d15,#1
+.L34:
+.L33:
+
+; ..\myboardinit.c	   323    ubESR1SysReset = ((SCU_RSTCON & (uword)(0X00000004)) && (SCU_RSTSTAT & (uword)(0X00000002)));
+	mov	d1,#0
+	ld.w	d2,[a15]
+.L102:
+	jz.t	d2:2,.L35				; prediction unknown
+.L155:
+	ld.w	d2,[a2]
+	jz.t	d2:1,.L36				; unsupported prediction taken forward branch
+.L156:
+	mov	d1,#1
+.L36:
+.L35:
+
+; ..\myboardinit.c	   324    ubOtherSysReset = ( ((ubWDTSysReset || ubSWSysReset || ubESR1SysReset))&& (SCU_RSTSTAT & (uword)(0X00000001)));
+	mov	d2,#0
+.L106:
+	jne	d0,#0,.L37				; prediction unknown
+.L157:
+	jne	d15,#0,.L38				; prediction unknown
+.L158:
+	jeq	d1,#0,.L39				; prediction unknown
+.L38:
+.L37:
+	ld.w	d15,[a2]
+.L110:
+	jz.t	d15:0,.L40				; predicted taken
+.L159:
+	mov	d2,#1
+.L40:
+.L39:
+
+; ..\myboardinit.c	   325  
+; ..\myboardinit.c	   326    uwReset =  (((ubChkAppReset & !ubEsr0Chk)||(ubChkAppReset & ubEsr0Chk) && (!(ubESR0AppReset)|| ubOtherSysReset)));
+	mov	d15,#0
+.L160:
+	eq	d0,d5,#0
+.L112:
+	and	d0,d4
+	jne	d0,#0,.L41				; predicted not taken
+.L161:
+	and	d4,d5
+.L98:
+	jeq	d4,#0,.L42				; prediction unknown
+.L162:
+	jeq	d3,#0,.L43				; predicted not taken
+.L163:
+	jeq	d2,#0,.L44				; predicted taken
+.L43:
+.L41:
+	mov	d15,#1
+.L44:
+.L42:
+
+; ..\myboardinit.c	   327    uwOtherReset = (SCU_RSTSTAT & (uword)(0X003F0000)) ;
+	movh	d1,#63
+	ld.w	d0,[a2]
+.L103:
+	and	d0,d1
+.L164:
+
+; ..\myboardinit.c	   328    if(uwReset || uwOtherReset)
+	jne	d15,#0,.L45				; predicted not taken
+.L165:
+	jeq	d0,#0,.L46				; predicted taken
+.L45:
+
+; ..\myboardinit.c	   329    {
+; ..\myboardinit.c	   330      return 1;
+	mov	d2,#1
+.L107:
+
+; ..\myboardinit.c	   331    }
+; ..\myboardinit.c	   332    else
+; ..\myboardinit.c	   333    {
+; ..\myboardinit.c	   334      return 0;
+; ..\myboardinit.c	   335    }
+; ..\myboardinit.c	   336  
+; ..\myboardinit.c	   337  } //  End of function MAIN_vResetCheck
+	ret
+.L46:
+	mov	d2,#0
+.L105:
+	ret
+.L81:
+	
+__MAIN_vResetCheck_function_end:
+	.size	MAIN_vResetCheck,__MAIN_vResetCheck_function_end-MAIN_vResetCheck
+.L68:
+	; End of function
+	
+	.sdecl	'.bss.myboardinit.DummyToForceRead',data,cluster('DummyToForceRead')
+	.sect	'.bss.myboardinit.DummyToForceRead'
+	.global	DummyToForceRead
+	.align	2
+DummyToForceRead:	.type	object
+	.size	DummyToForceRead,4
+	.space	4
+	.calls	'MAIN_vInit','MAIN_vWriteWDTCON0'
+	.calls	'MAIN_vInit','MAIN_vResetCheck'
+	.calls	'MAIN_vInit','IO_vInit'
+	.calls	'MAIN_vInit','SCU_vInit'
+	.calls	'MAIN_vInit','ASC1_vInit'
+	.calls	'MAIN_vInit','CAN_vInit'
+	.calls	'MAIN_vInit','GPTA0_vInit'
+	.calls	'MAIN_vInit','ADC0_vInit'
+	.calls	'MAIN_vInit','',0
+	.calls	'MAIN_vWriteWDTCON0','',0
+	.extern	IO_vInit
+	.extern	SCU_vInit
+	.extern	CAN_vInit
+	.extern	GPTA0_vInit
+	.extern	ADC0_vInit
+	.extern	ASC1_vInit
+	.calls	'MAIN_vResetCheck','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L56:
+	.word	1105
+	.half	3
+	.word	.L57
+	.byte	4
+.L55:
+	.byte	1
+	.byte	'..\\myboardinit.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L58
+	.byte	2
+	.byte	'__mtcr',0,1,1,1,1,3
+	.word	.L113-.L56
+	.byte	3
+	.word	.L113-.L56
+	.byte	0
+.L113:
+	.byte	4
+	.byte	'int',0,4,5,5
+	.byte	'__isync',0,1,1,1,1,5
+	.byte	'__enable',0,1,1,1,1
+.L77:
+	.byte	4
+	.byte	'unsigned int',0,4,7
+.L80:
+	.byte	4
+	.byte	'unsigned char',0,1,8,6
+	.byte	'IO_vInit',0,1,148,5,6,1,1,1,1,6
+	.byte	'SCU_vInit',0,2,95,6,1,1,1,1,6
+	.byte	'CAN_vInit',0,3,129,1,6,1,1,1,1,6
+	.byte	'GPTA0_vInit',0,4,87,6,1,1,1,1,6
+	.byte	'ADC0_vInit',0,5,152,1,6,1,1,1,1,6
+	.byte	'ASC1_vInit',0,6,87,6,1,1,1,1,7
+	.byte	'__size_t',0,7,1,1
+	.word	173
+	.byte	7
+	.byte	'__codeptr',0,7,1,1
+	.word	.L114-.L56
+.L114:
+	.byte	8
+	.word	.L115-.L56
+.L115:
+	.byte	9,1,7
+	.byte	'ubyte',0,8,69,24
+	.word	189
+	.byte	7
+	.byte	'ushort',0,8,71,24
+	.word	.L116-.L56
+.L116:
+	.byte	4
+	.byte	'unsigned short int',0,2,7,7
+	.byte	'uword',0,8,73,24
+	.word	173
+	.byte	7
+	.byte	'T_Reg32',0,8,110,4
+	.word	.L117-.L56
+.L117:
+	.byte	10
+	.word	.L118-.L56
+.L118:
+	.byte	11,8,76,18,4,12
+	.byte	'bit0',0,1
+	.word	189
+	.byte	1,7,2,35,0,12
+	.byte	'bit1',0,1
+	.word	189
+	.byte	1,6,2,35,0,12
+	.byte	'bit2',0,1
+	.word	189
+	.byte	1,5,2,35,0,12
+	.byte	'bit3',0,1
+	.word	189
+	.byte	1,4,2,35,0,12
+	.byte	'bit4',0,1
+	.word	189
+	.byte	1,3,2,35,0,12
+	.byte	'bit5',0,1
+	.word	189
+	.byte	1,2,2,35,0,12
+	.byte	'bit6',0,1
+	.word	189
+	.byte	1,1,2,35,0,12
+	.byte	'bit7',0,1
+	.word	189
+	.byte	1,0,2,35,0,12
+	.byte	'bit8',0,1
+	.word	189
+	.byte	1,7,2,35,1,12
+	.byte	'bit9',0,1
+	.word	189
+	.byte	1,6,2,35,1,12
+	.byte	'bit10',0,1
+	.word	189
+	.byte	1,5,2,35,1,12
+	.byte	'bit11',0,1
+	.word	189
+	.byte	1,4,2,35,1,12
+	.byte	'bit12',0,1
+	.word	189
+	.byte	1,3,2,35,1,12
+	.byte	'bit13',0,1
+	.word	189
+	.byte	1,2,2,35,1,12
+	.byte	'bit14',0,1
+	.word	189
+	.byte	1,1,2,35,1,12
+	.byte	'bit15',0,1
+	.word	189
+	.byte	1,0,2,35,1,12
+	.byte	'bit16',0,1
+	.word	189
+	.byte	1,7,2,35,2,12
+	.byte	'bit17',0,1
+	.word	189
+	.byte	1,6,2,35,2,12
+	.byte	'bit18',0,1
+	.word	189
+	.byte	1,5,2,35,2,12
+	.byte	'bit19',0,1
+	.word	189
+	.byte	1,4,2,35,2,12
+	.byte	'bit20',0,1
+	.word	189
+	.byte	1,3,2,35,2,12
+	.byte	'bit21',0,1
+	.word	189
+	.byte	1,2,2,35,2,12
+	.byte	'bit22',0,1
+	.word	189
+	.byte	1,1,2,35,2,12
+	.byte	'bit23',0,1
+	.word	189
+	.byte	1,0,2,35,2,12
+	.byte	'bit24',0,1
+	.word	189
+	.byte	1,7,2,35,3,12
+	.byte	'bit25',0,1
+	.word	189
+	.byte	1,6,2,35,3,12
+	.byte	'bit26',0,1
+	.word	189
+	.byte	1,5,2,35,3,12
+	.byte	'bit27',0,1
+	.word	189
+	.byte	1,4,2,35,3,12
+	.byte	'bit28',0,1
+	.word	189
+	.byte	1,3,2,35,3,12
+	.byte	'bit29',0,1
+	.word	189
+	.byte	1,2,2,35,3,12
+	.byte	'bit30',0,1
+	.word	189
+	.byte	1,1,2,35,3,12
+	.byte	'bit31',0,1
+	.word	189
+	.byte	1,0,2,35,3,0,7
+	.byte	'CAN_SWObj',0,3,100,4
+	.word	.L119-.L56
+.L119:
+	.byte	11,3,93,9,20,13
+	.byte	'usMOCfg',0,2
+	.word	391
+	.byte	2,35,0,13
+	.byte	'uwID',0,4
+	.word	173
+	.byte	2,35,2,13
+	.byte	'uwMask',0,4
+	.word	173
+	.byte	2,35,6,13
+	.byte	'ubData',0,8
+	.word	.L120-.L56
+	.byte	2,35,10,13
+	.byte	'usCounter',0,2
+	.word	391
+	.byte	2,35,18,0
+.L120:
+	.byte	14,8
+	.word	189
+	.byte	15,7,0
+.L94:
+	.byte	10
+	.word	173
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L57:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,54,15,39,12,63,12,60,12,0,0,3,5,0,73,19,0,0,4
+	.byte	36,0,3,8,11,15,62,15,0,0,5,46,0,3,8,54,15,39,12,63,12,60,12,0,0,6,46,0,3,8,58,15,59,15,57,15,54,15,39
+	.byte	12,63,12,60,12,0,0,7,22,0,3,8,58,15,59,15,57,15,73,19,0,0,8,15,0,73,19,0,0,9,21,0,54,15,0,0,10,53,0,73
+	.byte	19,0,0,11,19,1,58,15,59,15,57,15,11,15,0,0,12,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0,13,13,0,3,8,11
+	.byte	15,73,19,56,9,0,0,14,1,1,11,15,73,19,0,0,15,33,0,47,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L58:
+	.word	.L122-.L121
+.L121:
+	.half	3
+	.word	.L124-.L123
+.L123:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\IO.h',0,0,0,0
+	.byte	'..\\SCU.h',0,0,0,0
+	.byte	'..\\CAN.h',0,0,0,0
+	.byte	'..\\GPTA0.h',0,0,0,0
+	.byte	'..\\ADC0.h',0,0,0,0
+	.byte	'..\\ASC1.h',0,0,0,0
+	.byte	'..\\myboardinit.c',0,0,0,0
+	.byte	'..\\MAIN.h',0,0,0,0,0
+.L124:
+.L122:
+	.sdecl	'.debug_info',debug,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.debug_info'
+.L59:
+	.word	214
+	.half	3
+	.word	.L60
+	.byte	4,1
+	.byte	'..\\myboardinit.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L62,.L61
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'MAIN_vWriteWDTCON0',0,1,253,1,6,1,1,1
+	.word	.L52,.L76,.L51
+	.byte	4
+	.byte	'uwValue',0,1,253,1,31
+	.word	.L77,.L78
+	.byte	5
+	.word	.L52,.L76
+	.byte	6
+	.byte	'uwDummy',0,1,255,1,9
+	.word	.L77,.L79
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.debug_abbrev'
+.L60:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.debug_line'
+.L61:
+	.word	.L126-.L125
+.L125:
+	.half	3
+	.word	.L128-.L127
+.L127:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\myboardinit.c',0,0,0,0,0
+.L128:
+	.byte	5,29,7,0,5,2
+	.word	.L52
+	.byte	3,128,2,1,5,25,9
+	.half	.L95-.L52
+	.byte	3,1,1,5,3,3,2,1,5,27,9
+	.half	.L129-.L95
+	.byte	3,2,1,9
+	.half	.L14-.L129
+	.byte	3,4,1,5,3,9
+	.half	.L15-.L14
+	.byte	3,2,1,5,27,9
+	.half	.L130-.L15
+	.byte	3,2,1,9
+	.half	.L16-.L130
+	.byte	3,4,1,5,25,9
+	.half	.L17-.L16
+	.byte	3,3,1,5,22,3,1,1,5,26,9
+	.half	.L131-.L17
+	.byte	3,2,1,9
+	.half	.L96-.L131
+	.byte	3,1,1,5,23,3,1,1,5,1,9
+	.half	.L132-.L96
+	.byte	3,2,1,7,9
+	.half	.L63-.L132
+	.byte	0,1,1
+.L126:
+	.sdecl	'.debug_ranges',debug,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.debug_ranges'
+.L62:
+	.word	-1,.L52,0,.L63-.L52,0,0
+	.sdecl	'.debug_info',debug,cluster('MAIN_vResetCheck')
+	.sect	'.debug_info'
+.L64:
+	.word	469
+	.half	3
+	.word	.L65
+	.byte	4,1
+	.byte	'..\\myboardinit.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L67,.L66
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'MAIN_vResetCheck',0,1,179,2,7
+	.word	.L80
+	.byte	1,1,1
+	.word	.L54,.L81,.L53
+	.byte	4
+	.word	.L54,.L81
+	.byte	5
+	.byte	'ubWDTAppReset',0,1,181,2,9
+	.word	.L80,.L82
+	.byte	5
+	.byte	'ubESR0AppReset',0,1,181,2,23
+	.word	.L80,.L83
+	.byte	5
+	.byte	'ubESR1AppReset',0,1,181,2,38
+	.word	.L80,.L84
+	.byte	5
+	.byte	'ubSWAppReset',0,1,181,2,53
+	.word	.L80,.L85
+	.byte	5
+	.byte	'ubWDTSysReset',0,1,182,2,9
+	.word	.L80,.L86
+	.byte	5
+	.byte	'ubESR1SysReset',0,1,182,2,23
+	.word	.L80,.L87
+	.byte	5
+	.byte	'ubSWSysReset',0,1,182,2,38
+	.word	.L80,.L88
+	.byte	5
+	.byte	'ubChkAppReset',0,1,183,2,9
+	.word	.L80,.L89
+	.byte	5
+	.byte	'ubEsr0Chk',0,1,183,2,23
+	.word	.L80,.L90
+	.byte	5
+	.byte	'ubOtherSysReset',0,1,183,2,33
+	.word	.L80,.L91
+	.byte	5
+	.byte	'uwOtherReset',0,1,184,2,17
+	.word	.L77,.L92
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('MAIN_vResetCheck')
+	.sect	'.debug_abbrev'
+.L65:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('MAIN_vResetCheck')
+	.sect	'.debug_line'
+.L66:
+	.word	.L134-.L133
+.L133:
+	.half	3
+	.word	.L136-.L135
+.L135:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\myboardinit.c',0,0,0,0,0
+.L136:
+	.byte	5,55,7,0,5,2
+	.word	.L54
+	.byte	3,185,2,1,5,20,1,5,71,9
+	.half	.L137-.L54
+	.byte	1,5,55,9
+	.half	.L138-.L137
+	.byte	1,5,94,9
+	.half	.L18-.L138
+	.byte	1,5,54,9
+	.half	.L139-.L18
+	.byte	3,1,1,5,19,1,5,70,9
+	.half	.L140-.L139
+	.byte	1,5,54,9
+	.half	.L141-.L140
+	.byte	1,5,56,9
+	.half	.L20-.L141
+	.byte	3,1,1,5,21,1,5,72,9
+	.half	.L142-.L20
+	.byte	1,5,56,9
+	.half	.L143-.L142
+	.byte	1,9
+	.half	.L22-.L143
+	.byte	3,1,1,5,21,1,5,72,9
+	.half	.L144-.L22
+	.byte	1,5,56,9
+	.half	.L145-.L144
+	.byte	1,5,52,9
+	.half	.L24-.L145
+	.byte	3,1,1,5,22,9
+	.half	.L146-.L24
+	.byte	1,5,39,7,9
+	.half	.L147-.L146
+	.byte	1,5,55,7,9
+	.half	.L148-.L147
+	.byte	1,5,52,7,9
+	.half	.L26-.L148
+	.byte	1,5,71,9
+	.half	.L28-.L26
+	.byte	1,5,51,9
+	.half	.L97-.L28
+	.byte	3,1,1,5,16,1,5,67,9
+	.half	.L149-.L97
+	.byte	1,5,51,9
+	.half	.L150-.L149
+	.byte	1,5,55,9
+	.half	.L29-.L150
+	.byte	3,2,1,5,20,1,5,71,9
+	.half	.L151-.L29
+	.byte	1,5,55,9
+	.half	.L152-.L151
+	.byte	1,5,54,9
+	.half	.L31-.L152
+	.byte	3,1,1,5,19,1,5,70,9
+	.half	.L153-.L31
+	.byte	1,5,54,9
+	.half	.L154-.L153
+	.byte	1,5,56,9
+	.half	.L33-.L154
+	.byte	3,1,1,5,21,1,5,72,9
+	.half	.L155-.L33
+	.byte	1,5,56,9
+	.half	.L156-.L155
+	.byte	1,5,74,9
+	.half	.L35-.L156
+	.byte	3,1,1,5,25,9
+	.half	.L106-.L35
+	.byte	1,5,42,7,9
+	.half	.L157-.L106
+	.byte	1,5,58,7,9
+	.half	.L158-.L157
+	.byte	1,5,90,7,9
+	.half	.L37-.L158
+	.byte	1,5,74,9
+	.half	.L159-.L37
+	.byte	1,5,44,9
+	.half	.L39-.L159
+	.byte	3,2,1,5,16,9
+	.half	.L160-.L39
+	.byte	1,5,46,9
+	.half	.L161-.L160
+	.byte	1,5,79,9
+	.half	.L162-.L161
+	.byte	1,5,98,7,9
+	.half	.L163-.L162
+	.byte	1,5,44,7,9
+	.half	.L41-.L163
+	.byte	1,5,54,9
+	.half	.L42-.L41
+	.byte	3,1,1,5,6,9
+	.half	.L164-.L42
+	.byte	3,1,1,5,17,7,9
+	.half	.L165-.L164
+	.byte	1,5,5,7,9
+	.half	.L45-.L165
+	.byte	3,2,1,5,1,9
+	.half	.L107-.L45
+	.byte	3,7,1,5,5,7,9
+	.half	.L46-.L107
+	.byte	3,125,1,5,1,9
+	.half	.L105-.L46
+	.byte	3,3,1,7,9
+	.half	.L68-.L105
+	.byte	0,1,1
+.L134:
+	.sdecl	'.debug_ranges',debug,cluster('MAIN_vResetCheck')
+	.sect	'.debug_ranges'
+.L67:
+	.word	-1,.L54,0,.L68-.L54,0,0
+	.sdecl	'.debug_info',debug,cluster('MAIN_vInit')
+	.sect	'.debug_info'
+.L69:
+	.word	162
+	.half	3
+	.word	.L70
+	.byte	4,1
+	.byte	'..\\myboardinit.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L72,.L71
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'MAIN_vInit',0,1,18,6,1,1,1
+	.word	.L50,.L93,.L49
+	.byte	4
+	.word	.L50,.L93
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('MAIN_vInit')
+	.sect	'.debug_abbrev'
+.L70:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('MAIN_vInit')
+	.sect	'.debug_line'
+.L71:
+	.word	.L167-.L166
+.L166:
+	.half	3
+	.word	.L169-.L168
+.L168:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\myboardinit.c',0,0,0,0,0
+.L169:
+	.byte	5,7,7,0,5,2
+	.word	.L50
+	.byte	3,226,0,1,5,77,9
+	.half	.L170-.L50
+	.byte	1,5,32,9
+	.half	.L171-.L170
+	.byte	3,1,1,5,5,9
+	.half	.L2-.L171
+	.byte	3,6,1,5,29,9
+	.half	.L172-.L2
+	.byte	3,1,1,5,32,9
+	.half	.L173-.L172
+	.byte	3,1,1,5,5,9
+	.half	.L174-.L173
+	.byte	3,1,1,5,23,9
+	.half	.L175-.L174
+	.byte	1,5,3,9
+	.half	.L176-.L175
+	.byte	3,3,1,5,10,9
+	.half	.L177-.L176
+	.byte	3,2,1,5,7,9
+	.half	.L178-.L177
+	.byte	3,2,1,5,33,9
+	.half	.L179-.L178
+	.byte	3,1,1,5,31,9
+	.half	.L180-.L179
+	.byte	3,1,1,5,15,9
+	.half	.L9-.L180
+	.byte	3,1,1,5,33,9
+	.half	.L181-.L9
+	.byte	3,1,1,9
+	.half	.L182-.L181
+	.byte	3,1,1,5,7,9
+	.half	.L183-.L182
+	.byte	3,1,1,5,25,9
+	.half	.L184-.L183
+	.byte	1,5,38,9
+	.half	.L10-.L184
+	.byte	3,1,1,5,7,9
+	.half	.L185-.L10
+	.byte	3,1,1,5,31,9
+	.half	.L186-.L185
+	.byte	3,1,1,5,7,9
+	.half	.L187-.L186
+	.byte	3,1,1,5,25,9
+	.half	.L188-.L187
+	.byte	1,5,28,9
+	.half	.L4-.L188
+	.byte	3,11,1,5,10,9
+	.half	.L189-.L4
+	.byte	3,1,1,5,3,9
+	.half	.L190-.L189
+	.byte	3,12,1,5,31,9
+	.half	.L191-.L190
+	.byte	3,1,1,9
+	.half	.L192-.L191
+	.byte	3,1,1,5,3,9
+	.half	.L193-.L192
+	.byte	3,1,1,5,21,9
+	.half	.L194-.L193
+	.byte	1,5,31,9
+	.half	.L195-.L194
+	.byte	3,4,1,9
+	.half	.L196-.L195
+	.byte	3,3,1,9
+	.half	.L197-.L196
+	.byte	3,3,1,9
+	.half	.L198-.L197
+	.byte	3,3,1,9
+	.half	.L199-.L198
+	.byte	3,3,1,9
+	.half	.L200-.L199
+	.byte	3,3,1,9
+	.half	.L201-.L200
+	.byte	3,3,1,5,3,9
+	.half	.L202-.L201
+	.byte	3,7,1,5,31,9
+	.half	.L203-.L202
+	.byte	3,1,1,9
+	.half	.L204-.L203
+	.byte	3,1,1,5,3,9
+	.half	.L205-.L204
+	.byte	3,1,1,5,21,9
+	.half	.L206-.L205
+	.byte	1,5,13,9
+	.half	.L207-.L206
+	.byte	3,6,1,5,14,9
+	.half	.L208-.L207
+	.byte	3,3,1,5,15,9
+	.half	.L209-.L208
+	.byte	3,3,1,5,14,9
+	.half	.L210-.L209
+	.byte	3,3,1,5,16,9
+	.half	.L211-.L210
+	.byte	3,3,1,5,15,9
+	.half	.L212-.L211
+	.byte	3,3,1,5,11,9
+	.half	.L213-.L212
+	.byte	3,12,1,5,1,9
+	.half	.L214-.L213
+	.byte	3,9,1,7,9
+	.half	.L73-.L214
+	.byte	0,1,1
+.L167:
+	.sdecl	'.debug_ranges',debug,cluster('MAIN_vInit')
+	.sect	'.debug_ranges'
+.L72:
+	.word	-1,.L50,0,.L73-.L50,0,0
+	.sdecl	'.debug_info',debug,cluster('DummyToForceRead')
+	.sect	'.debug_info'
+.L74:
+	.word	146
+	.half	3
+	.word	.L75
+	.byte	4,1
+	.byte	'..\\myboardinit.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1,2
+	.word	.L55
+	.byte	3
+	.byte	'DummyToForceRead',0,7,16,23
+	.word	.L94
+	.byte	1,5,3
+	.word	DummyToForceRead
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('DummyToForceRead')
+	.sect	'.debug_abbrev'
+.L75:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('MAIN_vInit')
+	.sect	'.debug_loc'
+.L49:
+	.word	-1,.L50,.L50-.L50,.L93-.L50
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('MAIN_vResetCheck')
+	.sect	'.debug_loc'
+.L53:
+	.word	-1,.L54,.L54-.L54,.L81-.L54
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L89:
+	.word	-1,.L54,.L97-.L54,.L98-.L54
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+.L83:
+	.word	-1,.L54,.L99-.L54,.L81-.L54
+	.half	5
+	.byte	144,33,157,32,32
+	.word	0,0
+.L84:
+	.word	-1,.L54,.L100-.L54,.L101-.L54
+	.half	5
+	.byte	144,32,157,32,32
+	.word	0,0
+.L87:
+	.word	-1,.L54,.L102-.L54,.L103-.L54
+	.half	5
+	.byte	144,32,157,32,32
+	.word	0,0
+.L90:
+	.word	-1,.L54,.L104-.L54,.L81-.L54
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L91:
+	.word	-1,.L54,.L46-.L54,.L105-.L54
+	.half	5
+	.byte	144,33,157,32,0
+	.word	.L106-.L54,.L107-.L54
+	.half	5
+	.byte	144,33,157,32,0
+	.word	0,0
+.L85:
+	.word	-1,.L54,.L108-.L54,.L104-.L54
+	.half	5
+	.byte	144,39,157,32,32
+	.word	0,0
+.L88:
+	.word	-1,.L54,.L109-.L54,.L110-.L54
+	.half	5
+	.byte	144,39,157,32,32
+	.word	0,0
+.L82:
+	.word	-1,.L54,.L111-.L54,.L101-.L54
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L86:
+	.word	-1,.L54,.L101-.L54,.L112-.L54
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L92:
+	.word	-1,.L54,.L103-.L54,.L81-.L54
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.debug_loc'
+.L51:
+	.word	-1,.L52,.L52-.L52,.L76-.L52
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L79:
+	.word	-1,.L52,.L95-.L52,.L96-.L52
+	.half	5
+	.byte	144,39,157,32,32
+	.word	0,0
+.L78:
+	.word	-1,.L52,.L96-.L52,.L76-.L52
+	.half	5
+	.byte	144,39,157,32,32
+	.word	.L52-.L52,.L96-.L52
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L215:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('MAIN_vInit')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L215,.L50,.L93-.L50
+	.sdecl	'.debug_frame',debug,cluster('MAIN_vWriteWDTCON0')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L215,.L52,.L76-.L52
+	.byte	8,19,8,20,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('MAIN_vResetCheck')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L215,.L54,.L81-.L54
+	.byte	8,19,8,20,8,21,8,22,8,23,0,0
+
+; ..\myboardinit.c	   338  
+; ..\myboardinit.c	   339  
+; ..\myboardinit.c	   340  //****************************************************************************
+; ..\myboardinit.c	   341  // @Function      sword main(void)
+; ..\myboardinit.c	   342  //
+; ..\myboardinit.c	   343  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   344  // @Description   This is the main function.
+; ..\myboardinit.c	   345  //
+; ..\myboardinit.c	   346  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   347  // @Returnvalue   Returns an sword value
+; ..\myboardinit.c	   348  //
+; ..\myboardinit.c	   349  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   350  // @Parameters    None
+; ..\myboardinit.c	   351  //
+; ..\myboardinit.c	   352  //----------------------------------------------------------------------------
+; ..\myboardinit.c	   353  // @Date          21.03.2012
+; ..\myboardinit.c	   354  //
+; ..\myboardinit.c	   355  //****************************************************************************
+; ..\myboardinit.c	   356  
+; ..\myboardinit.c	   357  // USER CODE BEGIN (Main,1)
+; ..\myboardinit.c	   358  
+; ..\myboardinit.c	   359  // USER CODE END
+
+	; Module end

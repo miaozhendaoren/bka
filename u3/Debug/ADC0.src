@@ -1,0 +1,2332 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc3384a -c99 --dep-file=.ADC0.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=ADC0.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o ADC0.src
+	; Module start
+	.name	"ADC0"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.ADC0.ADC0_vInit',code,cluster('ADC0_vInit')
+	.sect	'.text.ADC0.ADC0_vInit'
+	.align	2
+	
+	.global	ADC0_vInit
+
+; ..\ADC0.c	     1  //****************************************************************************
+; ..\ADC0.c	     2  // @Module        Analog Digital Converter 0 (ADC0)
+; ..\ADC0.c	     3  // @Filename      ADC0.c
+; ..\ADC0.c	     4  // @Project       motencpot.dav
+; ..\ADC0.c	     5  //----------------------------------------------------------------------------
+; ..\ADC0.c	     6  // @Controller    Infineon TC1782
+; ..\ADC0.c	     7  //
+; ..\ADC0.c	     8  // @Compiler      Tasking 3.5r1
+; ..\ADC0.c	     9  //
+; ..\ADC0.c	    10  // @Codegenerator 1.0
+; ..\ADC0.c	    11  //
+; ..\ADC0.c	    12  // @Description   This file contains functions that use the ADC0 module.
+; ..\ADC0.c	    13  //
+; ..\ADC0.c	    14  //----------------------------------------------------------------------------
+; ..\ADC0.c	    15  // @Date          21.03.2012 17:30:41
+; ..\ADC0.c	    16  //
+; ..\ADC0.c	    17  //****************************************************************************
+; ..\ADC0.c	    18  
+; ..\ADC0.c	    19  // USER CODE BEGIN (ADC0_General,1)
+; ..\ADC0.c	    20  
+; ..\ADC0.c	    21  // USER CODE END
+; ..\ADC0.c	    22  
+; ..\ADC0.c	    23  
+; ..\ADC0.c	    24  
+; ..\ADC0.c	    25  //****************************************************************************
+; ..\ADC0.c	    26  // @Project Includes
+; ..\ADC0.c	    27  //****************************************************************************
+; ..\ADC0.c	    28  
+; ..\ADC0.c	    29  #include "MAIN.h"
+; ..\ADC0.c	    30  
+; ..\ADC0.c	    31  // USER CODE BEGIN (ADC0_General,2)
+; ..\ADC0.c	    32  
+; ..\ADC0.c	    33  // USER CODE END
+; ..\ADC0.c	    34  
+; ..\ADC0.c	    35  
+; ..\ADC0.c	    36  //****************************************************************************
+; ..\ADC0.c	    37  // @Macros
+; ..\ADC0.c	    38  //****************************************************************************
+; ..\ADC0.c	    39  
+; ..\ADC0.c	    40  // USER CODE BEGIN (ADC0_General,3)
+; ..\ADC0.c	    41  
+; ..\ADC0.c	    42  // USER CODE END
+; ..\ADC0.c	    43  
+; ..\ADC0.c	    44  
+; ..\ADC0.c	    45  //****************************************************************************
+; ..\ADC0.c	    46  // @Defines
+; ..\ADC0.c	    47  //****************************************************************************
+; ..\ADC0.c	    48  
+; ..\ADC0.c	    49  // USER CODE BEGIN (ADC0_General,4)
+; ..\ADC0.c	    50  
+; ..\ADC0.c	    51  // USER CODE END
+; ..\ADC0.c	    52  
+; ..\ADC0.c	    53  
+; ..\ADC0.c	    54  //****************************************************************************
+; ..\ADC0.c	    55  // @Typedefs
+; ..\ADC0.c	    56  //****************************************************************************
+; ..\ADC0.c	    57  
+; ..\ADC0.c	    58  // USER CODE BEGIN (ADC0_General,5)
+; ..\ADC0.c	    59  
+; ..\ADC0.c	    60  // USER CODE END
+; ..\ADC0.c	    61  
+; ..\ADC0.c	    62  
+; ..\ADC0.c	    63  //****************************************************************************
+; ..\ADC0.c	    64  // @Imported Global Variables
+; ..\ADC0.c	    65  //****************************************************************************
+; ..\ADC0.c	    66  
+; ..\ADC0.c	    67  // USER CODE BEGIN (ADC0_General,6)
+; ..\ADC0.c	    68  
+; ..\ADC0.c	    69  // USER CODE END
+; ..\ADC0.c	    70  
+; ..\ADC0.c	    71  
+; ..\ADC0.c	    72  //****************************************************************************
+; ..\ADC0.c	    73  // @Global Variables
+; ..\ADC0.c	    74  //****************************************************************************
+; ..\ADC0.c	    75  
+; ..\ADC0.c	    76  // USER CODE BEGIN (ADC0_General,7)
+; ..\ADC0.c	    77  
+; ..\ADC0.c	    78  // USER CODE END
+; ..\ADC0.c	    79  
+; ..\ADC0.c	    80  
+; ..\ADC0.c	    81  //****************************************************************************
+; ..\ADC0.c	    82  // @External Prototypes
+; ..\ADC0.c	    83  //****************************************************************************
+; ..\ADC0.c	    84  
+; ..\ADC0.c	    85  
+; ..\ADC0.c	    86  
+; ..\ADC0.c	    87  
+; ..\ADC0.c	    88  // USER CODE BEGIN (ADC0_General,8)
+; ..\ADC0.c	    89  
+; ..\ADC0.c	    90  // USER CODE END
+; ..\ADC0.c	    91  
+; ..\ADC0.c	    92  
+; ..\ADC0.c	    93  //****************************************************************************
+; ..\ADC0.c	    94  // @Prototypes Of Local Functions
+; ..\ADC0.c	    95  //****************************************************************************
+; ..\ADC0.c	    96  
+; ..\ADC0.c	    97  // USER CODE BEGIN (ADC0_General,9)
+; ..\ADC0.c	    98  
+; ..\ADC0.c	    99  // USER CODE END
+; ..\ADC0.c	   100  
+; ..\ADC0.c	   101  
+; ..\ADC0.c	   102  //****************************************************************************
+; ..\ADC0.c	   103  // @Function      void ADC0_vInit(void) 
+; ..\ADC0.c	   104  //
+; ..\ADC0.c	   105  //----------------------------------------------------------------------------
+; ..\ADC0.c	   106  // @Description   This is the initialization function of the ADC function 
+; ..\ADC0.c	   107  //                library. It is assumed that the SFRs used by this library 
+; ..\ADC0.c	   108  //                are in their reset state. 
+; ..\ADC0.c	   109  //                
+; ..\ADC0.c	   110  //                Following SFR fields will be initialized:
+; ..\ADC0.c	   111  //                CLC  - Clock Control
+; ..\ADC0.c	   112  //                GLOBCTR  - Global Control
+; ..\ADC0.c	   113  //                GLOBCFG  - Global Configuration
+; ..\ADC0.c	   114  //                RSPR0    - Priority and Arbitration Register 0
+; ..\ADC0.c	   115  //                RSPR4    - Priority and Arbitration Register 4
+; ..\ADC0.c	   116  //                ASENR    - Arbitration slot enable register
+; ..\ADC0.c	   117  //                CHCTRx   - Channel Control Register x
+; ..\ADC0.c	   118  //                RCRx     - Result Control Register x
+; ..\ADC0.c	   119  //                KSCFG    - Module configuration Register
+; ..\ADC0.c	   120  //                INPCR    - Input class Registers
+; ..\ADC0.c	   121  //                CHENPRx  - Channel Interrupt register
+; ..\ADC0.c	   122  //                EVNPRx   - Event Interrupt register
+; ..\ADC0.c	   123  //                RNPRx    - Result Interrupt register
+; ..\ADC0.c	   124  //                SYNCTR   - Synchronisation control register
+; ..\ADC0.c	   125  //                LCBRx    - Limit check boundary register
+; ..\ADC0.c	   126  //                QMR0     - Sequential 0 mode register
+; ..\ADC0.c	   127  //                QMR2     - Sequential 2 mode register
+; ..\ADC0.c	   128  //                QMR4     - Sequential 4 mode register
+; ..\ADC0.c	   129  //                CRMR1    - Parallel mode register 1
+; ..\ADC0.c	   130  //                CRMR3    - Parallel mode register 3
+; ..\ADC0.c	   131  //
+; ..\ADC0.c	   132  //----------------------------------------------------------------------------
+; ..\ADC0.c	   133  // @Returnvalue   None
+; ..\ADC0.c	   134  //
+; ..\ADC0.c	   135  //----------------------------------------------------------------------------
+; ..\ADC0.c	   136  // @Parameters    None
+; ..\ADC0.c	   137  //
+; ..\ADC0.c	   138  //----------------------------------------------------------------------------
+; ..\ADC0.c	   139  // @Date          21.03.2012
+; ..\ADC0.c	   140  //
+; ..\ADC0.c	   141  //****************************************************************************
+; ..\ADC0.c	   142  
+; ..\ADC0.c	   143  // USER CODE BEGIN (ADC0_Init,1)
+; ..\ADC0.c	   144  
+; ..\ADC0.c	   145  // USER CODE END
+; ..\ADC0.c	   146  
+; ..\ADC0.c	   147  void ADC0_vInit(void)
+; Function ADC0_vInit
+.L20:
+ADC0_vInit:	.type	func
+
+; ..\ADC0.c	   148  {
+; ..\ADC0.c	   149  
+; ..\ADC0.c	   150    volatile unsigned int uwTemp;
+; ..\ADC0.c	   151  
+; ..\ADC0.c	   152    // USER CODE BEGIN (ADC0_Init, 2); 
+; ..\ADC0.c	   153  
+; ..\ADC0.c	   154    // USER CODE END
+; ..\ADC0.c	   155  
+; ..\ADC0.c	   156    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   157    ///  Configuration of ADC0 clock control configuration register:
+; ..\ADC0.c	   158    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   159  
+; ..\ADC0.c	   160    ///  - the ADC module is not stopped during sleep mode
+; ..\ADC0.c	   161  
+; ..\ADC0.c	   162    ///  - set run mode 0 for suspend and normal
+; ..\ADC0.c	   163  
+; ..\ADC0.c	   164    ///  - clear DISR
+; ..\ADC0.c	   165  
+; ..\ADC0.c	   166    MAIN_vResetENDINIT();
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+.L122:
+	insert	d4,d15,#0,#0,#1
+	sub.a	a10,#8
+.L101:
+	call	MAIN_vWriteWDTCON0
+	lea	a2,0xf00005f0
+.L2:
+	ld.bu	d15,[a2]
+	jnz.t	d15:0,.L2				; predicted taken
+.L123:
+
+; ..\ADC0.c	   167  
+; ..\ADC0.c	   168    ADC0_CLC       =  0x0000003C;  // load ADC0 clock control configuration 
+	movh.a	a2,#61456
+	lea	a2,[a2]@los(0xf0101000)
+	mov	d15,#60
+	st.w	[a2],d15
+.L124:
+
+; ..\ADC0.c	   169                                   // register
+; ..\ADC0.c	   170    uwTemp         = ADC0_CLC; // dummy read to avoid pipeline effects
+	ld.w	d15,[a2]
+	st.w	[a10],d15
+
+; ..\ADC0.c	   171  
+; ..\ADC0.c	   172    ///  - wait until module is enabled by waiting until bit DISS is cleared 
+; ..\ADC0.c	   173    ///    (set after reset)
+; ..\ADC0.c	   174  
+; ..\ADC0.c	   175    while((ADC0_CLC & 0x00000002));  //wait until module is enabled
+.L3:
+	ld.w	d15,[a2]
+	jnz.t	d15:1,.L3				; predicted taken
+.L125:
+
+; ..\ADC0.c	   176  
+; ..\ADC0.c	   177    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   178    ///  Configuration of ADC0 kernel configuration register:
+; ..\ADC0.c	   179    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   180    ADC0_KSCFG     =  0x00000880;  // load ADC0 kernel configuration register
+	movh.a	a2,#61456
+	mov.u	d15,#2176
+	st.w	[a2]@los(0xf010100c),d15
+.L126:
+
+; ..\ADC0.c	   181  
+; ..\ADC0.c	   182    uwTemp         = ADC0_KSCFG; // dummy read to avoid pipeline effects
+	ld.w	d15,[a2]@los(0xf010100c)
+	st.w	[a10],d15
+.L127:
+
+; ..\ADC0.c	   183  
+; ..\ADC0.c	   184    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L128:
+	call	MAIN_vWriteWDTCON0
+.L129:
+
+; ..\ADC0.c	   185  
+; ..\ADC0.c	   186    ///  - the ADC module clock = 90,00 MHz
+; ..\ADC0.c	   187    ///   
+; ..\ADC0.c	   188  
+; ..\ADC0.c	   189    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   190    ///  Configure global control register:
+; ..\ADC0.c	   191    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   192    ///  --- Conversion Timing (for 10 bit resolution) -----------------
+; ..\ADC0.c	   193    ///  - conversion time (CTC)    = 00,80 us
+; ..\ADC0.c	   194  
+; ..\ADC0.c	   195    ///  _Analog clock is 1/5th of module clock and digital clock is 1/1 times 
+; ..\ADC0.c	   196    ///  of module clock
+; ..\ADC0.c	   197  
+; ..\ADC0.c	   198    ///  - the permanent arbitration mode is selected
+; ..\ADC0.c	   199    ADC0_GLOBCTR   =  0x00000405;  // load global control register
+	movh.a	a15,#61456
+	lea	a15,[a15]@los(0xf0101030)
+	mov.u	d15,#1029
+	st.w	[a15],d15
+.L130:
+
+; ..\ADC0.c	   200  
+; ..\ADC0.c	   201    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   202    ///  Configure global configuration register:
+; ..\ADC0.c	   203    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   204    ///  - start power up calibration
+; ..\ADC0.c	   205    ///  - don't disable Post Calibration
+; ..\ADC0.c	   206    ///  - no mux test mode
+; ..\ADC0.c	   207  
+; ..\ADC0.c	   208    ADC0_GLOBCFG   =  0x00000020;  // load global configuration register
+	mov	d15,#32
+	movh.a	a2,#61456
+	st.w	[a2]@los(0xf0101034),d15
+.L131:
+
+; ..\ADC0.c	   209  
+; ..\ADC0.c	   210    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   211    ///  Configuration of Arbitration Slot enable register and also the Source 
+; ..\ADC0.c	   212    ///  Priority register:
+; ..\ADC0.c	   213    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   214    ///  - Arbitration Slot 0 is enabled
+; ..\ADC0.c	   215  
+; ..\ADC0.c	   216    ///  - Arbitration Slot 1 is enabled
+; ..\ADC0.c	   217  
+; ..\ADC0.c	   218    ///  - Arbitration Slot 2 is enabled
+; ..\ADC0.c	   219  
+; ..\ADC0.c	   220    ///  - Arbitration Slot 3 is enabled
+; ..\ADC0.c	   221  
+; ..\ADC0.c	   222    ///  - Arbitration Slot 4 is enabled
+; ..\ADC0.c	   223  
+; ..\ADC0.c	   224    ///  - the priority of request source 0 is low
+; ..\ADC0.c	   225    ///  - the wait-for-start mode is selected for source 0
+; ..\ADC0.c	   226    ///  - the priority of request source 1 is low
+; ..\ADC0.c	   227    ///  - the wait-for-start mode is selected for source 1
+; ..\ADC0.c	   228    ///  - the priority of request source 2 is low
+; ..\ADC0.c	   229    ///  - the wait-for-start mode is selected for source 2
+; ..\ADC0.c	   230    ///  - the priority of request source 3 is low
+; ..\ADC0.c	   231    ///  - the wait-for-start mode is selected for source 3
+; ..\ADC0.c	   232    ///  - the priority of request source 4 is low
+; ..\ADC0.c	   233    ///  - the wait-for-start mode is selected for source 4
+; ..\ADC0.c	   234  
+; ..\ADC0.c	   235    ADC0_ASENR     =  0x0000001F;  // load Arbitration Slot enable register
+	mov	d15,#31
+	st.w	[a2]@los(0xf010103c),d15
+.L132:
+
+; ..\ADC0.c	   236  
+; ..\ADC0.c	   237    ADC0_RSPR0     =  0x00000000;  // load Priority and Arbitration register 0
+	mov	d15,#0
+	st.w	[a2]@los(0xf0101040),d15
+.L133:
+
+; ..\ADC0.c	   238  
+; ..\ADC0.c	   239    ADC0_RSPR4     =  0x00000000;  // load Priority and Arbitration register 4
+	st.w	[a2]@los(0xf0101044),d15
+.L134:
+
+; ..\ADC0.c	   240  
+; ..\ADC0.c	   241    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   242    ///  Configuration of Channel Control Registers:
+; ..\ADC0.c	   243    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   244    ///  Configuration of Channel 0
+; ..\ADC0.c	   245    ///  - the result register0 is selected
+; ..\ADC0.c	   246    ///  - the limit check 0 is selected
+; ..\ADC0.c	   247  
+; ..\ADC0.c	   248    ///  - the reference voltage selected is Standard Voltage (Varef)
+; ..\ADC0.c	   249  
+; ..\ADC0.c	   250    ///  - the input class selected is Input Class 0
+; ..\ADC0.c	   251  
+; ..\ADC0.c	   252    ///  - LCBR0 is selected as upper boundary
+; ..\ADC0.c	   253  
+; ..\ADC0.c	   254    ///  - LCBR1 is selected as lower boundary
+; ..\ADC0.c	   255  
+; ..\ADC0.c	   256    ADC0_CHCTR0    =  0x00000004;  // load channel control register
+	mov	d0,#4
+	st.w	[a2]@los(0xf0101100),d0
+.L135:
+
+; ..\ADC0.c	   257  
+; ..\ADC0.c	   258    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   259    ///  Configuration of Alias Register:
+; ..\ADC0.c	   260    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   261  
+; ..\ADC0.c	   262    ADC0_ALR0      =  0x00000100;  // load alias register 0
+	mov.u	d0,#256
+	st.w	[a2]@los(0xf0101210),d0
+.L136:
+
+; ..\ADC0.c	   263  
+; ..\ADC0.c	   264    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   265    ///  Configuration of Sample Time and Resolution:
+; ..\ADC0.c	   266    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   267  
+; ..\ADC0.c	   268    ///  12 bit resolution selected
+; ..\ADC0.c	   269  
+; ..\ADC0.c	   270    ADC0_INPCR0    =  0x00000100;  // load input class0 register
+	st.w	[a2]@los(0xf0101050),d0
+.L137:
+
+; ..\ADC0.c	   271  
+; ..\ADC0.c	   272    ///  10 bit resolution selected
+; ..\ADC0.c	   273  
+; ..\ADC0.c	   274    ADC0_INPCR1    =  0x00000000;  // load input class1 register
+	st.w	[a2]@los(0xf0101054),d15
+.L138:
+
+; ..\ADC0.c	   275  
+; ..\ADC0.c	   276    ///  10 bit resolution selected
+; ..\ADC0.c	   277  
+; ..\ADC0.c	   278    ADC0_INPCR2    =  0x00000000;  // load input class2 register
+	st.w	[a2]@los(0xf0101058),d15
+.L139:
+
+; ..\ADC0.c	   279  
+; ..\ADC0.c	   280    ///  10 bit resolution selected
+; ..\ADC0.c	   281  
+; ..\ADC0.c	   282    ADC0_INPCR3    =  0x00000000;  // load input class3 register
+	st.w	[a2]@los(0xf010105c),d15
+.L140:
+
+; ..\ADC0.c	   283  
+; ..\ADC0.c	   284    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   285    ///  Configuration of Result Control Registers:
+; ..\ADC0.c	   286    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   287    ///  Configuration of Result Control Register 0
+; ..\ADC0.c	   288    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   289    ///  - the event interrupt is disabled
+; ..\ADC0.c	   290    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   291  
+; ..\ADC0.c	   292    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   293  
+; ..\ADC0.c	   294    ADC0_RCR0      =  0x00000000;  // load result control register 0
+	st.w	[a2]@los(0xf0101140),d15
+.L141:
+
+; ..\ADC0.c	   295  
+; ..\ADC0.c	   296    ///  Configuration of Result Control Register 1
+; ..\ADC0.c	   297    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   298    ///  - the event interrupt is disabled
+; ..\ADC0.c	   299    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   300  
+; ..\ADC0.c	   301    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   302  
+; ..\ADC0.c	   303    ADC0_RCR1      =  0x00000000;  // load result control register 1
+	st.w	[a2]@los(0xf0101144),d15
+.L142:
+
+; ..\ADC0.c	   304  
+; ..\ADC0.c	   305    ///  Configuration of Result Control Register 2
+; ..\ADC0.c	   306    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   307    ///  - the event interrupt is disabled
+; ..\ADC0.c	   308    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   309  
+; ..\ADC0.c	   310    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   311  
+; ..\ADC0.c	   312    ADC0_RCR2      =  0x00000000;  // load result control register 2
+	st.w	[a2]@los(0xf0101148),d15
+.L143:
+
+; ..\ADC0.c	   313  
+; ..\ADC0.c	   314    ///  Configuration of Result Control Register 3
+; ..\ADC0.c	   315    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   316    ///  - the event interrupt is disabled
+; ..\ADC0.c	   317    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   318  
+; ..\ADC0.c	   319    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   320  
+; ..\ADC0.c	   321    ADC0_RCR3      =  0x00000000;  // load result control register 3
+	st.w	[a2]@los(0xf010114c),d15
+.L144:
+
+; ..\ADC0.c	   322  
+; ..\ADC0.c	   323    ///  Configuration of Result Control Register 4
+; ..\ADC0.c	   324    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   325    ///  - the event interrupt is disabled
+; ..\ADC0.c	   326    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   327  
+; ..\ADC0.c	   328    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   329  
+; ..\ADC0.c	   330    ADC0_RCR4      =  0x00000000;  // load result control register 4
+	st.w	[a2]@los(0xf0101150),d15
+.L145:
+
+; ..\ADC0.c	   331  
+; ..\ADC0.c	   332    ///  Configuration of Result Control Register 5
+; ..\ADC0.c	   333    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   334    ///  - the event interrupt is disabled
+; ..\ADC0.c	   335    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   336  
+; ..\ADC0.c	   337    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   338  
+; ..\ADC0.c	   339    ADC0_RCR5      =  0x00000000;  // load result control register 5
+	st.w	[a2]@los(0xf0101154),d15
+.L146:
+
+; ..\ADC0.c	   340  
+; ..\ADC0.c	   341    ///  Configuration of Result Control Register 6
+; ..\ADC0.c	   342    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   343    ///  - the event interrupt is disabled
+; ..\ADC0.c	   344    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   345  
+; ..\ADC0.c	   346    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   347  
+; ..\ADC0.c	   348    ADC0_RCR6      =  0x00000000;  // load result control register 6
+	st.w	[a2]@los(0xf0101158),d15
+.L147:
+
+; ..\ADC0.c	   349  
+; ..\ADC0.c	   350    ///  Configuration of Result Control Register 7
+; ..\ADC0.c	   351    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   352    ///  - the event interrupt is disabled
+; ..\ADC0.c	   353    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   354  
+; ..\ADC0.c	   355    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   356  
+; ..\ADC0.c	   357    ADC0_RCR7      =  0x00000000;  // load result control register 7
+	st.w	[a2]@los(0xf010115c),d15
+.L148:
+
+; ..\ADC0.c	   358  
+; ..\ADC0.c	   359    ///  Configuration of Result Control Register 8
+; ..\ADC0.c	   360    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   361    ///  - the event interrupt is disabled
+; ..\ADC0.c	   362    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   363  
+; ..\ADC0.c	   364    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   365  
+; ..\ADC0.c	   366    ADC0_RCR8      =  0x00000000;  // load result control register 8
+	st.w	[a2]@los(0xf0101160),d15
+.L149:
+
+; ..\ADC0.c	   367  
+; ..\ADC0.c	   368    ///  Configuration of Result Control Register 9
+; ..\ADC0.c	   369    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   370    ///  - the event interrupt is disabled
+; ..\ADC0.c	   371    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   372  
+; ..\ADC0.c	   373    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   374  
+; ..\ADC0.c	   375    ADC0_RCR9      =  0x00000000;  // load result control register 9
+	st.w	[a2]@los(0xf0101164),d15
+.L150:
+
+; ..\ADC0.c	   376  
+; ..\ADC0.c	   377    ///  Configuration of Result Control Register 10
+; ..\ADC0.c	   378    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   379    ///  - the event interrupt is disabled
+; ..\ADC0.c	   380    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   381  
+; ..\ADC0.c	   382    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   383  
+; ..\ADC0.c	   384    ADC0_RCR10     =  0x00000000;  // load result control register 10
+	st.w	[a2]@los(0xf0101168),d15
+.L151:
+
+; ..\ADC0.c	   385  
+; ..\ADC0.c	   386    ///  Configuration of Result Control Register 11
+; ..\ADC0.c	   387    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   388    ///  - the event interrupt is disabled
+; ..\ADC0.c	   389    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   390  
+; ..\ADC0.c	   391    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   392  
+; ..\ADC0.c	   393    ADC0_RCR11     =  0x00000000;  // load result control register 11
+	st.w	[a2]@los(0xf010116c),d15
+.L152:
+
+; ..\ADC0.c	   394  
+; ..\ADC0.c	   395    ///  Configuration of Result Control Register 12
+; ..\ADC0.c	   396    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   397    ///  - the event interrupt is disabled
+; ..\ADC0.c	   398    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   399  
+; ..\ADC0.c	   400    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   401  
+; ..\ADC0.c	   402    ADC0_RCR12     =  0x00000000;  // load result control register 12
+	st.w	[a2]@los(0xf0101170),d15
+.L153:
+
+; ..\ADC0.c	   403  
+; ..\ADC0.c	   404    ///  Configuration of Result Control Register 13
+; ..\ADC0.c	   405    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   406    ///  - the event interrupt is disabled
+; ..\ADC0.c	   407    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   408  
+; ..\ADC0.c	   409    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   410  
+; ..\ADC0.c	   411    ADC0_RCR13     =  0x00000000;  // load result control register 13
+	st.w	[a2]@los(0xf0101174),d15
+.L154:
+
+; ..\ADC0.c	   412  
+; ..\ADC0.c	   413    ///  Configuration of Result Control Register 14
+; ..\ADC0.c	   414    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   415    ///  - the event interrupt is disabled
+; ..\ADC0.c	   416    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   417  
+; ..\ADC0.c	   418    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   419  
+; ..\ADC0.c	   420    ADC0_RCR14     =  0x00000000;  // load result control register 14
+	st.w	[a2]@los(0xf0101178),d15
+.L155:
+
+; ..\ADC0.c	   421  
+; ..\ADC0.c	   422    ///  Configuration of Result Control Register 15
+; ..\ADC0.c	   423    ///  - the data reduction filter is disabled
+; ..\ADC0.c	   424    ///  - the event interrupt is disabled
+; ..\ADC0.c	   425    ///  - the wait-for-read mode is disabled
+; ..\ADC0.c	   426  
+; ..\ADC0.c	   427    ///  - the FIFO functionality is disabled
+; ..\ADC0.c	   428  
+; ..\ADC0.c	   429    ADC0_RCR15     =  0x00000000;  // load result control register 15
+	st.w	[a2]@los(0xf010117c),d15
+.L156:
+
+; ..\ADC0.c	   430  
+; ..\ADC0.c	   431    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   432    ///  Configuration of Channel Interrupt Node Pointer Register:
+; ..\ADC0.c	   433    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   434    ///  - the SR0 line become activated if channel 0 interrupt is generated
+; ..\ADC0.c	   435  
+; ..\ADC0.c	   436    ADC0_CHENPR0   =  0x00000000;  // load channel interrupt node pointer 
+	st.w	[a2]@los(0xf0101068),d15
+.L157:
+
+; ..\ADC0.c	   437                                   // register 0
+; ..\ADC0.c	   438  
+; ..\ADC0.c	   439    ADC0_CHENPR8   =  0x00000000;  // load channel interrupt node pointer 
+	st.w	[a2]@los(0xf010106c),d15
+.L158:
+
+; ..\ADC0.c	   440                                   // register 8
+; ..\ADC0.c	   441  
+; ..\ADC0.c	   442    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   443    ///  Configuration of Event Interrupt Node Pointer Register for Source 
+; ..\ADC0.c	   444    ///  Interrupts:
+; ..\ADC0.c	   445    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   446    ///  - the SR 0 line become activated if the event 0 interrupt is generated
+; ..\ADC0.c	   447    ///  - the SR 0 line become activated if the event 1 interrupt is generated
+; ..\ADC0.c	   448    ///  - the SR 0 line become activated if the event 2 interrupt is generated
+; ..\ADC0.c	   449    ///  - the SR 0 line become activated if the event 3 interrupt is generated
+; ..\ADC0.c	   450    ///  - the SR 0 line become activated if the event 4 interrupt is generated
+; ..\ADC0.c	   451  
+; ..\ADC0.c	   452    ADC0_EVNPR     =  0x00000000;  // load event interrupt set flag register 
+	st.w	[a2]@los(0xf0101078),d15
+.L159:
+
+; ..\ADC0.c	   453  
+; ..\ADC0.c	   454    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   455    ///  Configuration of Event Interrupt Node Pointer Register for Result 
+; ..\ADC0.c	   456    ///  Interrupts:
+; ..\ADC0.c	   457    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   458  
+; ..\ADC0.c	   459    ADC0_RNPR0     =  0x00000000;  // load event interrupt set flag register 
+	st.w	[a2]@los(0xf0101208),d15
+.L160:
+
+; ..\ADC0.c	   460  
+; ..\ADC0.c	   461  
+; ..\ADC0.c	   462    ADC0_RNPR8     =  0x00000000;  // load event interrupt set flag register 
+	st.w	[a2]@los(0xf010120c),d15
+.L161:
+
+; ..\ADC0.c	   463  
+; ..\ADC0.c	   464    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   465    ///  Configuration of Service Request Nodes 0 - 7 :
+; ..\ADC0.c	   466    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   467  
+; ..\ADC0.c	   468  
+; ..\ADC0.c	   469    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   470    ///  Configuration of Limit Check Boundary:
+; ..\ADC0.c	   471    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   472  
+; ..\ADC0.c	   473    ADC0_LCBR0     =  0x00000198;  // load limit check boundary register 0
+	mov.u	d0,#408
+	st.w	[a2]@los(0xf01010f0),d0
+.L162:
+
+; ..\ADC0.c	   474  
+; ..\ADC0.c	   475    ADC0_LCBR1     =  0x00000E64;  // load limit check boundary register 1
+	mov.u	d0,#3684
+	st.w	[a2]@los(0xf01010f4),d0
+.L163:
+
+; ..\ADC0.c	   476  
+; ..\ADC0.c	   477    ADC0_LCBR2     =  0x00000554;  // load limit check boundary register 2
+	mov.u	d0,#1364
+	st.w	[a2]@los(0xf01010f8),d0
+.L164:
+
+; ..\ADC0.c	   478  
+; ..\ADC0.c	   479    ADC0_LCBR3     =  0x00000AA8;  // load limit check boundary register 3
+	mov.u	d0,#2728
+	st.w	[a2]@los(0xf01010fc),d0
+.L165:
+
+; ..\ADC0.c	   480  
+; ..\ADC0.c	   481    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   482    ///  Configuration of Gating source and External Trigger Control:
+; ..\ADC0.c	   483    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   484    ///  - No Gating source selected for Arbitration Source 0
+; ..\ADC0.c	   485  
+; ..\ADC0.c	   486    ///  - the trigger input selection is not enabled for source 0
+; ..\ADC0.c	   487  
+; ..\ADC0.c	   488    ADC0_RSIR0     =  0x00000000;  // load external trigger control register 
+	st.w	[a2]@los(0xf0101010),d15
+.L166:
+
+; ..\ADC0.c	   489                                   // for Request Source 0
+; ..\ADC0.c	   490  
+; ..\ADC0.c	   491    ///  - No Gating source selected for Arbitration Source 1
+; ..\ADC0.c	   492  
+; ..\ADC0.c	   493    ///  - the trigger input TRSEL selection is not enabled for Source 1
+; ..\ADC0.c	   494  
+; ..\ADC0.c	   495    ADC0_RSIR1     =  0x00000000;  // load external trigger control register 
+	st.w	[a2]@los(0xf0101014),d15
+.L167:
+
+; ..\ADC0.c	   496                                   // for Request Source 1
+; ..\ADC0.c	   497  
+; ..\ADC0.c	   498    ///  - No Gating source selected for Arbitration Source 2
+; ..\ADC0.c	   499  
+; ..\ADC0.c	   500    ///  - the trigger input TRSEL selection is not enabled for Source 2
+; ..\ADC0.c	   501  
+; ..\ADC0.c	   502    ADC0_RSIR2     =  0x00000000;  // load external trigger control register 
+	st.w	[a2]@los(0xf0101018),d15
+.L168:
+
+; ..\ADC0.c	   503                                   // for Request Source 2
+; ..\ADC0.c	   504  
+; ..\ADC0.c	   505    ///  - No Gating source selected for Arbitration Source 3
+; ..\ADC0.c	   506  
+; ..\ADC0.c	   507    ///  - the trigger input TRSEL selection is not enabled for Source 3
+; ..\ADC0.c	   508  
+; ..\ADC0.c	   509    ADC0_RSIR3     =  0x00000000;  // load external trigger control register 
+	st.w	[a2]@los(0xf010101c),d15
+.L169:
+
+; ..\ADC0.c	   510                                   // for Request Source 3
+; ..\ADC0.c	   511  
+; ..\ADC0.c	   512    ///  - No Gating source selected for Arbitration Source 2
+; ..\ADC0.c	   513  
+; ..\ADC0.c	   514    ///  - the trigger input TRSEL selection is not enabled for Source 4
+; ..\ADC0.c	   515  
+; ..\ADC0.c	   516    ADC0_RSIR4     =  0x00000000;  // load external trigger control register 
+	st.w	[a2]@los(0xf0101020),d15
+.L170:
+
+; ..\ADC0.c	   517                                   // for Request Source 4
+; ..\ADC0.c	   518  
+; ..\ADC0.c	   519    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   520    ///  Configuration of Conversion Queue Mode Register:Sequential Source 0
+; ..\ADC0.c	   521    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   522    ///  - the gating line is permanently Enabled
+; ..\ADC0.c	   523    ///  - the external trigger is disabled
+; ..\ADC0.c	   524  
+; ..\ADC0.c	   525    ADC0_QMR0      =  0x00000001;  // load queue mode register
+	mov	d15,#1
+	st.w	[a2]@los(0xf0101080),d15
+.L171:
+
+; ..\ADC0.c	   526  
+; ..\ADC0.c	   527    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   528    ///  Configuration of Conversion Queue Mode Register:Sequential Source 2
+; ..\ADC0.c	   529    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   530    ///  - the gating line is permanently Enabled
+; ..\ADC0.c	   531    ///  - the external trigger is disabled
+; ..\ADC0.c	   532  
+; ..\ADC0.c	   533    ADC0_QMR2      =  0x00000001;  // load queue mode register
+	st.w	[a2]@los(0xf01010a0),d15
+.L172:
+
+; ..\ADC0.c	   534  
+; ..\ADC0.c	   535    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   536    ///  Configuration of Conversion Queue Mode Register:Sequential Source 4
+; ..\ADC0.c	   537    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   538    ///  - the gating line is permanently Enabled
+; ..\ADC0.c	   539    ///  - the external trigger is disabled
+; ..\ADC0.c	   540  
+; ..\ADC0.c	   541    ADC0_QMR4      =  0x00000001;  // load queue mode register
+	st.w	[a2]@los(0xf01010c0),d15
+.L173:
+
+; ..\ADC0.c	   542  
+; ..\ADC0.c	   543    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   544    ///  Configuration of Conversion Request Mode Registers:Parallel Source 
+; ..\ADC0.c	   545    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   546    ///  - the gating line is permanently Enabled
+; ..\ADC0.c	   547    ///  - the external trigger is disabled
+; ..\ADC0.c	   548    ///  - the source interrupt is disabled
+; ..\ADC0.c	   549    ///  - the autoscan functionality is disabled
+; ..\ADC0.c	   550  
+; ..\ADC0.c	   551    ADC0_CRMR1     =  0x00000001;  // load conversion request mode register 1
+	st.w	[a2]@los(0xf0101098),d15
+.L174:
+
+; ..\ADC0.c	   552  
+; ..\ADC0.c	   553    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   554    ///  Configuration of Conversion Request Mode Registers:Parallel Source 3
+; ..\ADC0.c	   555    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   556    ///  - the gating line is permanently Enabled
+; ..\ADC0.c	   557    ///  - the external trigger is disabled
+; ..\ADC0.c	   558    ///  - the source interrupt is disabled
+; ..\ADC0.c	   559    ///  - the autoscan functionality is disabled
+; ..\ADC0.c	   560  
+; ..\ADC0.c	   561    ADC0_CRMR3     =  0x00000001;  // load conversion request mode register 3
+	st.w	[a2]@los(0xf01010b8),d15
+.L175:
+
+; ..\ADC0.c	   562  
+; ..\ADC0.c	   563    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   564    ///  Configuration of Synchronisation Registers:
+; ..\ADC0.c	   565    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   566    ADC0_SYNCTR   |=  0x00000000;  // Synchronisation register
+	ld.w	d15,[a2]@los(0xf0101048)
+	st.w	[a2]@los(0xf0101048),d15
+.L176:
+
+; ..\ADC0.c	   567  
+; ..\ADC0.c	   568    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   569    ///  Wait for calibration to finish (CAL=0)
+; ..\ADC0.c	   570    ///  -----------------------------------------------------------------------
+; ..\ADC0.c	   571  
+; ..\ADC0.c	   572    while((ADC0_GLOBSTR & 0x0004));  //wait for calibration to finish (CAL=0)
+	lea	a2,[a2]@los(0xf0101038)
+.L4:
+	ld.w	d15,[a2]
+	jnz.t	d15:2,.L4				; predicted taken
+.L177:
+
+; ..\ADC0.c	   573  
+; ..\ADC0.c	   574    ADC0_GLOBCTR  |=  0x00000300;  // turn on Analog part for ADC0 kernel
+	ld.w	d15,[a15]
+	insert	d15,d15,#3,#8,#2
+	st.w	[a15],d15
+.L178:
+
+; ..\ADC0.c	   575  
+; ..\ADC0.c	   576    // USER CODE BEGIN (ADC0_Init,3)
+; ..\ADC0.c	   577  
+; ..\ADC0.c	   578    // USER CODE END
+; ..\ADC0.c	   579  
+; ..\ADC0.c	   580  } //  End of function ADC0_vInit
+	ret
+.L72:
+	
+__ADC0_vInit_function_end:
+	.size	ADC0_vInit,__ADC0_vInit_function_end-ADC0_vInit
+.L41:
+	; End of function
+	
+	.sdecl	'.text.ADC0.ADC0_vStartSeq0ReqChNum',code,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.text.ADC0.ADC0_vStartSeq0ReqChNum'
+	.align	2
+	
+	.global	ADC0_vStartSeq0ReqChNum
+
+; ..\ADC0.c	   581  
+; ..\ADC0.c	   582  
+; ..\ADC0.c	   583  //****************************************************************************
+; ..\ADC0.c	   584  // @Function      void ADC0_vStartSeq0ReqChNum(ubyte ubExtTrg, ubyte ubEnIntr, ubyte ubRFill, ubyte ubChannelNum) 
+; ..\ADC0.c	   585  //
+; ..\ADC0.c	   586  //----------------------------------------------------------------------------
+; ..\ADC0.c	   587  // @Description   This function starts the conversion of the requested 
+; ..\ADC0.c	   588  //                channel.
+; ..\ADC0.c	   589  //                NOTE -
+; ..\ADC0.c	   590  //                Before passing ubEnIntr argument as 1,make sure that Seq 0 
+; ..\ADC0.c	   591  //                source interrupt is enabled.
+; ..\ADC0.c	   592  //                External Trigger -> 0,Indicates software trigger 
+; ..\ADC0.c	   593  //                (Conversion starts once this function is executed)
+; ..\ADC0.c	   594  //
+; ..\ADC0.c	   595  //----------------------------------------------------------------------------
+; ..\ADC0.c	   596  // @Returnvalue   None
+; ..\ADC0.c	   597  //
+; ..\ADC0.c	   598  //----------------------------------------------------------------------------
+; ..\ADC0.c	   599  // @Parameters    ubExtTrg: 
+; ..\ADC0.c	   600  //                External Trigger : defines external trigger.
+; ..\ADC0.c	   601  // @Parameters    ubEnIntr: 
+; ..\ADC0.c	   602  //                Enable Source Interrupt : defines source interrupt
+; ..\ADC0.c	   603  // @Parameters    ubRFill: 
+; ..\ADC0.c	   604  //                Refill : defines the refill (1 for enable,0 for disable)
+; ..\ADC0.c	   605  // @Parameters    ubChannelNum: 
+; ..\ADC0.c	   606  //                Channel number : Name of the Request Channel Number (0 - 
+; ..\ADC0.c	   607  //                15)- see macros defined in the header file
+; ..\ADC0.c	   608  //
+; ..\ADC0.c	   609  //----------------------------------------------------------------------------
+; ..\ADC0.c	   610  // @Date          21.03.2012
+; ..\ADC0.c	   611  //
+; ..\ADC0.c	   612  //****************************************************************************
+; ..\ADC0.c	   613  
+; ..\ADC0.c	   614  void ADC0_vStartSeq0ReqChNum(ubyte ubExtTrg, ubyte ubEnIntr, ubyte ubRFill, ubyte ubChannelNum)
+; Function ADC0_vStartSeq0ReqChNum
+.L22:
+ADC0_vStartSeq0ReqChNum:	.type	func
+
+; ..\ADC0.c	   615  {
+; ..\ADC0.c	   616  
+; ..\ADC0.c	   617      uword uwVal = 0;
+; ..\ADC0.c	   618      if (ubExtTrg == 1)
+	movh.a	a14,#@his(.L224)
+	lea	a14,[a14]@los(.L224)
+	j	.cocofun_1
+.L224:
+.L103:
+
+; ..\ADC0.c	   619      {
+; ..\ADC0.c	   620          uwVal = 0x00000080;
+; ..\ADC0.c	   621      }
+; ..\ADC0.c	   622      if (ubEnIntr == 1)
+; ..\ADC0.c	   623      {
+; ..\ADC0.c	   624          uwVal = uwVal + 0x00000040;
+; ..\ADC0.c	   625      }
+; ..\ADC0.c	   626      if (ubRFill == 1)
+; ..\ADC0.c	   627      {
+; ..\ADC0.c	   628          uwVal = uwVal + 0x00000020;
+; ..\ADC0.c	   629      }
+; ..\ADC0.c	   630      uwVal = uwVal + (ubChannelNum & 0x0000000f);
+; ..\ADC0.c	   631  
+; ..\ADC0.c	   632     ADC0_QINR0 = uwVal; // requested channel 
+	st.w	[a15]@los(0xf010108c),d1
+.L183:
+
+; ..\ADC0.c	   633  
+; ..\ADC0.c	   634  } //  End of function ADC0_vStartSeq0ReqChNum
+	ret
+.L75:
+	
+__ADC0_vStartSeq0ReqChNum_function_end:
+	.size	ADC0_vStartSeq0ReqChNum,__ADC0_vStartSeq0ReqChNum_function_end-ADC0_vStartSeq0ReqChNum
+.L46:
+	; End of function
+	
+	.sdecl	'.text.ADC0..cocofun_1',code,cluster('.cocofun_1')
+	.sect	'.text.ADC0..cocofun_1'
+	.align	2
+; Function .cocofun_1
+.L24:
+.cocofun_1:	.type	func
+; Function body .cocofun_1, coco_iter:0
+	eq	d0,d4,#1
+.L218:
+	eq	d15,d5,#1
+	sh	d15,#6
+	add	d1,d15,#0
+.L104:
+	cadd	d1,d0,d1,#128
+.L219:
+	eq	d15,d6,#1
+	sh	d15,#5
+	add	d1,d15
+.L220:
+	and	d15,d7,#15
+.L221:
+	add	d1,d15
+	movh.a	a15,#61456
+.L102:
+	ji	a14
+.L71:
+	; End of function
+	.sdecl	'.text.ADC0.ADC0_vStartSeq2ReqChNum',code,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.text.ADC0.ADC0_vStartSeq2ReqChNum'
+	.align	2
+	
+	.global	ADC0_vStartSeq2ReqChNum
+
+; ..\ADC0.c	   635  
+; ..\ADC0.c	   636  
+; ..\ADC0.c	   637  //****************************************************************************
+; ..\ADC0.c	   638  // @Function      void ADC0_vStartSeq2ReqChNum(ubyte ubExtTrg, ubyte ubEnIntr, ubyte ubRFill, ubyte ubChannelNum) 
+; ..\ADC0.c	   639  //
+; ..\ADC0.c	   640  //----------------------------------------------------------------------------
+; ..\ADC0.c	   641  // @Description   This function starts the conversion of the requested 
+; ..\ADC0.c	   642  //                channel.
+; ..\ADC0.c	   643  //                NOTE -
+; ..\ADC0.c	   644  //                Before passing ubEnIntr argument as 1,make sure that Seq 2 
+; ..\ADC0.c	   645  //                source interrupt is enabled.
+; ..\ADC0.c	   646  //                External Trigger -> 0,Indicates software trigger 
+; ..\ADC0.c	   647  //                (Conversion starts once this function is executed)
+; ..\ADC0.c	   648  //
+; ..\ADC0.c	   649  //----------------------------------------------------------------------------
+; ..\ADC0.c	   650  // @Returnvalue   None
+; ..\ADC0.c	   651  //
+; ..\ADC0.c	   652  //----------------------------------------------------------------------------
+; ..\ADC0.c	   653  // @Parameters    ubExtTrg: 
+; ..\ADC0.c	   654  //                External Trigger : defines external trigger.
+; ..\ADC0.c	   655  // @Parameters    ubEnIntr: 
+; ..\ADC0.c	   656  //                Enable Source Interrupt : defines source interrupt
+; ..\ADC0.c	   657  // @Parameters    ubRFill: 
+; ..\ADC0.c	   658  //                Refill : defines the refill (1 for enable,0 for disable)
+; ..\ADC0.c	   659  // @Parameters    ubChannelNum: 
+; ..\ADC0.c	   660  //                Channel number : Name of the Request Channel Number (0 - 
+; ..\ADC0.c	   661  //                15) - see macros defined in the header file
+; ..\ADC0.c	   662  //
+; ..\ADC0.c	   663  //----------------------------------------------------------------------------
+; ..\ADC0.c	   664  // @Date          21.03.2012
+; ..\ADC0.c	   665  //
+; ..\ADC0.c	   666  //****************************************************************************
+; ..\ADC0.c	   667  
+; ..\ADC0.c	   668  void ADC0_vStartSeq2ReqChNum(ubyte ubExtTrg, ubyte ubEnIntr, ubyte ubRFill, ubyte ubChannelNum)
+; Function ADC0_vStartSeq2ReqChNum
+.L26:
+ADC0_vStartSeq2ReqChNum:	.type	func
+
+; ..\ADC0.c	   669  {
+; ..\ADC0.c	   670  
+; ..\ADC0.c	   671      uword uwVal = 0;
+; ..\ADC0.c	   672      if (ubExtTrg == 1)
+	movh.a	a14,#@his(.L225)
+	lea	a14,[a14]@los(.L225)
+	j	.cocofun_1
+.L225:
+.L105:
+
+; ..\ADC0.c	   673      {
+; ..\ADC0.c	   674          uwVal = 0x00000080;
+; ..\ADC0.c	   675      }
+; ..\ADC0.c	   676      if (ubEnIntr == 1)
+; ..\ADC0.c	   677      {
+; ..\ADC0.c	   678          uwVal = uwVal + 0x00000040;
+; ..\ADC0.c	   679      }
+; ..\ADC0.c	   680      if (ubRFill == 1)
+; ..\ADC0.c	   681      {
+; ..\ADC0.c	   682          uwVal = uwVal + 0x00000020;
+; ..\ADC0.c	   683      }
+; ..\ADC0.c	   684      uwVal = uwVal + (ubChannelNum & 0x0000000f);
+; ..\ADC0.c	   685  
+; ..\ADC0.c	   686    ADC0_QINR2 = uwVal; // requested channel 
+	st.w	[a15]@los(0xf01010ac),d1
+.L188:
+
+; ..\ADC0.c	   687  
+; ..\ADC0.c	   688  } //  End of function ADC0_vStartSeq2ReqChNum
+	ret
+.L84:
+	
+__ADC0_vStartSeq2ReqChNum_function_end:
+	.size	ADC0_vStartSeq2ReqChNum,__ADC0_vStartSeq2ReqChNum_function_end-ADC0_vStartSeq2ReqChNum
+.L51:
+	; End of function
+	
+	.sdecl	'.text.ADC0.ADC0_vStartSeq4ReqChNum',code,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.text.ADC0.ADC0_vStartSeq4ReqChNum'
+	.align	2
+	
+	.global	ADC0_vStartSeq4ReqChNum
+
+; ..\ADC0.c	   689  
+; ..\ADC0.c	   690  
+; ..\ADC0.c	   691  //****************************************************************************
+; ..\ADC0.c	   692  // @Function      void ADC0_vStartSeq4ReqChNum(ubyte ubExtTrg, ubyte ubEnIntr, ubyte ubRFill, ubyte ubChannelNum) 
+; ..\ADC0.c	   693  //
+; ..\ADC0.c	   694  //----------------------------------------------------------------------------
+; ..\ADC0.c	   695  // @Description   This function starts the conversion of the requested 
+; ..\ADC0.c	   696  //                channel.
+; ..\ADC0.c	   697  //                NOTE -
+; ..\ADC0.c	   698  //                Before passing ubEnIntr argument as 1,make sure that Seq 4 
+; ..\ADC0.c	   699  //                source interrupt is enabled.
+; ..\ADC0.c	   700  //                External Trigger -> 0,Indicates software trigger 
+; ..\ADC0.c	   701  //                (Conversion starts once this function is executed)
+; ..\ADC0.c	   702  //
+; ..\ADC0.c	   703  //----------------------------------------------------------------------------
+; ..\ADC0.c	   704  // @Returnvalue   None
+; ..\ADC0.c	   705  //
+; ..\ADC0.c	   706  //----------------------------------------------------------------------------
+; ..\ADC0.c	   707  // @Parameters    ubExtTrg: 
+; ..\ADC0.c	   708  //                External Trigger : defines external trigger.
+; ..\ADC0.c	   709  // @Parameters    ubEnIntr: 
+; ..\ADC0.c	   710  //                Enable Source Interrupt : defines source interrupt
+; ..\ADC0.c	   711  // @Parameters    ubRFill: 
+; ..\ADC0.c	   712  //                Refill : defines the refill (1 for enable,0 for disable)
+; ..\ADC0.c	   713  // @Parameters    ubChannelNum: 
+; ..\ADC0.c	   714  //                Channel number : Name of the Request Channel Number (0 - 
+; ..\ADC0.c	   715  //                15) - see macros defined in the header file
+; ..\ADC0.c	   716  //
+; ..\ADC0.c	   717  //----------------------------------------------------------------------------
+; ..\ADC0.c	   718  // @Date          21.03.2012
+; ..\ADC0.c	   719  //
+; ..\ADC0.c	   720  //****************************************************************************
+; ..\ADC0.c	   721  
+; ..\ADC0.c	   722  void ADC0_vStartSeq4ReqChNum(ubyte ubExtTrg, ubyte ubEnIntr, ubyte ubRFill, ubyte ubChannelNum)
+; Function ADC0_vStartSeq4ReqChNum
+.L28:
+ADC0_vStartSeq4ReqChNum:	.type	func
+
+; ..\ADC0.c	   723  {
+; ..\ADC0.c	   724  
+; ..\ADC0.c	   725      uword uwVal = 0;
+; ..\ADC0.c	   726      if (ubExtTrg == 1)
+	movh.a	a14,#@his(.L226)
+	lea	a14,[a14]@los(.L226)
+	j	.cocofun_1
+.L226:
+.L106:
+
+; ..\ADC0.c	   727      {
+; ..\ADC0.c	   728          uwVal = 0x00000080;
+; ..\ADC0.c	   729      }
+; ..\ADC0.c	   730      if (ubEnIntr == 1)
+; ..\ADC0.c	   731      {
+; ..\ADC0.c	   732          uwVal = uwVal + 0x00000040;
+; ..\ADC0.c	   733      }
+; ..\ADC0.c	   734      if (ubRFill == 1)
+; ..\ADC0.c	   735      {
+; ..\ADC0.c	   736          uwVal = uwVal + 0x00000020;
+; ..\ADC0.c	   737      }
+; ..\ADC0.c	   738      uwVal = uwVal + (ubChannelNum & 0x0000000f);
+; ..\ADC0.c	   739  
+; ..\ADC0.c	   740    ADC0_QINR4 = uwVal; // requested channel 
+	st.w	[a15]@los(0xf01010cc),d1
+.L193:
+
+; ..\ADC0.c	   741  
+; ..\ADC0.c	   742  } //  End of function ADC0_vStartSeq2ReqChNum
+	ret
+.L90:
+	
+__ADC0_vStartSeq4ReqChNum_function_end:
+	.size	ADC0_vStartSeq4ReqChNum,__ADC0_vStartSeq4ReqChNum_function_end-ADC0_vStartSeq4ReqChNum
+.L56:
+	; End of function
+	
+	.sdecl	'.text.ADC0.ADC0_vStartParReqChNum',code,cluster('ADC0_vStartParReqChNum')
+	.sect	'.text.ADC0.ADC0_vStartParReqChNum'
+	.align	2
+	
+	.global	ADC0_vStartParReqChNum
+
+; ..\ADC0.c	   743  
+; ..\ADC0.c	   744  
+; ..\ADC0.c	   745  //****************************************************************************
+; ..\ADC0.c	   746  // @Function      void ADC0_vStartParReqChNum(uword uwChannelNum, ubyte ubSrc) 
+; ..\ADC0.c	   747  //
+; ..\ADC0.c	   748  //----------------------------------------------------------------------------
+; ..\ADC0.c	   749  // @Description   This function starts conversion request of analog 
+; ..\ADC0.c	   750  //                channel.The possible values for the request channels are: 
+; ..\ADC0.c	   751  //                Bit 0 = 1   ->  analog channel 0 is requested for 
+; ..\ADC0.c	   752  //                conversion 
+; ..\ADC0.c	   753  //                Bit 4 = 1   ->  analog channel 4 is requested for 
+; ..\ADC0.c	   754  //                conversion 
+; ..\ADC0.c	   755  //                Bit 8 = 1   ->  analog channel 8 is requested for 
+; ..\ADC0.c	   756  //                conversion 
+; ..\ADC0.c	   757  //                Bit 12 = 1   ->  analog channel 12 is requested for 
+; ..\ADC0.c	   758  //                conversion 
+; ..\ADC0.c	   759  //                Ex- ubSrc = ADC0_SOURCE_1,for parallel source 1
+; ..\ADC0.c	   760  //                    ubSrc = ADC0_SOURCE_3,for parallel source 3
+; ..\ADC0.c	   761  //
+; ..\ADC0.c	   762  //----------------------------------------------------------------------------
+; ..\ADC0.c	   763  // @Returnvalue   None
+; ..\ADC0.c	   764  //
+; ..\ADC0.c	   765  //----------------------------------------------------------------------------
+; ..\ADC0.c	   766  // @Parameters    uwChannelNum: 
+; ..\ADC0.c	   767  //                ChannelNumber : defines the channel number for parallel 
+; ..\ADC0.c	   768  //                source to start conversion
+; ..\ADC0.c	   769  // @Parameters    ubSrc: 
+; ..\ADC0.c	   770  //                ubSrc: defines the parallel source number
+; ..\ADC0.c	   771  //
+; ..\ADC0.c	   772  //----------------------------------------------------------------------------
+; ..\ADC0.c	   773  // @Date          21.03.2012
+; ..\ADC0.c	   774  //
+; ..\ADC0.c	   775  //****************************************************************************
+; ..\ADC0.c	   776  
+; ..\ADC0.c	   777  void ADC0_vStartParReqChNum(uword uwChannelNum, ubyte ubSrc)
+; Function ADC0_vStartParReqChNum
+.L30:
+ADC0_vStartParReqChNum:	.type	func
+
+; ..\ADC0.c	   778  {
+; ..\ADC0.c	   779  
+; ..\ADC0.c	   780        if(ubSrc == 1) 
+	jne	d5,#1,.L8				; predicted taken
+.L211:
+
+; ..\ADC0.c	   781        {
+; ..\ADC0.c	   782           ADC0_CRCR1      |=  uwChannelNum; // requested channel
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf0101090)
+	or	d15,d4
+	st.w	[a15]@los(0xf0101090),d15
+.L212:
+
+; ..\ADC0.c	   783  
+; ..\ADC0.c	   784        }
+; ..\ADC0.c	   785        else if(ubSrc == 3) 
+; ..\ADC0.c	   786        {
+; ..\ADC0.c	   787           ADC0_CRCR3      |=  uwChannelNum; // requested channel
+; ..\ADC0.c	   788  
+; ..\ADC0.c	   789        }
+; ..\ADC0.c	   790  
+; ..\ADC0.c	   791  } //  End of function ADC0_vStartParReqChNum
+	ret
+.L8:
+	jne	d5,#3,.L10				; predicted taken
+.L213:
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf01010b0)
+	or	d15,d4
+	st.w	[a15]@los(0xf01010b0),d15
+.L10:
+	ret
+.L98:
+	
+__ADC0_vStartParReqChNum_function_end:
+	.size	ADC0_vStartParReqChNum,__ADC0_vStartParReqChNum_function_end-ADC0_vStartParReqChNum
+.L66:
+	; End of function
+	
+	.sdecl	'.text.ADC0.ADC0_vClearPendingBits',code,cluster('ADC0_vClearPendingBits')
+	.sect	'.text.ADC0.ADC0_vClearPendingBits'
+	.align	2
+	
+	.global	ADC0_vClearPendingBits
+
+; ..\ADC0.c	   792  
+; ..\ADC0.c	   793  
+; ..\ADC0.c	   794  //****************************************************************************
+; ..\ADC0.c	   795  // @Function      void ADC0_vClearPendingBits(ubyte ubSourceNum) 
+; ..\ADC0.c	   796  //
+; ..\ADC0.c	   797  //----------------------------------------------------------------------------
+; ..\ADC0.c	   798  // @Description   This function clears all the pending requests for the 
+; ..\ADC0.c	   799  //                corresponding source.
+; ..\ADC0.c	   800  //                ubSourceNum -> ADC0_SOURCE_0,indicates seq 0 source
+; ..\ADC0.c	   801  //                ubSourceNum -> ADC0_SOURCE_1,indicates parallel source 1
+; ..\ADC0.c	   802  //                ubSourceNum -> ADC0_SOURCE_2,indicates seq 2 source
+; ..\ADC0.c	   803  //                ubSourceNum -> ADC0_SOURCE_3,indicates parallel source 3
+; ..\ADC0.c	   804  //                ubSourceNum -> ADC0_SOURCE_4,indicates seq 4 source 
+; ..\ADC0.c	   805  //
+; ..\ADC0.c	   806  //----------------------------------------------------------------------------
+; ..\ADC0.c	   807  // @Returnvalue   None
+; ..\ADC0.c	   808  //
+; ..\ADC0.c	   809  //----------------------------------------------------------------------------
+; ..\ADC0.c	   810  // @Parameters    ubSourceNum: 
+; ..\ADC0.c	   811  //                SourceNumber : Source Number for which pending bits have to 
+; ..\ADC0.c	   812  //                be cleared.
+; ..\ADC0.c	   813  //
+; ..\ADC0.c	   814  //----------------------------------------------------------------------------
+; ..\ADC0.c	   815  // @Date          21.03.2012
+; ..\ADC0.c	   816  //
+; ..\ADC0.c	   817  //****************************************************************************
+; ..\ADC0.c	   818  
+; ..\ADC0.c	   819  void ADC0_vClearPendingBits(ubyte ubSourceNum)
+; Function ADC0_vClearPendingBits
+.L32:
+ADC0_vClearPendingBits:	.type	func
+
+; ..\ADC0.c	   820  {
+; ..\ADC0.c	   821  
+; ..\ADC0.c	   822        if(ubSourceNum == 0) 
+	jne	d4,#0,.L11				; predicted taken
+.L198:
+
+; ..\ADC0.c	   823        {
+; ..\ADC0.c	   824              ADC0_QMR0 |= 0x00000100;    // Clear sequential source 0 pending bits
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf0101080)
+	or	d15,d15,#256
+	st.w	[a15]@los(0xf0101080),d15
+.L199:
+
+; ..\ADC0.c	   825  
+; ..\ADC0.c	   826        }
+; ..\ADC0.c	   827        else if(ubSourceNum == 1) 
+; ..\ADC0.c	   828        {
+; ..\ADC0.c	   829              ADC0_CRMR1 |= 0x00000100;    // Clear parallel source 1 pending bits
+; ..\ADC0.c	   830  
+; ..\ADC0.c	   831        }
+; ..\ADC0.c	   832        else if(ubSourceNum == 2) 
+; ..\ADC0.c	   833        {
+; ..\ADC0.c	   834              ADC0_QMR2 |= 0x00000100;    // Clear sequential source 2 pending bits
+; ..\ADC0.c	   835  
+; ..\ADC0.c	   836        }
+; ..\ADC0.c	   837        else if(ubSourceNum == 3) 
+; ..\ADC0.c	   838        {
+; ..\ADC0.c	   839              ADC0_CRMR3 |= 0x00000100;    // Clear parallel source 3 pending bits
+; ..\ADC0.c	   840  
+; ..\ADC0.c	   841        }
+; ..\ADC0.c	   842        else  
+; ..\ADC0.c	   843        {
+; ..\ADC0.c	   844           ADC0_QMR4       |=  0x00000100;  // Clear sequential source 4 pending bits 
+; ..\ADC0.c	   845  
+; ..\ADC0.c	   846        }
+; ..\ADC0.c	   847  
+; ..\ADC0.c	   848  } //  End of function ADC0_vClearPendingBits
+	ret
+.L11:
+	jne	d4,#1,.L13				; predicted taken
+.L200:
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf0101098)
+	or	d15,d15,#256
+	st.w	[a15]@los(0xf0101098),d15
+.L201:
+	ret
+.L13:
+	jne	d4,#2,.L15				; predicted taken
+.L202:
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf01010a0)
+	or	d15,d15,#256
+	st.w	[a15]@los(0xf01010a0),d15
+.L203:
+	ret
+.L15:
+	jne	d4,#3,.L17				; prediction unknown
+.L204:
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf01010b8)
+	or	d15,d15,#256
+	st.w	[a15]@los(0xf01010b8),d15
+.L205:
+	ret
+.L17:
+	movh.a	a15,#61456
+	ld.w	d15,[a15]@los(0xf01010c0)
+	or	d15,d15,#256
+	st.w	[a15]@los(0xf01010c0),d15
+.L206:
+	ret
+.L96:
+	
+__ADC0_vClearPendingBits_function_end:
+	.size	ADC0_vClearPendingBits,__ADC0_vClearPendingBits_function_end-ADC0_vClearPendingBits
+.L61:
+	; End of function
+	
+	.calls	'ADC0_vInit','MAIN_vWriteWDTCON0'
+	.calls	'ADC0_vStartSeq0ReqChNum','.cocofun_1'
+	.calls	'ADC0_vStartSeq2ReqChNum','.cocofun_1'
+	.calls	'ADC0_vStartSeq4ReqChNum','.cocofun_1'
+	.calls	'ADC0_vInit','',8
+	.calls	'ADC0_vStartSeq0ReqChNum','',0
+	.calls	'.cocofun_1','',0
+	.calls	'ADC0_vStartSeq2ReqChNum','',0
+	.calls	'ADC0_vStartSeq4ReqChNum','',0
+	.calls	'ADC0_vStartParReqChNum','',0
+	.extern	MAIN_vWriteWDTCON0
+	.calls	'ADC0_vClearPendingBits','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L34:
+	.word	973
+	.half	3
+	.word	.L35
+	.byte	4
+.L33:
+	.byte	1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L36
+	.byte	2
+	.byte	'MAIN_vWriteWDTCON0',0,1,139,1,6,1,1,1,1,3
+	.byte	'uwValue',0,1,139,1,31
+	.word	.L82-.L34
+	.byte	0
+.L82:
+	.byte	4
+	.byte	'unsigned int',0,4,7
+.L73:
+	.byte	5
+	.word	155
+.L76:
+	.byte	4
+	.byte	'unsigned char',0,1,8,6
+	.byte	'__size_t',0,2,1,1
+	.word	155
+	.byte	6
+	.byte	'__codeptr',0,2,1,1
+	.word	.L107-.L34
+.L107:
+	.byte	7
+	.word	.L108-.L34
+.L108:
+	.byte	8,1,6
+	.byte	'ubyte',0,1,69,24
+	.word	176
+	.byte	6
+	.byte	'ushort',0,1,71,24
+	.word	.L109-.L34
+.L109:
+	.byte	4
+	.byte	'unsigned short int',0,2,7,6
+	.byte	'uword',0,1,73,24
+	.word	155
+	.byte	6
+	.byte	'T_Reg32',0,1,110,4
+	.word	.L110-.L34
+.L110:
+	.byte	5
+	.word	.L111-.L34
+.L111:
+	.byte	9,1,76,18,4,10
+	.byte	'bit0',0,1
+	.word	176
+	.byte	1,7,2,35,0,10
+	.byte	'bit1',0,1
+	.word	176
+	.byte	1,6,2,35,0,10
+	.byte	'bit2',0,1
+	.word	176
+	.byte	1,5,2,35,0,10
+	.byte	'bit3',0,1
+	.word	176
+	.byte	1,4,2,35,0,10
+	.byte	'bit4',0,1
+	.word	176
+	.byte	1,3,2,35,0,10
+	.byte	'bit5',0,1
+	.word	176
+	.byte	1,2,2,35,0,10
+	.byte	'bit6',0,1
+	.word	176
+	.byte	1,1,2,35,0,10
+	.byte	'bit7',0,1
+	.word	176
+	.byte	1,0,2,35,0,10
+	.byte	'bit8',0,1
+	.word	176
+	.byte	1,7,2,35,1,10
+	.byte	'bit9',0,1
+	.word	176
+	.byte	1,6,2,35,1,10
+	.byte	'bit10',0,1
+	.word	176
+	.byte	1,5,2,35,1,10
+	.byte	'bit11',0,1
+	.word	176
+	.byte	1,4,2,35,1,10
+	.byte	'bit12',0,1
+	.word	176
+	.byte	1,3,2,35,1,10
+	.byte	'bit13',0,1
+	.word	176
+	.byte	1,2,2,35,1,10
+	.byte	'bit14',0,1
+	.word	176
+	.byte	1,1,2,35,1,10
+	.byte	'bit15',0,1
+	.word	176
+	.byte	1,0,2,35,1,10
+	.byte	'bit16',0,1
+	.word	176
+	.byte	1,7,2,35,2,10
+	.byte	'bit17',0,1
+	.word	176
+	.byte	1,6,2,35,2,10
+	.byte	'bit18',0,1
+	.word	176
+	.byte	1,5,2,35,2,10
+	.byte	'bit19',0,1
+	.word	176
+	.byte	1,4,2,35,2,10
+	.byte	'bit20',0,1
+	.word	176
+	.byte	1,3,2,35,2,10
+	.byte	'bit21',0,1
+	.word	176
+	.byte	1,2,2,35,2,10
+	.byte	'bit22',0,1
+	.word	176
+	.byte	1,1,2,35,2,10
+	.byte	'bit23',0,1
+	.word	176
+	.byte	1,0,2,35,2,10
+	.byte	'bit24',0,1
+	.word	176
+	.byte	1,7,2,35,3,10
+	.byte	'bit25',0,1
+	.word	176
+	.byte	1,6,2,35,3,10
+	.byte	'bit26',0,1
+	.word	176
+	.byte	1,5,2,35,3,10
+	.byte	'bit27',0,1
+	.word	176
+	.byte	1,4,2,35,3,10
+	.byte	'bit28',0,1
+	.word	176
+	.byte	1,3,2,35,3,10
+	.byte	'bit29',0,1
+	.word	176
+	.byte	1,2,2,35,3,10
+	.byte	'bit30',0,1
+	.word	176
+	.byte	1,1,2,35,3,10
+	.byte	'bit31',0,1
+	.word	176
+	.byte	1,0,2,35,3,0,6
+	.byte	'CAN_SWObj',0,3,100,4
+	.word	.L112-.L34
+.L112:
+	.byte	9,3,93,9,20,11
+	.byte	'usMOCfg',0,2
+	.word	264
+	.byte	2,35,0,11
+	.byte	'uwID',0,4
+	.word	155
+	.byte	2,35,2,11
+	.byte	'uwMask',0,4
+	.word	155
+	.byte	2,35,6,11
+	.byte	'ubData',0,8
+	.word	.L113-.L34
+	.byte	2,35,10,11
+	.byte	'usCounter',0,2
+	.word	264
+	.byte	2,35,18,0
+.L113:
+	.byte	12,8
+	.word	176
+	.byte	13,7,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L35:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0
+	.byte	3,5,0,3,8,58,15,59,15,57,15,73,19,0,0,4,36,0,3,8,11,15,62,15,0,0,5,53,0,73,19,0,0,6,22,0,3,8,58,15,59
+	.byte	15,57,15,73,19,0,0,7,15,0,73,19,0,0,8,21,0,54,15,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,13,0,3,8,11
+	.byte	15,73,19,13,15,12,15,56,9,0,0,11,13,0,3,8,11,15,73,19,56,9,0,0,12,1,1,11,15,73,19,0,0,13,33,0,47,15,0
+	.byte	0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L36:
+	.word	.L115-.L114
+.L114:
+	.half	3
+	.word	.L117-.L116
+.L116:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.h',0,0,0,0
+	.byte	'..\\ADC0.c',0,0,0,0
+	.byte	'..\\CAN.h',0,0,0,0,0
+.L117:
+.L115:
+	.sdecl	'.debug_info',debug,cluster('ADC0_vInit')
+	.sect	'.debug_info'
+.L37:
+	.word	177
+	.half	3
+	.word	.L38
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L40,.L39
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'ADC0_vInit',0,1,147,1,6,1,1,1
+	.word	.L20,.L72,.L19
+	.byte	4
+	.word	.L20,.L72
+	.byte	5
+	.byte	'uwTemp',0,1,150,1,25
+	.word	.L73,.L74
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0_vInit')
+	.sect	'.debug_abbrev'
+.L38:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0_vInit')
+	.sect	'.debug_line'
+.L39:
+	.word	.L119-.L118
+.L118:
+	.half	3
+	.word	.L121-.L120
+.L120:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L121:
+	.byte	5,3,7,0,5,2
+	.word	.L20
+	.byte	3,165,1,1,5,6,9
+	.half	.L122-.L20
+	.byte	3,109,1,5,3,9
+	.half	.L101-.L122
+	.byte	3,19,1,5,31,9
+	.half	.L123-.L101
+	.byte	3,2,1,5,28,9
+	.half	.L124-.L123
+	.byte	3,2,1,5,32,9
+	.half	.L3-.L124
+	.byte	3,5,1,5,31,9
+	.half	.L125-.L3
+	.byte	3,5,1,5,30,9
+	.half	.L126-.L125
+	.byte	3,2,1,5,3,9
+	.half	.L127-.L126
+	.byte	3,2,1,5,21,9
+	.half	.L128-.L127
+	.byte	1,5,31,9
+	.half	.L129-.L128
+	.byte	3,15,1,9
+	.half	.L130-.L129
+	.byte	3,9,1,9
+	.half	.L131-.L130
+	.byte	3,27,1,9
+	.half	.L132-.L131
+	.byte	3,2,1,9
+	.half	.L133-.L132
+	.byte	3,2,1,9
+	.half	.L134-.L133
+	.byte	3,17,1,9
+	.half	.L135-.L134
+	.byte	3,6,1,9
+	.half	.L136-.L135
+	.byte	3,8,1,9
+	.half	.L137-.L136
+	.byte	3,4,1,9
+	.half	.L138-.L137
+	.byte	3,4,1,9
+	.half	.L139-.L138
+	.byte	3,4,1,9
+	.half	.L140-.L139
+	.byte	3,12,1,9
+	.half	.L141-.L140
+	.byte	3,9,1,9
+	.half	.L142-.L141
+	.byte	3,9,1,9
+	.half	.L143-.L142
+	.byte	3,9,1,9
+	.half	.L144-.L143
+	.byte	3,9,1,9
+	.half	.L145-.L144
+	.byte	3,9,1,9
+	.half	.L146-.L145
+	.byte	3,9,1,9
+	.half	.L147-.L146
+	.byte	3,9,1,9
+	.half	.L148-.L147
+	.byte	3,9,1,9
+	.half	.L149-.L148
+	.byte	3,9,1,9
+	.half	.L150-.L149
+	.byte	3,9,1,9
+	.half	.L151-.L150
+	.byte	3,9,1,9
+	.half	.L152-.L151
+	.byte	3,9,1,9
+	.half	.L153-.L152
+	.byte	3,9,1,9
+	.half	.L154-.L153
+	.byte	3,9,1,9
+	.half	.L155-.L154
+	.byte	3,9,1,9
+	.half	.L156-.L155
+	.byte	3,7,1,9
+	.half	.L157-.L156
+	.byte	3,3,1,9
+	.half	.L158-.L157
+	.byte	3,13,1,9
+	.half	.L159-.L158
+	.byte	3,7,1,9
+	.half	.L160-.L159
+	.byte	3,3,1,9
+	.half	.L161-.L160
+	.byte	3,11,1,9
+	.half	.L162-.L161
+	.byte	3,2,1,9
+	.half	.L163-.L162
+	.byte	3,2,1,9
+	.half	.L164-.L163
+	.byte	3,2,1,9
+	.half	.L165-.L164
+	.byte	3,9,1,9
+	.half	.L166-.L165
+	.byte	3,7,1,9
+	.half	.L167-.L166
+	.byte	3,7,1,9
+	.half	.L168-.L167
+	.byte	3,7,1,9
+	.half	.L169-.L168
+	.byte	3,7,1,9
+	.half	.L170-.L169
+	.byte	3,9,1,9
+	.half	.L171-.L170
+	.byte	3,8,1,9
+	.half	.L172-.L171
+	.byte	3,8,1,9
+	.half	.L173-.L172
+	.byte	3,10,1,9
+	.half	.L174-.L173
+	.byte	3,10,1,9
+	.half	.L175-.L174
+	.byte	3,5,1,5,32,9
+	.half	.L176-.L175
+	.byte	3,6,1,5,31,9
+	.half	.L177-.L176
+	.byte	3,2,1,5,1,9
+	.half	.L178-.L177
+	.byte	3,6,1,7,9
+	.half	.L41-.L178
+	.byte	0,1,1
+.L119:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0_vInit')
+	.sect	'.debug_ranges'
+.L40:
+	.word	-1,.L20,0,.L41-.L20,0,0
+	.sdecl	'.debug_info',debug,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.debug_info'
+.L42:
+	.word	276
+	.half	3
+	.word	.L43
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L45,.L44
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'ADC0_vStartSeq0ReqChNum',0,1,230,4,6,1,1,1
+	.word	.L22,.L75,.L21
+	.byte	4
+	.byte	'ubExtTrg',0,1,230,4,36
+	.word	.L76,.L77
+	.byte	4
+	.byte	'ubEnIntr',0,1,230,4,52
+	.word	.L76,.L78
+	.byte	4
+	.byte	'ubRFill',0,1,230,4,68
+	.word	.L76,.L79
+	.byte	4
+	.byte	'ubChannelNum',0,1,230,4,83
+	.word	.L76,.L80
+	.byte	5
+	.word	.L81
+	.byte	6
+	.byte	'uwVal',0,1,233,4,11
+	.word	.L82,.L83
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.debug_abbrev'
+.L43:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,85,6,0,0,6,52,0,3,8,58
+	.byte	15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.debug_line'
+.L44:
+	.word	.L180-.L179
+.L179:
+	.half	3
+	.word	.L182-.L181
+.L181:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L182:
+	.byte	5,5,7,0,5,2
+	.word	.L22
+	.byte	3,233,4,1,5,22,9
+	.half	.L103-.L22
+	.byte	3,14,1,5,1,9
+	.half	.L183-.L103
+	.byte	3,2,1,7,9
+	.half	.L46-.L183
+	.byte	0,1,1
+.L180:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.debug_ranges'
+.L45:
+	.word	-1,.L22,0,.L46-.L22,0,0
+.L81:
+	.word	-1,.L22,0,.L75-.L22,-1,.L24,0,.L71-.L24,0,0
+	.sdecl	'.debug_info',debug,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.debug_info'
+.L47:
+	.word	280
+	.half	3
+	.word	.L48
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L50,.L49
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'ADC0_vStartSeq2ReqChNum',0,1,156,5,6,1,1,1
+	.word	.L26,.L84,.L25
+	.byte	4
+	.byte	'ubExtTrg',0,1,156,5,36
+	.word	.L76,.L85
+	.byte	4
+	.byte	'ubEnIntr',0,1,156,5,52
+	.word	.L76,.L86
+	.byte	4
+	.byte	'ubRFill',0,1,156,5,68
+	.word	.L76,.L87
+	.byte	4
+	.byte	'ubChannelNum',0,1,156,5,83
+	.word	.L76,.L88
+	.byte	5
+	.word	.L26,.L84
+	.byte	6
+	.byte	'uwVal',0,1,159,5,11
+	.word	.L82,.L89
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.debug_abbrev'
+.L48:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.debug_line'
+.L49:
+	.word	.L185-.L184
+.L184:
+	.half	3
+	.word	.L187-.L186
+.L186:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L187:
+	.byte	5,5,7,0,5,2
+	.word	.L26
+	.byte	3,159,5,1,5,21,9
+	.half	.L105-.L26
+	.byte	3,14,1,5,1,9
+	.half	.L188-.L105
+	.byte	3,2,1,7,9
+	.half	.L51-.L188
+	.byte	0,1,1
+.L185:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.debug_ranges'
+.L50:
+	.word	-1,.L26,0,.L51-.L26,0,0
+	.sdecl	'.debug_info',debug,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.debug_info'
+.L52:
+	.word	280
+	.half	3
+	.word	.L53
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L55,.L54
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'ADC0_vStartSeq4ReqChNum',0,1,210,5,6,1,1,1
+	.word	.L28,.L90,.L27
+	.byte	4
+	.byte	'ubExtTrg',0,1,210,5,36
+	.word	.L76,.L91
+	.byte	4
+	.byte	'ubEnIntr',0,1,210,5,52
+	.word	.L76,.L92
+	.byte	4
+	.byte	'ubRFill',0,1,210,5,68
+	.word	.L76,.L93
+	.byte	4
+	.byte	'ubChannelNum',0,1,210,5,83
+	.word	.L76,.L94
+	.byte	5
+	.word	.L28,.L90
+	.byte	6
+	.byte	'uwVal',0,1,213,5,11
+	.word	.L82,.L95
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.debug_abbrev'
+.L53:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.debug_line'
+.L54:
+	.word	.L190-.L189
+.L189:
+	.half	3
+	.word	.L192-.L191
+.L191:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L192:
+	.byte	5,5,7,0,5,2
+	.word	.L28
+	.byte	3,213,5,1,5,21,9
+	.half	.L106-.L28
+	.byte	3,14,1,5,1,9
+	.half	.L193-.L106
+	.byte	3,2,1,7,9
+	.half	.L56-.L193
+	.byte	0,1,1
+.L190:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.debug_ranges'
+.L55:
+	.word	-1,.L28,0,.L56-.L28,0,0
+	.sdecl	'.debug_info',debug,cluster('ADC0_vClearPendingBits')
+	.sect	'.debug_info'
+.L57:
+	.word	193
+	.half	3
+	.word	.L58
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L60,.L59
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'ADC0_vClearPendingBits',0,1,179,6,6,1,1,1
+	.word	.L32,.L96,.L31
+	.byte	4
+	.byte	'ubSourceNum',0,1,179,6,35
+	.word	.L76,.L97
+	.byte	5
+	.word	.L32,.L96
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0_vClearPendingBits')
+	.sect	'.debug_abbrev'
+.L58:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0_vClearPendingBits')
+	.sect	'.debug_line'
+.L59:
+	.word	.L195-.L194
+.L194:
+	.half	3
+	.word	.L197-.L196
+.L196:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L197:
+	.byte	5,7,7,0,5,2
+	.word	.L32
+	.byte	3,181,6,1,5,36,7,9
+	.half	.L198-.L32
+	.byte	3,2,1,5,1,9
+	.half	.L199-.L198
+	.byte	3,24,1,5,12,7,9
+	.half	.L11-.L199
+	.byte	3,107,1,5,37,7,9
+	.half	.L200-.L11
+	.byte	3,2,1,5,1,9
+	.half	.L201-.L200
+	.byte	3,19,1,5,12,7,9
+	.half	.L13-.L201
+	.byte	3,112,1,5,36,7,9
+	.half	.L202-.L13
+	.byte	3,2,1,5,1,9
+	.half	.L203-.L202
+	.byte	3,14,1,5,12,7,9
+	.half	.L15-.L203
+	.byte	3,117,1,5,37,7,9
+	.half	.L204-.L15
+	.byte	3,2,1,5,1,9
+	.half	.L205-.L204
+	.byte	3,9,1,5,40,7,9
+	.half	.L17-.L205
+	.byte	3,124,1,5,1,9
+	.half	.L206-.L17
+	.byte	3,4,1,7,9
+	.half	.L61-.L206
+	.byte	0,1,1
+.L195:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0_vClearPendingBits')
+	.sect	'.debug_ranges'
+.L60:
+	.word	-1,.L32,0,.L61-.L32,0,0
+	.sdecl	'.debug_info',debug,cluster('ADC0_vStartParReqChNum')
+	.sect	'.debug_info'
+.L62:
+	.word	213
+	.half	3
+	.word	.L63
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L65,.L64
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'ADC0_vStartParReqChNum',0,1,137,6,6,1,1,1
+	.word	.L30,.L98,.L29
+	.byte	4
+	.byte	'uwChannelNum',0,1,137,6,35
+	.word	.L82,.L99
+	.byte	4
+	.byte	'ubSrc',0,1,137,6,55
+	.word	.L76,.L100
+	.byte	5
+	.word	.L30,.L98
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0_vStartParReqChNum')
+	.sect	'.debug_abbrev'
+.L63:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0_vStartParReqChNum')
+	.sect	'.debug_line'
+.L64:
+	.word	.L208-.L207
+.L207:
+	.half	3
+	.word	.L210-.L209
+.L209:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L210:
+	.byte	5,7,7,0,5,2
+	.word	.L30
+	.byte	3,139,6,1,5,42,7,9
+	.half	.L211-.L30
+	.byte	3,2,1,5,1,9
+	.half	.L212-.L211
+	.byte	3,9,1,5,12,7,9
+	.half	.L8-.L212
+	.byte	3,122,1,5,42,7,9
+	.half	.L213-.L8
+	.byte	3,2,1,5,1,9
+	.half	.L10-.L213
+	.byte	3,4,1,7,9
+	.half	.L66-.L10
+	.byte	0,1,1
+.L208:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0_vStartParReqChNum')
+	.sect	'.debug_ranges'
+.L65:
+	.word	-1,.L30,0,.L66-.L30,0,0
+	.sdecl	'.debug_info',debug,cluster('.cocofun_1')
+	.sect	'.debug_info'
+.L67:
+	.word	143
+	.half	3
+	.word	.L68
+	.byte	4,1
+	.byte	'..\\ADC0.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L70,.L69
+	.byte	2
+	.word	.L33
+	.byte	3
+	.byte	'.cocofun_1',0,1,1,1,1
+	.word	.L24,.L71,.L23
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('.cocofun_1')
+	.sect	'.debug_abbrev'
+.L68:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,0,3,8,58,15,59,15,57,15,54,15
+	.byte	17,1,18,1,64,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('.cocofun_1')
+	.sect	'.debug_line'
+.L69:
+	.word	.L215-.L214
+.L214:
+	.half	3
+	.word	.L217-.L216
+.L216:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ADC0.c',0,0,0,0,0
+.L217:
+	.byte	5,5,7,0,5,2
+	.word	.L24
+	.byte	3,233,4,1,5,35,9
+	.half	.L218-.L24
+	.byte	3,6,1,9
+	.half	.L219-.L218
+	.byte	3,4,1,5,48,9
+	.half	.L220-.L219
+	.byte	3,2,1,5,22,9
+	.half	.L221-.L220
+	.byte	3,2,1,9
+	.half	.L71-.L221
+	.byte	0,1,1,5,5,0,5,2
+	.word	.L24
+	.byte	3,159,5,1,5,35,9
+	.half	.L218-.L24
+	.byte	3,6,1,9
+	.half	.L219-.L218
+	.byte	3,4,1,5,48,9
+	.half	.L220-.L219
+	.byte	3,2,1,5,21,9
+	.half	.L221-.L220
+	.byte	3,2,1,5,22,9
+	.half	.L102-.L221
+	.byte	3,74,1,7,9
+	.half	.L71-.L102
+	.byte	0,1,1,5,5,0,5,2
+	.word	.L24
+	.byte	3,213,5,1,5,35,9
+	.half	.L218-.L24
+	.byte	3,6,1,9
+	.half	.L219-.L218
+	.byte	3,4,1,5,48,9
+	.half	.L220-.L219
+	.byte	3,2,1,5,21,9
+	.half	.L221-.L220
+	.byte	3,2,1,5,22,9
+	.half	.L102-.L221
+	.byte	3,148,127,1,7,9
+	.half	.L71-.L102
+	.byte	0,1,1
+.L215:
+	.sdecl	'.debug_ranges',debug,cluster('.cocofun_1')
+	.sect	'.debug_ranges'
+.L70:
+	.word	-1,.L24,0,.L71-.L24,0,0
+	.sdecl	'.debug_loc',debug,cluster('.cocofun_1')
+	.sect	'.debug_loc'
+.L23:
+	.word	-1,.L24,.L24-.L24,.L71-.L24
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0_vClearPendingBits')
+	.sect	'.debug_loc'
+.L31:
+	.word	-1,.L32,.L32-.L32,.L96-.L32
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L97:
+	.word	-1,.L32,.L32-.L32,.L96-.L32
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0_vInit')
+	.sect	'.debug_loc'
+.L19:
+	.word	-1,.L20,.L20-.L20,.L101-.L20
+	.half	2
+	.byte	138,0
+	.word	.L101-.L20,.L72-.L20
+	.half	2
+	.byte	138,8
+	.word	.L72-.L20,.L72-.L20
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L74:
+	.word	-1,.L20,.L20-.L20,.L72-.L20
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0_vStartParReqChNum')
+	.sect	'.debug_loc'
+.L29:
+	.word	-1,.L30,.L30-.L30,.L98-.L30
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L100:
+	.word	-1,.L30,.L30-.L30,.L98-.L30
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L99:
+	.word	-1,.L30,.L30-.L30,.L98-.L30
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.debug_loc'
+.L21:
+	.word	-1,.L22,.L22-.L22,.L75-.L22
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L80:
+	.word	-1,.L22,.L24-.L22,.L102-.L22
+	.half	5
+	.byte	144,35,157,32,32
+	.word	.L103-.L22,.L75-.L22
+	.half	5
+	.byte	144,35,157,32,32
+	.word	0,0
+.L78:
+	.word	-1,.L22,.L24-.L22,.L102-.L22
+	.half	5
+	.byte	144,34,157,32,32
+	.word	.L103-.L22,.L75-.L22
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L77:
+	.word	-1,.L22,.L24-.L22,.L102-.L22
+	.half	5
+	.byte	144,34,157,32,0
+	.word	.L103-.L22,.L75-.L22
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+.L79:
+	.word	-1,.L22,.L103-.L22,.L75-.L22
+	.half	5
+	.byte	144,35,157,32,0
+	.word	.L24-.L22,.L102-.L22
+	.half	5
+	.byte	144,35,157,32,0
+	.word	0,0
+.L83:
+	.word	-1,.L22,.L103-.L22,.L75-.L22
+	.half	5
+	.byte	144,32,157,32,32
+	.word	.L104-.L22,.L102-.L22
+	.half	5
+	.byte	144,32,157,32,32
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.debug_loc'
+.L25:
+	.word	-1,.L26,.L26-.L26,.L84-.L26
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L88:
+	.word	-1,.L26,.L24-.L26,.L71-.L26
+	.half	5
+	.byte	144,35,157,32,32
+	.word	.L105-.L26,.L84-.L26
+	.half	5
+	.byte	144,35,157,32,32
+	.word	0,0
+.L86:
+	.word	-1,.L26,.L24-.L26,.L71-.L26
+	.half	5
+	.byte	144,34,157,32,32
+	.word	.L105-.L26,.L84-.L26
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L85:
+	.word	-1,.L26,.L105-.L26,.L84-.L26
+	.half	5
+	.byte	144,34,157,32,0
+	.word	.L24-.L26,.L71-.L26
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+.L87:
+	.word	-1,.L26,.L105-.L26,.L84-.L26
+	.half	5
+	.byte	144,35,157,32,0
+	.word	.L24-.L26,.L71-.L26
+	.half	5
+	.byte	144,35,157,32,0
+	.word	0,0
+.L89:
+	.word	-1,.L26,.L105-.L26,.L84-.L26
+	.half	5
+	.byte	144,32,157,32,32
+	.word	.L104-.L26,.L71-.L26
+	.half	5
+	.byte	144,32,157,32,32
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.debug_loc'
+.L27:
+	.word	-1,.L28,.L28-.L28,.L90-.L28
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L94:
+	.word	-1,.L28,.L106-.L28,.L90-.L28
+	.half	5
+	.byte	144,35,157,32,32
+	.word	.L24-.L28,.L71-.L28
+	.half	5
+	.byte	144,35,157,32,32
+	.word	0,0
+.L92:
+	.word	-1,.L28,.L24-.L28,.L71-.L28
+	.half	5
+	.byte	144,34,157,32,32
+	.word	.L106-.L28,.L90-.L28
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L91:
+	.word	-1,.L28,.L24-.L28,.L71-.L28
+	.half	5
+	.byte	144,34,157,32,0
+	.word	.L106-.L28,.L90-.L28
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+.L93:
+	.word	-1,.L28,.L24-.L28,.L71-.L28
+	.half	5
+	.byte	144,35,157,32,0
+	.word	.L106-.L28,.L90-.L28
+	.half	5
+	.byte	144,35,157,32,0
+	.word	0,0
+.L95:
+	.word	-1,.L28,.L104-.L28,.L71-.L28
+	.half	5
+	.byte	144,32,157,32,32
+	.word	.L106-.L28,.L90-.L28
+	.half	5
+	.byte	144,32,157,32,32
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L222:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('ADC0_vInit')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L222,.L20,.L72-.L20
+	.byte	4
+	.word	(.L101-.L20)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L72-.L101)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('ADC0_vStartSeq0ReqChNum')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L222,.L22,.L75-.L22
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ADC0_vStartSeq2ReqChNum')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L222,.L26,.L84-.L26
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ADC0_vStartSeq4ReqChNum')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L222,.L28,.L90-.L28
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ADC0_vStartParReqChNum')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L222,.L30,.L98-.L30
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ADC0_vClearPendingBits')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L222,.L32,.L96-.L32
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L223:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,30,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('.cocofun_1')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L223,.L24,.L71-.L24
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; ..\ADC0.c	   849  
+; ..\ADC0.c	   850  
+; ..\ADC0.c	   851  
+; ..\ADC0.c	   852  // USER CODE BEGIN (ADC0_General,10)
+; ..\ADC0.c	   853  
+; ..\ADC0.c	   854  // USER CODE END
+; ..\ADC0.c	   855  
+
+	; Module end

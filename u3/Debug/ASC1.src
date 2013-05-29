@@ -1,0 +1,1154 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc4804a -c99 --dep-file=.ASC1.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=ASC1.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o ASC1.src
+	; Module start
+	.name	"ASC1"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.ASC1.ASC1_vInit',code,cluster('ASC1_vInit')
+	.sect	'.text.ASC1.ASC1_vInit'
+	.align	2
+	
+	.global	ASC1_vInit
+
+; ..\ASC1.c	     1  //****************************************************************************
+; ..\ASC1.c	     2  // @Module        Asynchronous Synchronous Serial Interface 1 (ASC1)
+; ..\ASC1.c	     3  // @Filename      ASC1.c
+; ..\ASC1.c	     4  // @Project       motencpot.dav
+; ..\ASC1.c	     5  //----------------------------------------------------------------------------
+; ..\ASC1.c	     6  // @Controller    Infineon TC1782
+; ..\ASC1.c	     7  //
+; ..\ASC1.c	     8  // @Compiler      Tasking 3.5r1
+; ..\ASC1.c	     9  //
+; ..\ASC1.c	    10  // @Codegenerator 1.0
+; ..\ASC1.c	    11  //
+; ..\ASC1.c	    12  // @Description   This file contains functions that use the ASC1 module.
+; ..\ASC1.c	    13  //
+; ..\ASC1.c	    14  //----------------------------------------------------------------------------
+; ..\ASC1.c	    15  // @Date          19.04.2012 13:49:05
+; ..\ASC1.c	    16  //
+; ..\ASC1.c	    17  //****************************************************************************
+; ..\ASC1.c	    18  
+; ..\ASC1.c	    19  // USER CODE BEGIN (ASC1_General,1)
+; ..\ASC1.c	    20  
+; ..\ASC1.c	    21  // USER CODE END
+; ..\ASC1.c	    22  
+; ..\ASC1.c	    23  
+; ..\ASC1.c	    24  
+; ..\ASC1.c	    25  //****************************************************************************
+; ..\ASC1.c	    26  // @Project Includes
+; ..\ASC1.c	    27  //****************************************************************************
+; ..\ASC1.c	    28  
+; ..\ASC1.c	    29  #include "MAIN.h"
+; ..\ASC1.c	    30  
+; ..\ASC1.c	    31  // USER CODE BEGIN (ASC1_General,2)
+; ..\ASC1.c	    32  
+; ..\ASC1.c	    33  // USER CODE END
+; ..\ASC1.c	    34  
+; ..\ASC1.c	    35  
+; ..\ASC1.c	    36  //****************************************************************************
+; ..\ASC1.c	    37  // @Macros
+; ..\ASC1.c	    38  //****************************************************************************
+; ..\ASC1.c	    39  
+; ..\ASC1.c	    40  // USER CODE BEGIN (ASC1_General,3)
+; ..\ASC1.c	    41  
+; ..\ASC1.c	    42  // USER CODE END
+; ..\ASC1.c	    43  
+; ..\ASC1.c	    44  
+; ..\ASC1.c	    45  //****************************************************************************
+; ..\ASC1.c	    46  // @Defines
+; ..\ASC1.c	    47  //****************************************************************************
+; ..\ASC1.c	    48  
+; ..\ASC1.c	    49  // USER CODE BEGIN (ASC1_General,4)
+; ..\ASC1.c	    50  
+; ..\ASC1.c	    51  // USER CODE END
+; ..\ASC1.c	    52  
+; ..\ASC1.c	    53  
+; ..\ASC1.c	    54  //****************************************************************************
+; ..\ASC1.c	    55  // @Typedefs
+; ..\ASC1.c	    56  //****************************************************************************
+; ..\ASC1.c	    57  
+; ..\ASC1.c	    58  // USER CODE BEGIN (ASC1_General,5)
+; ..\ASC1.c	    59  
+; ..\ASC1.c	    60  // USER CODE END
+; ..\ASC1.c	    61  
+; ..\ASC1.c	    62  
+; ..\ASC1.c	    63  //****************************************************************************
+; ..\ASC1.c	    64  // @Imported Global Variables
+; ..\ASC1.c	    65  //****************************************************************************
+; ..\ASC1.c	    66  
+; ..\ASC1.c	    67  // USER CODE BEGIN (ASC1_General,6)
+; ..\ASC1.c	    68  
+; ..\ASC1.c	    69  // USER CODE END
+; ..\ASC1.c	    70  
+; ..\ASC1.c	    71  
+; ..\ASC1.c	    72  //****************************************************************************
+; ..\ASC1.c	    73  // @Global Variables
+; ..\ASC1.c	    74  //****************************************************************************
+; ..\ASC1.c	    75  
+; ..\ASC1.c	    76  // USER CODE BEGIN (ASC1_General,7)
+; ..\ASC1.c	    77  
+; ..\ASC1.c	    78  // USER CODE END
+; ..\ASC1.c	    79  
+; ..\ASC1.c	    80  
+; ..\ASC1.c	    81  //****************************************************************************
+; ..\ASC1.c	    82  // @External Prototypes
+; ..\ASC1.c	    83  //****************************************************************************
+; ..\ASC1.c	    84  
+; ..\ASC1.c	    85  // USER CODE BEGIN (ASC1_General,8)
+; ..\ASC1.c	    86  
+; ..\ASC1.c	    87  // USER CODE END
+; ..\ASC1.c	    88  
+; ..\ASC1.c	    89  
+; ..\ASC1.c	    90  //****************************************************************************
+; ..\ASC1.c	    91  // @Prototypes Of Local Functions
+; ..\ASC1.c	    92  //****************************************************************************
+; ..\ASC1.c	    93  
+; ..\ASC1.c	    94  // USER CODE BEGIN (ASC1_General,9)
+; ..\ASC1.c	    95  
+; ..\ASC1.c	    96  // USER CODE END
+; ..\ASC1.c	    97  
+; ..\ASC1.c	    98  
+; ..\ASC1.c	    99  //****************************************************************************
+; ..\ASC1.c	   100  // @Function      void ASC1_vInit(void) 
+; ..\ASC1.c	   101  //
+; ..\ASC1.c	   102  //----------------------------------------------------------------------------
+; ..\ASC1.c	   103  // @Description   This is the initialization function of the ASC1 function 
+; ..\ASC1.c	   104  //                library. It is assumed that the SFRs used by this library 
+; ..\ASC1.c	   105  //                are in their reset state. 
+; ..\ASC1.c	   106  //
+; ..\ASC1.c	   107  //----------------------------------------------------------------------------
+; ..\ASC1.c	   108  // @Returnvalue   None
+; ..\ASC1.c	   109  //
+; ..\ASC1.c	   110  //----------------------------------------------------------------------------
+; ..\ASC1.c	   111  // @Parameters    None
+; ..\ASC1.c	   112  //
+; ..\ASC1.c	   113  //----------------------------------------------------------------------------
+; ..\ASC1.c	   114  // @Date          19.04.2012
+; ..\ASC1.c	   115  //
+; ..\ASC1.c	   116  //****************************************************************************
+; ..\ASC1.c	   117  
+; ..\ASC1.c	   118  // USER CODE BEGIN (Init,1)
+; ..\ASC1.c	   119  
+; ..\ASC1.c	   120  // USER CODE END
+; ..\ASC1.c	   121  
+; ..\ASC1.c	   122  void ASC1_vInit(void)
+; Function ASC1_vInit
+.L8:
+ASC1_vInit:	.type	func
+
+; ..\ASC1.c	   123  {
+; ..\ASC1.c	   124  
+; ..\ASC1.c	   125    volatile unsigned int uwTemp;
+; ..\ASC1.c	   126  
+; ..\ASC1.c	   127    // USER CODE BEGIN (Init,2)
+; ..\ASC1.c	   128  
+; ..\ASC1.c	   129    // USER CODE END
+; ..\ASC1.c	   130  
+; ..\ASC1.c	   131    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   132    ///  Configuration of the Module Clock:
+; ..\ASC1.c	   133    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   134    ///  - enable the ASC1 module
+; ..\ASC1.c	   135    ///  - clock divider for normal operation mode: System clock / 1 (= 90,00 
+; ..\ASC1.c	   136    ///    MHz; 11,11 ns )
+; ..\ASC1.c	   137    ///  - the ASC1 module is not stopped during sleep mode
+; ..\ASC1.c	   138  
+; ..\ASC1.c	   139    MAIN_vResetENDINIT();
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+.L74:
+	insert	d4,d15,#0,#0,#1
+	sub.a	a10,#8
+.L57:
+	call	MAIN_vWriteWDTCON0
+	lea	a12,0xf00005f0
+.L2:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L2				; predicted taken
+.L75:
+
+; ..\ASC1.c	   140    ASC0_CLC       =  0x00000108;  // load clock control register
+	mov.u	d15,#264
+	st.w	0xf0000a00,d15
+.L76:
+
+; ..\ASC1.c	   141    uwTemp         =  ASC0_CLC;    // dummy read to avoid pipeline effects
+	ld.w	d15,0xf0000a00
+	st.w	[a10],d15
+.L77:
+
+; ..\ASC1.c	   142    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L78:
+	call	MAIN_vWriteWDTCON0
+.L79:
+
+; ..\ASC1.c	   143  
+; ..\ASC1.c	   144    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   145    ///  Configuration of the ASC1 Baudrate Generator:
+; ..\ASC1.c	   146    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   147    ///  - additionally reduce serial clock to 2
+; ..\ASC1.c	   148    ///  - required baud rate = 9600 baud
+; ..\ASC1.c	   149    ///  - real baud rate     = 9599 baud
+; ..\ASC1.c	   150    ///  - deviation          = -0 %
+; ..\ASC1.c	   151  
+; ..\ASC1.c	   152    ASC1_BG        =  0x00000124;  // load ASC1 baud rate time reload register
+	mov.u	d15,#292
+	st.w	0xf0000b14,d15
+.L80:
+
+; ..\ASC1.c	   153  
+; ..\ASC1.c	   154    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   155    ///  Configuration of the ASC1 Operation Mode:
+; ..\ASC1.c	   156    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   157    ///  - 8-bit data asychronous operation with one stop bit
+; ..\ASC1.c	   158    ///  - receiver is enabled
+; ..\ASC1.c	   159  
+; ..\ASC1.c	   160    ASC1_CON       =  0x00000011;  // load ASC1 control register
+	mov	d15,#17
+	st.w	0xf0000b10,d15
+.L81:
+
+; ..\ASC1.c	   161  
+; ..\ASC1.c	   162    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   163    ///  Configuration of the used ASC1 Port Pins:
+; ..\ASC1.c	   164    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   165    ASC1_PISEL     =  0x0000;      // load peripheral input selection register
+	mov	d15,#0
+	st.w	0xf0000b04,d15
+.L82:
+
+; ..\ASC1.c	   166  
+; ..\ASC1.c	   167    ///  - P3.9 is used as  ASC1 receive input signal 1 ( ASC1_RX)
+; ..\ASC1.c	   168    ///  - the pull-up device is assigned
+; ..\ASC1.c	   169    ///  - output driver characteristic: medium driver
+; ..\ASC1.c	   170  
+; ..\ASC1.c	   171    P3_IOCR8       = (P3_IOCR8 & ~0x0000F000) | 0x00002000; // load control 
+	lea	a13,0xf0000f18
+	ld.w	d15,[a13]
+	insert	d15,d15,#2,#12,#4
+	st.w	[a13],d15
+.L83:
+
+; ..\ASC1.c	   172                                                            // register
+; ..\ASC1.c	   173  
+; ..\ASC1.c	   174    ///  - P3.8 is used as  ASC1 output signal 1 ( ASC1_TX)
+; ..\ASC1.c	   175    ///  - the push/pull function is activated
+; ..\ASC1.c	   176    ///  - output driver characteristic: medium driver
+; ..\ASC1.c	   177    ///  - the emergency stop function is disabled
+; ..\ASC1.c	   178  
+; ..\ASC1.c	   179    MAIN_vResetENDINIT();
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L3:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L3				; predicted taken
+.L84:
+
+; ..\ASC1.c	   180    P3_PDR        |=  0x04000000;  // load driver mode register
+	ld.w	d15,0xf0000f40
+	st.t	0xf0000f43:2,#1
+.L85:
+
+; ..\ASC1.c	   181    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L86:
+	call	MAIN_vWriteWDTCON0
+.L87:
+
+; ..\ASC1.c	   182    P3_IOCR8       = (P3_IOCR8 & ~0x000000F0) | 0x000000A0; // load control 
+	ld.w	d15,[a13]
+	insert	d15,d15,#10,#4,#4
+	st.w	[a13],d15
+.L88:
+
+; ..\ASC1.c	   183                                                            // register
+; ..\ASC1.c	   184  
+; ..\ASC1.c	   185  
+; ..\ASC1.c	   186    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   187    ///  Configuration of the used ASC1 Interrupts:
+; ..\ASC1.c	   188    ///  -----------------------------------------------------------------------
+; ..\ASC1.c	   189  
+; ..\ASC1.c	   190    //   -----------------------------------------------------------------------
+; ..\ASC1.c	   191    //   Default Settings for Service Request Flags:
+; ..\ASC1.c	   192    //   -----------------------------------------------------------------------
+; ..\ASC1.c	   193    ASC1_TBSRC_SETR  =  1;         // indicates that the transmit buffer is 
+	ld.bu	d15,0xf0000bfd
+	st.t	0xf0000bfd:7,#1
+.L89:
+
+; ..\ASC1.c	   194                                   // empty
+; ..\ASC1.c	   195    ASC1_TSRC_SETR  =  1;          // indicates that the transmit register is 
+	ld.bu	d15,0xf0000bf1
+	st.t	0xf0000bf1:7,#1
+.L90:
+
+; ..\ASC1.c	   196                                   // empty
+; ..\ASC1.c	   197  
+; ..\ASC1.c	   198    // USER CODE BEGIN (ASC1_Function,3)
+; ..\ASC1.c	   199  
+; ..\ASC1.c	   200    // USER CODE END
+; ..\ASC1.c	   201  
+; ..\ASC1.c	   202    ASC1_CON_R     =  1;           // enable baud rate generator
+	ld.bu	d15,0xf0000b11
+	st.t	0xf0000b11:7,#1
+.L91:
+
+; ..\ASC1.c	   203  
+; ..\ASC1.c	   204  
+; ..\ASC1.c	   205  } //  End of function ASC1_vInit
+	ret
+.L46:
+	
+__ASC1_vInit_function_end:
+	.size	ASC1_vInit,__ASC1_vInit_function_end-ASC1_vInit
+.L25:
+	; End of function
+	
+	.sdecl	'.text.ASC1.ASC1_vSendData',code,cluster('ASC1_vSendData')
+	.sect	'.text.ASC1.ASC1_vSendData'
+	.align	2
+	
+	.global	ASC1_vSendData
+
+; ..\ASC1.c	   206  
+; ..\ASC1.c	   207  
+; ..\ASC1.c	   208  //****************************************************************************
+; ..\ASC1.c	   209  // @Function      void ASC1_vSendData(ushort usData) 
+; ..\ASC1.c	   210  //
+; ..\ASC1.c	   211  //----------------------------------------------------------------------------
+; ..\ASC1.c	   212  // @Description   This function writes a send data initialization word into 
+; ..\ASC1.c	   213  //                the transmit buffer register.
+; ..\ASC1.c	   214  //                
+; ..\ASC1.c	   215  //                Note: 
+; ..\ASC1.c	   216  //                In a multiprocessor system the master with this function 
+; ..\ASC1.c	   217  //                has the possibility to send data to the selected slave. To 
+; ..\ASC1.c	   218  //                achieve this, the 9th bit must set on zero.
+; ..\ASC1.c	   219  //
+; ..\ASC1.c	   220  //----------------------------------------------------------------------------
+; ..\ASC1.c	   221  // @Returnvalue   None
+; ..\ASC1.c	   222  //
+; ..\ASC1.c	   223  //----------------------------------------------------------------------------
+; ..\ASC1.c	   224  // @Parameters    usData: 
+; ..\ASC1.c	   225  //                Data to be send
+; ..\ASC1.c	   226  //
+; ..\ASC1.c	   227  //----------------------------------------------------------------------------
+; ..\ASC1.c	   228  // @Date          19.04.2012
+; ..\ASC1.c	   229  //
+; ..\ASC1.c	   230  //****************************************************************************
+; ..\ASC1.c	   231  
+; ..\ASC1.c	   232  // USER CODE BEGIN (SendData,1)
+; ..\ASC1.c	   233  
+; ..\ASC1.c	   234  // USER CODE END
+; ..\ASC1.c	   235  
+; ..\ASC1.c	   236  void ASC1_vSendData(ushort usData)
+; Function ASC1_vSendData
+.L10:
+ASC1_vSendData:	.type	func
+
+; ..\ASC1.c	   237  {
+; ..\ASC1.c	   238    ASC1_TBSRC_CLRR  =  1;         // reset transmit buffer interrupt request
+	ld.bu	d15,0xf0000bfd
+	st.t	0xf0000bfd:6,#1
+.L96:
+
+; ..\ASC1.c	   239    ASC1_TBUF      =  usData;      // load transmit buffer register
+	st.w	0xf0000b20,d4
+.L97:
+
+; ..\ASC1.c	   240  
+; ..\ASC1.c	   241  } //  End of function ASC1_vSendData
+	ret
+.L49:
+	
+__ASC1_vSendData_function_end:
+	.size	ASC1_vSendData,__ASC1_vSendData_function_end-ASC1_vSendData
+.L30:
+	; End of function
+	
+	.sdecl	'.text.ASC1.ASC1_usGetData',code,cluster('ASC1_usGetData')
+	.sect	'.text.ASC1.ASC1_usGetData'
+	.align	2
+	
+	.global	ASC1_usGetData
+
+; ..\ASC1.c	   242  
+; ..\ASC1.c	   243  
+; ..\ASC1.c	   244  //****************************************************************************
+; ..\ASC1.c	   245  // @Function      ushort ASC1_usGetData(void) 
+; ..\ASC1.c	   246  //
+; ..\ASC1.c	   247  //----------------------------------------------------------------------------
+; ..\ASC1.c	   248  // @Description   This function reads out the content of the receive buffer 
+; ..\ASC1.c	   249  //                register which contains the received data.
+; ..\ASC1.c	   250  //
+; ..\ASC1.c	   251  //----------------------------------------------------------------------------
+; ..\ASC1.c	   252  // @Returnvalue   data that has been received
+; ..\ASC1.c	   253  //
+; ..\ASC1.c	   254  //----------------------------------------------------------------------------
+; ..\ASC1.c	   255  // @Parameters    None
+; ..\ASC1.c	   256  //
+; ..\ASC1.c	   257  //----------------------------------------------------------------------------
+; ..\ASC1.c	   258  // @Date          19.04.2012
+; ..\ASC1.c	   259  //
+; ..\ASC1.c	   260  //****************************************************************************
+; ..\ASC1.c	   261  
+; ..\ASC1.c	   262  // USER CODE BEGIN (GetData,1)
+; ..\ASC1.c	   263  
+; ..\ASC1.c	   264  // USER CODE END
+; ..\ASC1.c	   265  
+; ..\ASC1.c	   266  ushort ASC1_usGetData(void)
+; Function ASC1_usGetData
+.L12:
+ASC1_usGetData:	.type	func
+
+; ..\ASC1.c	   267  {
+; ..\ASC1.c	   268    ASC1_RSRC_CLRR = 1;    // reset receive interrupt request
+	ld.bu	d15,0xf0000bf5
+	st.t	0xf0000bf5:6,#1
+.L102:
+
+; ..\ASC1.c	   269    return(ASC1_RBUF & 0x1FF);     // return receive buffer register
+	ld.w	d15,0xf0000b24
+	extr.u	d15,d15,#0,#16
+	and	d2,d15,#511
+.L103:
+
+; ..\ASC1.c	   270  
+; ..\ASC1.c	   271  } //  End of function ASC1_usGetData
+	ret
+.L52:
+	
+__ASC1_usGetData_function_end:
+	.size	ASC1_usGetData,__ASC1_usGetData_function_end-ASC1_usGetData
+.L35:
+	; End of function
+	
+	.sdecl	'.text.ASC1.ASC1_ubTxDataReady',code,cluster('ASC1_ubTxDataReady')
+	.sect	'.text.ASC1.ASC1_ubTxDataReady'
+	.align	2
+	
+	.global	ASC1_ubTxDataReady
+
+; ..\ASC1.c	   272  
+; ..\ASC1.c	   273  
+; ..\ASC1.c	   274  //****************************************************************************
+; ..\ASC1.c	   275  // @Function      ubyte ASC1_ubTxDataReady(void) 
+; ..\ASC1.c	   276  //
+; ..\ASC1.c	   277  //----------------------------------------------------------------------------
+; ..\ASC1.c	   278  // @Description   This function can be used for checking up the status of the 
+; ..\ASC1.c	   279  //                ASC1 transmit interrupt flags. This shows when the sending 
+; ..\ASC1.c	   280  //                of data has terminated. By continuously polling this flag 
+; ..\ASC1.c	   281  //                after the function ASC1_vSendData has been called, it is 
+; ..\ASC1.c	   282  //                possible to establish when the ASC1 has terminated its task.
+; ..\ASC1.c	   283  //
+; ..\ASC1.c	   284  //----------------------------------------------------------------------------
+; ..\ASC1.c	   285  // @Returnvalue   0 if transmitter is busy, else 1
+; ..\ASC1.c	   286  //
+; ..\ASC1.c	   287  //----------------------------------------------------------------------------
+; ..\ASC1.c	   288  // @Parameters    None
+; ..\ASC1.c	   289  //
+; ..\ASC1.c	   290  //----------------------------------------------------------------------------
+; ..\ASC1.c	   291  // @Date          19.04.2012
+; ..\ASC1.c	   292  //
+; ..\ASC1.c	   293  //****************************************************************************
+; ..\ASC1.c	   294  
+; ..\ASC1.c	   295  // USER CODE BEGIN (TxDataReady,1)
+; ..\ASC1.c	   296  
+; ..\ASC1.c	   297  // USER CODE END
+; ..\ASC1.c	   298  
+; ..\ASC1.c	   299  ubyte ASC1_ubTxDataReady(void)
+; Function ASC1_ubTxDataReady
+.L14:
+ASC1_ubTxDataReady:	.type	func
+
+; ..\ASC1.c	   300  {
+; ..\ASC1.c	   301    ubyte ubReturnValue;
+; ..\ASC1.c	   302  
+; ..\ASC1.c	   303    ubReturnValue = 0;
+; ..\ASC1.c	   304  
+; ..\ASC1.c	   305    if(ASC1_TSRC_SRR)              // if sending of data is terminated
+	mov	d2,#0
+	lea	a15,0xf0000bf1
+.L58:
+	ld.bu	d15,[a15]
+	jz.t	d15:5,.L5				; predicted not taken
+.L108:
+
+; ..\ASC1.c	   306    {
+; ..\ASC1.c	   307      ubReturnValue = 1;
+; ..\ASC1.c	   308      ASC1_TSRC_CLRR = 1;
+	mov	d2,#1
+	ld.bu	d15,[a15]
+	or	d15,#64
+	st.b	[a15],d15
+.L5:
+
+; ..\ASC1.c	   309    }
+; ..\ASC1.c	   310    return(ubReturnValue);
+; ..\ASC1.c	   311  
+; ..\ASC1.c	   312  } //  End of function ASC1_ubTxDataReady
+	ret
+.L54:
+	
+__ASC1_ubTxDataReady_function_end:
+	.size	ASC1_ubTxDataReady,__ASC1_ubTxDataReady_function_end-ASC1_ubTxDataReady
+.L40:
+	; End of function
+	
+	.sdecl	'.text.ASC1.ASC1_vReceiverOn',code,cluster('ASC1_vReceiverOn')
+	.sect	'.text.ASC1.ASC1_vReceiverOn'
+	.align	2
+	
+	.global	ASC1_vReceiverOn
+
+; ..\ASC1.c	   313  
+; ..\ASC1.c	   314  
+; ..\ASC1.c	   315  //****************************************************************************
+; ..\ASC1.c	   316  // @Function      void ASC1_vReceiverOn(void) 
+; ..\ASC1.c	   317  //
+; ..\ASC1.c	   318  //----------------------------------------------------------------------------
+; ..\ASC1.c	   319  // @Description   This function releases the receive function of the ASC1. 
+; ..\ASC1.c	   320  //                After initialization this function does not need to be 
+; ..\ASC1.c	   321  //                recalled. 
+; ..\ASC1.c	   322  //                Note: 
+; ..\ASC1.c	   323  //                This function must be called everytime data is to be 
+; ..\ASC1.c	   324  //                received in synchronous mode.
+; ..\ASC1.c	   325  //
+; ..\ASC1.c	   326  //----------------------------------------------------------------------------
+; ..\ASC1.c	   327  // @Returnvalue   None
+; ..\ASC1.c	   328  //
+; ..\ASC1.c	   329  //----------------------------------------------------------------------------
+; ..\ASC1.c	   330  // @Parameters    None
+; ..\ASC1.c	   331  //
+; ..\ASC1.c	   332  //----------------------------------------------------------------------------
+; ..\ASC1.c	   333  // @Date          19.04.2012
+; ..\ASC1.c	   334  //
+; ..\ASC1.c	   335  //****************************************************************************
+; ..\ASC1.c	   336  
+; ..\ASC1.c	   337  // USER CODE BEGIN (ReceiverOn,1)
+; ..\ASC1.c	   338  
+; ..\ASC1.c	   339  // USER CODE END
+; ..\ASC1.c	   340  
+; ..\ASC1.c	   341  void ASC1_vReceiverOn(void)
+; Function ASC1_vReceiverOn
+.L16:
+ASC1_vReceiverOn:	.type	func
+
+; ..\ASC1.c	   342  {
+; ..\ASC1.c	   343    ASC1_WHBCON_SETREN = 1;         // enable the receiver
+	ld.bu	d15,0xf0000b50
+	st.t	0xf0000b50:5,#1
+.L113:
+
+; ..\ASC1.c	   344  
+; ..\ASC1.c	   345  } //  End of function ASC1_vReceiverOn
+	ret
+.L56:
+	
+__ASC1_vReceiverOn_function_end:
+	.size	ASC1_vReceiverOn,__ASC1_vReceiverOn_function_end-ASC1_vReceiverOn
+.L45:
+	; End of function
+	
+	.calls	'ASC1_vInit','MAIN_vWriteWDTCON0'
+	.calls	'ASC1_vInit','',8
+	.calls	'ASC1_vSendData','',0
+	.calls	'ASC1_usGetData','',0
+	.calls	'ASC1_ubTxDataReady','',0
+	.extern	MAIN_vWriteWDTCON0
+	.calls	'ASC1_vReceiverOn','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L18:
+	.word	973
+	.half	3
+	.word	.L19
+	.byte	4
+.L17:
+	.byte	1
+	.byte	'..\\ASC1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L20
+	.byte	2
+	.byte	'MAIN_vWriteWDTCON0',0,1,139,1,6,1,1,1,1,3
+	.byte	'uwValue',0,1,139,1,31
+	.word	.L59-.L18
+	.byte	0
+.L59:
+	.byte	4
+	.byte	'unsigned int',0,4,7
+.L47:
+	.byte	5
+	.word	155
+.L50:
+	.byte	4
+	.byte	'unsigned short int',0,2,7
+.L53:
+	.byte	4
+	.byte	'unsigned char',0,1,8,6
+	.byte	'__size_t',0,2,1,1
+	.word	155
+	.byte	6
+	.byte	'__codeptr',0,2,1,1
+	.word	.L60-.L18
+.L60:
+	.byte	7
+	.word	.L61-.L18
+.L61:
+	.byte	8,1,6
+	.byte	'ubyte',0,1,69,24
+	.word	198
+	.byte	6
+	.byte	'ushort',0,1,71,24
+	.word	176
+	.byte	6
+	.byte	'uword',0,1,73,24
+	.word	155
+	.byte	6
+	.byte	'T_Reg32',0,1,110,4
+	.word	.L62-.L18
+.L62:
+	.byte	5
+	.word	.L63-.L18
+.L63:
+	.byte	9,1,76,18,4,10
+	.byte	'bit0',0,1
+	.word	198
+	.byte	1,7,2,35,0,10
+	.byte	'bit1',0,1
+	.word	198
+	.byte	1,6,2,35,0,10
+	.byte	'bit2',0,1
+	.word	198
+	.byte	1,5,2,35,0,10
+	.byte	'bit3',0,1
+	.word	198
+	.byte	1,4,2,35,0,10
+	.byte	'bit4',0,1
+	.word	198
+	.byte	1,3,2,35,0,10
+	.byte	'bit5',0,1
+	.word	198
+	.byte	1,2,2,35,0,10
+	.byte	'bit6',0,1
+	.word	198
+	.byte	1,1,2,35,0,10
+	.byte	'bit7',0,1
+	.word	198
+	.byte	1,0,2,35,0,10
+	.byte	'bit8',0,1
+	.word	198
+	.byte	1,7,2,35,1,10
+	.byte	'bit9',0,1
+	.word	198
+	.byte	1,6,2,35,1,10
+	.byte	'bit10',0,1
+	.word	198
+	.byte	1,5,2,35,1,10
+	.byte	'bit11',0,1
+	.word	198
+	.byte	1,4,2,35,1,10
+	.byte	'bit12',0,1
+	.word	198
+	.byte	1,3,2,35,1,10
+	.byte	'bit13',0,1
+	.word	198
+	.byte	1,2,2,35,1,10
+	.byte	'bit14',0,1
+	.word	198
+	.byte	1,1,2,35,1,10
+	.byte	'bit15',0,1
+	.word	198
+	.byte	1,0,2,35,1,10
+	.byte	'bit16',0,1
+	.word	198
+	.byte	1,7,2,35,2,10
+	.byte	'bit17',0,1
+	.word	198
+	.byte	1,6,2,35,2,10
+	.byte	'bit18',0,1
+	.word	198
+	.byte	1,5,2,35,2,10
+	.byte	'bit19',0,1
+	.word	198
+	.byte	1,4,2,35,2,10
+	.byte	'bit20',0,1
+	.word	198
+	.byte	1,3,2,35,2,10
+	.byte	'bit21',0,1
+	.word	198
+	.byte	1,2,2,35,2,10
+	.byte	'bit22',0,1
+	.word	198
+	.byte	1,1,2,35,2,10
+	.byte	'bit23',0,1
+	.word	198
+	.byte	1,0,2,35,2,10
+	.byte	'bit24',0,1
+	.word	198
+	.byte	1,7,2,35,3,10
+	.byte	'bit25',0,1
+	.word	198
+	.byte	1,6,2,35,3,10
+	.byte	'bit26',0,1
+	.word	198
+	.byte	1,5,2,35,3,10
+	.byte	'bit27',0,1
+	.word	198
+	.byte	1,4,2,35,3,10
+	.byte	'bit28',0,1
+	.word	198
+	.byte	1,3,2,35,3,10
+	.byte	'bit29',0,1
+	.word	198
+	.byte	1,2,2,35,3,10
+	.byte	'bit30',0,1
+	.word	198
+	.byte	1,1,2,35,3,10
+	.byte	'bit31',0,1
+	.word	198
+	.byte	1,0,2,35,3,0,6
+	.byte	'CAN_SWObj',0,3,100,4
+	.word	.L64-.L18
+.L64:
+	.byte	9,3,93,9,20,11
+	.byte	'usMOCfg',0,2
+	.word	176
+	.byte	2,35,0,11
+	.byte	'uwID',0,4
+	.word	155
+	.byte	2,35,2,11
+	.byte	'uwMask',0,4
+	.word	155
+	.byte	2,35,6,11
+	.byte	'ubData',0,8
+	.word	.L65-.L18
+	.byte	2,35,10,11
+	.byte	'usCounter',0,2
+	.word	176
+	.byte	2,35,18,0
+.L65:
+	.byte	12,8
+	.word	198
+	.byte	13,7,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L19:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0
+	.byte	3,5,0,3,8,58,15,59,15,57,15,73,19,0,0,4,36,0,3,8,11,15,62,15,0,0,5,53,0,73,19,0,0,6,22,0,3,8,58,15,59
+	.byte	15,57,15,73,19,0,0,7,15,0,73,19,0,0,8,21,0,54,15,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,13,0,3,8,11
+	.byte	15,73,19,13,15,12,15,56,9,0,0,11,13,0,3,8,11,15,73,19,56,9,0,0,12,1,1,11,15,73,19,0,0,13,33,0,47,15,0
+	.byte	0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L20:
+	.word	.L67-.L66
+.L66:
+	.half	3
+	.word	.L69-.L68
+.L68:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.h',0,0,0,0
+	.byte	'..\\ASC1.c',0,0,0,0
+	.byte	'..\\CAN.h',0,0,0,0,0
+.L69:
+.L67:
+	.sdecl	'.debug_info',debug,cluster('ASC1_vInit')
+	.sect	'.debug_info'
+.L21:
+	.word	175
+	.half	3
+	.word	.L22
+	.byte	4,1
+	.byte	'..\\ASC1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L24,.L23
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'ASC1_vInit',0,1,122,6,1,1,1
+	.word	.L8,.L46,.L7
+	.byte	4
+	.word	.L8,.L46
+	.byte	5
+	.byte	'uwTemp',0,1,125,25
+	.word	.L47,.L48
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ASC1_vInit')
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ASC1_vInit')
+	.sect	'.debug_line'
+.L23:
+	.word	.L71-.L70
+.L70:
+	.half	3
+	.word	.L73-.L72
+.L72:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ASC1.c',0,0,0,0,0
+.L73:
+	.byte	5,3,7,0,5,2
+	.word	.L8
+	.byte	3,138,1,1,5,6,9
+	.half	.L74-.L8
+	.byte	3,111,1,5,3,9
+	.half	.L57-.L74
+	.byte	3,17,1,5,31,9
+	.half	.L75-.L57
+	.byte	3,1,1,5,29,9
+	.half	.L76-.L75
+	.byte	3,1,1,5,3,9
+	.half	.L77-.L76
+	.byte	3,1,1,5,21,9
+	.half	.L78-.L77
+	.byte	1,5,31,9
+	.half	.L79-.L78
+	.byte	3,10,1,9
+	.half	.L80-.L79
+	.byte	3,8,1,5,27,9
+	.half	.L81-.L80
+	.byte	3,5,1,5,57,9
+	.half	.L82-.L81
+	.byte	3,6,1,5,3,9
+	.half	.L83-.L82
+	.byte	3,8,1,5,31,9
+	.half	.L84-.L83
+	.byte	3,1,1,5,3,9
+	.half	.L85-.L84
+	.byte	3,1,1,5,21,9
+	.half	.L86-.L85
+	.byte	1,5,57,9
+	.half	.L87-.L86
+	.byte	3,1,1,5,24,9
+	.half	.L88-.L87
+	.byte	3,11,1,5,23,9
+	.half	.L89-.L88
+	.byte	3,2,1,5,22,9
+	.half	.L90-.L89
+	.byte	3,7,1,5,1,9
+	.half	.L91-.L90
+	.byte	3,3,1,7,9
+	.half	.L25-.L91
+	.byte	0,1,1
+.L71:
+	.sdecl	'.debug_ranges',debug,cluster('ASC1_vInit')
+	.sect	'.debug_ranges'
+.L24:
+	.word	-1,.L8,0,.L25-.L8,0,0
+	.sdecl	'.debug_info',debug,cluster('ASC1_vSendData')
+	.sect	'.debug_info'
+.L26:
+	.word	180
+	.half	3
+	.word	.L27
+	.byte	4,1
+	.byte	'..\\ASC1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L29,.L28
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'ASC1_vSendData',0,1,236,1,6,1,1,1
+	.word	.L10,.L49,.L9
+	.byte	4
+	.byte	'usData',0,1,236,1,28
+	.word	.L50,.L51
+	.byte	5
+	.word	.L10,.L49
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ASC1_vSendData')
+	.sect	'.debug_abbrev'
+.L27:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ASC1_vSendData')
+	.sect	'.debug_line'
+.L28:
+	.word	.L93-.L92
+.L92:
+	.half	3
+	.word	.L95-.L94
+.L94:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ASC1.c',0,0,0,0,0
+.L95:
+	.byte	5,24,7,0,5,2
+	.word	.L10
+	.byte	3,237,1,1,5,27,9
+	.half	.L96-.L10
+	.byte	3,1,1,5,1,9
+	.half	.L97-.L96
+	.byte	3,2,1,7,9
+	.half	.L30-.L97
+	.byte	0,1,1
+.L93:
+	.sdecl	'.debug_ranges',debug,cluster('ASC1_vSendData')
+	.sect	'.debug_ranges'
+.L29:
+	.word	-1,.L10,0,.L30-.L10,0,0
+	.sdecl	'.debug_info',debug,cluster('ASC1_usGetData')
+	.sect	'.debug_info'
+.L31:
+	.word	164
+	.half	3
+	.word	.L32
+	.byte	4,1
+	.byte	'..\\ASC1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L34,.L33
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'ASC1_usGetData',0,1,138,2,8
+	.word	.L50
+	.byte	1,1,1
+	.word	.L12,.L52,.L11
+	.byte	4
+	.word	.L12,.L52
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ASC1_usGetData')
+	.sect	'.debug_abbrev'
+.L32:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ASC1_usGetData')
+	.sect	'.debug_line'
+.L33:
+	.word	.L99-.L98
+.L98:
+	.half	3
+	.word	.L101-.L100
+.L100:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ASC1.c',0,0,0,0,0
+.L101:
+	.byte	5,21,7,0,5,2
+	.word	.L12
+	.byte	3,139,2,1,5,3,9
+	.half	.L102-.L12
+	.byte	3,1,1,5,1,9
+	.half	.L103-.L102
+	.byte	3,2,1,7,9
+	.half	.L35-.L103
+	.byte	0,1,1
+.L99:
+	.sdecl	'.debug_ranges',debug,cluster('ASC1_usGetData')
+	.sect	'.debug_ranges'
+.L34:
+	.word	-1,.L12,0,.L35-.L12,0,0
+	.sdecl	'.debug_info',debug,cluster('ASC1_ubTxDataReady')
+	.sect	'.debug_info'
+.L36:
+	.word	196
+	.half	3
+	.word	.L37
+	.byte	4,1
+	.byte	'..\\ASC1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L39,.L38
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'ASC1_ubTxDataReady',0,1,171,2,7
+	.word	.L53
+	.byte	1,1,1
+	.word	.L14,.L54,.L13
+	.byte	4
+	.word	.L14,.L54
+	.byte	5
+	.byte	'ubReturnValue',0,1,173,2,9
+	.word	.L53,.L55
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ASC1_ubTxDataReady')
+	.sect	'.debug_abbrev'
+.L37:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ASC1_ubTxDataReady')
+	.sect	'.debug_line'
+.L38:
+	.word	.L105-.L104
+.L104:
+	.half	3
+	.word	.L107-.L106
+.L106:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ASC1.c',0,0,0,0,0
+.L107:
+	.byte	5,20,7,0,5,2
+	.word	.L14
+	.byte	3,174,2,1,5,3,3,2,1,5,22,9
+	.half	.L108-.L14
+	.byte	3,2,1,5,23,3,1,1,5,1,9
+	.half	.L5-.L108
+	.byte	3,4,1,7,9
+	.half	.L40-.L5
+	.byte	0,1,1
+.L105:
+	.sdecl	'.debug_ranges',debug,cluster('ASC1_ubTxDataReady')
+	.sect	'.debug_ranges'
+.L39:
+	.word	-1,.L14,0,.L40-.L14,0,0
+	.sdecl	'.debug_info',debug,cluster('ASC1_vReceiverOn')
+	.sect	'.debug_info'
+.L41:
+	.word	162
+	.half	3
+	.word	.L42
+	.byte	4,1
+	.byte	'..\\ASC1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L44,.L43
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'ASC1_vReceiverOn',0,1,213,2,6,1,1,1
+	.word	.L16,.L56,.L15
+	.byte	4
+	.word	.L16,.L56
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ASC1_vReceiverOn')
+	.sect	'.debug_abbrev'
+.L42:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ASC1_vReceiverOn')
+	.sect	'.debug_line'
+.L43:
+	.word	.L110-.L109
+.L109:
+	.half	3
+	.word	.L112-.L111
+.L111:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\ASC1.c',0,0,0,0,0
+.L112:
+	.byte	5,25,7,0,5,2
+	.word	.L16
+	.byte	3,214,2,1,5,1,9
+	.half	.L113-.L16
+	.byte	3,2,1,7,9
+	.half	.L45-.L113
+	.byte	0,1,1
+.L110:
+	.sdecl	'.debug_ranges',debug,cluster('ASC1_vReceiverOn')
+	.sect	'.debug_ranges'
+.L44:
+	.word	-1,.L16,0,.L45-.L16,0,0
+	.sdecl	'.debug_loc',debug,cluster('ASC1_ubTxDataReady')
+	.sect	'.debug_loc'
+.L13:
+	.word	-1,.L14,.L14-.L14,.L54-.L14
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L55:
+	.word	-1,.L14,.L58-.L14,.L54-.L14
+	.half	5
+	.byte	144,33,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ASC1_usGetData')
+	.sect	'.debug_loc'
+.L11:
+	.word	-1,.L12,.L12-.L12,.L52-.L12
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ASC1_vInit')
+	.sect	'.debug_loc'
+.L7:
+	.word	-1,.L8,.L8-.L8,.L57-.L8
+	.half	2
+	.byte	138,0
+	.word	.L57-.L8,.L46-.L8
+	.half	2
+	.byte	138,8
+	.word	.L46-.L8,.L46-.L8
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L48:
+	.word	-1,.L8,.L8-.L8,.L46-.L8
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ASC1_vReceiverOn')
+	.sect	'.debug_loc'
+.L15:
+	.word	-1,.L16,.L16-.L16,.L56-.L16
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ASC1_vSendData')
+	.sect	'.debug_loc'
+.L9:
+	.word	-1,.L10,.L10-.L10,.L49-.L10
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L51:
+	.word	-1,.L10,.L10-.L10,.L49-.L10
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L114:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('ASC1_vInit')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L114,.L8,.L46-.L8
+	.byte	4
+	.word	(.L57-.L8)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L46-.L57)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('ASC1_vSendData')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L114,.L10,.L49-.L10
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ASC1_usGetData')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L114,.L12,.L52-.L12
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ASC1_ubTxDataReady')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L114,.L14,.L54-.L14
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('ASC1_vReceiverOn')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L114,.L16,.L56-.L16
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; ..\ASC1.c	   346  
+; ..\ASC1.c	   347  
+; ..\ASC1.c	   348  
+; ..\ASC1.c	   349  
+; ..\ASC1.c	   350  // USER CODE BEGIN (ASC1_General,10)
+; ..\ASC1.c	   351  
+; ..\ASC1.c	   352  // USER CODE END
+; ..\ASC1.c	   353  
+
+	; Module end

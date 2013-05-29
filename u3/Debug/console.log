@@ -1,0 +1,22 @@
+
+**** Build of configuration Debug for project motEncPot ****
+
+C:\Program Files\DEVEL\TriCore v3.5r1\ctc\bin\amk -j all 
+Compiling MAIN.c
+ctc W560: ["..\MAIN.c" 274/59] possible truncation at implicit conversion to type "float"
+ctc W560: ["..\MAIN.c" 313/20] possible truncation at implicit conversion to type "float"
+ctc W537: ["..\MAIN.c" 120/17] unused variable "i"
+ctc W537: ["..\MAIN.c" 133/8] unused variable "datalength"
+ctc W537: ["..\MAIN.c" 136/14] unused variable "RecCanBCast_Obj15"
+0 errors, 5 warnings
+Linking to motEncPot.elf
+
+Time consumed: 3747 ms
+**** End of build ****
+
+Tool info: 
+TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+TASKING program builder v3.5r1 Build 039
+TASKING VX-toolset for TriCore: assembler v3.5r1 Build 263
+TASKING VX-toolset for TriCore: object linker v3.5r1 Build 166
+TASKING VX-toolset for TriCore: control program v3.5r1 Build 131

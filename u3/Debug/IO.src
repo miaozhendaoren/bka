@@ -1,0 +1,1056 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc3408a -c99 --dep-file=.IO.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=IO.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o IO.src
+	; Module start
+	.name	"IO"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.IO.IO_vInit',code,cluster('IO_vInit')
+	.sect	'.text.IO.IO_vInit'
+	.align	2
+	
+	.global	IO_vInit
+
+; ..\IO.c	     1  //****************************************************************************
+; ..\IO.c	     2  // @Module        Parallel Ports
+; ..\IO.c	     3  // @Filename      IO.c
+; ..\IO.c	     4  // @Project       motencpot.dav
+; ..\IO.c	     5  //----------------------------------------------------------------------------
+; ..\IO.c	     6  // @Controller    Infineon TC1782
+; ..\IO.c	     7  //
+; ..\IO.c	     8  // @Compiler      Tasking 3.5r1
+; ..\IO.c	     9  //
+; ..\IO.c	    10  // @Codegenerator 1.0
+; ..\IO.c	    11  //
+; ..\IO.c	    12  // @Description   This file contains functions that use the IO module.
+; ..\IO.c	    13  //
+; ..\IO.c	    14  //----------------------------------------------------------------------------
+; ..\IO.c	    15  // @Date          21.03.2012 16:08:47
+; ..\IO.c	    16  //
+; ..\IO.c	    17  //****************************************************************************
+; ..\IO.c	    18  
+; ..\IO.c	    19  // USER CODE BEGIN (IO_General,1)
+; ..\IO.c	    20  
+; ..\IO.c	    21  // USER CODE END
+; ..\IO.c	    22  
+; ..\IO.c	    23  
+; ..\IO.c	    24  
+; ..\IO.c	    25  //****************************************************************************
+; ..\IO.c	    26  // @Project Includes
+; ..\IO.c	    27  //****************************************************************************
+; ..\IO.c	    28  
+; ..\IO.c	    29  #include "MAIN.h"
+; ..\IO.c	    30  
+; ..\IO.c	    31  // USER CODE BEGIN (IO_General,2)
+; ..\IO.c	    32  
+; ..\IO.c	    33  // USER CODE END
+; ..\IO.c	    34  
+; ..\IO.c	    35  
+; ..\IO.c	    36  //****************************************************************************
+; ..\IO.c	    37  // @Macros
+; ..\IO.c	    38  //****************************************************************************
+; ..\IO.c	    39  
+; ..\IO.c	    40  // USER CODE BEGIN (IO_General,3)
+; ..\IO.c	    41  
+; ..\IO.c	    42  // USER CODE END
+; ..\IO.c	    43  
+; ..\IO.c	    44  
+; ..\IO.c	    45  //****************************************************************************
+; ..\IO.c	    46  // @Defines
+; ..\IO.c	    47  //****************************************************************************
+; ..\IO.c	    48  
+; ..\IO.c	    49  // USER CODE BEGIN (IO_General,4)
+; ..\IO.c	    50  
+; ..\IO.c	    51  // USER CODE END
+; ..\IO.c	    52  
+; ..\IO.c	    53  
+; ..\IO.c	    54  //****************************************************************************
+; ..\IO.c	    55  // @Typedefs
+; ..\IO.c	    56  //****************************************************************************
+; ..\IO.c	    57  
+; ..\IO.c	    58  // USER CODE BEGIN (IO_General,5)
+; ..\IO.c	    59  
+; ..\IO.c	    60  // USER CODE END
+; ..\IO.c	    61  
+; ..\IO.c	    62  
+; ..\IO.c	    63  //****************************************************************************
+; ..\IO.c	    64  // @Imported Global Variables
+; ..\IO.c	    65  //****************************************************************************
+; ..\IO.c	    66  
+; ..\IO.c	    67  // USER CODE BEGIN (IO_General,6)
+; ..\IO.c	    68  
+; ..\IO.c	    69  // USER CODE END
+; ..\IO.c	    70  
+; ..\IO.c	    71  
+; ..\IO.c	    72  //****************************************************************************
+; ..\IO.c	    73  // @Global Variables
+; ..\IO.c	    74  //****************************************************************************
+; ..\IO.c	    75  
+; ..\IO.c	    76  // USER CODE BEGIN (IO_General,7)
+; ..\IO.c	    77  
+; ..\IO.c	    78  // USER CODE END
+; ..\IO.c	    79  
+; ..\IO.c	    80  
+; ..\IO.c	    81  //****************************************************************************
+; ..\IO.c	    82  // @External Prototypes
+; ..\IO.c	    83  //****************************************************************************
+; ..\IO.c	    84  
+; ..\IO.c	    85  // USER CODE BEGIN (IO_General,8)
+; ..\IO.c	    86  
+; ..\IO.c	    87  // USER CODE END
+; ..\IO.c	    88  
+; ..\IO.c	    89  
+; ..\IO.c	    90  //****************************************************************************
+; ..\IO.c	    91  // @Prototypes Of Local Functions
+; ..\IO.c	    92  //****************************************************************************
+; ..\IO.c	    93  
+; ..\IO.c	    94  // USER CODE BEGIN (IO_General,9)
+; ..\IO.c	    95  
+; ..\IO.c	    96  // USER CODE END
+; ..\IO.c	    97  
+; ..\IO.c	    98  
+; ..\IO.c	    99  //****************************************************************************
+; ..\IO.c	   100  // @Function      void IO_vInit(void) 
+; ..\IO.c	   101  //
+; ..\IO.c	   102  //----------------------------------------------------------------------------
+; ..\IO.c	   103  // @Description   This is the initialization function of the IO function 
+; ..\IO.c	   104  //                library. It is assumed that the SFRs used by this library 
+; ..\IO.c	   105  //                are in their reset state. 
+; ..\IO.c	   106  //                Note:
+; ..\IO.c	   107  //                Alternate outputs are set in their own initialization 
+; ..\IO.c	   108  //                function.
+; ..\IO.c	   109  //
+; ..\IO.c	   110  //----------------------------------------------------------------------------
+; ..\IO.c	   111  // @Returnvalue   None
+; ..\IO.c	   112  //
+; ..\IO.c	   113  //----------------------------------------------------------------------------
+; ..\IO.c	   114  // @Parameters    None
+; ..\IO.c	   115  //
+; ..\IO.c	   116  //----------------------------------------------------------------------------
+; ..\IO.c	   117  // @Date          21.03.2012
+; ..\IO.c	   118  //
+; ..\IO.c	   119  //****************************************************************************
+; ..\IO.c	   120  
+; ..\IO.c	   121  // USER CODE BEGIN (IO_Function,1)
+; ..\IO.c	   122  
+; ..\IO.c	   123  // USER CODE END
+; ..\IO.c	   124  
+; ..\IO.c	   125  void IO_vInit(void)
+; Function IO_vInit
+.L10:
+IO_vInit:	.type	func
+
+; ..\IO.c	   126  {
+; ..\IO.c	   127    // USER CODE BEGIN (IO_Function,2)
+; ..\IO.c	   128  
+; ..\IO.c	   129    // USER CODE END
+; ..\IO.c	   130  
+; ..\IO.c	   131  
+; ..\IO.c	   132    ///  -----------------------------------------------------------------------
+; ..\IO.c	   133    ///  Configuration of Port P0:
+; ..\IO.c	   134    ///  -----------------------------------------------------------------------
+; ..\IO.c	   135    ///  P0.0:
+; ..\IO.c	   136    ///  - is used as alternate output for the  GPTA0 output signal 0
+; ..\IO.c	   137    ///  - output driver characteristic: medium driver
+; ..\IO.c	   138    ///  P0.1:
+; ..\IO.c	   139    ///  - is used as general purpose output
+; ..\IO.c	   140    ///  - push/pull output is selected
+; ..\IO.c	   141    ///  - the pin status is low level
+; ..\IO.c	   142    ///  - output driver characteristic: medium driver
+; ..\IO.c	   143    ///  P0.2:
+; ..\IO.c	   144    ///  - is used as general purpose output
+; ..\IO.c	   145    ///  - push/pull output is selected
+; ..\IO.c	   146    ///  - the pin status is low level
+; ..\IO.c	   147    ///  - output driver characteristic: medium driver
+; ..\IO.c	   148    ///  P0.3:
+; ..\IO.c	   149    ///  - is used as general purpose output
+; ..\IO.c	   150    ///  - push/pull output is selected
+; ..\IO.c	   151    ///  - the pin status is low level
+; ..\IO.c	   152    ///  - output driver characteristic: Medium driver
+; ..\IO.c	   153    ///  P0.4:
+; ..\IO.c	   154    ///  - is used as general input
+; ..\IO.c	   155    ///  - pull-up device is assigned
+; ..\IO.c	   156    ///  - output driver characteristic: medium driver
+; ..\IO.c	   157    ///  P0.5:
+; ..\IO.c	   158    ///  - is used as general input
+; ..\IO.c	   159    ///  - pull-up device is assigned
+; ..\IO.c	   160    ///  - output driver characteristic: medium driver
+; ..\IO.c	   161    ///  P0.6:
+; ..\IO.c	   162    ///  - is used as general input
+; ..\IO.c	   163    ///  - pull-up device is assigned
+; ..\IO.c	   164    ///  - output driver characteristic: medium driver
+; ..\IO.c	   165    ///  P0.7:
+; ..\IO.c	   166    ///  - is used as general input
+; ..\IO.c	   167    ///  - pull-up device is assigned
+; ..\IO.c	   168    ///  - output driver characteristic: medium driver
+; ..\IO.c	   169    ///  P0.14:
+; ..\IO.c	   170    ///  - is used as alternate input for the  SCU_ERU input signal 4
+; ..\IO.c	   171    ///  - output driver characteristic: Medium driver
+; ..\IO.c	   172  
+; ..\IO.c	   173    P0_OMR         =  0x00000000;  // load data output register
+	mov	d15,#0
+	st.w	0xf0000c04,d15
+.L46:
+
+; ..\IO.c	   174    MAIN_vResetENDINIT();
+	lea	a15,0xf00005f0
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+	lea	a12,0xf00005f0
+.L2:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L2				; predicted taken
+.L47:
+
+; ..\IO.c	   175    P0_PDR         =  0x00040000;  // load pad driver mode register
+	movh	d15,#4
+	st.w	0xf0000c40,d15
+.L48:
+
+; ..\IO.c	   176    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L49:
+	call	MAIN_vWriteWDTCON0
+.L50:
+
+; ..\IO.c	   177    P0_IOCR0       =  0x80808020;  // load port control register 0
+	mov.u	d15,#32800
+	addih	d15,d15,#32896
+	st.w	0xf0000c10,d15
+.L51:
+
+; ..\IO.c	   178    P0_IOCR4       =  0x20202020;  // load port control register 4
+	mov.u	d8,#8224
+	addih	d8,d8,#8224
+	st.w	0xf0000c14,d8
+.L52:
+
+; ..\IO.c	   179    P0_IOCR8       =  0x20202020;  // load port control register 8
+	st.w	0xf0000c18,d8
+.L53:
+
+; ..\IO.c	   180    P0_IOCR12      =  0x20202020;  // load port control register 12
+	st.w	0xf0000c1c,d8
+.L54:
+
+; ..\IO.c	   181  
+; ..\IO.c	   182    ///  -----------------------------------------------------------------------
+; ..\IO.c	   183    ///  Configuration of Port P1:
+; ..\IO.c	   184    ///  -----------------------------------------------------------------------
+; ..\IO.c	   185    ///  - no pin of port P1 is used
+; ..\IO.c	   186  
+; ..\IO.c	   187    P1_OMR         =  0x00000000;  // load data output register
+	mov	d15,#0
+	st.w	0xf0000d04,d15
+.L55:
+
+; ..\IO.c	   188    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L111)
+	lea	a14,[a14]@los(.L111)
+	j	.cocofun_1
+.L111:
+.L56:
+
+; ..\IO.c	   189    P1_PDR         =  0x00000000;  // load pad driver mode register
+	st.w	0xf0000d40,d15
+.L57:
+
+; ..\IO.c	   190    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L58:
+	call	MAIN_vWriteWDTCON0
+.L59:
+
+; ..\IO.c	   191    P1_IOCR0       =  0x20202020;  // load port control register 0
+	st.w	0xf0000d10,d8
+.L60:
+
+; ..\IO.c	   192    P1_IOCR4       =  0x20202020;  // load port control register 4
+	st.w	0xf0000d14,d8
+.L61:
+
+; ..\IO.c	   193    P1_IOCR8       =  0x20202020;  // load port control register 8
+	st.w	0xf0000d18,d8
+.L62:
+
+; ..\IO.c	   194    P1_IOCR12      =  0x20202020;  // load port control register 12
+	st.w	0xf0000d1c,d8
+.L63:
+
+; ..\IO.c	   195  
+; ..\IO.c	   196    ///  -----------------------------------------------------------------------
+; ..\IO.c	   197    ///  Configuration of Port P2:
+; ..\IO.c	   198    ///  -----------------------------------------------------------------------
+; ..\IO.c	   199    ///  - no pin of port P2 is used
+; ..\IO.c	   200  
+; ..\IO.c	   201    P2_OMR         =  0x00000000;  // load data output register
+	mov	d15,#0
+	st.w	0xf0000e04,d15
+.L64:
+
+; ..\IO.c	   202    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L112)
+	lea	a14,[a14]@los(.L112)
+	j	.cocofun_1
+.L112:
+.L65:
+
+; ..\IO.c	   203    P2_PDR         =  0x00000000;  // load pad driver mode register
+	st.w	0xf0000e40,d15
+.L66:
+
+; ..\IO.c	   204    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L67:
+	call	MAIN_vWriteWDTCON0
+.L68:
+
+; ..\IO.c	   205    P2_IOCR0       =  0x20202020;  // load port control register 0
+	st.w	0xf0000e10,d8
+.L69:
+
+; ..\IO.c	   206    P2_IOCR4       =  0x20202020;  // load port control register 4
+	st.w	0xf0000e14,d8
+.L70:
+
+; ..\IO.c	   207    P2_IOCR8       =  0x20202020;  // load port control register 8
+	st.w	0xf0000e18,d8
+.L71:
+
+; ..\IO.c	   208    P2_IOCR12      =  0x20202020;  // load port control register 12
+	st.w	0xf0000e1c,d8
+.L72:
+
+; ..\IO.c	   209  
+; ..\IO.c	   210    ///  -----------------------------------------------------------------------
+; ..\IO.c	   211    ///  Configuration of Port P3:
+; ..\IO.c	   212    ///  -----------------------------------------------------------------------
+; ..\IO.c	   213    ///  P3.12:
+; ..\IO.c	   214    ///  - is used as alternate input for the  CAN node 0 input signal 1
+; ..\IO.c	   215    ///  - output driver characteristic: medium driver
+; ..\IO.c	   216    ///  P3.13:
+; ..\IO.c	   217    ///  - is used as alternate output for the  CAN node 0 output signal 1
+; ..\IO.c	   218    ///  - output driver characteristic: strong driver, sharp edge
+; ..\IO.c	   219  
+; ..\IO.c	   220    P3_OMR         =  0x00000000;  // load data output register
+	mov	d15,#0
+	st.w	0xf0000f04,d15
+.L73:
+
+; ..\IO.c	   221    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L113)
+	lea	a14,[a14]@los(.L113)
+	j	.cocofun_1
+.L113:
+.L74:
+
+; ..\IO.c	   222    P3_PDR         =  0x00000000;  // load pad driver mode register
+	st.w	0xf0000f40,d15
+.L75:
+
+; ..\IO.c	   223    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L76:
+	call	MAIN_vWriteWDTCON0
+.L77:
+
+; ..\IO.c	   224    P3_IOCR0       =  0x20202020;  // load port control register 0
+	st.w	0xf0000f10,d8
+.L78:
+
+; ..\IO.c	   225    P3_IOCR4       =  0x20202020;  // load port control register 4
+	st.w	0xf0000f14,d8
+.L79:
+
+; ..\IO.c	   226    P3_IOCR8       =  0x20202020;  // load port control register 8
+	st.w	0xf0000f18,d8
+.L80:
+
+; ..\IO.c	   227    P3_IOCR12      =  0x20202020;  // load port control register 12
+	st.w	0xf0000f1c,d8
+.L81:
+
+; ..\IO.c	   228  
+; ..\IO.c	   229    ///  -----------------------------------------------------------------------
+; ..\IO.c	   230    ///  Configuration of Port P4:
+; ..\IO.c	   231    ///  -----------------------------------------------------------------------
+; ..\IO.c	   232    ///  - no pin of port P4 is used
+; ..\IO.c	   233  
+; ..\IO.c	   234    P4_OMR         =  0x00000000;  // load data output register
+	mov	d15,#0
+	st.w	0xf0001004,d15
+.L82:
+
+; ..\IO.c	   235    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L114)
+	lea	a14,[a14]@los(.L114)
+	j	.cocofun_1
+.L114:
+.L83:
+
+; ..\IO.c	   236    P4_PDR         =  0x00000000;  // load pad driver mode register
+	st.w	0xf0001040,d15
+.L84:
+
+; ..\IO.c	   237    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L85:
+	call	MAIN_vWriteWDTCON0
+.L86:
+
+; ..\IO.c	   238    P4_IOCR0       =  0x20202020;  // load port control register 0
+	st.w	0xf0001010,d8
+.L87:
+
+; ..\IO.c	   239  
+; ..\IO.c	   240    ///  -----------------------------------------------------------------------
+; ..\IO.c	   241    ///  Configuration of Port P5:
+; ..\IO.c	   242    ///  -----------------------------------------------------------------------
+; ..\IO.c	   243    ///  P5.0:
+; ..\IO.c	   244    ///  - is used as general purpose output
+; ..\IO.c	   245    ///  - push/pull output is selected
+; ..\IO.c	   246    ///  - the pin status is low level
+; ..\IO.c	   247    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   248    ///  P5.1:
+; ..\IO.c	   249    ///  - is used as general purpose output
+; ..\IO.c	   250    ///  - push/pull output is selected
+; ..\IO.c	   251    ///  - the pin status is high level
+; ..\IO.c	   252    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   253    ///  P5.2:
+; ..\IO.c	   254    ///  - is used as general purpose output
+; ..\IO.c	   255    ///  - push/pull output is selected
+; ..\IO.c	   256    ///  - the pin status is high level
+; ..\IO.c	   257    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   258    ///  P5.3:
+; ..\IO.c	   259    ///  - is used as general purpose output
+; ..\IO.c	   260    ///  - push/pull output is selected
+; ..\IO.c	   261    ///  - the pin status is high level
+; ..\IO.c	   262    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   263    ///  P5.4:
+; ..\IO.c	   264    ///  - is used as general purpose output
+; ..\IO.c	   265    ///  - push/pull output is selected
+; ..\IO.c	   266    ///  - the pin status is high level
+; ..\IO.c	   267    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   268    ///  P5.5:
+; ..\IO.c	   269    ///  - is used as general purpose output
+; ..\IO.c	   270    ///  - push/pull output is selected
+; ..\IO.c	   271    ///  - the pin status is high level
+; ..\IO.c	   272    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   273    ///  P5.6:
+; ..\IO.c	   274    ///  - is used as general purpose output
+; ..\IO.c	   275    ///  - push/pull output is selected
+; ..\IO.c	   276    ///  - the pin status is high level
+; ..\IO.c	   277    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   278    ///  P5.7:
+; ..\IO.c	   279    ///  - is used as general purpose output
+; ..\IO.c	   280    ///  - push/pull output is selected
+; ..\IO.c	   281    ///  - the pin status is high level
+; ..\IO.c	   282    ///  - output driver characteristic: Strong driver soft edge
+; ..\IO.c	   283  
+; ..\IO.c	   284    P5_OMR         =  0x000000FE;  // load data output register
+	mov	d15,#254
+	st.w	0xf0001104,d15
+.L88:
+
+; ..\IO.c	   285    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L115)
+	lea	a14,[a14]@los(.L115)
+	j	.cocofun_1
+.L115:
+.L89:
+
+; ..\IO.c	   286    P5_PDR         =  0x00000000;  // load pad driver mode register
+	st.w	0xf0001140,d15
+.L90:
+
+; ..\IO.c	   287    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L91:
+	call	MAIN_vWriteWDTCON0
+.L92:
+
+; ..\IO.c	   288    P5_IOCR0       =  0x80808080;  // load port control register 0
+	mov.u	d15,#32896
+	addih	d15,d15,#32896
+	st.w	0xf0001110,d15
+.L93:
+
+; ..\IO.c	   289    P5_IOCR4       =  0x80808080;  // load port control register 4
+	st.w	0xf0001114,d15
+.L94:
+
+; ..\IO.c	   290    P5_IOCR8       =  0x20202020;  // load port control register 8
+	st.w	0xf0001118,d8
+.L95:
+
+; ..\IO.c	   291    P5_IOCR12      =  0x20202020;  // load port control register 12
+	st.w	0xf000111c,d8
+.L96:
+
+; ..\IO.c	   292  
+; ..\IO.c	   293    ///  -----------------------------------------------------------------------
+; ..\IO.c	   294    ///  Configuration of Port P6:
+; ..\IO.c	   295    ///  -----------------------------------------------------------------------
+; ..\IO.c	   296    ///  - no pin of port P6 is used
+; ..\IO.c	   297  
+; ..\IO.c	   298    P6_OMR         =  0x00000000;  // load data output register
+	mov	d15,#0
+	st.w	0xf0001204,d15
+.L97:
+
+; ..\IO.c	   299    MAIN_vResetENDINIT();
+	movh.a	a14,#@his(.L116)
+	lea	a14,[a14]@los(.L116)
+	j	.cocofun_1
+.L116:
+.L98:
+
+; ..\IO.c	   300    P6_PDR         =  0x00000000;  // load pad driver mode register
+	st.w	0xf0001240,d15
+.L99:
+
+; ..\IO.c	   301    MAIN_vSetENDINIT();
+	ld.w	d15,[a15]
+	or	d4,d15,#1
+.L100:
+	call	MAIN_vWriteWDTCON0
+.L101:
+
+; ..\IO.c	   302    P6_IOCR0       =  0x20202020;  // load port control register 0
+	st.w	0xf0001210,d8
+.L102:
+
+; ..\IO.c	   303  
+; ..\IO.c	   304  
+; ..\IO.c	   305    // USER CODE BEGIN (IO_Function,3)
+; ..\IO.c	   306  
+; ..\IO.c	   307    // USER CODE END
+; ..\IO.c	   308  
+; ..\IO.c	   309  } //  End of function IO_vInit
+	ret
+.L27:
+	
+__IO_vInit_function_end:
+	.size	IO_vInit,__IO_vInit_function_end-IO_vInit
+.L21:
+	; End of function
+	
+	.sdecl	'.text.IO..cocofun_1',code,cluster('.cocofun_1')
+	.sect	'.text.IO..cocofun_1'
+	.align	2
+; Function .cocofun_1
+.L12:
+.cocofun_1:	.type	func
+; Function body .cocofun_1, coco_iter:0
+	ld.w	d15,[a15]
+	insert	d4,d15,#0,#0,#1
+	call	MAIN_vWriteWDTCON0
+.L3:
+	ld.bu	d15,[a12]
+	jnz.t	d15:0,.L3				; predicted taken
+.L107:
+	mov	d15,#0
+.L108:
+	ji	a14
+.L26:
+	; End of function
+	.calls	'IO_vInit','MAIN_vWriteWDTCON0'
+	.calls	'IO_vInit','.cocofun_1'
+	.calls	'IO_vInit','',0
+	.extern	MAIN_vWriteWDTCON0
+	.calls	'.cocofun_1','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L14:
+	.word	966
+	.half	3
+	.word	.L15
+	.byte	4
+.L13:
+	.byte	1
+	.byte	'..\\IO.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L16
+	.byte	2
+	.byte	'MAIN_vWriteWDTCON0',0,1,139,1,6,1,1,1,1,3
+	.byte	'uwValue',0,1,139,1,31
+	.word	.L29-.L14
+	.byte	0
+.L29:
+	.byte	4
+	.byte	'unsigned int',0,4,7,5
+	.byte	'__size_t',0,2,1,1
+	.word	153
+	.byte	5
+	.byte	'__codeptr',0,2,1,1
+	.word	.L30-.L14
+.L30:
+	.byte	6
+	.word	.L31-.L14
+.L31:
+	.byte	7,1,5
+	.byte	'ubyte',0,1,69,24
+	.word	.L32-.L14
+.L32:
+	.byte	4
+	.byte	'unsigned char',0,1,8,5
+	.byte	'ushort',0,1,71,24
+	.word	.L33-.L14
+.L33:
+	.byte	4
+	.byte	'unsigned short int',0,2,7,5
+	.byte	'uword',0,1,73,24
+	.word	153
+	.byte	5
+	.byte	'T_Reg32',0,1,110,4
+	.word	.L34-.L14
+.L34:
+	.byte	8
+	.word	.L35-.L14
+.L35:
+	.byte	9,1,76,18,4,10
+	.byte	'bit0',0,1
+	.word	225
+	.byte	1,7,2,35,0,10
+	.byte	'bit1',0,1
+	.word	225
+	.byte	1,6,2,35,0,10
+	.byte	'bit2',0,1
+	.word	225
+	.byte	1,5,2,35,0,10
+	.byte	'bit3',0,1
+	.word	225
+	.byte	1,4,2,35,0,10
+	.byte	'bit4',0,1
+	.word	225
+	.byte	1,3,2,35,0,10
+	.byte	'bit5',0,1
+	.word	225
+	.byte	1,2,2,35,0,10
+	.byte	'bit6',0,1
+	.word	225
+	.byte	1,1,2,35,0,10
+	.byte	'bit7',0,1
+	.word	225
+	.byte	1,0,2,35,0,10
+	.byte	'bit8',0,1
+	.word	225
+	.byte	1,7,2,35,1,10
+	.byte	'bit9',0,1
+	.word	225
+	.byte	1,6,2,35,1,10
+	.byte	'bit10',0,1
+	.word	225
+	.byte	1,5,2,35,1,10
+	.byte	'bit11',0,1
+	.word	225
+	.byte	1,4,2,35,1,10
+	.byte	'bit12',0,1
+	.word	225
+	.byte	1,3,2,35,1,10
+	.byte	'bit13',0,1
+	.word	225
+	.byte	1,2,2,35,1,10
+	.byte	'bit14',0,1
+	.word	225
+	.byte	1,1,2,35,1,10
+	.byte	'bit15',0,1
+	.word	225
+	.byte	1,0,2,35,1,10
+	.byte	'bit16',0,1
+	.word	225
+	.byte	1,7,2,35,2,10
+	.byte	'bit17',0,1
+	.word	225
+	.byte	1,6,2,35,2,10
+	.byte	'bit18',0,1
+	.word	225
+	.byte	1,5,2,35,2,10
+	.byte	'bit19',0,1
+	.word	225
+	.byte	1,4,2,35,2,10
+	.byte	'bit20',0,1
+	.word	225
+	.byte	1,3,2,35,2,10
+	.byte	'bit21',0,1
+	.word	225
+	.byte	1,2,2,35,2,10
+	.byte	'bit22',0,1
+	.word	225
+	.byte	1,1,2,35,2,10
+	.byte	'bit23',0,1
+	.word	225
+	.byte	1,0,2,35,2,10
+	.byte	'bit24',0,1
+	.word	225
+	.byte	1,7,2,35,3,10
+	.byte	'bit25',0,1
+	.word	225
+	.byte	1,6,2,35,3,10
+	.byte	'bit26',0,1
+	.word	225
+	.byte	1,5,2,35,3,10
+	.byte	'bit27',0,1
+	.word	225
+	.byte	1,4,2,35,3,10
+	.byte	'bit28',0,1
+	.word	225
+	.byte	1,3,2,35,3,10
+	.byte	'bit29',0,1
+	.word	225
+	.byte	1,2,2,35,3,10
+	.byte	'bit30',0,1
+	.word	225
+	.byte	1,1,2,35,3,10
+	.byte	'bit31',0,1
+	.word	225
+	.byte	1,0,2,35,3,0,5
+	.byte	'CAN_SWObj',0,3,100,4
+	.word	.L36-.L14
+.L36:
+	.byte	9,3,93,9,20,11
+	.byte	'usMOCfg',0,2
+	.word	257
+	.byte	2,35,0,11
+	.byte	'uwID',0,4
+	.word	153
+	.byte	2,35,2,11
+	.byte	'uwMask',0,4
+	.word	153
+	.byte	2,35,6,11
+	.byte	'ubData',0,8
+	.word	.L37-.L14
+	.byte	2,35,10,11
+	.byte	'usCounter',0,2
+	.word	257
+	.byte	2,35,18,0
+.L37:
+	.byte	12,8
+	.word	225
+	.byte	13,7,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L15:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0
+	.byte	3,5,0,3,8,58,15,59,15,57,15,73,19,0,0,4,36,0,3,8,11,15,62,15,0,0,5,22,0,3,8,58,15,59,15,57,15,73,19,0
+	.byte	0,6,15,0,73,19,0,0,7,21,0,54,15,0,0,8,53,0,73,19,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,13,0,3,8,11
+	.byte	15,73,19,13,15,12,15,56,9,0,0,11,13,0,3,8,11,15,73,19,56,9,0,0,12,1,1,11,15,73,19,0,0,13,33,0,47,15,0
+	.byte	0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L16:
+	.word	.L39-.L38
+.L38:
+	.half	3
+	.word	.L41-.L40
+.L40:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.h',0,0,0,0
+	.byte	'..\\IO.c',0,0,0,0
+	.byte	'..\\CAN.h',0,0,0,0,0
+.L41:
+.L39:
+	.sdecl	'.debug_info',debug,cluster('IO_vInit')
+	.sect	'.debug_info'
+.L17:
+	.word	147
+	.half	3
+	.word	.L18
+	.byte	4,1
+	.byte	'..\\IO.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L20,.L19
+	.byte	2
+	.word	.L13
+	.byte	3
+	.byte	'IO_vInit',0,1,125,6,1,1,1
+	.word	.L10,.L27,.L9
+	.byte	4
+	.word	.L28
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('IO_vInit')
+	.sect	'.debug_abbrev'
+.L18:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,85,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('IO_vInit')
+	.sect	'.debug_line'
+.L19:
+	.word	.L43-.L42
+.L42:
+	.half	3
+	.word	.L45-.L44
+.L44:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\IO.c',0,0,0,0,0
+.L45:
+	.byte	5,31,7,0,5,2
+	.word	.L10
+	.byte	3,172,1,1,5,3,9
+	.half	.L46-.L10
+	.byte	3,1,1,5,31,9
+	.half	.L47-.L46
+	.byte	3,1,1,5,3,9
+	.half	.L48-.L47
+	.byte	3,1,1,5,21,9
+	.half	.L49-.L48
+	.byte	1,5,31,9
+	.half	.L50-.L49
+	.byte	3,1,1,9
+	.half	.L51-.L50
+	.byte	3,1,1,9
+	.half	.L52-.L51
+	.byte	3,1,1,9
+	.half	.L53-.L52
+	.byte	3,1,1,9
+	.half	.L54-.L53
+	.byte	3,7,1,5,3,9
+	.half	.L55-.L54
+	.byte	3,1,1,5,31,9
+	.half	.L56-.L55
+	.byte	3,1,1,5,3,9
+	.half	.L57-.L56
+	.byte	3,1,1,5,21,9
+	.half	.L58-.L57
+	.byte	1,5,31,9
+	.half	.L59-.L58
+	.byte	3,1,1,9
+	.half	.L60-.L59
+	.byte	3,1,1,9
+	.half	.L61-.L60
+	.byte	3,1,1,9
+	.half	.L62-.L61
+	.byte	3,1,1,9
+	.half	.L63-.L62
+	.byte	3,7,1,5,3,9
+	.half	.L64-.L63
+	.byte	3,1,1,5,31,9
+	.half	.L65-.L64
+	.byte	3,1,1,5,3,9
+	.half	.L66-.L65
+	.byte	3,1,1,5,21,9
+	.half	.L67-.L66
+	.byte	1,5,31,9
+	.half	.L68-.L67
+	.byte	3,1,1,9
+	.half	.L69-.L68
+	.byte	3,1,1,9
+	.half	.L70-.L69
+	.byte	3,1,1,9
+	.half	.L71-.L70
+	.byte	3,1,1,9
+	.half	.L72-.L71
+	.byte	3,12,1,5,3,9
+	.half	.L73-.L72
+	.byte	3,1,1,5,31,9
+	.half	.L74-.L73
+	.byte	3,1,1,5,3,9
+	.half	.L75-.L74
+	.byte	3,1,1,5,21,9
+	.half	.L76-.L75
+	.byte	1,5,31,9
+	.half	.L77-.L76
+	.byte	3,1,1,9
+	.half	.L78-.L77
+	.byte	3,1,1,9
+	.half	.L79-.L78
+	.byte	3,1,1,9
+	.half	.L80-.L79
+	.byte	3,1,1,9
+	.half	.L81-.L80
+	.byte	3,7,1,5,3,9
+	.half	.L82-.L81
+	.byte	3,1,1,5,31,9
+	.half	.L83-.L82
+	.byte	3,1,1,5,3,9
+	.half	.L84-.L83
+	.byte	3,1,1,5,21,9
+	.half	.L85-.L84
+	.byte	1,5,31,9
+	.half	.L86-.L85
+	.byte	3,1,1,9
+	.half	.L87-.L86
+	.byte	3,46,1,5,3,9
+	.half	.L88-.L87
+	.byte	3,1,1,5,31,9
+	.half	.L89-.L88
+	.byte	3,1,1,5,3,9
+	.half	.L90-.L89
+	.byte	3,1,1,5,21,9
+	.half	.L91-.L90
+	.byte	1,5,31,9
+	.half	.L92-.L91
+	.byte	3,1,1,9
+	.half	.L93-.L92
+	.byte	3,1,1,9
+	.half	.L94-.L93
+	.byte	3,1,1,9
+	.half	.L95-.L94
+	.byte	3,1,1,9
+	.half	.L96-.L95
+	.byte	3,7,1,5,3,9
+	.half	.L97-.L96
+	.byte	3,1,1,5,31,9
+	.half	.L98-.L97
+	.byte	3,1,1,5,3,9
+	.half	.L99-.L98
+	.byte	3,1,1,5,21,9
+	.half	.L100-.L99
+	.byte	1,5,31,9
+	.half	.L101-.L100
+	.byte	3,1,1,5,1,9
+	.half	.L102-.L101
+	.byte	3,7,1,7,9
+	.half	.L21-.L102
+	.byte	0,1,1
+.L43:
+	.sdecl	'.debug_ranges',debug,cluster('IO_vInit')
+	.sect	'.debug_ranges'
+.L20:
+	.word	-1,.L10,0,.L21-.L10,0,0
+.L28:
+	.word	-1,.L10,0,.L27-.L10,-1,.L12,0,.L26-.L12,0,0
+	.sdecl	'.debug_info',debug,cluster('.cocofun_1')
+	.sect	'.debug_info'
+.L22:
+	.word	141
+	.half	3
+	.word	.L23
+	.byte	4,1
+	.byte	'..\\IO.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L25,.L24
+	.byte	2
+	.word	.L13
+	.byte	3
+	.byte	'.cocofun_1',0,1,1,1,1
+	.word	.L12,.L26,.L11
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('.cocofun_1')
+	.sect	'.debug_abbrev'
+.L23:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,0,3,8,58,15,59,15,57,15,54,15
+	.byte	17,1,18,1,64,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('.cocofun_1')
+	.sect	'.debug_line'
+.L24:
+	.word	.L104-.L103
+.L103:
+	.half	3
+	.word	.L106-.L105
+.L105:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\IO.c',0,0,0,0,0
+.L106:
+	.byte	5,3,7,0,5,2
+	.word	.L12
+	.byte	3,187,1,1,5,31,9
+	.half	.L107-.L12
+	.byte	3,1,1,9
+	.half	.L26-.L107
+	.byte	0,1,1,5,3,0,5,2
+	.word	.L12
+	.byte	3,201,1,1,5,31,9
+	.half	.L107-.L12
+	.byte	3,1,1,9
+	.half	.L108-.L107
+	.byte	3,114,1,7,9
+	.half	.L26-.L108
+	.byte	0,1,1,5,3,0,5,2
+	.word	.L12
+	.byte	3,220,1,1,5,31,9
+	.half	.L107-.L12
+	.byte	3,1,1,9
+	.half	.L108-.L107
+	.byte	3,95,1,7,9
+	.half	.L26-.L108
+	.byte	0,1,1,5,3,0,5,2
+	.word	.L12
+	.byte	3,234,1,1,5,31,9
+	.half	.L107-.L12
+	.byte	3,1,1,9
+	.half	.L108-.L107
+	.byte	3,81,1,7,9
+	.half	.L26-.L108
+	.byte	0,1,1,5,3,0,5,2
+	.word	.L12
+	.byte	3,156,2,1,5,31,9
+	.half	.L107-.L12
+	.byte	3,1,1,9
+	.half	.L108-.L107
+	.byte	3,159,127,1,7,9
+	.half	.L26-.L108
+	.byte	0,1,1,5,3,0,5,2
+	.word	.L12
+	.byte	3,170,2,1,5,31,9
+	.half	.L107-.L12
+	.byte	3,1,1,9
+	.half	.L108-.L107
+	.byte	3,145,127,1,7,9
+	.half	.L26-.L108
+	.byte	0,1,1
+.L104:
+	.sdecl	'.debug_ranges',debug,cluster('.cocofun_1')
+	.sect	'.debug_ranges'
+.L25:
+	.word	-1,.L12,0,.L26-.L12,0,0
+	.sdecl	'.debug_loc',debug,cluster('.cocofun_1')
+	.sect	'.debug_loc'
+.L11:
+	.word	-1,.L12,.L12-.L12,.L26-.L12
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('IO_vInit')
+	.sect	'.debug_loc'
+.L9:
+	.word	-1,.L10,.L10-.L10,.L27-.L10
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L109:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('IO_vInit')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L109,.L10,.L27-.L10
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L110:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,30,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('.cocofun_1')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L110,.L12,.L26-.L12
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; ..\IO.c	   310  
+; ..\IO.c	   311  
+; ..\IO.c	   312  
+; ..\IO.c	   313  
+; ..\IO.c	   314  // USER CODE BEGIN (IO_General,10)
+; ..\IO.c	   315  
+; ..\IO.c	   316  // USER CODE END
+; ..\IO.c	   317  
+
+	; Module end

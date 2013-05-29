@@ -1,0 +1,2163 @@
+	; TASKING VX-toolset for TriCore: C compiler v3.5r1 Build 484.1.2
+	; Options: -f cc6288a -c99 --dep-file=.MAIN.o.d -Ctc1782 --core=tc1.3.1 --fpu-present -F -g --make-target=MAIN.o -t4 --language=-gcc,-volatile,+strings --default-near-size=0 -O2 --default-a1-size=0 --default-a0-size=0 --source --align=0 --compact-max-size=200 --switch=auto -o MAIN.src
+	; Module start
+	.name	"MAIN"
+
+	
+$FPU
+$TC131
+	
+	.sdecl	'.text.MAIN.pi_regler',code,cluster('pi_regler')
+	.sect	'.text.MAIN.pi_regler'
+	.align	2
+	
+	.global	pi_regler
+
+; ..\MAIN.c	     1  //****************************************************************************
+; ..\MAIN.c	     2  // @Project       motencpot
+; ..\MAIN.c	     3  // @Author        (alphabet.) Andreas Doepkens, Brian Schueler
+; ..\MAIN.c	     4  // @Filename      MAIN.c
+; ..\MAIN.c	     5  // @Date          21.03.2012
+; ..\MAIN.c	     6  //
+; ..\MAIN.c	     7  //****************************************************************************
+; ..\MAIN.c	     8  
+; ..\MAIN.c	     9  // CAN0RXD P3.12 (CAN Node 0-Ausgang auf Tristate setzen)
+; ..\MAIN.c	    10  // Auskommentieren, wenn der Ausgangstreiber im Pull-Up-Modus
+; ..\MAIN.c	    11  // betrieben werden soll. (Siehe hierzu auch Eintrag in myDaveDoc.txt)
+; ..\MAIN.c	    12  //#define CAN_TRISTATE
+; ..\MAIN.c	    13  
+; ..\MAIN.c	    14  #include "myboardinit.h"
+; ..\MAIN.c	    15  #include <stdio.h>
+; ..\MAIN.c	    16  #include <math.h>
+; ..\MAIN.c	    17  
+; ..\MAIN.c	    18  
+; ..\MAIN.c	    19  void v24PutString(char *s);
+; ..\MAIN.c	    20  
+; ..\MAIN.c	    21  float pi_regler(float speed, float soll, float ist) {
+; Function pi_regler
+.L33:
+pi_regler:	.type	func
+
+; ..\MAIN.c	    22  	return speed * (soll / ist);
+	div.f	d15,d5,d6
+	mul.f	d2,d4,d15
+.L151:
+
+; ..\MAIN.c	    23  }
+	ret
+.L78:
+	
+__pi_regler_function_end:
+	.size	pi_regler,__pi_regler_function_end-pi_regler
+.L55:
+	; End of function
+	
+	.sdecl	'.text.MAIN.setDirection',code,cluster('setDirection')
+	.sect	'.text.MAIN.setDirection'
+	.align	2
+	
+	.global	setDirection
+
+; ..\MAIN.c	    24  
+; ..\MAIN.c	    25  void setDirection(int direction) {
+; Function setDirection
+.L35:
+setDirection:	.type	func
+
+; ..\MAIN.c	    26  	switch(direction)
+	jeq	d4,#-1,.L3				; prediction unknown
+.L156:
+	jeq	d4,#0,.L4				; prediction unknown
+.L157:
+	jeq	d4,#1,.L5				; prediction unknown
+.L158:
+	j	.L6
+
+; ..\MAIN.c	    27  	{
+; ..\MAIN.c	    28  		case -1: // backward
+.L3:
+
+; ..\MAIN.c	    29  			IO_vSetPin(IO_P0_1);
+	mov	d15,#2
+	st.w	0xf0000c04,d15
+.L159:
+
+; ..\MAIN.c	    30  			IO_vResetPin(IO_P0_2);
+	movh	d15,#4
+	st.w	0xf0000c04,d15
+.L160:
+
+; ..\MAIN.c	    31  		break;
+; ..\MAIN.c	    32  
+; ..\MAIN.c	    33  		case 0: // stop
+; ..\MAIN.c	    34  			IO_vResetPin(IO_P0_2);
+; ..\MAIN.c	    35  			IO_vResetPin(IO_P0_1);
+; ..\MAIN.c	    36  		break;
+; ..\MAIN.c	    37  
+; ..\MAIN.c	    38  		case 1: // forward
+; ..\MAIN.c	    39  			IO_vSetPin(IO_P0_2);
+; ..\MAIN.c	    40  			IO_vResetPin(IO_P0_1);
+; ..\MAIN.c	    41  		break;
+; ..\MAIN.c	    42  
+; ..\MAIN.c	    43  		default:
+; ..\MAIN.c	    44  			v24PutString("Unknown direction\r\n");
+; ..\MAIN.c	    45  		break;
+; ..\MAIN.c	    46  	}
+; ..\MAIN.c	    47  }
+	ret
+.L4:
+	movh	d15,#4
+	st.w	0xf0000c04,d15
+.L161:
+	movh	d15,#2
+	st.w	0xf0000c04,d15
+.L162:
+	ret
+.L5:
+	mov	d15,#4
+	st.w	0xf0000c04,d15
+.L163:
+	movh	d15,#2
+	st.w	0xf0000c04,d15
+.L164:
+	ret
+.L6:
+	movh.a	a4,#@his(.1.str)
+	lea	a4,[a4]@los(.1.str)
+	j	v24PutString
+.L82:
+	
+__setDirection_function_end:
+	.size	setDirection,__setDirection_function_end-setDirection
+.L60:
+	; End of function
+	
+	.sdecl	'.text.MAIN.v24PutString',code,cluster('v24PutString')
+	.sect	'.text.MAIN.v24PutString'
+	.align	2
+	
+	.global	v24PutString
+
+; ..\MAIN.c	    48  
+; ..\MAIN.c	    49  void v24PutString(char *s)
+; Function v24PutString
+.L37:
+v24PutString:	.type	func
+
+; ..\MAIN.c	    50  {
+; ..\MAIN.c	    51      char *sind=s;
+	mov.aa	a15,a4
+.L107:
+
+; ..\MAIN.c	    52  	while (*sind!=0)
+	j	.L10
+.L11:
+
+; ..\MAIN.c	    53  	{
+; ..\MAIN.c	    54  		while (!ASC1_ubTxDataReady());
+.L12:
+	call	ASC1_ubTxDataReady
+	jeq	d2,#0,.L12				; predicted taken
+.L145:
+
+; ..\MAIN.c	    55  	    ASC1_vSendData(*sind);
+	ld.b	d15,[a15+]1
+	extr.u	d4,d15,#0,#16
+	call	ASC1_vSendData
+.L10:
+	ld.bu	d15,[a15]
+	jne	d15,#0,.L11				; predicted taken
+.L146:
+
+; ..\MAIN.c	    56  	    sind++;
+; ..\MAIN.c	    57  	}
+; ..\MAIN.c	    58  }
+	ret
+.L73:
+	
+__v24PutString_function_end:
+	.size	v24PutString,__v24PutString_function_end-v24PutString
+.L50:
+	; End of function
+	
+	.sdecl	'.text.MAIN.getCmpDutyCycle',code,cluster('getCmpDutyCycle')
+	.sect	'.text.MAIN.getCmpDutyCycle'
+	.align	2
+	
+	.global	getCmpDutyCycle
+
+; ..\MAIN.c	    59  
+; ..\MAIN.c	    60  int getCmpDutyCycle(uword reload, float dutycycle)
+; Function getCmpDutyCycle
+.L39:
+getCmpDutyCycle:	.type	func
+
+; ..\MAIN.c	    61  {
+; ..\MAIN.c	    62  	//Berechnung des Comparewertes für die Prozentangabe des HI/LO-PWM-Verhältnisses
+; ..\MAIN.c	    63  	return ((dutycycle)*reload)+(0xffffff*(1-dutycycle));
+	utof	d15,d4
+	movh	d0,#16256
+	sub.f	d0,d0,d5
+	mov.u	d1,#65535
+	addih	d1,d1,#19327
+	mul.f	d0,d0,d1
+	madd.f	d15,d0,d5,d15
+	ftoiz	d2,d15
+.L169:
+
+; ..\MAIN.c	    64  }
+	ret
+.L85:
+	
+__getCmpDutyCycle_function_end:
+	.size	getCmpDutyCycle,__getCmpDutyCycle_function_end-getCmpDutyCycle
+.L65:
+	; End of function
+	
+	.sdecl	'.text.MAIN.main',code,cluster('main')
+	.sect	'.text.MAIN.main'
+	.align	2
+	
+	.global	main
+
+; ..\MAIN.c	    65  
+; ..\MAIN.c	    66  
+; ..\MAIN.c	    67  // Anschlüsse an die uC-Karte:
+; ..\MAIN.c	    68  // ---------------------------
+; ..\MAIN.c	    69  
+; ..\MAIN.c	    70  // Taster rot     : P0.4 und GND (pull-up)
+; ..\MAIN.c	    71  // Taster schwarz : P0.5 und GND (pull-up)
+; ..\MAIN.c	    72  
+; ..\MAIN.c	    73  // Geschwindigkeit für Motor an PWM (P0.0)
+; ..\MAIN.c	    74  //              IN1 an P0.1 (symbol. IO_P0_1)
+; ..\MAIN.c	    75  //              IN2 an P0.2 (symbol. IO_P0_2)
+; ..\MAIN.c	    76  //
+; ..\MAIN.c	    77  //                       IN1==1 && IN2==0 -> Motor forward
+; ..\MAIN.c	    78  //                       IN1==0 && IN2==1 -> Motor reverse
+; ..\MAIN.c	    79  //                       IN1==IN2         -> Motor fast stop
+; ..\MAIN.c	    80  //
+; ..\MAIN.c	    81  
+; ..\MAIN.c	    82  
+; ..\MAIN.c	    83  // Zaehlung der Encoderflanken am externen Interrupt (Portpin P0.14: Encoder Kanal A)
+; ..\MAIN.c	    84  // die zugehörige ISR befindet sich in der Datei SCU.c:
+; ..\MAIN.c	    85  //           void INTERRUPT (SCU_SRN0INT) SCU_viSRN0(void)
+; ..\MAIN.c	    86  //
+; ..\MAIN.c	    87  extern volatile unsigned int countEncoderTicks;
+; ..\MAIN.c	    88  volatile unsigned int current_encoder_ticks;
+; ..\MAIN.c	    89  //
+; ..\MAIN.c	    90  // Encoder Kanal B an P0.7 (zur Bestimmung der Drehrichtung)
+; ..\MAIN.c	    91  
+; ..\MAIN.c	    92  
+; ..\MAIN.c	    93  // Potentiometer: Mittenabriff an AN0 (siehe Variable "uword adcResult")
+; ..\MAIN.c	    94  //
+; ..\MAIN.c	    95  
+; ..\MAIN.c	    96  
+; ..\MAIN.c	    97  // Zählvariable für die Anzahl der Timer0-Überläufe
+; ..\MAIN.c	    98  extern volatile unsigned int countTimerOverflows;
+; ..\MAIN.c	    99  // die zugehörige ISR befindet sich in der Datei GPTA0.c:
+; ..\MAIN.c	   100  //           void INTERRUPT (GPTA0_SRN5INT) GPTA0_viSRN5(void)
+; ..\MAIN.c	   101  // ACHTUNG: Vor Benutzung von printf( ... ) muss der
+; ..\MAIN.c	   102  //          Timer-Interrupt deaktiviert werden
+; ..\MAIN.c	   103  //
+; ..\MAIN.c	   104  // Makros zur Festlegung der Timer-Frequenz (in Hertz oder Mikrosekunden)
+; ..\MAIN.c	   105  #define TMR_RELOAD_HZ(freq) (0xFFFFFF-(90000000/(freq)))
+; ..\MAIN.c	   106  #define TMR_RELOAD_US(us) (TMR_RELOAD_HZ(1000000/(us)))
+; ..\MAIN.c	   107  
+; ..\MAIN.c	   108  
+; ..\MAIN.c	   109  // V24-Kommunikation
+; ..\MAIN.c	   110  // -----------------
+; ..\MAIN.c	   111  //
+; ..\MAIN.c	   112  // Verwendete Baud Rate 9600, 1 Stoppbit, keine Parität
+; ..\MAIN.c	   113  // TxD an Port P3.8
+; ..\MAIN.c	   114  // RxD an Port P3.9
+; ..\MAIN.c	   115  // Funktionen zum Senden/Empfangen s. ASC1.c
+; ..\MAIN.c	   116  
+; ..\MAIN.c	   117  
+; ..\MAIN.c	   118  void main(void)
+; Function main
+.L41:
+main:	.type	func
+
+; ..\MAIN.c	   119  {
+; ..\MAIN.c	   120     volatile int i;
+; ..\MAIN.c	   121     uword adcResult = 0;
+; ..\MAIN.c	   122     char s[80];
+; ..\MAIN.c	   123     char cruise_control = 0;
+	mov	d8,#0
+	sub.a	a10,#176
+.L108:
+
+; ..\MAIN.c	   124     float controlled_speed = 0;
+; ..\MAIN.c	   125     float saved_ticks = 0;
+	mov	d9,d8
+	st.w	[a10]172,d8
+.L110:
+
+; ..\MAIN.c	   126     float allowed_delta_speed = 0;
+; ..\MAIN.c	   127     float gas_pedal_speed = 0;
+; ..\MAIN.c	   128     float current_speed;
+; ..\MAIN.c	   129     float current_delta_speed;
+; ..\MAIN.c	   130     int button_timer = 0;
+	mov	d10,d8
+.L109:
+
+; ..\MAIN.c	   131  
+; ..\MAIN.c	   132     // CAN-Bus-Variablen
+; ..\MAIN.c	   133     int datalength;
+; ..\MAIN.c	   134     CAN_SWObj TransCan_Obj1, TransCan_Obj2; // 2 Transmit-Messageobjekte
+; ..\MAIN.c	   135     CAN_SWObj RecCan_Obj3,   RecCan_Obj4;   // 2 Receive-Messageobjekte
+; ..\MAIN.c	   136     CAN_SWObj RecCanBCast_Obj15;            // Broadcast-Messageobjekt
+; ..\MAIN.c	   137  
+; ..\MAIN.c	   138  
+; ..\MAIN.c	   139     // Initialisierung
+; ..\MAIN.c	   140     MAIN_vInit();
+	call	MAIN_vInit
+.L174:
+
+; ..\MAIN.c	   141     // Alle Interrupts AUS
+; ..\MAIN.c	   142     DISABLE();
+	disable
+.L175:
+
+; ..\MAIN.c	   143     // nach erfolgreicher Initialisierung leuchtet die unterste Leuchtdiode
+; ..\MAIN.c	   144     // auf dem Board; alle anderen LEDs sind ausgeschaltet
+; ..\MAIN.c	   145     printf("Board Initialisierung OK (Eine blaue LED sollte leuchten).\n");
+	movh.a	a4,#@his(.2.str)
+	lea	a4,[a4]@los(.2.str)
+	call	printf
+.L176:
+
+; ..\MAIN.c	   146     v24PutString("V24 Initialisierung OK.\r\n");
+	movh.a	a4,#@his(.3.str)
+	lea	a4,[a4]@los(.3.str)
+	call	v24PutString
+.L177:
+
+; ..\MAIN.c	   147     // Alle Interrupts EIN
+; ..\MAIN.c	   148     ENABLE();
+	enable
+.L178:
+
+; ..\MAIN.c	   149  
+; ..\MAIN.c	   150     // Timer: Wert (Freq. oder us) setzen und einschalten
+; ..\MAIN.c	   151     // --------------------------------------------------
+; ..\MAIN.c	   152     // Frequenz darf nicht kleiner als 10Hz (100000us) sein
+; ..\MAIN.c	   153     GPTA0_vSetGTReload(GPTA0_GT, 0, TMR_RELOAD_HZ(10));
+; ..\MAIN.c	   154     GPTA0_vStartGTTimer(0);
+	mov.u	d0,#43967
+	lea	a15,0xf0001c00
+.L179:
+	addih	d0,d0,#118
+	st.w	0xf00018e4,d0
+.L180:
+
+; ..\MAIN.c	   155  
+; ..\MAIN.c	   156  
+; ..\MAIN.c	   157     // Drehrichtung des Motors einstellen (hier: forward)
+; ..\MAIN.c	   158     // -------------------------------------------------
+; ..\MAIN.c	   159     setDirection(1);
+	mov	d4,#1
+	ld.bu	d15,[a15]
+	or	d15,#1
+	st.b	[a15],d15
+.L181:
+	call	setDirection
+.L182:
+
+; ..\MAIN.c	   160  
+; ..\MAIN.c	   161  
+; ..\MAIN.c	   162     // PWM-Einrichtung einschalten
+; ..\MAIN.c	   163     // ---------------------------
+; ..\MAIN.c	   164     GPTA0_vEnableTimerClock();
+	ld.bu	d0,0xf0001c01
+	st.t	0xf0001c01:0,#1
+.L183:
+
+; ..\MAIN.c	   165     GPTA0_vStartGTTimer(1);
+	ld.bu	d15,[a15]
+	or	d15,#2
+	st.b	[a15],d15
+.L184:
+
+; ..\MAIN.c	   166     // Reloadwert (Frequenz)
+; ..\MAIN.c	   167     GPTA0_vSetGTReload(GPTA0_GT, 1, TMR_RELOAD_HZ(1000)); // 1000 Hz
+	mov.u	d15,#41071
+	addih	d15,d15,#254
+	st.w	0xf00018f4,d15
+.L185:
+
+; ..\MAIN.c	   168     // Comparewerte (Tastverhältnis)
+; ..\MAIN.c	   169     // Achtung: 00 bzw. 01 für die beiden GTC (Global Timer Cells)!!!
+; ..\MAIN.c	   170     GPTA0_vWriteTmr(GPTA0_GTC, 00,
+; ..\MAIN.c	   171    			getCmpDutyCycle(GPTA0_uwGetGTReload(GPTA0_GT, 1),
+; ..\MAIN.c	   172    			0.5)); // oberer Comparewert
+	movh	d5,#16128
+	ld.w	d4,0xf00018f4
+.L186:
+	call	getCmpDutyCycle
+.L187:
+
+; ..\MAIN.c	   173     GPTA0_vWriteTmr(GPTA0_GTC, 01, 0xFFFFFF); // unterer Comparewert
+	mov.u	d15,#65535
+	st.w	0xf0001904,d2
+.L188:
+	addih	d15,d15,#255
+	st.w	0xf000190c,d15
+.L189:
+
+; ..\MAIN.c	   174                                               // (ident. mit Timeroverflow-Wert)
+; ..\MAIN.c	   175     // Diese beiden GTCs stellen eine "globale" PWM-Einrichtung dar mit
+; ..\MAIN.c	   176     // dem Pulsverhältnis 50:50 (-> 0.5). Dieser ist die Clock für die im nächsten
+; ..\MAIN.c	   177     // Schritt realisierte lokale PWM mit LTCs
+; ..\MAIN.c	   178  
+; ..\MAIN.c	   179  
+; ..\MAIN.c	   180     // CAN-Message-Objekte initialisieren
+; ..\MAIN.c	   181     // ----------------------------------
+; ..\MAIN.c	   182     // init Obj1, 11-Bit Transmit-Object (siehe can.c)
+; ..\MAIN.c	   183     TransCan_Obj1.usMOCfg=0x18;        // 1 Daten-Byte(s), DIR=Transmit [8]
+; ..\MAIN.c	   184     CAN_vGetMsgObj(1,&TransCan_Obj1);  // Message-Objekt auslesen
+	mov	d15,#24
+	lea	a4,[a10]88
+.L190:
+	mov	d4,#1
+	st.h	[a10]88,d15
+.L191:
+	call	CAN_vGetMsgObj
+.L192:
+
+; ..\MAIN.c	   185     TransCan_Obj1.uwID=0x0011;         // Identifier setzen: 17 hex == 23 dec
+	mov	d15,#17
+	st.w	[a10]90,d15
+.L193:
+
+; ..\MAIN.c	   186     TransCan_Obj1.ubData[0]=0xee;
+	mov	d15,#238
+	st.b	[a10]98,d15
+.L194:
+
+; ..\MAIN.c	   187     CAN_vConfigMsgObj(1,&TransCan_Obj1);
+	mov	d4,#1
+	lea	a4,[a10]88
+	call	CAN_vConfigMsgObj
+.L195:
+
+; ..\MAIN.c	   188  
+; ..\MAIN.c	   189     // init Obj2, 11-Bit Transmit-Object (siehe can.c)
+; ..\MAIN.c	   190     CAN_vGetMsgObj(2,&TransCan_Obj2);
+	mov	d4,#2
+	lea	a4,[a10]108
+	call	CAN_vGetMsgObj
+.L196:
+
+; ..\MAIN.c	   191     TransCan_Obj2.usMOCfg=0x38;        // 3 Daten-Byte(s), DIR=Transmit [8]
+	mov	d15,#56
+	st.h	[a10]108,d15
+.L197:
+
+; ..\MAIN.c	   192     TransCan_Obj2.uwID=0x0012;         // identifier-no 27 hex == 39 dec
+	mov	d15,#18
+	st.w	[a10]110,d15
+.L198:
+
+; ..\MAIN.c	   193     TransCan_Obj2.ubData[0]=0x03;
+	mov	d15,#3
+	st.b	[a10]118,d15
+.L199:
+
+; ..\MAIN.c	   194     TransCan_Obj2.ubData[1]=0x06;
+	mov	d15,#6
+	st.b	[a10]119,d15
+.L200:
+
+; ..\MAIN.c	   195     TransCan_Obj2.ubData[2]=0x09;
+	mov	d15,#9
+	st.b	[a10]120,d15
+.L201:
+
+; ..\MAIN.c	   196     CAN_vConfigMsgObj(2,&TransCan_Obj2);
+	mov	d4,#2
+	lea	a4,[a10]108
+	call	CAN_vConfigMsgObj
+.L202:
+
+; ..\MAIN.c	   197  
+; ..\MAIN.c	   198     // init Obj3, 11-Bit Receive-Object (siehe can.c)
+; ..\MAIN.c	   199     CAN_vGetMsgObj(3,&RecCan_Obj3);    // Message-Objekt auslesen
+	mov	d4,#3
+	lea	a4,[a10]128
+	call	CAN_vGetMsgObj
+.L203:
+
+; ..\MAIN.c	   200     RecCan_Obj3.uwID=0x0013;           // Identifier setzen: 18 hex == 24 dec
+	mov	d15,#19
+	st.w	[a10]130,d15
+.L204:
+
+; ..\MAIN.c	   201     CAN_vConfigMsgObj(3,&RecCan_Obj3);
+	mov	d4,#3
+	lea	a4,[a10]128
+	call	CAN_vConfigMsgObj
+.L205:
+
+; ..\MAIN.c	   202  
+; ..\MAIN.c	   203     // init Obj3, 11-Bit Receive-Object (siehe can.c)
+; ..\MAIN.c	   204     CAN_vGetMsgObj(4,&RecCan_Obj4);    // Message-Objekt auslesen
+	mov	d4,#4
+	lea	a4,[a10]148
+	call	CAN_vGetMsgObj
+.L206:
+
+; ..\MAIN.c	   205     RecCan_Obj4.uwID=0x0014;           // Identifier setzen: 28 hex == 40 dec
+	mov	d15,#20
+	st.w	[a10]150,d15
+.L207:
+
+; ..\MAIN.c	   206     CAN_vConfigMsgObj(4,&RecCan_Obj4);
+	mov	d4,#4
+	lea	a4,[a10]148
+	call	CAN_vConfigMsgObj
+.L208:
+
+; ..\MAIN.c	   207  
+; ..\MAIN.c	   208     // init Obj15, Broadcast Receive-Object für alle Identifier
+; ..\MAIN.c	   209     // eine Initialisierung ist nicht erforderlich, da Obj.15 generell nur als Empfangsobjekt betrieben werden kann!!!
+; ..\MAIN.c	   210     while (1)
+	mov.u	d11,#55050
+	movh.a	a15,#@his(.9.str)
+	lea	a15,[a15]@los(.9.str)
+	addih	d11,d11,#15523
+	st.a	[a10]168,a15
+	movh	d12,#17792
+	movh.a	a15,#@his(countEncoderTicks)
+	movh.a	a12,#61456
+	movh.a	a13,#@his(current_encoder_ticks)
+	movh.a	a14,#@his(countTimerOverflows)
+	lea	a12,[a12]@los(0xf0101038)
+	lea	a13,[a13]@los(current_encoder_ticks)
+	lea	a15,[a15]@los(countEncoderTicks)
+	lea	a14,[a14]@los(countTimerOverflows)
+
+; ..\MAIN.c	   211     {
+; ..\MAIN.c	   212  
+; ..\MAIN.c	   213  
+; ..\MAIN.c	   214  #if 1
+; ..\MAIN.c	   215  	   // Testcode 1: AD-Wandlung des Potis
+; ..\MAIN.c	   216  	   // ---------------------------------
+; ..\MAIN.c	   217  
+; ..\MAIN.c	   218  	   // 12-Bit ADC-Wandlung starten
+; ..\MAIN.c	   219  	   ADC0_vStartSeq0ReqChNum(0,0,0,0);
+; ..\MAIN.c	   220  	   // Warten bis Wandlung abgeschlossen
+; ..\MAIN.c	   221  	   while(ADC0_uwBusy());
+; ..\MAIN.c	   222         // AD-Wert auslesen
+; ..\MAIN.c	   223  	   adcResult=ADC0_uwGetResultData(RESULT_REG_0);
+; ..\MAIN.c	   224  
+; ..\MAIN.c	   225  	   sprintf(s,"ADC Wert (Poti): %d mV \r\n", adcResult*5000/4096);
+; ..\MAIN.c	   226  	   //v24PutString(s);
+; ..\MAIN.c	   227  #endif
+; ..\MAIN.c	   228  
+; ..\MAIN.c	   229  
+; ..\MAIN.c	   230  #if 1
+; ..\MAIN.c	   231  	   // Testcode 2: PWM-Wert ausgeben (Ausgang: P0.0)
+; ..\MAIN.c	   232  	   // --------------------------------------------
+; ..\MAIN.c	   233  	   //(gesteuert über Potentiometer!!!)
+; ..\MAIN.c	   234  	   // Diesen Testcode in Verbindung mit Testcode 1 betreiben!
+; ..\MAIN.c	   235  
+; ..\MAIN.c	   236  	   // speed settings
+; ..\MAIN.c	   237  	   gas_pedal_speed = adcResult*1.000/4096.0;
+; ..\MAIN.c	   238  
+; ..\MAIN.c	   239  	   if (cruise_control != 1) {
+; ..\MAIN.c	   240  		   current_speed = gas_pedal_speed;
+; ..\MAIN.c	   241  	   } else {
+; ..\MAIN.c	   242  		   current_speed = controlled_speed;
+; ..\MAIN.c	   243  		   allowed_delta_speed = 0.05;
+; ..\MAIN.c	   244  
+; ..\MAIN.c	   245  		   current_delta_speed = fabs(current_speed - gas_pedal_speed);
+; ..\MAIN.c	   246  
+; ..\MAIN.c	   247  		   if ( current_delta_speed > allowed_delta_speed ) {
+; ..\MAIN.c	   248  			   cruise_control = 0;
+; ..\MAIN.c	   249  			   current_speed = gas_pedal_speed;
+; ..\MAIN.c	   250  			   sprintf(s, "Tempomat deaktiviert, durch überschreiten.\r\n");
+; ..\MAIN.c	   251  			   v24PutString(s);
+; ..\MAIN.c	   252  			   sprintf(s, "Controlled Speed: %f Current Speed: %f.\r\n", controlled_speed, current_speed);
+; ..\MAIN.c	   253  			   v24PutString(s);
+; ..\MAIN.c	   254  		   }
+; ..\MAIN.c	   255  	   }
+; ..\MAIN.c	   256  
+; ..\MAIN.c	   257  
+; ..\MAIN.c	   258  
+; ..\MAIN.c	   259  
+; ..\MAIN.c	   260  	   //sprintf(s, "%f", current_speed);
+; ..\MAIN.c	   261  	   //v24PutString(s);
+; ..\MAIN.c	   262  
+; ..\MAIN.c	   263  	   current_speed = current_speed - 0.5;
+; ..\MAIN.c	   264  
+; ..\MAIN.c	   265  	   if (current_speed < 0.02) {
+; ..\MAIN.c	   266  		   setDirection(-1);
+; ..\MAIN.c	   267  		   current_speed = current_speed * -1;
+; ..\MAIN.c	   268  	   } else if (current_speed > 0.02) {
+; ..\MAIN.c	   269  		   setDirection(1);
+; ..\MAIN.c	   270  	   } else {
+; ..\MAIN.c	   271  		   setDirection(0);
+; ..\MAIN.c	   272  	   }
+; ..\MAIN.c	   273  
+; ..\MAIN.c	   274  	   current_speed = pi_regler(current_speed, saved_ticks, current_encoder_ticks);
+; ..\MAIN.c	   275  
+; ..\MAIN.c	   276  	   sprintf(s, "Speed: %f\r\n", current_speed);
+; ..\MAIN.c	   277  	   v24PutString(s);
+; ..\MAIN.c	   278  
+; ..\MAIN.c	   279  	   // PWM-Tastverhältnis einstellen
+; ..\MAIN.c	   280  	   GPTA0_vWriteTmr(GPTA0_GTC, 00,
+; ..\MAIN.c	   281  	   			getCmpDutyCycle(GPTA0_uwGetGTReload(GPTA0_GT, 1),
+; ..\MAIN.c	   282  //	   			(float)adcResult*1.5151/4096.0)); // oberer Comparewert
+; ..\MAIN.c	   283  	   			current_speed * 2)); // oberer Comparewert
+; ..\MAIN.c	   284  
+; ..\MAIN.c	   285  	   sprintf(s,"Prozent-Wert (Poti): %.0f Prozent high \r\n", (float)adcResult*100.0/4096.0);
+; ..\MAIN.c	   286  	   //v24PutString(s);
+; ..\MAIN.c	   287  
+; ..\MAIN.c	   288  #endif
+; ..\MAIN.c	   289  
+; ..\MAIN.c	   290  
+; ..\MAIN.c	   291  #if 1
+; ..\MAIN.c	   292  	   // Testcode 3: roter/schwarzer Taster-Abfragen (und Status auf LEDs ausgeben)
+; ..\MAIN.c	   293  	   // ---------------------------
+; ..\MAIN.c	   294  	   // Achtung: printf() möglichst nicht verwenden!
+; ..\MAIN.c	   295  
+; ..\MAIN.c	   296  	   if (!IO_ubReadPin(IO_P0_4)) // roter Taster
+; ..\MAIN.c	   297  	   {
+; ..\MAIN.c	   298  		   //IO_vSetPin(IO_P0_2);
+; ..\MAIN.c	   299  		   //IO_vResetPin(IO_P0_1);
+; ..\MAIN.c	   300  		   v24PutString("Tempomat ausgeschaltet\r\n");
+; ..\MAIN.c	   301  		   cruise_control = 0;
+; ..\MAIN.c	   302  	   }
+; ..\MAIN.c	   303  	   if (!IO_ubReadPin(IO_P0_5)) // schwarzer Taster
+; ..\MAIN.c	   304  	   {
+; ..\MAIN.c	   305  		   // IO_vSetPin(IO_P0_1);
+; ..\MAIN.c	   306  		   // IO_vResetPin(IO_P0_2);
+; ..\MAIN.c	   307  		   if ( button_timer == 0 ) {
+; ..\MAIN.c	   308  
+; ..\MAIN.c	   309  			   if ( cruise_control == 0 ) {
+; ..\MAIN.c	   310  				   v24PutString("Tempomat eingeschaltet\r\n");
+; ..\MAIN.c	   311  				   cruise_control = 1;
+; ..\MAIN.c	   312  				   controlled_speed = adcResult * 1.0000/4096.0;
+; ..\MAIN.c	   313  				   saved_ticks = current_encoder_ticks;
+; ..\MAIN.c	   314  			   } else {
+; ..\MAIN.c	   315  				   v24PutString("Tempomat ausgeschaltet\r\n");
+; ..\MAIN.c	   316  				   cruise_control = 0;
+; ..\MAIN.c	   317  			   }
+; ..\MAIN.c	   318  		   }
+; ..\MAIN.c	   319  		   button_timer = 4;
+; ..\MAIN.c	   320  	   }
+; ..\MAIN.c	   321  
+; ..\MAIN.c	   322  #endif
+; ..\MAIN.c	   323  
+; ..\MAIN.c	   324  
+; ..\MAIN.c	   325  #if 1
+; ..\MAIN.c	   326  	   // Testcode 4: Anzahl der Encoderflanken (externer Interrupt an P0.14) ausgeben
+; ..\MAIN.c	   327  	   // ----------------------------------------------------------------------------
+; ..\MAIN.c	   328  
+; ..\MAIN.c	   329  	   IO_vWritePort(P5,(unsigned char)~(countEncoderTicks)); // Anzahl der Encoderticks auf LEDs ausgeben
+; ..\MAIN.c	   330  
+; ..\MAIN.c	   331  #endif
+; ..\MAIN.c	   332  
+; ..\MAIN.c	   333  
+; ..\MAIN.c	   334  #if 1
+; ..\MAIN.c	   335  	   // Testcode 5: (etwa) jede Sekunde LED togglen lassen
+; ..\MAIN.c	   336  	   // ---------------------------
+; ..\MAIN.c	   337  	   // Timer-Interrupt (GT0) wurde oben auf 10Hz eingestellt, d.h. er wird alle 100ms ausgelöst!
+; ..\MAIN.c	   338  
+; ..\MAIN.c	   339  	   if (countTimerOverflows>=10)
+; ..\MAIN.c	   340  	   {
+; ..\MAIN.c	   341  		   countTimerOverflows=0;
+; ..\MAIN.c	   342  		   IO_vTogglePin(IO_P5_7);
+; ..\MAIN.c	   343  
+; ..\MAIN.c	   344  		   current_encoder_ticks = countEncoderTicks;
+; ..\MAIN.c	   345  		   countEncoderTicks = 0;
+; ..\MAIN.c	   346  
+; ..\MAIN.c	   347  		   //sprintf(s,"Encoderticks: %d\r\n", current_encoder_ticks);
+; ..\MAIN.c	   348  		   //v24PutString(s);
+; ..\MAIN.c	   349  	   }
+; ..\MAIN.c	   350  
+; ..\MAIN.c	   351  	   if ( countTimerOverflows >= 1) {
+.L14:
+.L15:
+	mov	d4,#0
+	mov	d5,d4
+	mov	d6,d4
+	mov	d7,d4
+	call	ADC0_vStartSeq0ReqChNum
+.L16:
+	ld.w	d15,[a12]
+	jnz.t	d15:0,.L16				; predicted taken
+.L209:
+	movh.a	a2,#61456
+	ld.w	d15,[a2]@los(0xf01011c0)
+	jz.t	d15:31,.L17				; prediction unknown
+	ld.w	d15,[a2]@los(0xf0101180)
+	insert	d15,d15,#0,#14,#18
+	j	.L18
+.L17:
+	mov	d15,#0
+.L18:
+	mov.u	d0,#5000
+	movh.a	a5,#@his(.4.str)
+	mul	d0,d15
+	lea	a5,[a5]@los(.4.str)
+	sh	d0,d0,#-12
+	st.w	[a10],d0
+	lea	a4,[a10]8
+	call	sprintf
+.L210:
+	utof	d13,d15
+	div.f	d15,d13,d12
+.L119:
+	jeq	d8,#1,.L19				; prediction unknown
+.L211:
+	mov	d14,d15
+.L117:
+	j	.L20
+.L19:
+	mov	d14,d9
+.L115:
+	sub.f	d4,d9,d15
+	call	fabs
+.L111:
+	mov.u	d0,#52429
+	addih	d0,d0,#15692
+	cmp.f	d0,d2,d0
+	jz.t	d0:2,.L21				; prediction unknown
+.L212:
+	mov	d14,d15
+	movh.a	a5,#@his(.5.str)
+.L213:
+	mov	d8,#0
+	lea	a4,[a10]8
+	lea	a5,[a5]@los(.5.str)
+	call	sprintf
+.L112:
+	lea	a4,[a10]8
+	call	v24PutString
+.L214:
+	st.w	[a10],d9
+	st.w	[a10]4,d15
+	lea	a4,[a10]8
+	movh.a	a5,#@his(.6.str)
+	lea	a5,[a5]@los(.6.str)
+	call	sprintf
+.L215:
+	lea	a4,[a10]8
+	call	v24PutString
+.L21:
+.L20:
+	movh	d0,#16128
+.L216:
+	sub.f	d14,d14,d0
+.L217:
+	cmp.f	d0,d14,d11
+	jz.t	d0:0,.L22				; prediction unknown
+.L218:
+	mov	d4,#-1
+	call	setDirection
+.L219:
+	movh	d0,#49024
+	mul.f	d14,d14,d0
+.L220:
+	j	.L23
+.L22:
+	cmp.f	d0,d14,d11
+	jz.t	d0:2,.L24				; prediction unknown
+.L221:
+	mov	d4,#1
+	j	.L25
+.L24:
+	mov	d4,#0
+.L25:
+	call	setDirection
+.L23:
+	mov	d4,d14
+	ld.w	d0,[a13]
+.L118:
+	utof	d6,d0
+	ld.w	d5,[a10]172
+.L122:
+	call	pi_regler
+.L113:
+	mov	d14,d2
+	st.w	[a10],d14
+.L116:
+	lea	a4,[a10]8
+	movh.a	a5,#@his(.7.str)
+	lea	a5,[a5]@los(.7.str)
+	call	sprintf
+.L114:
+	lea	a4,[a10]8
+	call	v24PutString
+.L222:
+	movh	d0,#16384
+	ld.w	d4,0xf00018f4
+.L223:
+	mul.f	d5,d14,d0
+	call	getCmpDutyCycle
+.L224:
+	movh	d0,#17096
+	st.w	0xf0001904,d2
+.L225:
+	mul.f	d0,d13,d0
+	movh.a	a5,#@his(.8.str)
+	div.f	d0,d0,d12
+	st.w	[a10],d0
+	lea	a4,[a10]8
+	lea	a5,[a5]@los(.8.str)
+	call	sprintf
+.L226:
+	ld.bu	d0,0xf0000c24
+	jnz.t	d0:4,.L26				; prediction unknown
+.L227:
+	ld.a	a4,[a10]168
+	call	v24PutString
+.L228:
+	mov	d8,#0
+.L26:
+	ld.bu	d0,0xf0000c24
+	jnz.t	d0:5,.L27				; prediction unknown
+.L229:
+	jne	d10,#0,.L28				; prediction unknown
+.L230:
+	jne	d8,#0,.L29				; prediction unknown
+.L231:
+	movh.a	a4,#@his(.10.str)
+	lea	a4,[a4]@los(.10.str)
+	call	v24PutString
+.L232:
+	mov	d8,#1
+.L233:
+	mov	d9,d15
+	ld.w	d15,[a13]
+.L120:
+	utof	d15,d15
+	st.w	[a10]172,d15
+.L121:
+	j	.L30
+.L29:
+	ld.a	a4,[a10]168
+	call	v24PutString
+.L234:
+	mov	d8,#0
+.L30:
+.L28:
+	mov	d10,#4
+.L27:
+	ld.w	d15,[a15]
+	extr.u	d15,d15,#0,#8
+	xor	d15,d15,#255
+	insert	d15,d15,#0,#16,#16
+	mov	d0,#-1
+	xor	d15,d0
+.L235:
+	sha	d15,d15,#16
+	ld.w	d0,[a15]
+	extr.u	d0,d0,#0,#8
+	xor	d0,d0,#255
+	insert	d0,d0,#0,#16,#16
+	or	d0,d15
+	st.w	0xf0001104,d0
+.L236:
+	ld.w	d15,[a14]
+	jlt.u	d15,#10,.L31				; prediction unknown
+.L237:
+	mov	d15,#0
+	st.w	[a14],d15
+.L238:
+	mov	d15,#128
+	addih	d15,d15,#128
+	st.w	0xf0001104,d15
+.L239:
+	ld.w	d15,[a15]
+	st.w	[a13],d15
+.L240:
+	mov	d15,#0
+	st.w	[a15],d15
+.L31:
+	ld.w	d15,[a14]
+	jlt.u	d15,#1,.L14				; prediction unknown
+.L241:
+
+; ..\MAIN.c	   352  		   if (button_timer > 0) {
+; ..\MAIN.c	   353  			   button_timer--;
+	ge	d15,d10,#1
+	sub	d10,d15
+.L242:
+	j	.L15
+.L89:
+	
+__main_function_end:
+	.size	main,__main_function_end-main
+.L70:
+	; End of function
+	
+	.sdecl	'.rodata.MAIN..1.str',data,rom
+	.sect	'.rodata.MAIN..1.str'
+.1.str:	.type	object
+	.size	.1.str,20
+	.byte	85,110,107,110,111,119,110,32
+	.byte	100,105,114,101,99,116,105,111
+	.byte	110,13,10
+	.space	1
+	.sdecl	'.bss.MAIN.current_encoder_ticks',data,cluster('current_encoder_ticks')
+	.sect	'.bss.MAIN.current_encoder_ticks'
+	.global	current_encoder_ticks
+	.align	2
+current_encoder_ticks:	.type	object
+	.size	current_encoder_ticks,4
+	.space	4
+	.sdecl	'.rodata.MAIN..2.str',data,rom
+	.sect	'.rodata.MAIN..2.str'
+.2.str:	.type	object
+	.size	.2.str,60
+	.byte	66,111,97,114,100,32,73,110
+	.byte	105,116,105,97,108,105,115,105
+	.byte	101,114,117,110,103,32,79,75
+	.byte	32,40,69,105,110,101,32,98
+	.byte	108,97,117,101,32,76,69,68
+	.byte	32,115,111,108,108,116,101,32
+	.byte	108,101,117,99,104,116,101,110
+	.byte	41,46,10
+	.space	1
+	.sdecl	'.rodata.MAIN..3.str',data,rom
+	.sect	'.rodata.MAIN..3.str'
+.3.str:	.type	object
+	.size	.3.str,26
+	.byte	86,50,52,32,73,110,105,116
+	.byte	105,97,108,105,115,105,101,114
+	.byte	117,110,103,32,79,75,46,13
+	.byte	10
+	.space	1
+	.sdecl	'.rodata.MAIN..4.str',data,rom
+	.sect	'.rodata.MAIN..4.str'
+.4.str:	.type	object
+	.size	.4.str,26
+	.byte	65,68,67,32,87,101,114,116
+	.byte	32,40,80,111,116,105,41,58
+	.byte	32,37,100,32,109,86,32,13
+	.byte	10
+	.space	1
+	.sdecl	'.rodata.MAIN..5.str',data,rom
+	.sect	'.rodata.MAIN..5.str'
+.5.str:	.type	object
+	.size	.5.str,45
+	.byte	84,101,109,112,111,109,97,116
+	.byte	32,100,101,97,107,116,105,118
+	.byte	105,101,114,116,44,32,100,117
+	.byte	114,99,104,32,-4,98,101,114
+	.byte	115,99,104,114,101,105,116,101
+	.byte	110,46,13,10
+	.space	1
+	.sdecl	'.rodata.MAIN..6.str',data,rom
+	.sect	'.rodata.MAIN..6.str'
+.6.str:	.type	object
+	.size	.6.str,42
+	.byte	67,111,110,116,114,111,108,108
+	.byte	101,100,32,83,112,101,101,100
+	.byte	58,32,37,102,32,67,117,114
+	.byte	114,101,110,116,32,83,112,101
+	.byte	101,100,58,32,37,102,46,13
+	.byte	10
+	.space	1
+	.sdecl	'.rodata.MAIN..7.str',data,rom
+	.sect	'.rodata.MAIN..7.str'
+.7.str:	.type	object
+	.size	.7.str,12
+	.byte	83,112,101,101,100,58,32,37
+	.byte	102,13,10
+	.space	1
+	.sdecl	'.rodata.MAIN..8.str',data,rom
+	.sect	'.rodata.MAIN..8.str'
+.8.str:	.type	object
+	.size	.8.str,42
+	.byte	80,114,111,122,101,110,116,45
+	.byte	87,101,114,116,32,40,80,111
+	.byte	116,105,41,58,32,37,46,48
+	.byte	102,32,80,114,111,122,101,110
+	.byte	116,32,104,105,103,104,32,13
+	.byte	10
+	.space	1
+	.sdecl	'.rodata.MAIN..9.str',data,rom
+	.sect	'.rodata.MAIN..9.str'
+.9.str:	.type	object
+	.size	.9.str,25
+	.byte	84,101,109,112,111,109,97,116
+	.byte	32,97,117,115,103,101,115,99
+	.byte	104,97,108,116,101,116,13,10
+	.space	1
+	.sdecl	'.rodata.MAIN..10.str',data,rom
+	.sect	'.rodata.MAIN..10.str'
+.10.str:	.type	object
+	.size	.10.str,25
+	.byte	84,101,109,112,111,109,97,116
+	.byte	32,101,105,110,103,101,115,99
+	.byte	104,97,108,116,101,116,13,10
+	.space	1
+	.calls	'setDirection','v24PutString'
+	.calls	'v24PutString','ASC1_ubTxDataReady'
+	.calls	'v24PutString','ASC1_vSendData'
+	.calls	'main','MAIN_vInit'
+	.calls	'main','printf'
+	.calls	'main','v24PutString'
+	.calls	'main','setDirection'
+	.calls	'main','getCmpDutyCycle'
+	.calls	'main','CAN_vGetMsgObj'
+	.calls	'main','CAN_vConfigMsgObj'
+	.calls	'main','ADC0_vStartSeq0ReqChNum'
+	.calls	'main','sprintf'
+	.calls	'main','fabs'
+	.calls	'main','pi_regler'
+	.calls	'pi_regler','',0
+	.calls	'setDirection','',0
+	.calls	'v24PutString','',0
+	.calls	'getCmpDutyCycle','',0
+	.extern	CAN_vGetMsgObj
+	.extern	CAN_vConfigMsgObj
+	.extern	ADC0_vStartSeq0ReqChNum
+	.extern	ASC1_vSendData
+	.extern	ASC1_ubTxDataReady
+	.extern	MAIN_vInit
+	.extern	printf
+	.extern	sprintf
+	.extern	fabs
+	.extern	countEncoderTicks
+	.extern	countTimerOverflows
+	.extern	__printf_float
+	.extern	__printf_int
+	.calls	'main','',176
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L43:
+	.word	1705
+	.half	3
+	.word	.L44
+	.byte	4
+.L42:
+	.byte	1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L45
+	.byte	2
+	.byte	'__disable',0,1,1,1,1,2
+	.byte	'__enable',0,1,1,1,1,3
+	.byte	'CAN_vGetMsgObj',0,1,130,1,6,1,1,1,1,4
+	.byte	'ubObjNr',0,1,130,1,27
+	.word	.L123-.L43
+	.byte	4
+	.byte	'pstObj',0,1,130,1,47
+	.word	.L124-.L43
+	.byte	0
+.L123:
+	.byte	5
+	.byte	'unsigned char',0,1,8
+.L124:
+	.byte	6
+	.word	.L101-.L43
+.L101:
+	.byte	7,1,93,9,20,8
+	.byte	'usMOCfg',0,2
+	.word	.L125-.L43
+	.byte	2,35,0,8
+	.byte	'uwID',0,4
+	.word	.L86-.L43
+	.byte	2,35,2,8
+	.byte	'uwMask',0,4
+	.word	.L86-.L43
+	.byte	2,35,6,8
+	.byte	'ubData',0,8
+	.word	.L126-.L43
+	.byte	2,35,10,8
+	.byte	'usCounter',0,2
+	.word	.L125-.L43
+	.byte	2,35,18,0
+.L125:
+	.byte	5
+	.byte	'unsigned short int',0,2,7
+.L86:
+	.byte	5
+	.byte	'unsigned int',0,4,7
+.L126:
+	.byte	9,8
+	.word	196
+	.byte	10,7,0,3
+	.byte	'CAN_vConfigMsgObj',0,1,134,1,6,1,1,1,1,4
+	.byte	'ubObjNr',0,1,134,1,30
+	.word	196
+	.byte	4
+	.byte	'pstObj',0,1,134,1,50
+	.word	213
+	.byte	0,3
+	.byte	'ADC0_vStartSeq0ReqChNum',0,2,153,1,6,1,1,1,1,4
+	.byte	'ubExtTrg',0,2,153,1,36
+	.word	196
+	.byte	4
+	.byte	'ubEnIntr',0,2,153,1,52
+	.word	196
+	.byte	4
+	.byte	'ubRFill',0,2,153,1,68
+	.word	196
+	.byte	4
+	.byte	'ubChannelNum',0,2,153,1,83
+	.word	196
+	.byte	0,3
+	.byte	'ASC1_vSendData',0,3,88,6,1,1,1,1,4
+	.byte	'usData',0,3,88,28
+	.word	306
+	.byte	0,11
+	.byte	'ASC1_ubTxDataReady',0,3,90,7
+	.word	196
+	.byte	1,1,1,1,12
+	.byte	'MAIN_vInit',0,4,28,6,1,1,1,1,13
+	.byte	'printf',0,5,140,1,16
+	.word	.L83-.L43
+	.byte	1,1,1,1,14,5,140,1,38
+	.word	.L127-.L43
+	.byte	15,5,140,1,50,0
+.L83:
+	.byte	5
+	.byte	'int',0,4,5
+.L127:
+	.byte	6
+	.word	.L128-.L43
+.L128:
+	.byte	16
+	.word	.L93-.L43
+.L93:
+	.byte	5
+	.byte	'char',0,1,6,13
+	.byte	'sprintf',0,5,143,1,16
+	.word	647
+	.byte	1,1,1,1,14,5,143,1,32
+	.word	.L74-.L43
+	.byte	14,5,143,1,55
+	.word	654
+	.byte	15,5,143,1,67,0
+.L74:
+	.byte	6
+	.word	664
+	.byte	13
+	.byte	'fabs',0,6,133,1,25
+	.word	.L77-.L43
+	.byte	1,1,1,1,14,6,133,1,43
+	.word	.L77-.L43
+	.byte	0
+.L77:
+	.byte	5
+	.byte	'float',0,4,4
+.L91:
+	.byte	9,80
+	.word	664
+	.byte	10,79,0,17
+	.byte	'__size_t',0,7,1,1
+	.word	328
+	.byte	17
+	.byte	'__codeptr',0,7,1,1
+	.word	.L129-.L43
+.L129:
+	.byte	6
+	.word	.L130-.L43
+.L130:
+	.byte	18,1,17
+	.byte	'ubyte',0,8,69,24
+	.word	196
+	.byte	17
+	.byte	'ushort',0,8,71,24
+	.word	306
+	.byte	17
+	.byte	'uword',0,8,73,24
+	.word	328
+	.byte	17
+	.byte	'T_Reg32',0,8,110,4
+	.word	.L131-.L43
+.L131:
+	.byte	19
+	.word	.L132-.L43
+.L132:
+	.byte	7,8,76,18,4,20
+	.byte	'bit0',0,1
+	.word	196
+	.byte	1,7,2,35,0,20
+	.byte	'bit1',0,1
+	.word	196
+	.byte	1,6,2,35,0,20
+	.byte	'bit2',0,1
+	.word	196
+	.byte	1,5,2,35,0,20
+	.byte	'bit3',0,1
+	.word	196
+	.byte	1,4,2,35,0,20
+	.byte	'bit4',0,1
+	.word	196
+	.byte	1,3,2,35,0,20
+	.byte	'bit5',0,1
+	.word	196
+	.byte	1,2,2,35,0,20
+	.byte	'bit6',0,1
+	.word	196
+	.byte	1,1,2,35,0,20
+	.byte	'bit7',0,1
+	.word	196
+	.byte	1,0,2,35,0,20
+	.byte	'bit8',0,1
+	.word	196
+	.byte	1,7,2,35,1,20
+	.byte	'bit9',0,1
+	.word	196
+	.byte	1,6,2,35,1,20
+	.byte	'bit10',0,1
+	.word	196
+	.byte	1,5,2,35,1,20
+	.byte	'bit11',0,1
+	.word	196
+	.byte	1,4,2,35,1,20
+	.byte	'bit12',0,1
+	.word	196
+	.byte	1,3,2,35,1,20
+	.byte	'bit13',0,1
+	.word	196
+	.byte	1,2,2,35,1,20
+	.byte	'bit14',0,1
+	.word	196
+	.byte	1,1,2,35,1,20
+	.byte	'bit15',0,1
+	.word	196
+	.byte	1,0,2,35,1,20
+	.byte	'bit16',0,1
+	.word	196
+	.byte	1,7,2,35,2,20
+	.byte	'bit17',0,1
+	.word	196
+	.byte	1,6,2,35,2,20
+	.byte	'bit18',0,1
+	.word	196
+	.byte	1,5,2,35,2,20
+	.byte	'bit19',0,1
+	.word	196
+	.byte	1,4,2,35,2,20
+	.byte	'bit20',0,1
+	.word	196
+	.byte	1,3,2,35,2,20
+	.byte	'bit21',0,1
+	.word	196
+	.byte	1,2,2,35,2,20
+	.byte	'bit22',0,1
+	.word	196
+	.byte	1,1,2,35,2,20
+	.byte	'bit23',0,1
+	.word	196
+	.byte	1,0,2,35,2,20
+	.byte	'bit24',0,1
+	.word	196
+	.byte	1,7,2,35,3,20
+	.byte	'bit25',0,1
+	.word	196
+	.byte	1,6,2,35,3,20
+	.byte	'bit26',0,1
+	.word	196
+	.byte	1,5,2,35,3,20
+	.byte	'bit27',0,1
+	.word	196
+	.byte	1,4,2,35,3,20
+	.byte	'bit28',0,1
+	.word	196
+	.byte	1,3,2,35,3,20
+	.byte	'bit29',0,1
+	.word	196
+	.byte	1,2,2,35,3,20
+	.byte	'bit30',0,1
+	.word	196
+	.byte	1,1,2,35,3,20
+	.byte	'bit31',0,1
+	.word	196
+	.byte	1,0,2,35,3,0,17
+	.byte	'CAN_SWObj',0,1,100,4
+	.word	218
+	.byte	17
+	.byte	'va_list',0,9,15,16
+	.word	717
+	.byte	17
+	.byte	'size_t',0,5,24,25
+	.word	328
+	.byte	17
+	.byte	'fpos_t',0,5,64,25
+	.word	.L133-.L43
+.L133:
+	.byte	5
+	.byte	'unsigned long int',0,4,7,17
+	.byte	'_iob_flag_t',0,5,75,25
+	.word	306
+	.byte	17
+	.byte	'FILE',0,5,89,25
+	.word	.L134-.L43
+.L134:
+	.byte	21
+	.byte	'_iobuf',0,5,78,8,20,8
+	.byte	'_ptr',0,4
+	.word	717
+	.byte	2,35,0,8
+	.byte	'_base',0,4
+	.word	717
+	.byte	2,35,4,8
+	.byte	'_cnt',0,4
+	.word	647
+	.byte	2,35,8,8
+	.byte	'_bufsiz',0,4
+	.word	647
+	.byte	2,35,12,8
+	.byte	'_flag',0,2
+	.word	306
+	.byte	2,35,16,8
+	.byte	'_file',0,1
+	.word	196
+	.byte	2,35,18,0,22
+	.byte	'countEncoderTicks',0,7,87,30
+	.word	.L135-.L43
+	.byte	1,1
+.L135:
+	.byte	19
+	.word	328
+.L106:
+	.byte	19
+	.word	328
+	.byte	22
+	.byte	'countTimerOverflows',0,7,98,30
+	.word	.L136-.L43
+	.byte	1,1
+.L136:
+	.byte	19
+	.word	328
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L44:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,0,3,8,54,15,39,12,63,12,60,12,0,0,3,46,1,3,8,58,15
+	.byte	59,15,57,15,54,15,39,12,63,12,60,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,36,0,3,8,11,15,62,15,0
+	.byte	0,6,15,0,73,19,0,0,7,19,1,58,15,59,15,57,15,11,15,0,0,8,13,0,3,8,11,15,73,19,56,9,0,0,9,1,1,11,15,73,19
+	.byte	0,0,10,33,0,47,15,0,0,11,46,0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,12,46,0,3,8,58,15
+	.byte	59,15,57,15,54,15,39,12,63,12,60,12,0,0,13,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0
+	.byte	0,14,5,0,58,15,59,15,57,15,73,19,0,0,15,24,0,58,15,59,15,57,15,0,0,16,38,0,73,19,0,0,17,22,0,3,8,58,15
+	.byte	59,15,57,15,73,19,0,0,18,21,0,54,15,0,0,19,53,0,73,19,0,0,20,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0
+	.byte	21,19,1,3,8,58,15,59,15,57,15,11,15,0,0,22,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L45:
+	.word	.L138-.L137
+.L137:
+	.half	3
+	.word	.L140-.L139
+.L139:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\CAN.h',0,0,0,0
+	.byte	'..\\ADC0.h',0,0,0,0
+	.byte	'..\\ASC1.h',0,0,0,0
+	.byte	'..\\myboardinit.h',0,0,0,0
+	.byte	'C:\\Program Files\\DEVEL\\TriCore v3.5r1\\ctc\\include\\stdio.h',0,0,0,0
+	.byte	'C:\\Program Files\\DEVEL\\TriCore v3.5r1\\ctc\\include\\math.h',0,0,0,0
+	.byte	'..\\MAIN.c',0,0,0,0
+	.byte	'..\\MAIN.h',0,0,0,0
+	.byte	'C:\\Program Files\\DEVEL\\TriCore v3.5r1\\ctc\\include\\stdarg.h',0,0,0,0,0
+.L140:
+.L138:
+	.sdecl	'.debug_info',debug,cluster('v24PutString')
+	.sect	'.debug_info'
+.L46:
+	.word	189
+	.half	3
+	.word	.L47
+	.byte	4,1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L49,.L48
+	.byte	2
+	.word	.L42
+	.byte	3
+	.byte	'v24PutString',0,1,49,6,1,1,1
+	.word	.L37,.L73,.L36
+	.byte	4
+	.byte	's',0,1,49,25
+	.word	.L74,.L75
+	.byte	5
+	.word	.L37,.L73
+	.byte	6
+	.byte	'sind',0,1,51,11
+	.word	.L74,.L76
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('v24PutString')
+	.sect	'.debug_abbrev'
+.L47:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('v24PutString')
+	.sect	'.debug_line'
+.L48:
+	.word	.L142-.L141
+.L141:
+	.half	3
+	.word	.L144-.L143
+.L143:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.c',0,0,0,0,0
+.L144:
+	.byte	5,15,7,0,5,2
+	.word	.L37
+	.byte	3,50,1,5,17,9
+	.half	.L107-.L37
+	.byte	3,1,1,5,11,9
+	.half	.L12-.L107
+	.byte	3,2,1,5,27,9
+	.half	.L145-.L12
+	.byte	3,1,1,5,17,9
+	.half	.L10-.L145
+	.byte	3,125,1,5,1,9
+	.half	.L146-.L10
+	.byte	3,6,1,7,9
+	.half	.L50-.L146
+	.byte	0,1,1
+.L142:
+	.sdecl	'.debug_ranges',debug,cluster('v24PutString')
+	.sect	'.debug_ranges'
+.L49:
+	.word	-1,.L37,0,.L50-.L37,0,0
+	.sdecl	'.debug_info',debug,cluster('pi_regler')
+	.sect	'.debug_info'
+.L51:
+	.word	209
+	.half	3
+	.word	.L52
+	.byte	4,1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L54,.L53
+	.byte	2
+	.word	.L42
+	.byte	3
+	.byte	'pi_regler',0,1,21,7
+	.word	.L77
+	.byte	1,1,1
+	.word	.L33,.L78,.L32
+	.byte	4
+	.byte	'speed',0,1,21,23
+	.word	.L77,.L79
+	.byte	4
+	.byte	'soll',0,1,21,36
+	.word	.L77,.L80
+	.byte	4
+	.byte	'ist',0,1,21,48
+	.word	.L77,.L81
+	.byte	5
+	.word	.L33,.L78
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('pi_regler')
+	.sect	'.debug_abbrev'
+.L52:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('pi_regler')
+	.sect	'.debug_line'
+.L53:
+	.word	.L148-.L147
+.L147:
+	.half	3
+	.word	.L150-.L149
+.L149:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.c',0,0,0,0,0
+.L150:
+	.byte	5,2,7,0,5,2
+	.word	.L33
+	.byte	3,21,1,5,1,9
+	.half	.L151-.L33
+	.byte	3,1,1,7,9
+	.half	.L55-.L151
+	.byte	0,1,1
+.L148:
+	.sdecl	'.debug_ranges',debug,cluster('pi_regler')
+	.sect	'.debug_ranges'
+.L54:
+	.word	-1,.L33,0,.L55-.L33,0,0
+	.sdecl	'.debug_info',debug,cluster('setDirection')
+	.sect	'.debug_info'
+.L56:
+	.word	179
+	.half	3
+	.word	.L57
+	.byte	4,1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L59,.L58
+	.byte	2
+	.word	.L42
+	.byte	3
+	.byte	'setDirection',0,1,25,6,1,1,1
+	.word	.L35,.L82,.L34
+	.byte	4
+	.byte	'direction',0,1,25,23
+	.word	.L83,.L84
+	.byte	5
+	.word	.L35,.L82
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('setDirection')
+	.sect	'.debug_abbrev'
+.L57:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('setDirection')
+	.sect	'.debug_line'
+.L58:
+	.word	.L153-.L152
+.L152:
+	.half	3
+	.word	.L155-.L154
+.L154:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.c',0,0,0,0,0
+.L155:
+	.byte	5,2,7,0,5,2
+	.word	.L35
+	.byte	3,25,1,7,9
+	.half	.L156-.L35
+	.byte	1,7,9
+	.half	.L157-.L156
+	.byte	1,7,9
+	.half	.L158-.L157
+	.byte	1,5,23,9
+	.half	.L3-.L158
+	.byte	3,3,1,5,25,9
+	.half	.L159-.L3
+	.byte	3,1,1,5,1,9
+	.half	.L160-.L159
+	.byte	3,17,1,5,25,7,9
+	.half	.L4-.L160
+	.byte	3,115,1,9
+	.half	.L161-.L4
+	.byte	3,1,1,5,1,9
+	.half	.L162-.L161
+	.byte	3,12,1,5,23,7,9
+	.half	.L5-.L162
+	.byte	3,120,1,5,25,9
+	.half	.L163-.L5
+	.byte	3,1,1,5,1,9
+	.half	.L164-.L163
+	.byte	3,7,1,5,41,7,9
+	.half	.L6-.L164
+	.byte	3,125,1,5,1,9
+	.half	.L60-.L6
+	.byte	3,3,0,1,1
+.L153:
+	.sdecl	'.debug_ranges',debug,cluster('setDirection')
+	.sect	'.debug_ranges'
+.L59:
+	.word	-1,.L35,0,.L60-.L35,0,0
+	.sdecl	'.debug_info',debug,cluster('getCmpDutyCycle')
+	.sect	'.debug_info'
+.L61:
+	.word	205
+	.half	3
+	.word	.L62
+	.byte	4,1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L64,.L63
+	.byte	2
+	.word	.L42
+	.byte	3
+	.byte	'getCmpDutyCycle',0,1,60,5
+	.word	.L83
+	.byte	1,1,1
+	.word	.L39,.L85,.L38
+	.byte	4
+	.byte	'reload',0,1,60,27
+	.word	.L86,.L87
+	.byte	4
+	.byte	'dutycycle',0,1,60,41
+	.word	.L77,.L88
+	.byte	5
+	.word	.L39,.L85
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('getCmpDutyCycle')
+	.sect	'.debug_abbrev'
+.L62:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('getCmpDutyCycle')
+	.sect	'.debug_line'
+.L63:
+	.word	.L166-.L165
+.L165:
+	.half	3
+	.word	.L168-.L167
+.L167:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.c',0,0,0,0,0
+.L168:
+	.byte	5,2,7,0,5,2
+	.word	.L39
+	.byte	3,62,1,5,1,9
+	.half	.L169-.L39
+	.byte	3,1,1,7,9
+	.half	.L65-.L169
+	.byte	0,1,1
+.L166:
+	.sdecl	'.debug_ranges',debug,cluster('getCmpDutyCycle')
+	.sect	'.debug_ranges'
+.L64:
+	.word	-1,.L39,0,.L65-.L39,0,0
+	.sdecl	'.debug_info',debug,cluster('main')
+	.sect	'.debug_info'
+.L66:
+	.word	484
+	.half	3
+	.word	.L67
+	.byte	4,1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1
+	.word	.L69,.L68
+	.byte	2
+	.word	.L42
+	.byte	3
+	.byte	'main',0,1,118,6,1,1,1
+	.word	.L41,.L89,.L40
+	.byte	4
+	.word	.L41,.L89
+	.byte	5
+	.byte	'adcResult',0,1,121,10
+	.word	.L86,.L90
+	.byte	5
+	.byte	's',0,1,122,9
+	.word	.L91,.L92
+	.byte	5
+	.byte	'cruise_control',0,1,123,9
+	.word	.L93,.L94
+	.byte	5
+	.byte	'controlled_speed',0,1,124,10
+	.word	.L77,.L95
+	.byte	5
+	.byte	'saved_ticks',0,1,125,10
+	.word	.L77,.L96
+	.byte	5
+	.byte	'gas_pedal_speed',0,1,127,10
+	.word	.L77,.L97
+	.byte	5
+	.byte	'current_speed',0,1,128,1,10
+	.word	.L77,.L98
+	.byte	5
+	.byte	'current_delta_speed',0,1,129,1,10
+	.word	.L77,.L99
+	.byte	5
+	.byte	'button_timer',0,1,130,1,8
+	.word	.L83,.L100
+	.byte	5
+	.byte	'TransCan_Obj1',0,1,134,1,14
+	.word	.L101,.L102
+	.byte	5
+	.byte	'TransCan_Obj2',0,1,134,1,29
+	.word	.L101,.L103
+	.byte	5
+	.byte	'RecCan_Obj3',0,1,135,1,14
+	.word	.L101,.L104
+	.byte	5
+	.byte	'RecCan_Obj4',0,1,135,1,29
+	.word	.L101,.L105
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('main')
+	.sect	'.debug_abbrev'
+.L67:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('main')
+	.sect	'.debug_line'
+.L68:
+	.word	.L171-.L170
+.L170:
+	.half	3
+	.word	.L173-.L172
+.L172:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'..\\MAIN.c',0,0,0,0,0
+.L173:
+	.byte	5,24,7,0,5,2
+	.word	.L41
+	.byte	3,250,0,1,5,6,3,123,1,5,27,9
+	.half	.L108-.L41
+	.byte	3,6,1,5,22,3,1,1,5,21,9
+	.half	.L110-.L108
+	.byte	3,5,1,5,16,9
+	.half	.L109-.L110
+	.byte	3,10,1,5,13,9
+	.half	.L174-.L109
+	.byte	3,2,1,5,74,9
+	.half	.L175-.L174
+	.byte	3,3,1,5,47,9
+	.half	.L176-.L175
+	.byte	3,1,1,5,12,9
+	.half	.L177-.L176
+	.byte	3,2,1,5,54,9
+	.half	.L178-.L177
+	.byte	3,5,1,5,26,3,1,1,5,54,9
+	.half	.L179-.L178
+	.byte	3,127,1,5,19,9
+	.half	.L180-.L179
+	.byte	3,6,1,5,26,3,123,1,5,19,9
+	.half	.L181-.L180
+	.byte	3,5,1,5,29,9
+	.half	.L182-.L181
+	.byte	3,5,1,5,26,9
+	.half	.L183-.L182
+	.byte	3,1,1,5,56,9
+	.half	.L184-.L183
+	.byte	3,2,1,5,11,9
+	.half	.L185-.L184
+	.byte	3,5,1,5,4,3,126,1,5,11,9
+	.half	.L186-.L185
+	.byte	3,2,1,5,44,9
+	.half	.L187-.L186
+	.byte	3,1,1,5,11,3,127,1,5,44,9
+	.half	.L188-.L187
+	.byte	3,1,1,5,30,9
+	.half	.L189-.L188
+	.byte	3,10,1,5,36,3,1,1,5,30,9
+	.half	.L190-.L189
+	.byte	3,127,1,5,36,9
+	.half	.L191-.L190
+	.byte	3,1,1,5,29,9
+	.half	.L192-.L191
+	.byte	3,1,1,5,32,9
+	.half	.L193-.L192
+	.byte	3,1,1,5,39,9
+	.half	.L194-.L193
+	.byte	3,1,1,5,36,9
+	.half	.L195-.L194
+	.byte	3,3,1,5,30,9
+	.half	.L196-.L195
+	.byte	3,1,1,5,29,9
+	.half	.L197-.L196
+	.byte	3,1,1,5,32,9
+	.half	.L198-.L197
+	.byte	3,1,1,9
+	.half	.L199-.L198
+	.byte	3,1,1,9
+	.half	.L200-.L199
+	.byte	3,1,1,5,39,9
+	.half	.L201-.L200
+	.byte	3,1,1,5,34,9
+	.half	.L202-.L201
+	.byte	3,3,1,5,27,9
+	.half	.L203-.L202
+	.byte	3,1,1,5,37,9
+	.half	.L204-.L203
+	.byte	3,1,1,5,34,9
+	.half	.L205-.L204
+	.byte	3,3,1,5,27,9
+	.half	.L206-.L205
+	.byte	3,1,1,5,37,9
+	.half	.L207-.L206
+	.byte	3,1,1,5,12,9
+	.half	.L208-.L207
+	.byte	3,4,1,5,37,9
+	.half	.L15-.L208
+	.byte	3,9,1,5,24,9
+	.half	.L16-.L15
+	.byte	3,2,1,5,15,9
+	.half	.L209-.L16
+	.byte	3,2,1,5,66,9
+	.half	.L18-.L209
+	.byte	3,2,1,5,45,9
+	.half	.L210-.L18
+	.byte	3,12,1,5,5,9
+	.half	.L119-.L210
+	.byte	3,2,1,5,37,7,9
+	.half	.L211-.L119
+	.byte	3,1,1,5,38,9
+	.half	.L19-.L211
+	.byte	3,2,1,5,65,9
+	.half	.L115-.L19
+	.byte	3,3,1,5,6,9
+	.half	.L111-.L115
+	.byte	3,2,1,5,38,9
+	.half	.L212-.L111
+	.byte	3,2,1,5,67,3,1,1,5,25,9
+	.half	.L213-.L212
+	.byte	3,126,1,5,67,3,2,1,5,22,9
+	.half	.L112-.L213
+	.byte	3,1,1,5,97,9
+	.half	.L214-.L112
+	.byte	3,1,1,5,22,9
+	.half	.L215-.L214
+	.byte	3,1,1,5,11,9
+	.half	.L20-.L215
+	.byte	3,175,127,1,5,40,9
+	.half	.L216-.L20
+	.byte	3,219,0,1,5,5,9
+	.half	.L217-.L216
+	.byte	3,2,1,5,22,9
+	.half	.L218-.L217
+	.byte	3,1,1,5,40,9
+	.half	.L219-.L218
+	.byte	3,1,1,5,22,9
+	.half	.L220-.L219
+	.byte	3,127,1,5,12,9
+	.half	.L22-.L220
+	.byte	3,2,1,5,21,9
+	.half	.L221-.L22
+	.byte	3,1,1,9
+	.half	.L24-.L221
+	.byte	3,2,1,5,81,9
+	.half	.L23-.L24
+	.byte	3,3,1,5,59,1,5,81,9
+	.half	.L118-.L23
+	.byte	1,5,47,9
+	.half	.L113-.L118
+	.byte	3,2,1,5,20,9
+	.half	.L114-.L113
+	.byte	3,1,1,5,27,9
+	.half	.L222-.L114
+	.byte	3,6,1,5,5,3,125,1,5,27,9
+	.half	.L223-.L222
+	.byte	3,3,1,5,92,9
+	.half	.L224-.L223
+	.byte	3,2,1,5,27,3,126,1,5,92,9
+	.half	.L225-.L224
+	.byte	3,2,1,5,10,9
+	.half	.L226-.L225
+	.byte	3,11,1,5,48,9
+	.half	.L227-.L226
+	.byte	3,4,1,5,24,9
+	.half	.L228-.L227
+	.byte	3,1,1,5,10,9
+	.half	.L26-.L228
+	.byte	3,2,1,5,6,9
+	.half	.L229-.L26
+	.byte	3,4,1,5,7,7,9
+	.half	.L230-.L229
+	.byte	3,2,1,5,50,7,9
+	.half	.L231-.L230
+	.byte	3,1,1,5,26,9
+	.half	.L232-.L231
+	.byte	3,1,1,5,52,9
+	.half	.L233-.L232
+	.byte	3,1,1,5,43,3,1,1,5,50,9
+	.half	.L121-.L233
+	.byte	3,125,1,9
+	.half	.L29-.L121
+	.byte	3,5,1,5,26,9
+	.half	.L234-.L29
+	.byte	3,1,1,5,22,9
+	.half	.L28-.L234
+	.byte	3,3,1,5,5,9
+	.half	.L27-.L28
+	.byte	3,10,1,5,58,9
+	.half	.L235-.L27
+	.byte	1,5,5,9
+	.half	.L236-.L235
+	.byte	3,10,1,5,12,9
+	.half	.L237-.L236
+	.byte	3,255,126,1,5,27,3,131,1,1,5,28,9
+	.half	.L238-.L237
+	.byte	3,1,1,5,47,9
+	.half	.L239-.L238
+	.byte	3,2,1,5,12,9
+	.half	.L240-.L239
+	.byte	3,250,126,1,5,27,3,135,1,1,5,5,9
+	.half	.L31-.L240
+	.byte	3,6,1,5,21,9
+	.half	.L241-.L31
+	.byte	3,2,1,5,12,9
+	.half	.L242-.L241
+	.byte	3,241,126,1,5,1,9
+	.half	.L70-.L242
+	.byte	3,205,1,0,1,1
+.L171:
+	.sdecl	'.debug_ranges',debug,cluster('main')
+	.sect	'.debug_ranges'
+.L69:
+	.word	-1,.L41,0,.L70-.L41,0,0
+	.sdecl	'.debug_info',debug,cluster('current_encoder_ticks')
+	.sect	'.debug_info'
+.L71:
+	.word	144
+	.half	3
+	.word	.L72
+	.byte	4,1
+	.byte	'..\\MAIN.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'U:\\Tasking\\workspace\\motEncPot\\Debug\\',0,12,1,2
+	.word	.L42
+	.byte	3
+	.byte	'current_encoder_ticks',0,7,88,23
+	.word	.L106
+	.byte	1,5,3
+	.word	current_encoder_ticks
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('current_encoder_ticks')
+	.sect	'.debug_abbrev'
+.L72:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('getCmpDutyCycle')
+	.sect	'.debug_loc'
+.L88:
+	.word	-1,.L39,.L39-.L39,.L85-.L39
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L38:
+	.word	-1,.L39,.L39-.L39,.L85-.L39
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L87:
+	.word	-1,.L39,.L39-.L39,.L85-.L39
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('main')
+	.sect	'.debug_loc'
+.L104:
+	.word	-1,.L41,.L41-.L41,.L89-.L41
+	.half	2
+	.byte	145,80
+	.word	0,0
+.L105:
+	.word	-1,.L41,.L41-.L41,.L89-.L41
+	.half	2
+	.byte	145,100
+	.word	0,0
+.L102:
+	.word	-1,.L41,.L41-.L41,.L89-.L41
+	.half	3
+	.byte	145,168,127
+	.word	0,0
+.L103:
+	.word	-1,.L41,.L41-.L41,.L89-.L41
+	.half	3
+	.byte	145,188,127
+	.word	0,0
+.L90:
+	.word	0,0
+.L100:
+	.word	-1,.L41,.L109-.L41,.L89-.L41
+	.half	5
+	.byte	144,37,157,32,0
+	.word	0,0
+.L95:
+	.word	-1,.L41,.L110-.L41,.L89-.L41
+	.half	5
+	.byte	144,36,157,32,32
+	.word	0,0
+.L94:
+	.word	-1,.L41,.L108-.L41,.L89-.L41
+	.half	5
+	.byte	144,36,157,32,0
+	.word	0,0
+.L99:
+	.word	-1,.L41,.L111-.L41,.L112-.L41
+	.half	5
+	.byte	144,33,157,32,0
+	.word	0,0
+.L98:
+	.word	-1,.L41,.L113-.L41,.L114-.L41
+	.half	5
+	.byte	144,33,157,32,0
+	.word	.L115-.L41,.L113-.L41
+	.half	5
+	.byte	144,39,157,32,0
+	.word	.L116-.L41,.L89-.L41
+	.half	5
+	.byte	144,39,157,32,0
+	.word	.L117-.L41,.L19-.L41
+	.half	5
+	.byte	144,39,157,32,0
+	.word	.L118-.L41,.L113-.L41
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+.L97:
+	.word	-1,.L41,.L29-.L41,.L28-.L41
+	.half	5
+	.byte	144,39,157,32,32
+	.word	.L119-.L41,.L120-.L41
+	.half	5
+	.byte	144,39,157,32,32
+	.word	0,0
+.L40:
+	.word	-1,.L41,.L41-.L41,.L108-.L41
+	.half	2
+	.byte	138,0
+	.word	.L108-.L41,.L89-.L41
+	.half	3
+	.byte	138,176,1
+	.word	0,0
+.L92:
+	.word	-1,.L41,.L41-.L41,.L89-.L41
+	.half	3
+	.byte	145,216,126
+	.word	0,0
+.L96:
+	.word	-1,.L41,.L121-.L41,.L29-.L41
+	.half	5
+	.byte	144,39,157,32,32
+	.word	.L110-.L41,.L89-.L41
+	.half	2
+	.byte	145,124
+	.word	.L122-.L41,.L113-.L41
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('pi_regler')
+	.sect	'.debug_loc'
+.L81:
+	.word	-1,.L33,.L33-.L33,.L78-.L33
+	.half	5
+	.byte	144,35,157,32,0
+	.word	0,0
+.L32:
+	.word	-1,.L33,.L33-.L33,.L78-.L33
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L80:
+	.word	-1,.L33,.L33-.L33,.L78-.L33
+	.half	5
+	.byte	144,34,157,32,32
+	.word	0,0
+.L79:
+	.word	-1,.L33,.L33-.L33,.L78-.L33
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('setDirection')
+	.sect	'.debug_loc'
+.L84:
+	.word	-1,.L35,.L35-.L35,.L82-.L35
+	.half	5
+	.byte	144,34,157,32,0
+	.word	0,0
+.L34:
+	.word	-1,.L35,.L35-.L35,.L82-.L35
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('v24PutString')
+	.sect	'.debug_loc'
+.L75:
+	.word	-1,.L37,.L37-.L37,.L12-.L37
+	.half	1
+	.byte	100
+	.word	0,0
+.L76:
+	.word	-1,.L37,.L107-.L37,.L73-.L37
+	.half	1
+	.byte	111
+	.word	0,0
+.L36:
+	.word	-1,.L37,.L37-.L37,.L73-.L37
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L243:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,28,8,29,8,30,8,31,8,16,8,17,8,24,8,25,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('pi_regler')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L243,.L33,.L78-.L33
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('setDirection')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L243,.L35,.L82-.L35
+	.sdecl	'.debug_frame',debug,cluster('v24PutString')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L243,.L37,.L73-.L37
+	.sdecl	'.debug_frame',debug,cluster('getCmpDutyCycle')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L243,.L39,.L85-.L39
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('main')
+	.sect	'.debug_frame'
+	.word	28
+	.word	.L243,.L41,.L89-.L41
+	.byte	4
+	.word	(.L108-.L41)/2
+	.byte	19,176,1,22,26,4,19,138,176,1,0
+
+; ..\MAIN.c	   354  		   }
+; ..\MAIN.c	   355  	   }
+; ..\MAIN.c	   356  #endif
+; ..\MAIN.c	   357  
+; ..\MAIN.c	   358  
+; ..\MAIN.c	   359  #if 0
+; ..\MAIN.c	   360  
+; ..\MAIN.c	   361  	   // Testcode 6: CAN-Bus Betrieb
+; ..\MAIN.c	   362  	   // ---------------------------
+; ..\MAIN.c	   363  	   // ACHTUNG: Tristate oder Pull-Up Modus beachten für RXD (s. oben)!!!
+; ..\MAIN.c	   364  
+; ..\MAIN.c	   365  	   for(i=0; i<3000000; i++);  // ACHTUNG: "i" muss "volatile int" sein!
+; ..\MAIN.c	   366  	   CAN_vTransmit(1);
+; ..\MAIN.c	   367  	   CAN_vTransmit(2);
+; ..\MAIN.c	   368  
+; ..\MAIN.c	   369  	   if(CAN_ubNewData(3)) {
+; ..\MAIN.c	   370  	     	IO_vWritePort(P5,0x00);
+; ..\MAIN.c	   371  	        CAN_vGetMsgObj(3, &RecCan_Obj3);
+; ..\MAIN.c	   372  	        v24PutString("New Can Message in Obj.3:\r\n");
+; ..\MAIN.c	   373  	        sprintf(s,"Identifier(hex)   : %02x \r\n",RecCan_Obj3.uwID);
+; ..\MAIN.c	   374  	        v24PutString(s);
+; ..\MAIN.c	   375  	        datalength=RecCan_Obj3.usMOCfg>>4;
+; ..\MAIN.c	   376  	        sprintf(s,"Data-length : %d \r\n",(int)datalength);
+; ..\MAIN.c	   377  	        v24PutString(s);
+; ..\MAIN.c	   378  	        for (i=0; i<datalength; i++){
+; ..\MAIN.c	   379  	              sprintf(s,"Data[%d](hex): %02x \r\n",(int)i,(int)RecCan_Obj3.ubData[i]);
+; ..\MAIN.c	   380  	              v24PutString(s);
+; ..\MAIN.c	   381  	        }
+; ..\MAIN.c	   382  	        v24PutString("\r\n");
+; ..\MAIN.c	   383  	        CAN_vReleaseObj(3);
+; ..\MAIN.c	   384  	   }
+; ..\MAIN.c	   385  
+; ..\MAIN.c	   386  #if 1
+; ..\MAIN.c	   387  	   // Broadcast-Message-Object (Receive-only)
+; ..\MAIN.c	   388  	   // Fängt jedes Message-Object ab, das nicht individuell durch
+; ..\MAIN.c	   389  	   // einen eigenen Identifier zugewiesen wurde.
+; ..\MAIN.c	   390  	   if(CAN_ubNewData(15)) {
+; ..\MAIN.c	   391  	    	IO_vWritePort(P5,0xaa);
+; ..\MAIN.c	   392  	        CAN_vGetMsgObj(15, &RecCanBCast_Obj15);
+; ..\MAIN.c	   393  	        v24PutString("New Broadcast Message in Obj.15:\r\n");
+; ..\MAIN.c	   394  	        sprintf(s,"Identifier(hex)   : %02x \r\n",RecCanBCast_Obj15.uwID);
+; ..\MAIN.c	   395  	        v24PutString(s);
+; ..\MAIN.c	   396  	        datalength=RecCanBCast_Obj15.usMOCfg>>4;
+; ..\MAIN.c	   397  	        sprintf(s,"Data-length : %d \r\n",(int)datalength);
+; ..\MAIN.c	   398  	        v24PutString(s);
+; ..\MAIN.c	   399  	        for (i=0; i<datalength; i++){
+; ..\MAIN.c	   400  	           sprintf(s,"Data[%d](hex): %02x \r\n",(int)i,(int)RecCanBCast_Obj15.ubData[i]);
+; ..\MAIN.c	   401  	           v24PutString(s);
+; ..\MAIN.c	   402  	        }
+; ..\MAIN.c	   403  	        v24PutString("\r\n");
+; ..\MAIN.c	   404  	        CAN_vReleaseObj(15);
+; ..\MAIN.c	   405  	   }
+; ..\MAIN.c	   406  #endif
+; ..\MAIN.c	   407  #endif
+; ..\MAIN.c	   408  
+; ..\MAIN.c	   409  #if 0
+; ..\MAIN.c	   410  	   v24PutString("Hello, again!\r\n");
+; ..\MAIN.c	   411  #endif
+; ..\MAIN.c	   412  
+; ..\MAIN.c	   413     } // end while(1)
+; ..\MAIN.c	   414  
+; ..\MAIN.c	   415  }
+
+	; Module end

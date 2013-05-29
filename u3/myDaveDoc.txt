@@ -1,0 +1,67 @@
+Allgemeine Notizen (u.a.) zu den verwendeten Dave-Modulen:
+==========================================================
+
+1. CAN-Bus
+----------
+
+(Je nach Verwendung des CAN-Busses muss der RXD-Ausgang im Tristate- oder Pull-up-Modus betrieben werden.
+Hierzu dient die Präprozessor-Anweisung "#define CAN_TRISTATE" am Anfang von main.c.)
+
+Multi CAN
+	Module Clock
+	CAN Nodes: Node0
+	Configure Pins: RXD und TXD (use Pin 3.12)
+	Baud Rate
+	Lists
+	MOs (MO1, MO2, MO3, MO4, MO15)
+		Achtung: bei "Priority Class (PRI)" das oberste "list order" nehmen, nicht das untere (DAvE Bug!!!) 
+	(Functions)
+	
+	
+2. PWM
+------
+
+	GPTA Clock
+	GPTA0
+		Global Timer "GT1": GTC0 und GTC1
+		Output Pins1: Out0(P0.0)
+	(Functions)
+
+	
+3. Timer (-Interrupt)
+--------------------
+
+	GPTA Clock (s. PWM)
+		nur für Timer-Interrupt: Häkchen bei "Enable Hardware Clock Control", damit ISR erstellt wird
+	GPTA0: Global Timer "GT0": keine GTCs verwendet
+	SRN: Service Request Node 5 (GT0-1)
+	(Functions)
+	
+	
+4. Externer Interrupt
+---------------------
+
+	SCU -> ERU -> REQ4(=P0.14)
+	External Request Selection (ERS and ETL)
+		Input Channel 0
+	Output Gating Unit (OGU)
+		Output Channel 0
+	Interrupts
+	(Functions)
+	
+	
+5. AD-Wandler
+-------------
+
+	ADC Clock
+		Disable sleepmode for the ADC module
+	ADC0: Configure Channel 0 (Enable)
+	(Functions)	
+	
+	
+6. I/O
+------
+
+	Port
+		Configure Port5 ...
+		
